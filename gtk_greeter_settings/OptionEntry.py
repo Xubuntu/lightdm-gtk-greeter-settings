@@ -78,7 +78,7 @@ class StringEntry(BaseEntry):
 
     def __init__(self, widgets):
         self._widget = widgets['value']
-        if isinstance(self._widget, Gtk.ComboBoxText):
+        if isinstance(self._widget, Gtk.ComboBox):
             self._widget = self._widget.get_child()
 
     def _get_value(self):
@@ -165,11 +165,17 @@ class IndicatorsEntry(BaseEntry):
     ModelRow = namedtuple('ModelRow', ('enabled', 'name', 'builtin', 'external'))
 
     def __init__(self, widgets):
+        # Map ModelRow fields to self._model_[field-name] = [field-index]
+        for i, field in enumerate(IndicatorsEntry.ModelRow._fields):
+            setattr(self, '_model_' + field, i)
+       
         self._use = widgets['use']
         self._toolbar = widgets['toolbar']
         self._treeview = widgets['treeview']
-        self._treeview_render_state = widgets['render_state']
-        self._treeview_selection = self._treeview.get_selection()
+        self._selection = widgets['selection']
+        self._state_renderer = widgets['state_renderer']
+        self._name_column = widgets['name_column']
+        self._name_renderer = widgets['name_renderer']
         self._add = widgets['add']
         self._remove = widgets['remove']
         self._up = widgets['up']
@@ -181,8 +187,9 @@ class IndicatorsEntry(BaseEntry):
         self._indicators_dialog = None
 
         self._treeview.connect("key-press-event", self._on_key_press)
-        self._treeview_render_state.connect("toggled", self._on_state_toggled)
-        self._treeview_selection.connect("changed", self._on_selection_changed)
+        self._selection.connect("changed", self._on_selection_changed)
+        self._state_renderer.connect("toggled", self._on_state_toggled)
+        self._name_renderer.connect("edited", self._on_name_edited)
         self._add.connect("clicked", self._on_add)
         self._remove.connect("clicked", self._on_remove)
         self._up.connect("clicked", self._on_up)
@@ -215,40 +222,59 @@ class IndicatorsEntry(BaseEntry):
         self._toolbar.props.sensitive = value is not None
         self._treeview.props.sensitive = value is not None
 
-        self._treeview_selection.select_path(0)
+        self._selection.select_path(0)
 
     def _remove_selection(self):
-        model, rowiter = self._treeview_selection.get_selected()
+        model, rowiter = self._selection.get_selected()
         if rowiter:
             previter = model.iter_previous(rowiter)
             model.remove(rowiter)
             if previter:
-                self._treeview_selection.select_iter(previter)
+                self._selection.select_iter(previter)
 
     def _move_selection(self, move_up):
-        model, rowiter = self._treeview_selection.get_selected()
+        model, rowiter = self._selection.get_selected()
         if rowiter:
             if move_up:
                 model.swap(rowiter, model.iter_previous(rowiter))
             else:
                 model.swap(rowiter, model.iter_next(rowiter))
-            self._on_selection_changed(self._treeview_selection)
+            self._on_selection_changed(self._selection)
+
+    def _check_indicator(self, name):
+        ''' Returns True if name is valid, error message or False otherwise '''
+        if not name:
+            return False
+        else:
+            if any(row[self._model_name] == name for row in self._model):
+                return _('Indicator "%s" is already in the list') % name
+            return True
 
     def _add_indicator(self, name):
         if name:
             rowiter = self._model.append(self.ModelRow(name=name, external=True,
                                                        builtin=False, enabled=False))
-            self._treeview_selection.select_iter(rowiter)
+            self._selection.select_iter(rowiter)
+            self._treeview.grab_focus()
 
     def _on_key_press(self, treeview, event):
         if Gdk.keyval_name(event.keyval) == 'Delete':
             self._remove_selection()
-            return True
-        return False
+        elif Gdk.keyval_name(event.keyval) == 'F2':
+            model, rowiter = self._selection.get_selected()
+            if rowiter and model[rowiter][self._model_external]:
+                self._treeview.set_cursor(model.get_path(rowiter), self._name_column, True)
+        else:
+            return False
+        return True
 
-    def _on_state_toggled(self, toggle, path):
-        item = self.ModelRow._make(self._model[path])
-        self._model[path] = item._replace(enabled=not item.enabled)
+    def _on_state_toggled(self, renderer, path):
+        self._model[path][self._model_enabled] = not self._model[path][self._model_enabled]
+
+    def _on_name_edited(self, renderer, path, name):
+        check = self._check_indicator(name)
+        if not isinstance(check, str) and check:
+            self._model[path][self._model_name] = name
 
     def _on_use_toggled(self, *args):
         if self._use.props.active:
@@ -267,7 +293,8 @@ class IndicatorsEntry(BaseEntry):
     def _on_add(self, *args):
         if not self._indicators_dialog:
             self._indicators_dialog = IndicatorChooserDialog.IndicatorChooserDialog()
-        name = self._indicators_dialog.get_indicator(self._add_indicator)
+        name = self._indicators_dialog.get_indicator(check_callback=self._check_indicator,
+                                                     add_callback=self._add_indicator)
         if name:
             self._add_indicator(name)
 

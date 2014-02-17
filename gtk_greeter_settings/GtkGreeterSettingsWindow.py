@@ -55,8 +55,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     __gtype_name__ = 'GtkGreeterSettingsWindow'
 
-    BUILDER_WIDGETS = ('dialog_buttons', 'apply_button', 'gtk_theme_value',
-                       'icons_theme_value')
+    BUILDER_WIDGETS = ('dialog_buttons', 'apply_button',
+                       'gtk_theme_values', 'icons_theme_values')
 
     def __new__(cls):
         builder = Gtk.Builder()
@@ -94,10 +94,10 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             pass
 
         for theme in iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0')):
-            self._gtk_theme_value.append_text(theme.split(os.path.sep)[-2])
+            self._gtk_theme_values.append_text(theme.split(os.path.sep)[-2])
 
         for theme in iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme')):
-            self._icons_theme_value.append_text(theme.split(os.path.sep)[-2])
+            self._icons_theme_values.append_text(theme.split(os.path.sep)[-2])
 
         self._read()
 

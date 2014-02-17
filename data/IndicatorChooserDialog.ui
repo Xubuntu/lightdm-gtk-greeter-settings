@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
 <interface>
-  <requires lib="gtk+" version="3.0"/>
+  <!-- interface-requires gtk+ 3.0 -->
   <!-- interface-requires gtk_greeter_settings 1.0 -->
-  <object class="GtkFileFilter" id="library_file_filter">
-    <mime-types>
-      <mime-type>application/x-sharedlib</mime-type>
-    </mime-types>
-  </object>
-  <object class="GtkListStore" id="short_model">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="IndicatorChooserDialog" id="indicator_chooser_dialog">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
@@ -37,14 +25,28 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="add_button">
-                <property name="label">gtk-add</property>
+              <object class="GtkBox" id="box1">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Add selected indicator to the list withount closing this window</property>
-                <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_add_clicked" swapped="no"/>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkButton" id="add_button">
+                    <property name="label">gtk-add</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Add selected indicator to the list withount closing this window</property>
+                    <property name="tooltip_text" translatable="yes">Add selected indicator to the list withount closing this window</property>
+                    <property name="use_stock">True</property>
+                    <signal name="clicked" handler="on_add_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -109,6 +111,7 @@
                 <property name="xalign">0</property>
                 <property name="active">True</property>
                 <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_short_choice_toggled" swapped="no"/>
                 <child>
                   <object class="GtkLabel" id="label5">
                     <property name="visible">True</property>
@@ -139,6 +142,7 @@
                 <child internal-child="entry">
                   <object class="GtkEntry" id="short_value">
                     <property name="can_focus">True</property>
+                    <signal name="changed" handler="on_short_value_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -198,6 +202,7 @@
                 <property name="can_focus">False</property>
                 <property name="margin_left">24</property>
                 <property name="filter">library_file_filter</property>
+                <signal name="file-set" handler="on_path_value_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -220,6 +225,59 @@
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkInfoBar" id="infobar">
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">False</property>
+                <property name="message_type">warning</property>
+                <child internal-child="content_area">
+                  <object class="GtkBox" id="infobar-content_area1">
+                    <property name="can_focus">False</property>
+                    <property name="border_width">8</property>
+                    <property name="spacing">16</property>
+                    <child>
+                      <object class="GtkLabel" id="message">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">label</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child internal-child="action_area">
+                  <object class="GtkButtonBox" id="infobar-action_area1">
+                    <property name="can_focus">False</property>
+                    <property name="border_width">5</property>
+                    <property name="orientation">vertical</property>
+                    <property name="layout_style">start</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
@@ -246,5 +304,16 @@
       <action-widget response="-5">ok_button</action-widget>
       <action-widget response="-7">cancel_button</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkFileFilter" id="library_file_filter">
+    <mime-types>
+      <mime-type>application/x-sharedlib</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkListStore" id="short_model">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
   </object>
 </interface>
