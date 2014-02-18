@@ -15,7 +15,7 @@ __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry']
 
 
-class SignalBlocker:
+class GtkSignalBlocker:
     def __init__(self, widget, handler):
         if hasattr(handler, '__call__'):
             self._block = partial(widget.handler_block_by_func, handler)
@@ -204,7 +204,7 @@ class IndicatorsEntry(BaseEntry):
             return None
 
     def _set_value(self, value):
-        with SignalBlocker(self._use, self._on_use_toggled):
+        with GtkSignalBlocker(self._use, self._on_use_toggled):
             self._use.set_active(value is not None)
 
         self._model.clear()
@@ -355,12 +355,12 @@ class PositionEntry(BaseEntry):
                     anchor = 'start'
             self._anchor = anchor
 
-            with SignalBlocker(self._percents, self._on_percents_toggled):
+            with GtkSignalBlocker(self._percents, self._on_percents_toggled):
                 self._percents.props.active = percents
                 self._adjustment.props.upper = 100 if self._percents.props.active else 10000
-            with SignalBlocker(self._mirror, self._on_mirror_toggled):
+            with GtkSignalBlocker(self._mirror, self._on_mirror_toggled):
                 self._mirror.props.active = negative
-            with SignalBlocker(self._adjustment, self._on_value_changed):
+            with GtkSignalBlocker(self._adjustment, self._on_value_changed):
                 self._adjustment.props.value = -p if negative else p
 
         @property
@@ -420,7 +420,6 @@ class PositionEntry(BaseEntry):
         self._anchors = {(x, y): widgets['base_%s_%s' % (x, y)]
                          for x, y in product(('start', 'center', 'end'), repeat=2)}
 
-        self._screen.connect('realize', self._on_realize)
         self._screen.connect('size-allocate', self._on_resize)
         self._screen.connect('draw', self._on_draw_screen_border)
 
@@ -433,6 +432,7 @@ class PositionEntry(BaseEntry):
         line_width = 2
         width -= line_width
         height -= line_width
+
         x += line_width / 2
         y += line_width / 2
         cr.set_source_rgba(0.2, 0.1, 0.2, 0.8)
@@ -484,15 +484,13 @@ class PositionEntry(BaseEntry):
             width = min(width, int(height / screen_scale))
         self._screen_pos = int((allocation.width - width) / 2), 0
         self._screen_size = (width, height)
-        with SignalBlocker(self._screen, self._on_resize):
-            scale = width / geometry.width
-            if 1:  # scale > 0.01:
-                self._window.set_size_request(PositionEntry.REAL_WINDOW_SIZE[0] * scale,
-                                              PositionEntry.REAL_WINDOW_SIZE[1] * scale)
-                self._update_layout()
 
-    def _on_realize(self, *args):
-        self._update_layout()
+        with GtkSignalBlocker(self._screen, self._on_resize):
+            scale = width / geometry.width
+            self._window.set_size_request(PositionEntry.REAL_WINDOW_SIZE[0] * scale,
+                                          PositionEntry.REAL_WINDOW_SIZE[1] * scale)
+            self._update_layout()
 
     def _on_dimension_changed(self, dimension):
-        self._update_layout()
+        with GtkSignalBlocker(self._screen, self._on_resize):
+            self._update_layout()
