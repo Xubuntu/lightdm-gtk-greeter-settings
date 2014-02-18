@@ -201,21 +201,23 @@ class IndicatorsEntry(BaseEntry):
         else:
             return None
 
-    def _set_value(self, value):
+    def _set_value(self, value, update_model=True):
         with GtkSignalBlocker(self._use, self._on_use_toggled):
             self._use.set_active(value is not None)
 
-        self._model.clear()
-        last_options = self._initial_items.copy()
-        if value:
-            for name in value.split(self.NAMES_DELIMITER):
-                try:
-                    self._model.append(last_options.pop(name)._replace(enabled=True))
-                except KeyError:
-                    self._model.append(self.ModelRow(name=name, external=True,
-                                                     builtin=False, enabled=False))
-        for item in last_options.values():
-            self._model.append(item)
+        if update_model:
+            self._model.clear()
+            last_options = self._initial_items.copy()
+            if value:
+                for name in value.split(self.NAMES_DELIMITER):
+                    try:
+                        self._model.append(last_options.pop(name)._replace(enabled=True))
+                    except KeyError:
+                        self._model.append(self.ModelRow(name=name, external=True,
+                                                         builtin=False, enabled=False))
+
+            for item in last_options.values():
+                self._model.append(item)
 
         self._toolbar.props.sensitive = value is not None
         self._treeview.props.sensitive = value is not None
@@ -276,9 +278,9 @@ class IndicatorsEntry(BaseEntry):
 
     def _on_use_toggled(self, *args):
         if self._use.props.active:
-            self._set_value([])
+            self._set_value([], update_model=False)
         else:
-            self._set_value(None)
+            self._set_value(None, update_model=False)
 
     def _on_selection_changed(self, selection):
         model, rowiter = selection.get_selected()
