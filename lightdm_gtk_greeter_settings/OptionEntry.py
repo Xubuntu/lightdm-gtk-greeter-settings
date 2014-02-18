@@ -8,7 +8,7 @@ import time
 
 from gi.repository import Gtk, Gdk, GObject
 
-from gtk_greeter_settings import IndicatorChooserDialog
+from lightdm_gtk_greeter_settings import IndicatorChooserDialog
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',

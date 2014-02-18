@@ -4,7 +4,7 @@ import os
 import sys
 
 from gi.repository import Gtk
-from gtk_greeter_settings import helpers
+from lightdm_gtk_greeter_settings import helpers
 
 
 __all__ = ['IndicatorChooserDialog']
