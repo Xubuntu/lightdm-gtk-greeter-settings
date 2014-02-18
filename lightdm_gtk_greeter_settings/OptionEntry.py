@@ -78,8 +78,6 @@ class StringEntry(BaseEntry):
 
     def __init__(self, widgets):
         self._widget = widgets['value']
-        if isinstance(self._widget, Gtk.ComboBox):
-            self._widget = self._widget.get_child()
 
     def _get_value(self):
         return self._widget.props.text
@@ -216,8 +214,8 @@ class IndicatorsEntry(BaseEntry):
                 except KeyError:
                     self._model.append(self.ModelRow(name=name, external=True,
                                                      builtin=False, enabled=False))
-        for i in last_options.values():
-            self._model.append(i)
+        for item in last_options.values():
+            self._model.append(item)
 
         self._toolbar.props.sensitive = value is not None
         self._treeview.props.sensitive = value is not None

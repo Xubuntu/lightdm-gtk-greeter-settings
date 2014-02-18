@@ -123,7 +123,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     self._config.set(section, key, value)
 
         try:
-            with open(self._config_path + '_', 'w') as file:
+            with open(self._config_path, 'w') as file:
                 self._config.write(file)
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)

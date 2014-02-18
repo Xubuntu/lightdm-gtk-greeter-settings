@@ -4,13 +4,13 @@ from gi.repository import Gtk
 
 
 __license__ = 'GPL-3'
-__version__ = '0.1'
+__version__ = 'dev'
 __data_directory__ = '../data/'
 __config_path__ = 'lightdm-gtk-greeter.conf'
 
 
 try:
-    from _override_config import *
+    from . installation_config import *
 except ImportError:
     pass
 
@@ -31,3 +31,7 @@ def show_message(**kwargs):
     dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.CLOSE, **kwargs)
     dialog.run()
     dialog.destroy()
+
+
+def get_version():
+    return __version__

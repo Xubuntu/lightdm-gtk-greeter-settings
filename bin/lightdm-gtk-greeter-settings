@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+import sys
+import os
+
+import gi
+gi.require_version('Gtk', '3.0')
+
+
+project_dir = os.path.abspath(os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0]))))
+if (os.path.exists(os.path.join(project_dir, 'lightdm_gtk_greeter_settings')) and project_dir not in sys.path):
+    sys.path.insert(0, project_dir)
+
+
+import lightdm_gtk_greeter_settings
+lightdm_gtk_greeter_settings.main()
