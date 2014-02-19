@@ -141,7 +141,9 @@
                 <child internal-child="entry">
                   <object class="GtkEntry" id="short_value">
                     <property name="can_focus">True</property>
+                    <property name="is_focus">True</property>
                     <signal name="changed" handler="on_short_value_changed" swapped="no"/>
+                    <signal name="activate" handler="on_short_value_activate" swapped="no"/>
                   </object>
                 </child>
               </object>

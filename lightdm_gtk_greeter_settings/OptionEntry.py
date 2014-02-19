@@ -8,7 +8,7 @@ import time
 
 from gi.repository import Gtk, Gdk, GObject
 
-from lightdm_gtk_greeter_settings import IndicatorChooserDialog
+from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
@@ -292,9 +292,9 @@ class IndicatorsEntry(BaseEntry):
 
     def _on_add(self, *args):
         if not self._indicators_dialog:
-            self._indicators_dialog = IndicatorChooserDialog.IndicatorChooserDialog()
-        name = self._indicators_dialog.get_indicator(check_callback=self._check_indicator,
-                                                     add_callback=self._add_indicator)
+            self._indicators_dialog = IndicatorChooserDialog(check_callback=self._check_indicator,
+                                                             add_callback=self._add_indicator)
+        name = self._indicators_dialog.get_indicator()
         if name:
             self._add_indicator(name)
 
