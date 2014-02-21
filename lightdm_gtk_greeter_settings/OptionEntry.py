@@ -4,11 +4,13 @@ from builtins import isinstance
 from collections import namedtuple, OrderedDict
 from itertools import product
 from locale import gettext as _
+import os
 import time
 
 from gi.repository import Gtk, Gdk, GObject
 
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
+from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
@@ -147,14 +149,88 @@ class FontEntry(BaseEntry):
 class IconEntry(BaseEntry):
 
     def __init__(self, widgets):
+        self._value = None
         self._image = widgets['image']
         self._button = widgets['button']
+        self._menu = widgets['menu']
+        self._icon_item = widgets['icon_item']
+        self._path_item = widgets['path_item']
+        self._path_dialog = widgets['path_dialog']
+        self._path_dialog_preview = widgets['path_dialog_preview']
+        self._icon_dialog = None
+
+        self._button.connect('toggled', self._on_button_toggled)
+        self._menu.connect('hide', self._on_menu_hide)
+        self._icon_item.connect('activate', self._on_select_icon)
+        self._path_item.connect('activate', self._on_select_path)
+        self._path_dialog.connect('update-preview', self._on_update_path_preview)
 
     def _get_value(self):
-        pass
+        return self._value
 
     def _set_value(self, value):
-        pass
+        if value.startswith('#'):
+            self._set_icon(value[1:])
+        else:
+            self._set_path(value)
+
+    def _set_icon(self, icon):
+        self._value = '#' + icon
+        self._image.set_from_icon_name(icon, Gtk.IconSize.DIALOG)
+        self._update_menu_items(icon=icon)
+
+    def _set_path(self, path):
+        self._value = path
+        self._image.set_from_file(path)
+        self._update_menu_items(path=path)
+
+    def _update_menu_items(self, icon=None, path=None):
+        if icon:
+            self._icon_item.get_child().set_markup(('<b>Icon: %s</b>') % icon)
+        else:
+            self._icon_item.get_child().set_markup(_('Select icon name...'))
+
+        if path:
+            self._path_item.get_child().set_markup(_('<b>File: %s</b>') % os.path.basename(path))
+        else:
+            self._path_item.get_child().set_markup(_('Select file...'))
+
+    def _get_menu_position(self, menu, widget):
+        allocation = widget.get_allocation()
+        x, y = widget.get_window().get_position()
+        x += allocation.x
+        y += allocation.y + allocation.height
+        return (x, y, False)
+
+    def _on_button_toggled(self, toggle):
+        if toggle.props.active:
+            self._menu.popup(None, None, self._get_menu_position,
+                             self._button, 3, Gtk.get_current_event_time())
+
+    def _on_menu_hide(self, toggle):
+        self._button.props.active = False
+
+    def _on_select_icon(self, item):
+        if not self._icon_dialog:
+            self._icon_dialog = IconChooserDialog()
+        if self._value.startswith('#'):
+            self._icon_dialog.select_icon(self._value[1:])
+        if self._icon_dialog.run() == Gtk.ResponseType.OK:
+            self._set_icon(self._icon_dialog.get_iconname())
+        self._icon_dialog.hide()
+
+    def _on_select_path(self, item):
+        self._path_dialog.select_filename(self._value)
+        if self._path_dialog.run() == Gtk.ResponseType.OK:
+            self._set_path(self._path_dialog.get_filename())
+        self._path_dialog.hide()
+
+    def _on_update_path_preview(self, chooser):
+        path = chooser.get_filename()
+        if not path or not os.path.isfile(path):
+            self._path_dialog_preview.props.icon_name = 'unknown'
+            return
+        self._path_dialog_preview.set_from_file(path)
 
 
 class IndicatorsEntry(BaseEntry):
@@ -166,7 +242,7 @@ class IndicatorsEntry(BaseEntry):
         # Map ModelRow fields to self._model_[field-name] = [field-index]
         for i, field in enumerate(IndicatorsEntry.ModelRow._fields):
             setattr(self, '_model_' + field, i)
-       
+
         self._use = widgets['use']
         self._toolbar = widgets['toolbar']
         self._treeview = widgets['treeview']

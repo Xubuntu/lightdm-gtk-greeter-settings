@@ -2,6 +2,16 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <!-- interface-requires gtk_greeter_settings 1.0 -->
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">image</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-open</property>
+  </object>
   <object class="GtkListStore" id="indicators_model">
     <columns>
       <!-- column-name enabled -->
@@ -296,6 +306,7 @@
                   <object class="GtkFileChooserButton" id="background_image_value">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="filter">userimage_path_dialog_filter</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -343,7 +354,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="valign">center</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Default user image</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
@@ -354,29 +365,6 @@
                     <property name="top_attach">7</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="button5">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="valign">start</property>
-                    <child>
-                      <object class="GtkImage" id="user_image_value">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixel_size">64</property>
-                        <property name="icon_name">avatar-default</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
-                    <property name="width">1</property>
-                    <property name="height">2</property>
                   </packing>
                 </child>
                 <child>
@@ -420,7 +408,27 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkToggleButton" id="userimage_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <child>
+                      <object class="GtkImage" id="userimage_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixel_size">64</property>
+                        <property name="icon_name">avatar-default</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">7</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -1235,5 +1243,105 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkMenu" id="userimage_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkImageMenuItem" id="userimage_icon_item">
+        <property name="label">Icon</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="image">image1</property>
+        <property name="use_stock">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="userimage_path_item">
+        <property name="label">Path</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="image">image2</property>
+        <property name="use_stock">False</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkFileFilter" id="userimage_path_dialog_filter">
+    <mime-types>
+      <mime-type>image/*</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkImage" id="userimage_path_dialog_preview">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="yalign">0</property>
+    <property name="pixel_size">64</property>
+    <property name="icon_name">unknown</property>
+    <property name="icon-size">6</property>
+  </object>
+  <object class="GtkFileChooserDialog" id="userimage_path_dialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="role">GtkFileChooserDialog</property>
+    <property name="window_position">center</property>
+    <property name="default_width">600</property>
+    <property name="default_height">450</property>
+    <property name="type_hint">dialog</property>
+    <property name="create_folders">False</property>
+    <property name="filter">userimage_path_dialog_filter</property>
+    <property name="preview_widget">userimage_path_dialog_preview</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="filechooserdialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="filechooserdialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button2">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-6">button2</action-widget>
+      <action-widget response="-5">button1</action-widget>
+    </action-widgets>
   </object>
 </interface>

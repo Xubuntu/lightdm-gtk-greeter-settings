@@ -31,7 +31,7 @@ OPTIONS_BINDINGS = \
         'xft-antialias': (OptionEntry.BooleanEntry, 'antialias', False),
         'xft-dpi': (OptionEntry.StringEntry, 'dpi', None),
         'background': (OptionEntry.BackgroundEntry, 'background', None),
-        'default-user-image': (OptionEntry.IconEntry, 'user_image', '#avatar-default'),
+        'default-user-image': (OptionEntry.IconEntry, 'userimage', '#avatar-default'),
         # Panel
         'show-clock': (OptionEntry.BooleanEntry, 'show_clock', False),
         'clock-format': (OptionEntry.ClockFormatEntry, 'clock_format', '%a, %H:%M'),
