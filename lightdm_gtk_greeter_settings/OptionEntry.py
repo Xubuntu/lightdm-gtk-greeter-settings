@@ -1,12 +1,10 @@
 
-from _functools import partial
 from builtins import isinstance
 from collections import namedtuple, OrderedDict
 from itertools import product
 from locale import gettext as _
 import os
 import time
-
 from gi.repository import Gtk, Gdk, GObject
 
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
@@ -17,75 +15,94 @@ __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry']
 
 
-class GtkSignalBlocker:
-    def __init__(self, widget, handler):
-        if hasattr(handler, '__call__'):
-            self._block = partial(widget.handler_block_by_func, handler)
-            self._unblock = partial(widget.handler_unblock_by_func, handler)
-        elif isinstance(handler, int):
-            self._block = partial(widget.handler_block, handler)
-            self._unblock = partial(widget.handler_unblock, handler)
-        else:
-            self._block = None
-            self._unblock = None
+class BaseEntry(GObject.GObject):
 
-    def __enter__(self):
-        if self._block:
-            self._block()
-        return self
-
-    def __exit__(self, *args):
-        if self._unblock:
-            self._unblock()
-        return False
-
-
-class BaseEntry:
+    _use = None
+    def __init__(self, widgets):
+        super().__init__()
+        self._use = widgets['use']
+        if self._use:
+            self._use.connect('notify::active', self._on_use_toggled)
 
     @property
     def value(self):
+        '''Option value'''
         return self._get_value()
 
     @value.setter
     def value(self, value):
-        return self._set_value(value)
+        if self._use:
+            self._use.props.active = True
+        self._set_value(value)
+
+    @property
+    def enabled(self):
+        '''Visual option state. You can get/set value of disabled option'''
+        if self._use:
+            return self._use.props.active
+        return True
+
+    @enabled.setter
+    def enabled(self, value):
+        if self._use:
+            self._use.props.active = value
+
+    @GObject.Signal
+    def changed(self):
+        pass
 
     def __repr__(self):
         try:
             value = self._get_value()
         except NotImplemented:
             value = '<Undefined>'
-        return '%s(%s)' % (self.__class__.__name__, value)
+        return '%s(%s:%s)' % (self.__class__.__name__, int(self.enabled), value)
 
     def _get_value(self):
         raise NotImplementedError(self.__class__)
 
     def _set_value(self, value):
         raise NotImplementedError(self.__class__)
+
+    def _set_enabled(self, value):
+        raise NotImplementedError(self.__class__)
+
+    def _on_use_toggled(self, *args):
+        self._set_enabled(self._use.props.active)
+        self._emit_changed()
+
+    def _emit_changed(self, *args):
+        self.emit("changed")
 
 
 class BooleanEntry(BaseEntry):
-
     def __init__(self, widgets):
-        self._widget = widgets['value']
+        super().__init__(widgets)
+        self._value = widgets['value']
+        self._value.connect('notify::active', self._emit_changed)
 
     def _get_value(self):
-        return 'true' if self._widget.props.active else 'false'
+        return 'true' if self._value.props.active else 'false'
 
     def _set_value(self, value):
-        self._widget.props.active = value and value.lower() not in ('false', 'no', '0')
+        self._value.props.active = value and value.lower() not in ('false', 'no', '0')
 
 
 class StringEntry(BaseEntry):
 
     def __init__(self, widgets):
-        self._widget = widgets['value']
+        super().__init__(widgets)
+        self._value = widgets['value']
+        self._value.connect('changed', self._emit_changed)
 
     def _get_value(self):
-        return self._widget.props.text
+        return self._value.props.text
 
     def _set_value(self, value):
-        self._widget.props.text = value or ''
+        self._value.props.text = value or ''
+
+    def _set_enabled(self, value):
+        self._value.props.sensitive = value
 
 
 class ClockFormatEntry(StringEntry):
@@ -93,21 +110,26 @@ class ClockFormatEntry(StringEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._preview = widgets['preview']
-        self._widget.connect('changed', self._on_changed)
-        GObject.timeout_add_seconds(1, self._on_changed, self._widget)
+        self._value.connect('changed', self._on_changed)
+        GObject.timeout_add_seconds(1, self._on_changed, self._value)
 
     def _on_changed(self, entry):
-        self._preview.props.label = time.strftime(self._widget.props.text)
+        self._preview.props.label = time.strftime(self._value.props.text)
         return True
 
 
 class BackgroundEntry(BaseEntry):
 
     def __init__(self, widgets):
+        super().__init__(widgets)
         self._image_choice = widgets['image_choice']
         self._color_choice = widgets['color_choice']
         self._image_value = widgets['image_value']
         self._color_value = widgets['color_value']
+
+        self._color_choice.connect('toggled', self._on_color_choice_toggled)
+        self._color_value.connect('color-set', self._on_color_set)
+        self._image_value.connect('file-set', self._on_file_set)
 
     def _get_value(self):
         if self._image_choice.props.active:
@@ -133,22 +155,40 @@ class BackgroundEntry(BaseEntry):
             else:
                 self._image_value.unselect_all()
 
+    def _on_color_choice_toggled(self, toggle):
+        self._emit_changed()
+
+    def _on_color_set(self, button):
+        if not self._color_choice.props.active:
+            self._color_choice.props.active = True
+        else:
+            self._emit_changed()
+
+    def _on_file_set(self, button):
+        if not self._image_choice.props.active:
+            self._image_choice.props.active = True
+        else:
+            self._emit_changed()
+
 
 class FontEntry(BaseEntry):
 
     def __init__(self, widgets):
-        self._widget = widgets['value']
+        super().__init__(widgets)
+        self._value = widgets['value']
+        self._value.connect('font-set', self._emit_changed)
 
     def _get_value(self):
-        return self._widget.get_font_name()
+        return self._value.get_font_name()
 
     def _set_value(self, value):
-        self._widget.props.font_name = value or ''
+        self._value.props.font_name = value or ''
 
 
 class IconEntry(BaseEntry):
 
     def __init__(self, widgets):
+        super().__init__(widgets)
         self._value = None
         self._image = widgets['image']
         self._button = widgets['button']
@@ -178,11 +218,13 @@ class IconEntry(BaseEntry):
         self._value = '#' + icon
         self._image.set_from_icon_name(icon, Gtk.IconSize.DIALOG)
         self._update_menu_items(icon=icon)
+        self._emit_changed()
 
     def _set_path(self, path):
         self._value = path
         self._image.set_from_file(path)
         self._update_menu_items(path=path)
+        self._emit_changed()
 
     def _update_menu_items(self, icon=None, path=None):
         if icon:
@@ -239,11 +281,12 @@ class IndicatorsEntry(BaseEntry):
     ModelRow = namedtuple('ModelRow', ('enabled', 'name', 'builtin', 'external'))
 
     def __init__(self, widgets):
+        super().__init__(widgets)
+
         # Map ModelRow fields to self._model_[field-name] = [field-index]
         for i, field in enumerate(IndicatorsEntry.ModelRow._fields):
             setattr(self, '_model_' + field, i)
 
-        self._use = widgets['use']
         self._toolbar = widgets['toolbar']
         self._treeview = widgets['treeview']
         self._selection = widgets['selection']
@@ -268,19 +311,20 @@ class IndicatorsEntry(BaseEntry):
         self._remove.connect("clicked", self._on_remove)
         self._up.connect("clicked", self._on_up)
         self._down.connect("clicked", self._on_down)
-        self._use.connect("notify::active", self._on_use_toggled)
+
+        self._model.connect("row-changed", self._on_model_changed)
+        self._model.connect("row-deleted", self._on_model_changed)
+        self._model.connect("row-inserted", self._on_model_changed)
+        self._model.connect("rows-reordered", self._on_model_changed)
+
+    def _on_model_changed(self, *args):
+        self._emit_changed()
 
     def _get_value(self):
-        if self._use.props.active:
-            return self.NAMES_DELIMITER.join(item.name for item in map(self.ModelRow._make, self._model)
-                                             if (item.builtin and item.enabled) or item.external)
-        else:
-            return None
+        return self.NAMES_DELIMITER.join(item.name for item in map(self.ModelRow._make, self._model)
+                                         if (item.builtin and item.enabled) or item.external)
 
     def _set_value(self, value, update_model=True):
-        with GtkSignalBlocker(self._use, self._on_use_toggled):
-            self._use.set_active(value is not None)
-
         if update_model:
             self._model.clear()
             last_options = self._initial_items.copy()
@@ -295,10 +339,11 @@ class IndicatorsEntry(BaseEntry):
             for item in last_options.values():
                 self._model.append(item)
 
-        self._toolbar.props.sensitive = value is not None
-        self._treeview.props.sensitive = value is not None
-
         self._selection.select_path(0)
+
+    def _set_enabled(self, value):
+        self._toolbar.props.sensitive = value
+        self._treeview.props.sensitive = value
 
     def _remove_selection(self):
         model, rowiter = self._selection.get_selected()
@@ -352,12 +397,6 @@ class IndicatorsEntry(BaseEntry):
         if not isinstance(check, str) and check:
             self._model[path][self._model_name] = name
 
-    def _on_use_toggled(self, *args):
-        if self._use.props.active:
-            self._set_value([], update_model=False)
-        else:
-            self._set_value(None, update_model=False)
-
     def _on_selection_changed(self, selection):
         model, rowiter = selection.get_selected()
         self._remove.props.sensitive = (rowiter is not None) and self.ModelRow._make(model[rowiter]).external
@@ -396,7 +435,7 @@ class PositionEntry(BaseEntry):
 
             self._percents.connect('toggled', self._on_percents_toggled)
             self._mirror.connect('toggled', self._on_mirror_toggled)
-            self._adjustment.connect('value-changed', self._on_value_changed)
+            self._on_value_changed_id = self._adjustment.connect('value-changed', self._on_value_changed)
 
             for (x, y), widget  in anchors.items():
                 widget.connect('toggled', self._on_anchor_toggled, self,
@@ -407,7 +446,7 @@ class PositionEntry(BaseEntry):
             return '%s%d%s,%s' % ('-' if self._mirror.props.active else '',
                                   int(self._value.props.value),
                                   '%' if self._percents.props.active else '',
-                                  'start' if self._name == 'x' else 'end')
+                                  self._anchor)
 
         @value.setter
         def value(self, dim_value):
@@ -431,12 +470,10 @@ class PositionEntry(BaseEntry):
                     anchor = 'start'
             self._anchor = anchor
 
-            with GtkSignalBlocker(self._percents, self._on_percents_toggled):
-                self._percents.props.active = percents
-                self._adjustment.props.upper = 100 if self._percents.props.active else 10000
-            with GtkSignalBlocker(self._mirror, self._on_mirror_toggled):
-                self._mirror.props.active = negative
-            with GtkSignalBlocker(self._adjustment, self._on_value_changed):
+            self._percents.props.active = percents
+            self._adjustment.props.upper = 100 if self._percents.props.active else 10000
+            self._mirror.props.active = negative
+            with self._adjustment.handler_block(self._on_value_changed_id):
                 self._adjustment.props.value = -p if negative else p
 
         @property
@@ -488,6 +525,7 @@ class PositionEntry(BaseEntry):
     REAL_WINDOW_SIZE = 430, 210
 
     def __init__(self, widgets):
+        super().__init__(widgets)
         self._screen = widgets['screen']
         self._window = widgets['window']
         self._screen_pos = (0, 0)
@@ -496,7 +534,7 @@ class PositionEntry(BaseEntry):
         self._anchors = {(x, y): widgets['base_%s_%s' % (x, y)]
                          for x, y in product(('start', 'center', 'end'), repeat=2)}
 
-        self._screen.connect('size-allocate', self._on_resize)
+        self._on_resize_id = self._screen.connect('size-allocate', self._on_resize)
         self._screen.connect('draw', self._on_draw_screen_border)
 
         self._x = PositionEntry.Dimension('x', widgets, self._anchors, self._on_dimension_changed)
@@ -561,12 +599,13 @@ class PositionEntry(BaseEntry):
         self._screen_pos = int((allocation.width - width) / 2), 0
         self._screen_size = (width, height)
 
-        with GtkSignalBlocker(self._screen, self._on_resize):
+        with self._screen.handler_block(self._on_resize_id):
             scale = width / geometry.width
             self._window.set_size_request(PositionEntry.REAL_WINDOW_SIZE[0] * scale,
                                           PositionEntry.REAL_WINDOW_SIZE[1] * scale)
             self._update_layout()
 
     def _on_dimension_changed(self, dimension):
-        with GtkSignalBlocker(self._screen, self._on_resize):
+        with self._screen.handler_block(self._on_resize_id):
             self._update_layout()
+            self._emit_changed()

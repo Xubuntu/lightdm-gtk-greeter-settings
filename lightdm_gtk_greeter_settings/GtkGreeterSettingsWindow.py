@@ -15,7 +15,7 @@ from lightdm_gtk_greeter_settings import helpers
 __all__ = ['GtkGreeterSettingsWindow']
 
 
-BindingValue = namedtuple('BindingValue', ('option', 'default'))
+BindingValue = namedtuple('BindingValue', ('option', 'default', 'changed_handler'))
 
 
 OPTIONS_BINDINGS = \
@@ -38,6 +38,9 @@ OPTIONS_BINDINGS = \
         'show-indicators': (OptionEntry.IndicatorsEntry, 'indicators', None),
         # Position
         'position': (OptionEntry.PositionEntry, 'position', '50%,center'),
+        # Misc
+        'screensaver-timeout': (OptionEntry.StringEntry, 'timeout', '60'),
+        'keyboard': (OptionEntry.StringEntry, 'keyboard', None),
     }
 }
 
@@ -69,9 +72,11 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         window._init_window()
         return window
 
+    def on_option_changed(self, *args):
+        pass
+
     def _init_window(self):
-        self._bindings = {section: {key: BindingValue(cls(BuilderWrapper(self._builder, base_name)), default)
-                                    for key, (cls, base_name, default) in keys.items()}
+        self._bindings = {section: {key: self._new_binding(*args) for key, args in keys.items()}
                           for section, keys in OPTIONS_BINDINGS.items()}
 
         self._config_path = helpers.get_config_path()
@@ -106,21 +111,31 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             return True
         return os.access(os.path.dirname(self._config_path), os.W_OK | os.X_OK)
 
+    def _new_binding(self, cls, basename, default):
+        option = cls(BuilderWrapper(self._builder, basename))
+        changed_id = option.connect('changed', self.on_option_changed)
+        return BindingValue(option, default, changed_id)
+
     def _read(self):
         for section, keys in self._bindings.items():
             for key, binding in keys.items():
-                binding.option.value = self._config.get(section, key, fallback=binding.default)
+                with binding.option.handler_block(binding.changed_handler):
+                    try:
+                        binding.option.value = self._config.get(section, key)
+                        binding.option.enabled = True
+                    except configparser.NoOptionError:
+                        binding.option.value = binding.default
+                        binding.option.enabled = False
 
     def _write(self):
         for section, keys in self._bindings.items():
             if not self._config.has_section(section):
                 self._config.add_section(section)
             for key, binding in keys.items():
-                value = binding.option.value
-                if value is None:
-                    self._config.remove_option(section, key)
+                if binding.option.enabled:
+                    self._config.set(section, key, binding.option.value)
                 else:
-                    self._config.set(section, key, value)
+                    self._config.remove_option(section, key)
 
         try:
             with open(self._config_path, 'w') as file:
