@@ -19,7 +19,7 @@ def write_config(libdir, values):
         for k, v in values.items():
             f.write('%s = %s\n' % (k, v))
     except OSError as e:
-            print ("ERROR: Can't write installation_config: %s" % e)
+            print ("ERROR: Can't write installation config: %s" % e)
             sys.exit(1)
 
 
@@ -50,6 +50,7 @@ def move_desktop_file(root, target_data, prefix):
 def update_desktop_file(filename, target_pkgdata, target_scripts):
 
     config = configparser.RawConfigParser(strict=False, allow_no_value=True)
+    config.optionxform = str
     try:
         config.read(filename)
     except configparser.Error as e:
@@ -60,7 +61,7 @@ def update_desktop_file(filename, target_pkgdata, target_scripts):
         config.add_section('Desktop Entry')
     
     old_command = config.get('Desktop Entry', 'Exec', fallback='').split(None, 1)
-    new_command = target_scripts + 'lightdm-gtk-greeter-settings'
+    new_command = target_scripts + 'lightdm-gtk-greeter-settings-pkexec'
     if len(old_command) > 1:
         new_command += ' ' + new_command[1]
     config.set('Desktop Entry', 'Exec', new_command)
@@ -86,15 +87,21 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         update_desktop_file(desktop_file, target_pkgdata, target_scripts)
 
 
-DistUtilsExtra.auto.setup(
+DistUtilsExtra.auto.setup \
+(
     name='lightdm-gtk-greeter-settings',
-    version='0.1',
+    version='0.3',
     license='GPL-3',
     author='Andrew P.',
     author_email='pan.pav.7c5@gmail.com',
     description='Settings editor for LightDM GTK+ Greeter',
     long_description='Settings editor for LightDM GTK+ Greeter',
     url='https://launchpad.net/lightdm-gtk-greeter-settings',
-    cmdclass={'install': InstallAndUpdateDataDirectory}
-    )
+    cmdclass={'install': InstallAndUpdateDataDirectory},
+    data_files=\
+    [
+        (os.path.join('share', 'polkit-1', 'actions'),
+            ['com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy'])
+    ],
+)
 

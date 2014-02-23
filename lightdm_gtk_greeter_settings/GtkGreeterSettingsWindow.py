@@ -159,7 +159,11 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._apply_button.props.sensitive = self._allow_edit and self._changed_values
 
     def on_format_time_scale(self, scale, value):
-        return '%02d:%02d' % (value // 60, value % 60)
+        value = int(value)
+        if value > 0:
+            return '%02d:%02d' % (value // 60, value % 60)
+        else:
+            return _('Never')
 
     def on_destroy(self, *args):
         Gtk.main_quit()
