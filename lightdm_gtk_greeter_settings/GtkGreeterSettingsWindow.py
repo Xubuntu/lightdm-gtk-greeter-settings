@@ -142,11 +142,11 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     self._config.remove_option(section, key)
                 self._initial_values[binding.option] = InitialValue(binding.option.value,
                                                                     binding.option.enabled)
-
+        self._changed_values = set()
+        self._apply_button.props.sensitive = False
         try:
             with open(self._config_path, 'w') as file:
                 self._config.write(file)
-            self._apply_button.props.sensitive = False
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)
 
