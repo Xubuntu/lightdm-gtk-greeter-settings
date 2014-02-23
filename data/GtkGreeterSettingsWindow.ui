@@ -12,6 +12,11 @@
     <property name="can_focus">False</property>
     <property name="icon_name">document-open</property>
   </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">reload</property>
+  </object>
   <object class="GtkListStore" id="indicators_model">
     <columns>
       <!-- column-name enabled -->
@@ -60,9 +65,15 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkAdjustment" id="timeout_adjustment">
+    <property name="upper">300</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkGreeterSettingsWindow" id="settings_window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">LightDM GTK+ Greeter: settings</property>
+    <property name="window_position">center</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -155,7 +166,6 @@
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
                     <property name="font">Sans 12</property>
-                    <property name="preview_text"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -212,7 +222,7 @@
                           <object class="GtkSwitch" id="antialias_value">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">start</property>
+                            <property name="halign">end</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -225,7 +235,6 @@
                           <object class="GtkComboBoxText" id="dpi_values">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">start</property>
                             <property name="has_entry">True</property>
                             <property name="entry_text_column">0</property>
                             <property name="id_column">1</property>
@@ -350,7 +359,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="user_image_label">
+                  <object class="GtkLabel" id="userimage_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -482,7 +491,7 @@
                   <object class="GtkSwitch" id="show_clock_value">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -542,7 +551,7 @@
                   <object class="GtkSwitch" id="indicators_use">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -908,7 +917,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label13">
+                  <object class="GtkLabel" id="position_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
@@ -1207,22 +1216,7 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="timeout_value">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
-                    <property name="xalign">1</property>
-                    <property name="adjustment">timeout_adjustment</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
-                    <property name="width">1</property>
+                    <property name="width">2</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
@@ -1273,12 +1267,32 @@
                   <object class="GtkSwitch" id="keyboard_use">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
                     <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScale" id="timeout_view">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">24</property>
+                    <property name="adjustment">timeout_adjustment</property>
+                    <property name="lower_stepper_sensitivity">on</property>
+                    <property name="fill_level">10000</property>
+                    <property name="round_digits">1</property>
+                    <property name="digits">0</property>
+                    <property name="value_pos">bottom</property>
+                    <signal name="format-value" handler="on_format_time_scale" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">2</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
@@ -1344,11 +1358,11 @@
             </child>
             <child>
               <object class="GtkButton" id="reset_button">
-                <property name="label">gtk-redo</property>
+                <property name="label">Reread</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
+                <property name="image">image3</property>
                 <signal name="clicked" handler="on_reset_clicked" swapped="no"/>
               </object>
               <packing>
@@ -1367,11 +1381,6 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="timeout_adjustment">
-    <property name="upper">10000</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
   </object>
   <object class="GtkMenu" id="userimage_menu">
     <property name="visible">True</property>

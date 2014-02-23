@@ -16,6 +16,7 @@ __all__ = ['GtkGreeterSettingsWindow']
 
 
 BindingValue = namedtuple('BindingValue', ('option', 'default', 'changed_handler'))
+InitialValue = namedtuple('InitialValue', ('value', 'state'))
 
 
 OPTIONS_BINDINGS = \
@@ -39,7 +40,7 @@ OPTIONS_BINDINGS = \
         # Position
         'position': (OptionEntry.PositionEntry, 'position', '50%,center'),
         # Misc
-        'screensaver-timeout': (OptionEntry.StringEntry, 'timeout', '60'),
+        'screensaver-timeout': (OptionEntry.AdjustmentIntEntry, 'timeout', 60),
         'keyboard': (OptionEntry.StringEntry, 'keyboard', None),
     }
 }
@@ -58,7 +59,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     __gtype_name__ = 'GtkGreeterSettingsWindow'
 
-    BUILDER_WIDGETS = ('dialog_buttons', 'apply_button',
+    BUILDER_WIDGETS = ('apply_button',
                        'gtk_theme_values', 'icons_theme_values')
 
     def __new__(cls):
@@ -71,13 +72,6 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         builder.connect_signals(window)
         window._init_window()
         return window
-
-    def on_option_changed(self, option):
-        if option.value != self._initial_values[option]:
-            self._changed_values.add(option)
-        else:
-            self._changed_values.discard(option)
-        self._apply_button.props.sensitive = self._allow_edit and self._changed_values
 
     def _init_window(self):
         self._bindings = {section: {key: self._new_binding(*args) for key, args in keys.items()}
@@ -94,15 +88,16 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 %s\n\nTry to run this program using "sudo" or "pkexec"') % self._config_path,
                                  message_type=Gtk.MessageType.WARNING)
 
+        self._configure_special_options()
         self._config = configparser.RawConfigParser(strict=False, allow_no_value=True)
+        self._read()
 
+    def _configure_special_options(self):
         for theme in iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0')):
             self._gtk_theme_values.append_text(theme.split(os.path.sep)[-2])
 
         for theme in iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme')):
             self._icons_theme_values.append_text(theme.split(os.path.sep)[-2])
-
-        self._read()
 
     def _has_access_to_write(self, path):
         if os.path.exists(path) and os.access(self._config_path, os.W_OK):
@@ -131,7 +126,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     except configparser.NoOptionError:
                         binding.option.value = binding.default
                         binding.option.enabled = False
-                self._initial_values[binding.option] = binding.option.value
+                self._initial_values[binding.option] = InitialValue(binding.option.value,
+                                                                    binding.option.enabled)
         self._changed_values = set()
         self._apply_button.props.sensitive = False
 
@@ -144,6 +140,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     self._config.set(section, key, binding.option.value)
                 else:
                     self._config.remove_option(section, key)
+                self._initial_values[binding.option] = InitialValue(binding.option.value,
+                                                                    binding.option.enabled)
 
         try:
             with open(self._config_path, 'w') as file:
@@ -151,6 +149,17 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._apply_button.props.sensitive = False
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)
+
+    def on_option_changed(self, option):
+        if option.enabled != self._initial_values[option].state or \
+           (option.enabled and option.value != self._initial_values[option].value):
+            self._changed_values.add(option)
+        else:
+            self._changed_values.discard(option)
+        self._apply_button.props.sensitive = self._allow_edit and self._changed_values
+
+    def on_format_time_scale(self, scale, value):
+        return '%02d:%02d' % (value // 60, value % 60)
 
     def on_destroy(self, *args):
         Gtk.main_quit()

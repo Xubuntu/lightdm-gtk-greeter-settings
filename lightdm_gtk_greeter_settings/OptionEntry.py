@@ -12,7 +12,8 @@ from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
-           'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry']
+           'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry',
+           'AdjustmentEntry', 'AdjustmentintEntry']
 
 
 class BaseEntry(GObject.GObject):
@@ -103,6 +104,36 @@ class StringEntry(BaseEntry):
 
     def _set_enabled(self, value):
         self._value.props.sensitive = value
+
+
+class AdjustmentEntry(BaseEntry):
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+        self._value = widgets['adjustment']
+        self._view = widgets['view']
+        self._value.connect('value-changed', self._emit_changed)
+
+    def _get_value(self):
+        return str(self._value.props.value)
+
+    def _set_value(self, value):
+        try:
+            self._value.props.value = float(value or '')
+        except ValueError:
+            self._value.props.value = 0
+
+    def _set_enabled(self, value):
+        self._view.props.sensitive = value
+
+
+class AdjustmentIntEntry(AdjustmentEntry):
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+
+    def _get_value(self):
+        return str(int(self._value.props.value))
 
 
 class ClockFormatEntry(StringEntry):
