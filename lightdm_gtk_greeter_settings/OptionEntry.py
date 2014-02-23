@@ -536,30 +536,12 @@ class PositionEntry(BaseEntry):
 
         self._on_resize_id = self._screen.connect('size-allocate', self._on_resize)
         self._screen.connect('draw', self._on_draw_screen_border)
+        self._screen.connect('screen-changed', self._on_gdkscreen_changed)
+        self._on_gdkscreen_monitors_changed_id = self._screen.get_screen().connect('monitors-changed',
+                                                                                   self._on_gdkscreen_monitors_changed)
 
         self._x = PositionEntry.Dimension('x', widgets, self._anchors, self._on_dimension_changed)
         self._y = PositionEntry.Dimension('y', widgets, self._anchors, self._on_dimension_changed)
-
-    def _on_draw_screen_border(self, widget, cr):
-        width, height = self._screen_size
-        x, y = self._screen_pos
-        line_width = 2
-        width -= line_width
-        height -= line_width
-
-        x += line_width / 2
-        y += line_width / 2
-        cr.set_source_rgba(0.2, 0.1, 0.2, 0.8)
-        cr.set_line_width(line_width)
-
-        cr.move_to(x, y)
-        cr.line_to(x + width, y)
-        cr.line_to(x + width, y + height)
-        cr.line_to(x, y + height)
-        cr.line_to(x, y - line_width / 2)
-        cr.stroke_preserve()
-
-        return False
 
     def _get_value(self):
         return self._x.value + ' ' + self._y.value
@@ -604,6 +586,37 @@ class PositionEntry(BaseEntry):
             self._window.set_size_request(PositionEntry.REAL_WINDOW_SIZE[0] * scale,
                                           PositionEntry.REAL_WINDOW_SIZE[1] * scale)
             self._update_layout()
+
+    def _on_draw_screen_border(self, widget, cr):
+        width, height = self._screen_size
+        x, y = self._screen_pos
+        line_width = 2
+        width -= line_width
+        height -= line_width
+
+        x += line_width / 2
+        y += line_width / 2
+        cr.set_source_rgba(0.2, 0.1, 0.2, 0.8)
+        cr.set_line_width(line_width)
+
+        cr.move_to(x, y)
+        cr.line_to(x + width, y)
+        cr.line_to(x + width, y + height)
+        cr.line_to(x, y + height)
+        cr.line_to(x, y - line_width / 2)
+        cr.stroke_preserve()
+
+        return False
+
+    def _on_gdkscreen_changed(self, widget, prev_screen):
+        widget.queue_resize()
+        if prev_screen:
+            prev_screen.disconnect(self._on_gdkscreen_monitors_changed_id)
+        self._on_gdkscreen_monitors_changed_id = widget.get_screen().connect('monitors-changed',
+                                                                             self._on_gdkscreen_monitors_changed)
+
+    def _on_gdkscreen_monitors_changed(self, screen):
+        self._screen.queue_resize()
 
     def _on_dimension_changed(self, dimension):
         with self._screen.handler_block(self._on_resize_id):

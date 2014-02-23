@@ -72,17 +72,22 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         window._init_window()
         return window
 
-    def on_option_changed(self, *args):
-        pass
+    def on_option_changed(self, option):
+        if option.value != self._initial_values[option]:
+            self._changed_values.add(option)
+        else:
+            self._changed_values.discard(option)
+        self._apply_button.props.sensitive = self._allow_edit and self._changed_values
 
     def _init_window(self):
         self._bindings = {section: {key: self._new_binding(*args) for key, args in keys.items()}
                           for section, keys in OPTIONS_BINDINGS.items()}
+        self._initial_values = {}
+        self._changed_values = None
 
         self._config_path = helpers.get_config_path()
-        if not self._has_access_to_write(self._config_path):
-            self._apply_button.props.sensitive = False
-
+        self._allow_edit = self._has_access_to_write(self._config_path)
+        if not self._allow_edit:
             helpers.show_message(text=_('No permissions to save configuration'),
                                  secondary_text=_(
 'It seems that you don\'t have permissions to write to file:\n\
@@ -90,13 +95,6 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                                  message_type=Gtk.MessageType.WARNING)
 
         self._config = configparser.RawConfigParser(strict=False, allow_no_value=True)
-
-        try:
-            if not self._config.read(self._config_path):
-                helpers.show_message(text=_('Failed to read configuration file: %s') % self._config_path,
-                                     message_type=Gtk.MessageType.ERROR)
-        except (configparser.DuplicateSectionError, configparser.MissingSectionHeaderError):
-            pass
 
         for theme in iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0')):
             self._gtk_theme_values.append_text(theme.split(os.path.sep)[-2])
@@ -117,6 +115,13 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         return BindingValue(option, default, changed_id)
 
     def _read(self):
+        try:
+            if not self._config.read(self._config_path):
+                helpers.show_message(text=_('Failed to read configuration file: %s') % self._config_path,
+                                     message_type=Gtk.MessageType.ERROR)
+        except (configparser.DuplicateSectionError, configparser.MissingSectionHeaderError):
+            pass
+
         for section, keys in self._bindings.items():
             for key, binding in keys.items():
                 with binding.option.handler_block(binding.changed_handler):
@@ -126,6 +131,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     except configparser.NoOptionError:
                         binding.option.value = binding.default
                         binding.option.enabled = False
+                self._initial_values[binding.option] = binding.option.value
+        self._changed_values = set()
+        self._apply_button.props.sensitive = False
 
     def _write(self):
         for section, keys in self._bindings.items():
@@ -140,6 +148,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         try:
             with open(self._config_path, 'w') as file:
                 self._config.write(file)
+            self._apply_button.props.sensitive = False
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)
 

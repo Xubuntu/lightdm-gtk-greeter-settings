@@ -1411,6 +1411,7 @@
   <object class="GtkFileChooserDialog" id="userimage_path_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
+    <property name="title" translatable="yes">Select image</property>
     <property name="role">GtkFileChooserDialog</property>
     <property name="window_position">center</property>
     <property name="default_width">600</property>
