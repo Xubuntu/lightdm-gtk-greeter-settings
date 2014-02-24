@@ -2,6 +2,32 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <!-- interface-requires gtk_greeter_settings 1.0 -->
+  <object class="GtkListStore" id="hintstyle_model">
+    <columns>
+      <!-- column-name value -->
+      <column type="gchararray"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">hintnone</col>
+        <col id="1" translatable="yes" context="option-hintstyle">None</col>
+      </row>
+      <row>
+        <col id="0">hintslight</col>
+        <col id="1" translatable="yes" context="option-hintstyle">Slight</col>
+      </row>
+      <row>
+        <col id="0">hintmedium</col>
+        <col id="1" translatable="yes" context="option-hintstyle">Medium</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">hintfull</col>
+        <col id="1" translatable="yes" context="option-hintstyle">Full</col>
+      </row>
+    </data>
+  </object>
   <object class="GtkImage" id="icon_cancel">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -86,6 +112,41 @@
   </object>
   <object class="GtkAdjustment" id="position_y_adjustment">
     <property name="upper">10000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkListStore" id="rgba_model">
+    <columns>
+      <!-- column-name value -->
+      <column type="gchararray"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">none</col>
+        <col id="1" translatable="yes" context="option-rgba">None</col>
+      </row>
+      <row>
+        <col id="0">rgb</col>
+        <col id="1" translatable="yes" context="option-rgba">RGB</col>
+      </row>
+      <row>
+        <col id="0">bgr</col>
+        <col id="1" translatable="yes" context="option-rgba">BGR</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">vrgb</col>
+        <col id="1" translatable="yes" context="option-rgba">Vertical RGB</col>
+      </row>
+      <row>
+        <col id="0">vbgr</col>
+        <col id="1" translatable="yes" context="option-rgba">Vertical BGR</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkAdjustment" id="timeout_adjustment">
+    <property name="upper">300</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
@@ -203,41 +264,9 @@
                       <object class="GtkGrid" id="grid2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="margin_left">24</property>
                         <property name="row_spacing">8</property>
                         <property name="column_spacing">12</property>
-                        <property name="column_homogeneous">True</property>
-                        <child>
-                          <object class="GtkLabel" id="antialias_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="margin_left">24</property>
-                            <property name="hexpand">True</property>
-                            <property name="label" translatable="yes">Antialias</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="dpi_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="margin_left">24</property>
-                            <property name="hexpand">True</property>
-                            <property name="label" translatable="yes">DPI</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
                         <child>
                           <object class="GtkSwitch" id="antialias_value">
                             <property name="visible">True</property>
@@ -266,13 +295,126 @@
                             </items>
                             <child internal-child="entry">
                               <object class="GtkEntry" id="dpi_value">
-                                <property name="can_focus">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="xalign">1</property>
                               </object>
                             </child>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">1</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBox" id="rgba_value">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="model">rgba_model</property>
+                            <property name="active">0</property>
+                            <property name="id_column">0</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                              <attributes>
+                                <attribute name="text">1</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="rgba_use">
+                            <property name="label" translatable="yes">Subpixel rendering</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="dpi_use">
+                            <property name="label" translatable="yes">DPI</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="antialias_use">
+                            <property name="label" translatable="yes">Antialias</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="hintstyle_use">
+                            <property name="label" translatable="yes">Hinting</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">3</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBox" id="hintstyle_value">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="model">hintstyle_model</property>
+                            <property name="active">0</property>
+                            <property name="id_column">0</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                              <attributes>
+                                <attribute name="text">1</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">3</property>
                             <property name="width">1</property>
                             <property name="height">1</property>
                           </packing>
@@ -307,7 +449,7 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">4</property>
-                    <property name="width">1</property>
+                    <property name="width">2</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
@@ -458,9 +600,6 @@
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -1400,11 +1539,6 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="timeout_adjustment">
-    <property name="upper">300</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
   </object>
   <object class="GtkMenu" id="userimage_menu">
     <property name="visible">True</property>

@@ -13,7 +13,8 @@ from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry',
-           'AdjustmentEntry', 'AdjustmentintEntry']
+           'AdjustmentEntry', 'AdjustmentintEntry',
+           'ChoiceEntry']
 
 
 class BaseEntry(GObject.GObject):
@@ -88,6 +89,9 @@ class BooleanEntry(BaseEntry):
     def _set_value(self, value):
         self._value.props.active = value and value.lower() not in ('false', 'no', '0')
 
+    def _set_enabled(self, value):
+        self._value.props.sensitive = value
+
 
 class StringEntry(BaseEntry):
 
@@ -136,6 +140,23 @@ class AdjustmentIntEntry(AdjustmentEntry):
         return str(int(self._value.props.value))
 
 
+class ChoiceEntry(BaseEntry):
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+        self._value = widgets['value']
+        self._value.connect('changed', self._emit_changed)
+
+    def _get_value(self):
+        return self._value.props.active_id
+
+    def _set_value(self, value):
+        self._value.props.active_id = value or ''
+
+    def _set_enabled(self, value):
+        self._value.props.sensitive = value
+
+
 class ClockFormatEntry(StringEntry):
 
     def __init__(self, widgets):
@@ -164,7 +185,7 @@ class BackgroundEntry(BaseEntry):
 
     def _get_value(self):
         if self._image_choice.props.active:
-            return self._image_value.get_filename()
+            return self._image_value.get_filename() or ''
         else:
             return self._color_value.props.color.to_string()
 

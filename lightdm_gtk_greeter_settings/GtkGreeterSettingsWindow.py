@@ -31,7 +31,9 @@ OPTIONS_BINDINGS = \
         'font-name': (OptionEntry.FontEntry, 'font', 'Sans 10'),
         'xft-antialias': (OptionEntry.BooleanEntry, 'antialias', False),
         'xft-dpi': (OptionEntry.StringEntry, 'dpi', None),
-        'background': (OptionEntry.BackgroundEntry, 'background', None),
+        'xft-rgba': (OptionEntry.ChoiceEntry, 'rgba', None),
+        'xft-hintstyle': (OptionEntry.ChoiceEntry, 'hintstyle', None),
+        'background': (OptionEntry.BackgroundEntry, 'background', '#000000'),
         'default-user-image': (OptionEntry.IconEntry, 'userimage', '#avatar-default'),
         # Panel
         'show-clock': (OptionEntry.BooleanEntry, 'show_clock', False),
@@ -89,7 +91,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                                  message_type=Gtk.MessageType.WARNING)
 
         self._configure_special_options()
-        self._config = configparser.RawConfigParser(strict=False, allow_no_value=True)
+        self._config = configparser.RawConfigParser(strict=False)
         self._read()
 
     def _configure_special_options(self):
