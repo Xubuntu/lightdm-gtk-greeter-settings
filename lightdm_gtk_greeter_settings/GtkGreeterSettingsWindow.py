@@ -63,7 +63,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     __gtype_name__ = 'GtkGreeterSettingsWindow'
 
-    BUILDER_WIDGETS = ('apply_button',
+    BUILDER_WIDGETS = ('apply_button', 'no_access_infobar',
                        'gtk_theme_values', 'icons_theme_values',
                        'timeout_view', 'timeout_adjustment', 'timeout_end_label')
 
@@ -86,6 +86,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
         self._config_path = helpers.get_config_path()
         self._allow_edit = self._has_access_to_write(self._config_path)
+        self._no_access_infobar.props.visible = not self._allow_edit
+        self._apply_button.props.visible = self._allow_edit
         if not self._allow_edit:
             helpers.show_message(text=_('No permissions to save configuration'),
                                  secondary_text=_(
@@ -147,7 +149,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     try:
                         binding.option.value = self._config.get(section, key)
                         binding.option.enabled = True
-                    except configparser.NoOptionError:
+                    except (configparser.NoOptionError, configparser.NoSectionError):
                         binding.option.value = binding.default
                         binding.option.enabled = False
                 self._initial_values[binding.option] = InitialValue(binding.option.value,

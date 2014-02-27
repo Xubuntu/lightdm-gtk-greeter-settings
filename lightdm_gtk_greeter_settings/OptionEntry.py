@@ -307,6 +307,7 @@ class IconEntry(BaseEntry):
     def _on_select_icon(self, item):
         if not self._icon_dialog:
             self._icon_dialog = IconChooserDialog()
+            self._icon_dialog.props.transient_for = self._image.get_toplevel()
         if self._value.startswith('#'):
             self._icon_dialog.select_icon(self._value[1:])
         if self._icon_dialog.run() == Gtk.ResponseType.OK:
@@ -329,7 +330,7 @@ class IconEntry(BaseEntry):
 
 class IndicatorsEntry(BaseEntry):
     NAMES_DELIMITER = ';'
-    # It's the only one place where model columns order defined
+    # It is the only place where model columns order defined
     ModelRow = namedtuple('ModelRow', ('enabled', 'name', 'builtin', 'external'))
 
     def __init__(self, widgets):
@@ -461,6 +462,7 @@ class IndicatorsEntry(BaseEntry):
         if not self._indicators_dialog:
             self._indicators_dialog = IndicatorChooserDialog(check_callback=self._check_indicator,
                                                              add_callback=self._add_indicator)
+            self._indicators_dialog.props.transient_for = self._treeview.get_toplevel()
         name = self._indicators_dialog.get_indicator()
         if name:
             self._add_indicator(name)
