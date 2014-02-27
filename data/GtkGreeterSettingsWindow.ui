@@ -1436,16 +1436,54 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScale" id="timeout_view">
+                  <object class="GtkBox" id="box3">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can_focus">False</property>
                     <property name="margin_left">24</property>
-                    <property name="adjustment">timeout_adjustment</property>
-                    <property name="fill_level">10000</property>
-                    <property name="round_digits">1</property>
-                    <property name="digits">0</property>
-                    <property name="value_pos">bottom</property>
-                    <signal name="format-value" handler="on_format_time_scale" swapped="no"/>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="label5">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="valign">start</property>
+                        <property name="label" translatable="yes">Never</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale" id="timeout_view">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">timeout_adjustment</property>
+                        <property name="fill_level">10000</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                        <signal name="format-value" handler="on_format_timeout_scale" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="timeout_end_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="valign">start</property>
+                        <property name="label" translatable="yes">label</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1516,10 +1554,11 @@
             </child>
             <child>
               <object class="GtkButton" id="reset_button">
-                <property name="label">Reread</property>
+                <property name="label">Reload</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="tooltip_text" translatable="yes">Read configuration file</property>
                 <property name="image">icon_reset</property>
                 <signal name="clicked" handler="on_reset_clicked" swapped="no"/>
               </object>

@@ -19,6 +19,8 @@ BindingValue = namedtuple('BindingValue', ('option', 'default', 'changed_handler
 InitialValue = namedtuple('InitialValue', ('value', 'state'))
 
 
+GREETER_SECTION = 'greeter'
+
 OPTIONS_BINDINGS = \
 {
     'greeter':
@@ -38,7 +40,7 @@ OPTIONS_BINDINGS = \
         # Panel
         'show-clock': (OptionEntry.BooleanEntry, 'show_clock', False),
         'clock-format': (OptionEntry.ClockFormatEntry, 'clock_format', '%a, %H:%M'),
-        'show-indicators': (OptionEntry.IndicatorsEntry, 'indicators', None),
+        'indicators': (OptionEntry.IndicatorsEntry, 'indicators', None),
         # Position
         'position': (OptionEntry.PositionEntry, 'position', '50%,center'),
         # Misc
@@ -62,7 +64,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
     __gtype_name__ = 'GtkGreeterSettingsWindow'
 
     BUILDER_WIDGETS = ('apply_button',
-                       'gtk_theme_values', 'icons_theme_values')
+                       'gtk_theme_values', 'icons_theme_values',
+                       'timeout_view', 'timeout_adjustment', 'timeout_end_label')
 
     def __new__(cls):
         builder = Gtk.Builder()
@@ -90,16 +93,24 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 %s\n\nTry to run this program using "sudo" or "pkexec"') % self._config_path,
                                  message_type=Gtk.MessageType.WARNING)
 
-        self._configure_special_options()
+        self._configure_special_entries()
         self._config = configparser.RawConfigParser(strict=False)
         self._read()
 
-    def _configure_special_options(self):
+    def _configure_special_entries(self):
+        # theme-name
         for theme in iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0')):
             self._gtk_theme_values.append_text(theme.split(os.path.sep)[-2])
-
+        # icon-theme-name
         for theme in iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme')):
             self._icons_theme_values.append_text(theme.split(os.path.sep)[-2])
+        # screensaver-timeout
+        step = 60
+        lower = int(self._timeout_adjustment.props.lower) // step
+        upper = int(self._timeout_adjustment.props.upper) // step
+        for value in range(lower * step, (upper + 1) * step, step):
+            self._timeout_view.add_mark(value, Gtk.PositionType.BOTTOM, None)
+        self._timeout_end_label.props.label = _('%d min') % upper
 
     def _has_access_to_write(self, path):
         if os.path.exists(path) and os.access(self._config_path, os.W_OK):
@@ -112,12 +123,23 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         return BindingValue(option, default, changed_id)
 
     def _read(self):
+        self._config.clear()
         try:
             if not self._config.read(self._config_path):
                 helpers.show_message(text=_('Failed to read configuration file: %s') % self._config_path,
                                      message_type=Gtk.MessageType.ERROR)
         except (configparser.DuplicateSectionError, configparser.MissingSectionHeaderError):
             pass
+
+        if not self._config.has_option(GREETER_SECTION, 'indicators'):
+            try:
+                value = self._config.get(GREETER_SECTION, 'show-indicators')
+            except (configparser.NoOptionError, configparser.NoSectionError):
+                pass
+            else:
+                if value:
+                    self._config.set(GREETER_SECTION, 'indicators', value)
+                self._config.remove_option(GREETER_SECTION, 'show-indicators')
 
         for section, keys in self._bindings.items():
             for key, binding in keys.items():
@@ -160,12 +182,13 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._changed_values.discard(option)
         self._apply_button.props.sensitive = self._allow_edit and self._changed_values
 
-    def on_format_time_scale(self, scale, value):
-        value = int(value)
-        if value > 0:
+    def on_format_timeout_scale(self, scale, value):
+        if value != self._timeout_adjustment.props.lower and \
+           value != self._timeout_adjustment.props.upper:
+            value = int(value)
             return '%02d:%02d' % (value // 60, value % 60)
         else:
-            return _('Never')
+            return ''
 
     def on_destroy(self, *args):
         Gtk.main_quit()

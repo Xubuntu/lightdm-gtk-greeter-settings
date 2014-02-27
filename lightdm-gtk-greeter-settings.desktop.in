@@ -1,5 +1,5 @@
 [Desktop Entry]
-_Name=LightDM GTK+ Greeter settings editor
+_Name=LightDM GTK+ Greeter settings
 Categories=GNOME;GTK;Settings;Utility;
 Keywords=Configuration;Utility;
 Exec=lightdm-gtk-greeter-settings
