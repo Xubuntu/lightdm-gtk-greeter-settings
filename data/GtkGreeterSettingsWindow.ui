@@ -154,7 +154,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">LightDM GTK+ Greeter: settings</property>
     <property name="window_position">center</property>
-    <property name="icon_name">preferences-system</property>
+    <property name="icon_name">lightdm-gtk-greeter-settings</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -1623,6 +1623,7 @@
     <property name="default_width">600</property>
     <property name="default_height">450</property>
     <property name="type_hint">dialog</property>
+    <property name="transient_for">settings_window</property>
     <property name="create_folders">False</property>
     <property name="filter">userimage_path_dialog_filter</property>
     <property name="preview_widget">userimage_path_dialog_preview</property>
