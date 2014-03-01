@@ -2,7 +2,7 @@
 _Name=LightDM GTK+ Greeter settings
 Categories=GNOME;GTK;Settings;Utility;
 Keywords=Configuration;Utility;
-Exec=lightdm-gtk-greeter-settings
+Exec=lightdm-gtk-greeter-settings-pkexec
 Icon=lightdm-gtk-greeter-settings
 Terminal=false
 Type=Application

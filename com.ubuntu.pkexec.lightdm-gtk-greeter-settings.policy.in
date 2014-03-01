@@ -5,7 +5,7 @@
 <policyconfig>
 
   <action id="com.ubuntu.pkexec.mytest">
-    <message>Authentication is required to run Settings editor for LightDM GTK+ Greeter</message>
+    <_message>Authentication is required to run Settings editor for LightDM GTK+ Greeter</_message>
     <icon_name>lightdm-gtk-greeter-settings</icon_name>
     <defaults>
       <allow_any>auth_admin</allow_any>

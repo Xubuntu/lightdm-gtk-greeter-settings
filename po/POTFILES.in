@@ -13,3 +13,5 @@ lightdm_gtk_greeter_settings/helpers.py
 lightdm_gtk_greeter_settings/IconChooserDialog.py
 lightdm_gtk_greeter_settings/IndicatorChooserDialog.py
 lightdm_gtk_greeter_settings/OptionEntry.py
+
+com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in
