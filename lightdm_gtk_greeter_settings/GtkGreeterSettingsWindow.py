@@ -92,7 +92,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             helpers.show_message(text=_('No permissions to save configuration'),
                                  secondary_text=_(
 'It seems that you don\'t have permissions to write to file:\n\
-%s\n\nTry to run this program using "sudo" or "pkexec"') % self._config_path,
+{path}\n\nTry to run this program using "sudo" or "pkexec"').format(path=self._config_path),
                                  message_type=Gtk.MessageType.WARNING)
 
         self._configure_special_entries()
@@ -112,7 +112,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         upper = int(self._timeout_adjustment.props.upper) // step
         for value in range(lower * step, (upper + 1) * step, step):
             self._timeout_view.add_mark(value, Gtk.PositionType.BOTTOM, None)
-        self._timeout_end_label.props.label = _('%d min') % upper
+        self._timeout_end_label.props.label = _('{count} min').format(count=upper)
 
     def _has_access_to_write(self, path):
         if os.path.exists(path) and os.access(self._config_path, os.W_OK):
@@ -128,7 +128,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._config.clear()
         try:
             if not self._config.read(self._config_path):
-                helpers.show_message(text=_('Failed to read configuration file: %s') % self._config_path,
+                helpers.show_message(text=_('Failed to read configuration file: {path}')
+                                            .format(path=self._config_path),
                                      message_type=Gtk.MessageType.ERROR)
         except (configparser.DuplicateSectionError, configparser.MissingSectionHeaderError):
             pass

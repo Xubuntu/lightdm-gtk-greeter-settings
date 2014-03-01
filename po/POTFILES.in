@@ -1,0 +1,15 @@
+# Desktop File
+lightdm-gtk-greeter-settings.desktop.in
+
+# Glade Files
+[type: gettext/glade]data/GtkGreeterSettingsWindow.ui
+[type: gettext/glade]data/IconChooserDialog.ui
+[type: gettext/glade]data/IndicatorChooserDialog.ui
+
+# Python Files
+lightdm_gtk_greeter_settings/__init__.py
+lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py
+lightdm_gtk_greeter_settings/helpers.py
+lightdm_gtk_greeter_settings/IconChooserDialog.py
+lightdm_gtk_greeter_settings/IndicatorChooserDialog.py
+lightdm_gtk_greeter_settings/OptionEntry.py

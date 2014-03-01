@@ -5,7 +5,7 @@
   <object class="IndicatorChooserDialog" id="indicator_chooser_dialog">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Select indicator</property>
+    <property name="title" translatable="yes" context="indicators-dialog">Select indicator</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="destroy_with_parent">True</property>
@@ -117,7 +117,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Short name</property>
+                    <property name="label" translatable="yes" context="indicators-dialog">Short name</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -159,7 +159,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">24</property>
-                <property name="label" translatable="yes">Indicators that greeter can find without using absolute pathes</property>
+                <property name="label" translatable="yes" context="indicators-dialog">Indicators that greeter can find without using absolute pathes</property>
                 <attributes>
                   <attribute name="style" value="oblique"/>
                 </attributes>
@@ -184,7 +184,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Path</property>
+                    <property name="label" translatable="yes" context="indicators-dialog">Path</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -217,7 +217,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">24</property>
-                <property name="label" translatable="yes">Absolute path to indicator library file (*.so)</property>
+                <property name="label" translatable="yes" context="indicators-dialog">Absolute path to indicator library file (*.so)</property>
                 <attributes>
                   <attribute name="style" value="oblique"/>
                 </attributes>
@@ -243,7 +243,7 @@
                       <object class="GtkLabel" id="message">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">label</property>
+                        <property name="label">[message]</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>

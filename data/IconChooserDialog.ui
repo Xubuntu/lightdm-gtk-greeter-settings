@@ -18,7 +18,7 @@
   <object class="IconChooserDialog" id="icon_chooser_dialog">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Select icon</property>
+    <property name="title" translatable="yes" context="icon-dialog">Select icon</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="default_width">600</property>
@@ -107,7 +107,7 @@
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Icon _name:</property>
+                    <property name="label" translatable="yes" context="icon-dialog">Icon _name:</property>
                     <property name="use_underline">True</property>
                   </object>
                   <packing>
@@ -144,7 +144,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="xalign">0</property>
-                <property name="label" translatable="yes">_Contexts:</property>
+                <property name="label" translatable="yes" context="icon-dialog">_Contexts:</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -159,7 +159,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="xalign">0</property>
-                <property name="label" translatable="yes">_Icon names:</property>
+                <property name="label" translatable="yes" context="icon-dialog">_Icon names:</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -187,7 +187,7 @@
             </child>
             <child>
               <object class="GtkCheckButton" id="standard_toggle">
-                <property name="label" translatable="yes">List _standard icons inly</property>
+                <property name="label" translatable="yes" context="icon-dialog">List _standard icons only</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">False</property>
@@ -228,7 +228,6 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn2">
-                        <property name="title" translatable="yes">column</property>
                         <child>
                           <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1">
                             <property name="xpad">2</property>
@@ -242,7 +241,6 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn3">
-                        <property name="title" translatable="yes">column</property>
                         <property name="expand">True</property>
                         <child>
                           <object class="GtkCellRendererText" id="cellrenderertext2"/>
@@ -284,7 +282,6 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                        <property name="title" translatable="yes">column</property>
                         <child>
                           <object class="GtkCellRendererText" id="cellrenderertext1"/>
                           <attributes>
@@ -300,19 +297,6 @@
                 <property name="left_attach">0</property>
                 <property name="top_attach">2</property>
                 <property name="width">1</property>
-                <property name="height">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinner" id="spinner">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="active">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
-                <property name="width">2</property>
                 <property name="height">1</property>
               </packing>
             </child>

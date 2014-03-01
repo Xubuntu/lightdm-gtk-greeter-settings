@@ -280,12 +280,13 @@ class IconEntry(BaseEntry):
 
     def _update_menu_items(self, icon=None, path=None):
         if icon:
-            self._icon_item.get_child().set_markup(('<b>Icon: %s</b>') % icon)
+            self._icon_item.get_child().set_markup(('<b>Icon: {icon}</b>').format(icon=icon))
         else:
             self._icon_item.get_child().set_markup(_('Select icon name...'))
 
         if path:
-            self._path_item.get_child().set_markup(_('<b>File: %s</b>') % os.path.basename(path))
+            self._path_item.get_child().set_markup(_('<b>File: {path}</b>')
+                                                     .format(path=os.path.basename(path)))
         else:
             self._path_item.get_child().set_markup(_('Select file...'))
 
@@ -421,7 +422,7 @@ class IndicatorsEntry(BaseEntry):
             return False
         else:
             if any(row[self._model_name] == name for row in self._model):
-                return _('Indicator "%s" is already in the list') % name
+                return _('Indicator "{indicator}" is already in the list').format(indicator=name)
             return True
 
     def _add_indicator(self, name):

@@ -19,7 +19,6 @@ class IconChooserDialog(Gtk.Dialog):
     BUILDER_WIDGETS = ('name', 'preview', 'standard_toggle', 'spinner',
                        'contexts_view', 'contexts_selection', 'contexts_model', 'contexts_filter',
                        'icons_view', 'icons_selection', 'icons_model', 'icons_sorted', 'icons_filter')
-    CONTEXT_ALL = '[all]'
 
     def __new__(cls):
         builder = Gtk.Builder()

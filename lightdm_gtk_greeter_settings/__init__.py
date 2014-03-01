@@ -4,6 +4,10 @@
 def main():
     from gi.repository import Gtk
     from lightdm_gtk_greeter_settings import GtkGreeterSettingsWindow
+
+    import locale
+    locale.textdomain('lightdm-gtk-greeter-settings')
+
     window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow()
     window.show()
     Gtk.main()

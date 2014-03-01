@@ -23,7 +23,7 @@
         <col id="1" translatable="yes" context="option-hintstyle">Medium</col>
       </row>
       <row>
-        <col id="0" translatable="yes">hintfull</col>
+        <col id="0">hintfull</col>
         <col id="1" translatable="yes" context="option-hintstyle">Full</col>
       </row>
     </data>
@@ -136,7 +136,7 @@
         <col id="1" translatable="yes" context="option-rgba">BGR</col>
       </row>
       <row>
-        <col id="0" translatable="yes">vrgb</col>
+        <col id="0">vrgb</col>
         <col id="1" translatable="yes" context="option-rgba">Vertical RGB</col>
       </row>
       <row>
@@ -193,7 +193,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Theme</property>
+                    <property name="label" translatable="yes" context="option-gtk-theme">Theme</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -211,7 +211,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Icons</property>
+                    <property name="label" translatable="yes" context="option-icons-theme">Icons</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -229,7 +229,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Font</property>
+                    <property name="label" translatable="yes" context="option-font">Font</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -330,7 +330,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="rgba_use">
-                            <property name="label" translatable="yes">Subpixel rendering</property>
+                            <property name="label" translatable="yes" context="option-rgba">Subpixel rendering</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -347,7 +347,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="dpi_use">
-                            <property name="label" translatable="yes">DPI</property>
+                            <property name="label" translatable="yes" context="option-dpi">DPI</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -364,7 +364,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="antialias_use">
-                            <property name="label" translatable="yes">Antialias</property>
+                            <property name="label" translatable="yes" context="option-antialias">Antialias</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -382,7 +382,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="hintstyle_use">
-                            <property name="label" translatable="yes">Hinting</property>
+                            <property name="label" translatable="yes" context="option-hintstyle">Hinting</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -441,7 +441,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Background</property>
+                    <property name="label" translatable="yes" context="option-background">Background</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -455,7 +455,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="background_image_choice">
-                    <property name="label" translatable="yes">Image</property>
+                    <property name="label" translatable="yes" context="option-background">Image</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -488,7 +488,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="background_color_choice">
-                    <property name="label" translatable="yes">Color</property>
+                    <property name="label" translatable="yes" context="option-background">Color</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -526,7 +526,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
-                    <property name="label" translatable="yes">Default user image</property>
+                    <property name="label" translatable="yes" context="option-user-image">Default user image</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -634,7 +634,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Clock</property>
+                    <property name="label" translatable="yes" context="option-clock">Clock</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -660,41 +660,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="clock_format_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">24</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Format</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="clock_format_value">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="indicators_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Redefine indicators</property>
+                    <property name="label" translatable="yes" context="option-indicators">Redefine indicators</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -744,7 +715,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">%H %I - hours, %M - minutes, %S - seconds
+                    <property name="label" translatable="yes" context="option-clock-format">%H %I - hours, %M - minutes, %S - seconds
 %d - day, %m - month, %y %Y - year
 %a %A - day of the week, %b %B - month name</property>
                     <attributes>
@@ -792,7 +763,7 @@
                             <child>
                               <object class="GtkTreeViewColumn" id="indicators_state_column">
                                 <property name="sizing">autosize</property>
-                                <property name="title" translatable="yes">Show</property>
+                                <property name="title">column</property>
                                 <property name="clickable">True</property>
                                 <child>
                                   <object class="GtkCellRendererToggle" id="indicators_state_renderer"/>
@@ -806,7 +777,7 @@
                             <child>
                               <object class="GtkTreeViewColumn" id="indicators_name_column">
                                 <property name="sizing">autosize</property>
-                                <property name="title" translatable="yes">Indicator</property>
+                                <property name="title">column</property>
                                 <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="indicators_name_renderer"/>
@@ -838,7 +809,8 @@
                           <object class="GtkToolButton" id="indicators_add">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Add</property>
+                            <property name="tooltip_text" translatable="yes" context="option-indicators">Add indicator to list</property>
+                            <property name="label" translatable="yes" context="option-indicators">Add</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-add</property>
                           </object>
@@ -851,6 +823,7 @@
                           <object class="GtkToolButton" id="indicators_remove">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="tooltip_text" translatable="yes" context="option-indicators">Remove indicator from list</property>
                             <property name="label" translatable="yes">Remove</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-remove</property>
@@ -864,6 +837,7 @@
                           <object class="GtkToolButton" id="indicators_up">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="tooltip_text" translatable="yes" context="option-indicators">Move up</property>
                             <property name="label" translatable="yes">Up</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-up</property>
@@ -877,6 +851,7 @@
                           <object class="GtkToolButton" id="indicators_down">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="tooltip_text" translatable="yes" context="option-indicators">Move down</property>
                             <property name="label" translatable="yes">Down</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-down</property>
@@ -897,6 +872,45 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">5</property>
+                    <property name="width">2</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box4">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">24</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="clock_format_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes" context="option-clock-format">Format:</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="clock_format_value">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">●</property>
+                        <property name="invisible_char_set">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
                     <property name="width">2</property>
                     <property name="height">1</property>
                   </packing>
@@ -937,7 +951,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Horizontal </property>
+                    <property name="label" translatable="yes" context="option-position">Horizontal </property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -975,7 +989,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="position_x_percents">
-                        <property name="label" translatable="yes">in %</property>
+                        <property name="label" translatable="yes" context="option-position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1022,7 +1036,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="position_y_percents">
-                        <property name="label" translatable="yes">in %</property>
+                        <property name="label" translatable="yes" context="option-position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1050,7 +1064,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Vertical</property>
+                    <property name="label" translatable="yes" context="option-position">Vertical</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1080,7 +1094,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Select base point and its position</property>
+                    <property name="label" translatable="yes" context="option-position">Select base point and its position</property>
                     <attributes>
                       <attribute name="style" value="oblique"/>
                     </attributes>
@@ -1094,7 +1108,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="position_x_mirror">
-                    <property name="label" translatable="yes">from right</property>
+                    <property name="label" translatable="yes" context="option-position">from right</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1111,7 +1125,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="position_y_mirror">
-                    <property name="label" translatable="yes">from bottom</property>
+                    <property name="label" translatable="yes" context="option-position">from bottom</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1367,7 +1381,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Timeout until the screen blanks </property>
+                    <property name="label" translatable="yes" context="option-timeout">Timeout until the screen blanks </property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1385,7 +1399,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes">Onscreen keyboard</property>
+                    <property name="label" translatable="yes" context="option-keyboard">Onscreen keyboard</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1406,12 +1420,11 @@
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
-                      <item translatable="yes">onboard</item>
+                      <item>onboard</item>
                     </items>
                     <child internal-child="entry">
                       <object class="GtkEntry" id="keyboard_value">
                         <property name="can_focus">True</property>
-                        <property name="text" translatable="yes">onboard</property>
                       </object>
                     </child>
                   </object>
@@ -1446,7 +1459,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">Never</property>
+                        <property name="label" translatable="yes" context="option-timeout">Never</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1476,7 +1489,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes">label</property>
+                        <property name="label">[max]</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
