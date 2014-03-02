@@ -280,7 +280,7 @@ class IconEntry(BaseEntry):
 
     def _update_menu_items(self, icon=None, path=None):
         if icon:
-            self._icon_item.get_child().set_markup(('<b>Icon: {icon}</b>').format(icon=icon))
+            self._icon_item.get_child().set_markup(_('<b>Icon: {icon}</b>').format(icon=icon))
         else:
             self._icon_item.get_child().set_markup(_('Select icon name...'))
 
