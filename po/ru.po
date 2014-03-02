@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-01 22:03+0300\n"
-"PO-Revision-Date: 2014-03-01 22:03+0300\n"
+"POT-Creation-Date: 2014-03-02 16:43+0300\n"
+"PO-Revision-Date: 2014-03-02 16:45+0300\n"
 "Last-Translator: Andrew P. <pan.pav.7c5@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -22,47 +22,47 @@ msgid "LightDM GTK+ Greeter settings"
 msgstr "Настройки LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgctxt "option-hintstyle"
+msgctxt "option|hintstyle"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
-msgctxt "option-hintstyle"
+msgctxt "option|hintstyle"
 msgid "Slight"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
-msgctxt "option-hintstyle"
+msgctxt "option|hintstyle"
 msgid "Medium"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:4
-msgctxt "option-hintstyle"
+msgctxt "option|hintstyle"
 msgid "Full"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "RGB"
 msgstr "RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "BGR"
 msgstr "BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "Vertical RGB"
 msgstr "VRGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "Vertical BGR"
 msgstr "VBGR"
 
@@ -71,22 +71,22 @@ msgid "LightDM GTK+ Greeter: settings"
 msgstr "Настройки LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
-msgctxt "option-gtk-theme"
+msgctxt "option|gtk-theme"
 msgid "Theme"
 msgstr "Тема GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
-msgctxt "option-icons-theme"
+msgctxt "option|icons-theme"
 msgid "Icons"
 msgstr "Тема значков"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
-msgctxt "option-font"
+msgctxt "option|font"
 msgid "Font"
 msgstr "Шрифт"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
-msgctxt "option-rgba"
+msgctxt "option|rgba"
 msgid "Subpixel rendering"
 msgstr ""
 
@@ -95,17 +95,17 @@ msgid "Enable this option to override system defaults"
 msgstr "Используйте данную опцию для изменения настроек системы по умолчанию"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
-msgctxt "option-dpi"
+msgctxt "option|dpi"
 msgid "DPI"
 msgstr "DPI"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
-msgctxt "option-antialias"
+msgctxt "option|antialias"
 msgid "Antialias"
 msgstr "Сглаживание"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
-msgctxt "option-hintstyle"
+msgctxt "option|hintstyle"
 msgid "Hinting"
 msgstr "Хинтинг"
 
@@ -114,22 +114,22 @@ msgid "Additional font options"
 msgstr "Дополнительные настройки шрифта"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
-msgctxt "option-background"
+msgctxt "option|background"
 msgid "Background"
 msgstr "Задний фон"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
-msgctxt "option-background"
+msgctxt "option|background"
 msgid "Image"
 msgstr "Изображение"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
-msgctxt "option-background"
+msgctxt "option|background"
 msgid "Color"
 msgstr "Цвет"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
-msgctxt "option-user-image"
+msgctxt "option|user-image"
 msgid "Default user image"
 msgstr "Аватар пользователя по умолчанию "
 
@@ -138,18 +138,18 @@ msgid "Appearance"
 msgstr "Внешний вид"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
-msgctxt "option-clock"
+msgctxt "option|clock"
 msgid "Clock"
 msgstr "Часы"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Redefine indicators"
 msgstr "Переопределить список индикаторов"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:28
 #, no-c-format
-msgctxt "option-clock-format"
+msgctxt "option|clock-format"
 msgid ""
 "%H %I - hours, %M - minutes, %S - seconds\n"
 "%d - day, %m - month, %y %Y - year\n"
@@ -160,44 +160,47 @@ msgstr ""
 "%a %A - день недели, %b %B - название месяца"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:31
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Add indicator to list"
 msgstr "Добавить в список"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Add"
 msgstr "Добавить"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Remove indicator from list"
 msgstr "Убрать из списка"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:34
+msgctxt "option|indicators"
 msgid "Remove"
 msgstr "Убрать"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:35
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Move up"
 msgstr "Вверх"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
+msgctxt "option|indicators"
 msgid "Up"
 msgstr "Вверх"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
-msgctxt "option-indicators"
+msgctxt "option|indicators"
 msgid "Move down"
 msgstr "Вниз"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
+msgctxt "option|indicators"
 msgid "Down"
 msgstr "Вниз"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
-msgctxt "option-clock-format"
+msgctxt "option|clock-format"
 msgid "Format:"
 msgstr "Формат:"
 
@@ -206,33 +209,33 @@ msgid "Panel"
 msgstr "Панель"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:41
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "Horizontal "
 msgstr "По горизонтали"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 #, no-c-format
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "in %"
 msgstr "в %"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:44
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "Vertical"
 msgstr "По вертикали"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:45
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "Select base point and its position"
 msgstr "Выберите точку отсчёта и её координаты"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:46
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "from right"
 msgstr "отсчёт справа"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:47
-msgctxt "option-position"
+msgctxt "option|position"
 msgid "from bottom"
 msgstr "отсчёт снизу"
 
@@ -241,17 +244,17 @@ msgid "Window position"
 msgstr "Позиция окна"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
-msgctxt "option-timeout"
+msgctxt "option|timeout"
 msgid "Timeout until the screen blanks "
 msgstr "Время до отключения экрана"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
-msgctxt "option-keyboard"
+msgctxt "option|keyboard"
 msgid "Onscreen keyboard"
 msgstr "Экранная клавиатура"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
-msgctxt "option-timeout"
+msgctxt "option|timeout"
 msgid "Never"
 msgstr "Никогда"
 
@@ -264,10 +267,26 @@ msgid "You don't have permissions to change greeter configuration"
 msgstr "У Вас нет прав для изменения конфигурации"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
+#: ../data/IndicatorChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Close"
+msgstr "_Закрыть"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:55
+msgctxt "button"
+msgid "_Save"
+msgstr "_Сохранить"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:56
+msgctxt "button"
+msgid "_Reload"
+msgstr "_Перечитать"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgid "Read configuration file"
 msgstr "Перечитать файл конфигурации"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:55
+#: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgid "Select image"
 msgstr "Выберите изображение"
 
@@ -276,26 +295,36 @@ msgctxt "icon-dialog"
 msgid "Select icon"
 msgstr "Выберите значок"
 
-#: ../data/IconChooserDialog.ui.h:2 ../data/IndicatorChooserDialog.ui.h:3
+#: ../data/IconChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Cancel"
+msgstr "О_тмена"
+
+#: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorChooserDialog.ui.h:3
+msgctxt "button"
+msgid "_OK"
+msgstr "_ОК"
+
+#: ../data/IconChooserDialog.ui.h:4 ../data/IndicatorChooserDialog.ui.h:4
 msgid "Add selected indicator to the list and close this window"
 msgstr "Добавить выбранный индикатор в список и закрыть данное окно"
 
-#: ../data/IconChooserDialog.ui.h:3
+#: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
 msgstr "Значок:"
 
-#: ../data/IconChooserDialog.ui.h:4
+#: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
 msgid "_Contexts:"
 msgstr "Контексты:"
 
-#: ../data/IconChooserDialog.ui.h:5
+#: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
 msgstr "Названия значков:"
 
-#: ../data/IconChooserDialog.ui.h:6
+#: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
 msgstr "Только стандартные значки"
@@ -305,35 +334,40 @@ msgctxt "indicators-dialog"
 msgid "Select indicator"
 msgstr "Выберите индикатор"
 
-#: ../data/IndicatorChooserDialog.ui.h:2
+#: ../data/IndicatorChooserDialog.ui.h:5
+msgctxt "button"
+msgid "_Add"
+msgstr "_Добавить"
+
+#: ../data/IndicatorChooserDialog.ui.h:6
 msgid "Add selected indicator to the list without closing this window"
 msgstr "Добавить выбранный индикатор в список и оставить данное окно открытым"
 
-#: ../data/IndicatorChooserDialog.ui.h:4
+#: ../data/IndicatorChooserDialog.ui.h:7
 msgctxt "indicators-dialog"
 msgid "Short name"
 msgstr "Короткое имя"
 
-#: ../data/IndicatorChooserDialog.ui.h:5
+#: ../data/IndicatorChooserDialog.ui.h:8
 msgctxt "indicators-dialog"
 msgid "Indicators that greeter can find without using absolute pathes"
 msgstr "Установленные в системе индикаторы"
 
-#: ../data/IndicatorChooserDialog.ui.h:6
+#: ../data/IndicatorChooserDialog.ui.h:9
 msgctxt "indicators-dialog"
 msgid "Path"
 msgstr "Полный путь"
 
-#: ../data/IndicatorChooserDialog.ui.h:7
+#: ../data/IndicatorChooserDialog.ui.h:10
 msgctxt "indicators-dialog"
 msgid "Absolute path to indicator library file (*.so)"
 msgstr "Абсолютный путь к файлу индикатора (*.so)"
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:92
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:93
 msgid "No permissions to save configuration"
 msgstr "Нет прав для сохранения конфигурации"
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:94
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:95
 msgid ""
 "It seems that you don't have permissions to write to file:\n"
 "{path}\n"
@@ -345,27 +379,93 @@ msgstr ""
 "\n"
 "Попробуйте запустить эту программу используя \"sudo\" или \"pkexec\""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:115
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:116
+msgctxt "option|timeout"
 msgid "{count} min"
 msgstr "{count} минут"
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:131
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:132
 msgid "Failed to read configuration file: {path}"
 msgstr "Не удалось прочитать файл конфигурации: {path}"
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:285
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:170
+msgctxt "icon-dialog"
+msgid "All contexts"
+msgstr "Все контексты"
+
+#. separator
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:172
+msgctxt "icon-dialog"
+msgid "Actions"
+msgstr "Действия"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:173
+msgctxt "icon-dialog"
+msgid "Applications"
+msgstr "Приложения"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:174
+msgctxt "icon-dialog"
+msgid "Categories"
+msgstr "Категории"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:175
+msgctxt "icon-dialog"
+msgid "Devices"
+msgstr "Устройства"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:176
+msgctxt "icon-dialog"
+msgid "Emblems"
+msgstr "Эмблемы"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:177
+msgctxt "icon-dialog"
+msgid "Emoticons"
+msgstr "Эмоции"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:178
+msgctxt "icon-dialog"
+msgid "International"
+msgstr "Международные"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:179
+msgctxt "icon-dialog"
+msgid "MIME Types"
+msgstr "Типы MIME"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:180
+msgctxt "icon-dialog"
+msgid "Places"
+msgstr "Места"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:181
+msgctxt "icon-dialog"
+msgid "Status"
+msgstr "Статус"
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:284
+msgctxt "option-entry|icon"
+msgid "<b>Icon: {icon}</b>"
+msgstr "<b>Значок: {icon}</b>"
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:287
+msgctxt "option-entry|icon"
 msgid "Select icon name..."
 msgstr "Выбрать значок..."
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:288
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:290
+msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
 msgstr "<b>Файл: {path}</b>"
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:291
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:293
+msgctxt "option-entry|icon"
 msgid "Select file..."
 msgstr "Выбрать файл..."
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:425
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:427
+msgctxt "option-entry|indicators"
 msgid "Indicator \"{indicator}\" is already in the list"
 msgstr "Индикатор \"{indicator}\" уже есть в списке"
 
@@ -374,3 +474,7 @@ msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
 msgstr ""
 "Для запуска редактора настроек LightDM GTK+ Greeter требуется аутентификация."
+
+#~ msgctxt "option-rgba"
+#~ msgid "None"
+#~ msgstr "Нет"

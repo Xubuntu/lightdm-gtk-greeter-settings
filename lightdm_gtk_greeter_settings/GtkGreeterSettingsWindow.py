@@ -10,6 +10,7 @@ from gi.repository import Gtk
 
 from lightdm_gtk_greeter_settings import OptionEntry
 from lightdm_gtk_greeter_settings import helpers
+from lightdm_gtk_greeter_settings.helpers import C_
 
 
 __all__ = ['GtkGreeterSettingsWindow']
@@ -112,7 +113,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         upper = int(self._timeout_adjustment.props.upper) // step
         for value in range(lower * step, (upper + 1) * step, step):
             self._timeout_view.add_mark(value, Gtk.PositionType.BOTTOM, None)
-        self._timeout_end_label.props.label = _('{count} min').format(count=upper)
+        self._timeout_end_label.props.label = C_('option|timeout', '{count} min').format(count=upper)
 
     def _has_access_to_write(self, path):
         if os.path.exists(path) and os.access(self._config_path, os.W_OK):

@@ -2,6 +2,24 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <!-- interface-requires gtk_greeter_settings 1.0 -->
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xpad">2</property>
+    <property name="icon_name">list-add</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xpad">2</property>
+    <property name="icon_name">window-close</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xpad">2</property>
+    <property name="icon_name">dialog-ok</property>
+  </object>
   <object class="IndicatorChooserDialog" id="indicator_chooser_dialog">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
@@ -25,19 +43,53 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
+              <object class="GtkButton" id="cancel_button">
+                <property name="label" translatable="yes" context="button">_Close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="image">image2</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="ok_button">
+                <property name="label" translatable="yes" context="button">_OK</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_text" translatable="yes">Add selected indicator to the list and close this window</property>
+                <property name="image">image3</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkBox" id="box1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkButton" id="add_button">
-                    <property name="label">gtk-add</property>
+                    <property name="label" translatable="yes" context="button">_Add</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_text" translatable="yes">Add selected indicator to the list without closing this window</property>
-                    <property name="use_stock">True</property>
+                    <property name="image">image1</property>
+                    <property name="use_underline">True</property>
                     <signal name="clicked" handler="on_add_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -50,40 +102,9 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">2</property>
                 <property name="secondary">True</property>
                 <property name="non_homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="ok_button">
-                <property name="label">gtk-ok</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Add selected indicator to the list and close this window</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="cancel_button">
-                <property name="label">gtk-close</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -302,8 +323,8 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-5">ok_button</action-widget>
       <action-widget response="-7">cancel_button</action-widget>
+      <action-widget response="-5">ok_button</action-widget>
     </action-widgets>
   </object>
   <object class="GtkFileFilter" id="library_file_filter">

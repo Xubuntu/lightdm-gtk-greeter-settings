@@ -1,8 +1,7 @@
 
 from collections import namedtuple
 from gi.repository import Gtk, GObject
-from locale import gettext as _
-from lightdm_gtk_greeter_settings import helpers
+from lightdm_gtk_greeter_settings.helpers import get_data_path, NC_, C_
 
 
 __all__ = ['IconChooserDialog']
@@ -22,7 +21,7 @@ class IconChooserDialog(Gtk.Dialog):
 
     def __new__(cls):
         builder = Gtk.Builder()
-        builder.add_from_file(helpers.get_data_path('%s.ui' % cls.__name__))
+        builder.add_from_file(get_data_path('%s.ui' % cls.__name__))
         window = builder.get_object('icon_chooser_dialog')
         window._builder = builder
         window.__dict__.update(('_' + w, builder.get_object(w))
@@ -60,7 +59,7 @@ class IconChooserDialog(Gtk.Dialog):
         for name, title in STANDARD_CONTEXTS:
             self._contexts_model.append(self.ContextsModelRow(name=name,
                                                               standard=True,
-                                                              title=_(title)))
+                                                              title=title and C_('icon-dialog', title)))
 
         for name in theme.list_contexts():
             if name not in standard_contexts:
@@ -168,18 +167,18 @@ class IconChooserDialog(Gtk.Dialog):
 
 STANDARD_CONTEXTS =\
 (
-    (None, 'All contexts'),
+    (None, NC_('icon-dialog', 'All contexts')),
     (None, ''),  # separator
-    ("Actions", "Actions"),
-    ("Applications", "Applications"),
-    ("Categories", "Categories"),
-    ("Devices", "Devices"),
-    ("Emblems", "Emblems"),
-    ("Emotes", "Emoticons"),
-    ("International", "International"),
-    ("MimeTypes", "MIME Types"),
-    ("Places", "Places"),
-    ("Status", "Status")
+    ('Actions', NC_('icon-dialog', 'Actions')),
+    ('Applications', NC_('icon-dialog', 'Applications')),
+    ('Categories', NC_('icon-dialog', 'Categories')),
+    ('Devices', NC_('icon-dialog', 'Devices')),
+    ('Emblems', NC_('icon-dialog', 'Emblems')),
+    ('Emotes', NC_('icon-dialog', 'Emoticons')),
+    ('International', NC_('icon-dialog', 'International')),
+    ('MimeTypes', NC_('icon-dialog', 'MIME Types')),
+    ('Places', NC_('icon-dialog', 'Places')),
+    ('Status', NC_('icon-dialog', 'Status'))
 )
 
 STANDARD_ICON_NAMES = \

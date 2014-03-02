@@ -7,6 +7,7 @@ import os
 import time
 from gi.repository import Gtk, Gdk, GObject
 
+from lightdm_gtk_greeter_settings.helpers import C_
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
 from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
@@ -280,15 +281,16 @@ class IconEntry(BaseEntry):
 
     def _update_menu_items(self, icon=None, path=None):
         if icon:
-            self._icon_item.get_child().set_markup(_('<b>Icon: {icon}</b>').format(icon=icon))
+            self._icon_item.get_child().set_markup(C_('option-entry|icon', '<b>Icon: {icon}</b>')
+                                                      .format(icon=icon))
         else:
-            self._icon_item.get_child().set_markup(_('Select icon name...'))
+            self._icon_item.get_child().set_markup(C_('option-entry|icon', 'Select icon name...'))
 
         if path:
-            self._path_item.get_child().set_markup(_('<b>File: {path}</b>')
+            self._path_item.get_child().set_markup(C_('option-entry|icon', '<b>File: {path}</b>')
                                                      .format(path=os.path.basename(path)))
         else:
-            self._path_item.get_child().set_markup(_('Select file...'))
+            self._path_item.get_child().set_markup(C_('option-entry|icon', 'Select file...'))
 
     def _get_menu_position(self, menu, widget):
         allocation = widget.get_allocation()
@@ -422,7 +424,8 @@ class IndicatorsEntry(BaseEntry):
             return False
         else:
             if any(row[self._model_name] == name for row in self._model):
-                return _('Indicator "{indicator}" is already in the list').format(indicator=name)
+                return C_('option-entry|indicators', 'Indicator "{indicator}" is already in the list')\
+                          .format(indicator=name)
             return True
 
     def _add_indicator(self, name):

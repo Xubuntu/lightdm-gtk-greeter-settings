@@ -12,19 +12,19 @@
     <data>
       <row>
         <col id="0">hintnone</col>
-        <col id="1" translatable="yes" context="option-hintstyle">None</col>
+        <col id="1" translatable="yes" context="option|hintstyle">None</col>
       </row>
       <row>
         <col id="0">hintslight</col>
-        <col id="1" translatable="yes" context="option-hintstyle">Slight</col>
+        <col id="1" translatable="yes" context="option|hintstyle">Slight</col>
       </row>
       <row>
         <col id="0">hintmedium</col>
-        <col id="1" translatable="yes" context="option-hintstyle">Medium</col>
+        <col id="1" translatable="yes" context="option|hintstyle">Medium</col>
       </row>
       <row>
         <col id="0">hintfull</col>
-        <col id="1" translatable="yes" context="option-hintstyle">Full</col>
+        <col id="1" translatable="yes" context="option|hintstyle">Full</col>
       </row>
     </data>
   </object>
@@ -125,23 +125,23 @@
     <data>
       <row>
         <col id="0">none</col>
-        <col id="1" translatable="yes" context="option-rgba">None</col>
+        <col id="1" translatable="yes" context="option|rgba">None</col>
       </row>
       <row>
         <col id="0">rgb</col>
-        <col id="1" translatable="yes" context="option-rgba">RGB</col>
+        <col id="1" translatable="yes" context="option|rgba">RGB</col>
       </row>
       <row>
         <col id="0">bgr</col>
-        <col id="1" translatable="yes" context="option-rgba">BGR</col>
+        <col id="1" translatable="yes" context="option|rgba">BGR</col>
       </row>
       <row>
         <col id="0">vrgb</col>
-        <col id="1" translatable="yes" context="option-rgba">Vertical RGB</col>
+        <col id="1" translatable="yes" context="option|rgba">Vertical RGB</col>
       </row>
       <row>
         <col id="0">vbgr</col>
-        <col id="1" translatable="yes" context="option-rgba">Vertical BGR</col>
+        <col id="1" translatable="yes" context="option|rgba">Vertical BGR</col>
       </row>
     </data>
   </object>
@@ -193,7 +193,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-gtk-theme">Theme</property>
+                    <property name="label" translatable="yes" context="option|gtk-theme">Theme</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -211,7 +211,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-icons-theme">Icons</property>
+                    <property name="label" translatable="yes" context="option|icons-theme">Icons</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -229,7 +229,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-font">Font</property>
+                    <property name="label" translatable="yes" context="option|font">Font</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -330,7 +330,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="rgba_use">
-                            <property name="label" translatable="yes" context="option-rgba">Subpixel rendering</property>
+                            <property name="label" translatable="yes" context="option|rgba">Subpixel rendering</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -347,7 +347,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="dpi_use">
-                            <property name="label" translatable="yes" context="option-dpi">DPI</property>
+                            <property name="label" translatable="yes" context="option|dpi">DPI</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -364,7 +364,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="antialias_use">
-                            <property name="label" translatable="yes" context="option-antialias">Antialias</property>
+                            <property name="label" translatable="yes" context="option|antialias">Antialias</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -382,7 +382,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="hintstyle_use">
-                            <property name="label" translatable="yes" context="option-hintstyle">Hinting</property>
+                            <property name="label" translatable="yes" context="option|hintstyle">Hinting</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -441,7 +441,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option-background">Background</property>
+                    <property name="label" translatable="yes" context="option|background">Background</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -455,7 +455,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="background_image_choice">
-                    <property name="label" translatable="yes" context="option-background">Image</property>
+                    <property name="label" translatable="yes" context="option|background">Image</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -488,7 +488,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="background_color_choice">
-                    <property name="label" translatable="yes" context="option-background">Color</property>
+                    <property name="label" translatable="yes" context="option|background">Color</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -526,7 +526,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
-                    <property name="label" translatable="yes" context="option-user-image">Default user image</property>
+                    <property name="label" translatable="yes" context="option|user-image">Default user image</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -634,7 +634,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-clock">Clock</property>
+                    <property name="label" translatable="yes" context="option|clock">Clock</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -665,7 +665,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-indicators">Redefine indicators</property>
+                    <property name="label" translatable="yes" context="option|indicators">Redefine indicators</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -715,7 +715,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-clock-format">%H %I - hours, %M - minutes, %S - seconds
+                    <property name="label" translatable="yes" context="option|clock-format">%H %I - hours, %M - minutes, %S - seconds
 %d - day, %m - month, %y %Y - year
 %a %A - day of the week, %b %B - month name</property>
                     <attributes>
@@ -809,8 +809,8 @@
                           <object class="GtkToolButton" id="indicators_add">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option-indicators">Add indicator to list</property>
-                            <property name="label" translatable="yes" context="option-indicators">Add</property>
+                            <property name="tooltip_text" translatable="yes" context="option|indicators">Add indicator to list</property>
+                            <property name="label" translatable="yes" context="option|indicators">Add</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-add</property>
                           </object>
@@ -823,8 +823,8 @@
                           <object class="GtkToolButton" id="indicators_remove">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option-indicators">Remove indicator from list</property>
-                            <property name="label" translatable="yes">Remove</property>
+                            <property name="tooltip_text" translatable="yes" context="option|indicators">Remove indicator from list</property>
+                            <property name="label" translatable="yes" context="option|indicators">Remove</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-remove</property>
                           </object>
@@ -837,8 +837,8 @@
                           <object class="GtkToolButton" id="indicators_up">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option-indicators">Move up</property>
-                            <property name="label" translatable="yes">Up</property>
+                            <property name="tooltip_text" translatable="yes" context="option|indicators">Move up</property>
+                            <property name="label" translatable="yes" context="option|indicators">Up</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-up</property>
                           </object>
@@ -851,8 +851,8 @@
                           <object class="GtkToolButton" id="indicators_down">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option-indicators">Move down</property>
-                            <property name="label" translatable="yes">Down</property>
+                            <property name="tooltip_text" translatable="yes" context="option|indicators">Move down</property>
+                            <property name="label" translatable="yes" context="option|indicators">Down</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-down</property>
                           </object>
@@ -886,7 +886,7 @@
                       <object class="GtkLabel" id="clock_format_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes" context="option-clock-format">Format:</property>
+                        <property name="label" translatable="yes" context="option|clock-format">Format:</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -951,7 +951,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-position">Horizontal </property>
+                    <property name="label" translatable="yes" context="option|position">Horizontal </property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -989,7 +989,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="position_x_percents">
-                        <property name="label" translatable="yes" context="option-position">in %</property>
+                        <property name="label" translatable="yes" context="option|position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1036,7 +1036,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="position_y_percents">
-                        <property name="label" translatable="yes" context="option-position">in %</property>
+                        <property name="label" translatable="yes" context="option|position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1064,7 +1064,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-position">Vertical</property>
+                    <property name="label" translatable="yes" context="option|position">Vertical</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1094,7 +1094,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option-position">Select base point and its position</property>
+                    <property name="label" translatable="yes" context="option|position">Select base point and its position</property>
                     <attributes>
                       <attribute name="style" value="oblique"/>
                     </attributes>
@@ -1108,7 +1108,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="position_x_mirror">
-                    <property name="label" translatable="yes" context="option-position">from right</property>
+                    <property name="label" translatable="yes" context="option|position">from right</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1125,7 +1125,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="position_y_mirror">
-                    <property name="label" translatable="yes" context="option-position">from bottom</property>
+                    <property name="label" translatable="yes" context="option|position">from bottom</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1381,7 +1381,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-timeout">Timeout until the screen blanks </property>
+                    <property name="label" translatable="yes" context="option|timeout">Timeout until the screen blanks </property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1399,7 +1399,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option-keyboard">Onscreen keyboard</property>
+                    <property name="label" translatable="yes" context="option|keyboard">Onscreen keyboard</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1459,7 +1459,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes" context="option-timeout">Never</property>
+                        <property name="label" translatable="yes" context="option|timeout">Never</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1589,13 +1589,14 @@
             <property name="spacing">12</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="apply_button">
-                <property name="label">Save</property>
+              <object class="GtkButton" id="close_button">
+                <property name="label" translatable="yes" context="button">_Close</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
-                <property name="image">icon_save</property>
-                <signal name="clicked" handler="on_apply_clicked" swapped="no"/>
+                <property name="image">icon_close</property>
+                <property name="use_underline">True</property>
+                <signal name="clicked" handler="on_close_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1604,13 +1605,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="close_button">
-                <property name="label">Close</property>
+              <object class="GtkButton" id="apply_button">
+                <property name="label" translatable="yes" context="button">_Save</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="image">icon_close</property>
-                <signal name="clicked" handler="on_close_clicked" swapped="no"/>
+                <property name="image">icon_save</property>
+                <property name="use_underline">True</property>
+                <signal name="clicked" handler="on_apply_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1620,12 +1622,13 @@
             </child>
             <child>
               <object class="GtkButton" id="reset_button">
-                <property name="label">Reload</property>
+                <property name="label" translatable="yes" context="button">_Reload</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="tooltip_text" translatable="yes">Read configuration file</property>
                 <property name="image">icon_reset</property>
+                <property name="use_underline">True</property>
                 <signal name="clicked" handler="on_reset_clicked" swapped="no"/>
               </object>
               <packing>
@@ -1704,7 +1707,7 @@
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button2">
-                <property name="label">_Cancel</property>
+                <property name="label" context="button">_Cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
@@ -1719,7 +1722,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button1">
-                <property name="label">_OK</property>
+                <property name="label" context="button">_OK</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="can_default">True</property>

@@ -15,6 +15,34 @@
   <object class="GtkTreeModelFilter" id="contexts_filter">
     <property name="child_model">contexts_model</property>
   </object>
+  <object class="GtkListStore" id="icons_model">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name standard -->
+      <column type="gboolean"/>
+      <!-- column-name context -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTreeModelFilter" id="icons_filter">
+    <property name="child_model">icons_model</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xpad">2</property>
+    <property name="icon_name">dialog-cancel</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xpad">2</property>
+    <property name="icon_name">dialog-ok</property>
+  </object>
+  <object class="GtkTreeModelSort" id="icons_sorted">
+    <property name="model">icons_filter</property>
+  </object>
   <object class="IconChooserDialog" id="icon_chooser_dialog">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
@@ -36,14 +64,16 @@
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="cancel_button">
-                <property name="label">gtk-cancel</property>
+                <property name="label" translatable="yes" context="button">_Cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
+                <property name="image">image2</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -53,14 +83,15 @@
             </child>
             <child>
               <object class="GtkButton" id="ok_button">
-                <property name="label">gtk-ok</property>
+                <property name="label" translatable="yes" context="button">_OK</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="tooltip_text" translatable="yes">Add selected indicator to the list and close this window</property>
-                <property name="use_stock">True</property>
+                <property name="image">image3</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -175,6 +206,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">start</property>
+                <property name="stock">gtk-missing-image</property>
                 <property name="pixel_size">32</property>
                 <property name="icon-size">6</property>
               </object>
@@ -313,22 +345,6 @@
       <action-widget response="-6">cancel_button</action-widget>
       <action-widget response="-5">ok_button</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkListStore" id="icons_model">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name standard -->
-      <column type="gboolean"/>
-      <!-- column-name context -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkTreeModelFilter" id="icons_filter">
-    <property name="child_model">icons_model</property>
-  </object>
-  <object class="GtkTreeModelSort" id="icons_sorted">
-    <property name="model">icons_filter</property>
   </object>
   <object class="GtkEntryCompletion" id="name_completion">
     <property name="model">icons_model</property>
