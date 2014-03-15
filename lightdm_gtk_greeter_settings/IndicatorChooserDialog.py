@@ -35,14 +35,14 @@ class IndicatorChooserDialog(Gtk.Dialog):
         self._add_callback = add_callback
         self._add_button.props.visible = add_callback is not None
 
-        for path in iglob(os.path.join(sys.prefix, 'share', 'unity', 'indicators', '*')):
+        for path in sorted(iglob(os.path.join(sys.prefix, 'share', 'unity', 'indicators', '*'))):
             name = os.path.basename(path)
             parts = name.rsplit('.', maxsplit=1)
             if len(parts) == 2 and parts[0] == 'com.canonical.indicator':
                 name = parts[1]
             self._short_model.append((name,))
 
-        for path in iglob(os.path.join(sys.prefix, 'lib', 'indicators3', '7', '*.so')):
+        for path in sorted(iglob(os.path.join(sys.prefix, 'lib', 'indicators3', '7', '*.so'))):
             self._short_model.append((os.path.basename(path),))
 
     def _get_current_value(self):
@@ -86,7 +86,7 @@ class IndicatorChooserDialog(Gtk.Dialog):
     def on_short_choice_toggled(self, widget):
         self._update_state()
 
-    def on_add_clicked(self, *args):
+    def on_add_clicked(self, widget):
         value = self._get_current_value()
         if value:
             self._add_callback(value)

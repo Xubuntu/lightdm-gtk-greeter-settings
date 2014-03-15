@@ -14,13 +14,11 @@ from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry',
-           'AdjustmentEntry', 'AdjustmentintEntry',
-           'ChoiceEntry']
+           'AdjustmentEntry', 'ChoiceEntry']
 
 
 class BaseEntry(GObject.GObject):
 
-    _use = None
     def __init__(self, widgets):
         super().__init__()
         self._use = widgets['use']
@@ -30,13 +28,16 @@ class BaseEntry(GObject.GObject):
     @property
     def value(self):
         '''Option value'''
-        return self._get_value()
+        value = self._get_value()
+        formatted = self.get.emit(value)
+        return value if formatted is None else formatted
 
     @value.setter
     def value(self, value):
         if self._use:
             self._use.props.active = True
-        self._set_value(value)
+        formatted = self.set.emit(value)
+        self._set_value(value if formatted is None else formatted)
 
     @property
     def enabled(self):
@@ -52,6 +53,14 @@ class BaseEntry(GObject.GObject):
 
     @GObject.Signal
     def changed(self):
+        pass
+
+    @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
+    def get(self, value: str) -> str:  #@IgnorePep8
+        pass
+
+    @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
+    def set(self, value: str) -> str:  #@IgnorePep8
         pass
 
     def __repr__(self):
@@ -70,12 +79,12 @@ class BaseEntry(GObject.GObject):
     def _set_enabled(self, value):
         raise NotImplementedError(self.__class__)
 
-    def _on_use_toggled(self, *args):
+    def _on_use_toggled(self, toggle, *args):
         self._set_enabled(self._use.props.active)
         self._emit_changed()
 
-    def _emit_changed(self, *args):
-        self.emit("changed")
+    def _emit_changed(self, *unused):
+        self.changed.emit()
 
 
 class BooleanEntry(BaseEntry):
@@ -130,15 +139,6 @@ class AdjustmentEntry(BaseEntry):
 
     def _set_enabled(self, value):
         self._view.props.sensitive = value
-
-
-class AdjustmentIntEntry(AdjustmentEntry):
-
-    def __init__(self, widgets):
-        super().__init__(widgets)
-
-    def _get_value(self):
-        return str(int(self._value.props.value))
 
 
 class ChoiceEntry(BaseEntry):
@@ -359,21 +359,21 @@ class IndicatorsEntry(BaseEntry):
                                           for item in map(self.ModelRow._make, self._model))
         self._indicators_dialog = None
 
-        self._treeview.connect("key-press-event", self._on_key_press)
-        self._selection.connect("changed", self._on_selection_changed)
-        self._state_renderer.connect("toggled", self._on_state_toggled)
-        self._name_renderer.connect("edited", self._on_name_edited)
-        self._add.connect("clicked", self._on_add)
-        self._remove.connect("clicked", self._on_remove)
-        self._up.connect("clicked", self._on_up)
-        self._down.connect("clicked", self._on_down)
+        self._treeview.connect('key-press-event', self._on_key_press)
+        self._selection.connect('changed', self._on_selection_changed)
+        self._state_renderer.connect('toggled', self._on_state_toggled)
+        self._name_renderer.connect('edited', self._on_name_edited)
+        self._add.connect('clicked', self._on_add)
+        self._remove.connect('clicked', self._on_remove)
+        self._up.connect('clicked', self._on_up)
+        self._down.connect('clicked', self._on_down)
 
-        self._model.connect("row-changed", self._on_model_changed)
-        self._model.connect("row-deleted", self._on_model_changed)
-        self._model.connect("row-inserted", self._on_model_changed)
-        self._model.connect("rows-reordered", self._on_model_changed)
+        self._model.connect('row-changed', self._on_model_changed)
+        self._model.connect('row-deleted', self._on_model_changed)
+        self._model.connect('row-inserted', self._on_model_changed)
+        self._model.connect('rows-reordered', self._on_model_changed)
 
-    def _on_model_changed(self, *args):
+    def _on_model_changed(self, *unused):
         self._emit_changed()
 
     def _get_value(self):
@@ -424,7 +424,8 @@ class IndicatorsEntry(BaseEntry):
             return False
         else:
             if any(row[self._model_name] == name for row in self._model):
-                return C_('option-entry|indicators', 'Indicator "{indicator}" is already in the list')\
+                return C_('option-entry|indicators',
+                          'Indicator "{indicator}" is already in the list')\
                           .format(indicator=name)
             return True
 
@@ -456,10 +457,11 @@ class IndicatorsEntry(BaseEntry):
 
     def _on_selection_changed(self, selection):
         model, rowiter = selection.get_selected()
-        self._remove.props.sensitive = (rowiter is not None) and self.ModelRow._make(model[rowiter]).external
-        self._down.props.sensitive = (rowiter is not None) and model.iter_next(rowiter) is not None
-        self._up.props.sensitive = (rowiter is not None) and model.iter_previous(rowiter) is not None
-        if rowiter is not None:
+        has_selection = rowiter is not None
+        self._remove.props.sensitive = has_selection and model[rowiter][self._model_external]
+        self._down.props.sensitive = has_selection and model.iter_next(rowiter) is not None
+        self._up.props.sensitive = has_selection and model.iter_previous(rowiter) is not None
+        if has_selection:
             self._treeview.scroll_to_cell(model.get_path(rowiter))
 
     def _on_add(self, *args):
@@ -493,7 +495,8 @@ class PositionEntry(BaseEntry):
 
             self._percents.connect('toggled', self._on_percents_toggled)
             self._mirror.connect('toggled', self._on_mirror_toggled)
-            self._on_value_changed_id = self._adjustment.connect('value-changed', self._on_value_changed)
+            self._on_value_changed_id = self._adjustment.connect('value-changed',
+                                                                 self._on_value_changed)
 
             for (x, y), widget  in anchors.items():
                 widget.connect('toggled', self._on_anchor_toggled, self,
@@ -595,8 +598,9 @@ class PositionEntry(BaseEntry):
         self._on_resize_id = self._screen.connect('size-allocate', self._on_resize)
         self._screen.connect('draw', self._on_draw_screen_border)
         self._screen.connect('screen-changed', self._on_gdkscreen_changed)
-        self._on_gdkscreen_monitors_changed_id = self._screen.get_screen().connect('monitors-changed',
-                                                                                   self._on_gdkscreen_monitors_changed)
+        self._on_gdkscreen_monitors_changed_id = self._screen.get_screen().connect(
+                                                        'monitors-changed',
+                                                        self._on_gdkscreen_monitors_changed)
 
         self._x = PositionEntry.Dimension('x', widgets, self._anchors, self._on_dimension_changed)
         self._y = PositionEntry.Dimension('y', widgets, self._anchors, self._on_dimension_changed)
@@ -670,8 +674,9 @@ class PositionEntry(BaseEntry):
         widget.queue_resize()
         if prev_screen:
             prev_screen.disconnect(self._on_gdkscreen_monitors_changed_id)
-        self._on_gdkscreen_monitors_changed_id = widget.get_screen().connect('monitors-changed',
-                                                                             self._on_gdkscreen_monitors_changed)
+        self._on_gdkscreen_monitors_changed_id = widget.get_screen().connect(
+                                                            'monitors-changed',
+                                                            self._on_gdkscreen_monitors_changed)
 
     def _on_gdkscreen_monitors_changed(self, screen):
         self._screen.queue_resize()

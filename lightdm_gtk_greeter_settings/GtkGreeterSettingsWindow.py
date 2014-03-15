@@ -2,6 +2,7 @@
 from collections import namedtuple
 import configparser
 from glob import iglob
+from itertools import chain
 from locale import gettext as _
 import os
 import sys
@@ -18,7 +19,6 @@ __all__ = ['GtkGreeterSettingsWindow']
 
 BindingValue = namedtuple('BindingValue', ('option', 'default', 'changed_handler'))
 InitialValue = namedtuple('InitialValue', ('value', 'state'))
-
 
 GREETER_SECTION = 'greeter'
 
@@ -45,7 +45,7 @@ OPTIONS_BINDINGS = \
         # Position
         'position': (OptionEntry.PositionEntry, 'position', '50%,center'),
         # Misc
-        'screensaver-timeout': (OptionEntry.AdjustmentIntEntry, 'timeout', 60),
+        'screensaver-timeout': (OptionEntry.AdjustmentEntry, 'timeout', 60),
         'keyboard': (OptionEntry.StringEntry, 'keyboard', None),
     }
 }
@@ -71,7 +71,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
     def __new__(cls):
         builder = Gtk.Builder()
         builder.add_from_file(helpers.get_data_path('%s.ui' % cls.__name__))
-        window = builder.get_object("settings_window")
+        window = builder.get_object('settings_window')
         window._builder = builder
         window.__dict__.update(('_' + w, builder.get_object(w))
                                for w in cls.BUILDER_WIDGETS)
@@ -102,18 +102,21 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     def _configure_special_entries(self):
         # theme-name
-        for theme in iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0')):
+        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0'))):
             self._gtk_theme_values.append_text(theme.split(os.path.sep)[-2])
         # icon-theme-name
-        for theme in iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme')):
+        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme'))):
             self._icons_theme_values.append_text(theme.split(os.path.sep)[-2])
         # screensaver-timeout
-        step = 60
-        lower = int(self._timeout_adjustment.props.lower) // step
-        upper = int(self._timeout_adjustment.props.upper) // step
-        for value in range(lower * step, (upper + 1) * step, step):
-            self._timeout_view.add_mark(value, Gtk.PositionType.BOTTOM, None)
-        self._timeout_end_label.props.label = C_('option|timeout', '{count} min').format(count=upper)
+        timeout = self._bindings['greeter']['screensaver-timeout'].option
+        timeout.get.connect(self.on_timeout_option_get)
+        timeout.set.connect(self.on_timeout_option_set)
+        for mark in chain(range(10, 61, 10),
+                          range(69, int(self._timeout_adjustment.props.upper), 10)):
+            self._timeout_view.add_mark(mark, Gtk.PositionType.BOTTOM, None)
+        total = int(self._timeout_adjustment.props.upper - 60) + 1
+        self._timeout_end_label.props.label = C_('option|timeout', '{count} min')\
+                                                 .format(count=total)
 
     def _has_access_to_write(self, path):
         if os.path.exists(path) and os.access(self._config_path, os.W_OK):
@@ -122,7 +125,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     def _new_binding(self, cls, basename, default):
         option = cls(BuilderWrapper(self._builder, basename))
-        changed_id = option.connect('changed', self.on_option_changed)
+        changed_id = option.changed.connect(self.on_option_changed)
         return BindingValue(option, default, changed_id)
 
     def _read(self):
@@ -186,22 +189,34 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._changed_values.discard(option)
         self._apply_button.props.sensitive = self._allow_edit and self._changed_values
 
+    def on_timeout_option_get(self, option=None, value=None):
+        value = int(float(value))
+        if value > 60:
+            return (value - 59) * 60
+        return value
+
+    def on_timeout_option_set(self, option=None, value=None):
+        value = int(float(value))
+        if value > 60:
+            return value // 60 + 59
+        return value
+
     def on_format_timeout_scale(self, scale, value):
         if value != self._timeout_adjustment.props.lower and \
            value != self._timeout_adjustment.props.upper:
-            value = int(value)
+            value = self.on_timeout_option_get(value=value)
             return '%02d:%02d' % (value // 60, value % 60)
         else:
             return ''
 
-    def on_destroy(self, *args):
+    def on_destroy(self, *unused):
         Gtk.main_quit()
 
-    def on_apply_clicked(self, *args):
+    def on_apply_clicked(self, *unused):
         self._write()
 
-    def on_reset_clicked(self, *args):
+    def on_reset_clicked(self, *unused):
         self._read()
 
-    def on_close_clicked(self, *args):
+    def on_close_clicked(self, *unused):
         self.destroy()
