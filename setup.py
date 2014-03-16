@@ -2,17 +2,21 @@
 
 import os
 import sys
-import configparser
 
 try:
     import DistUtilsExtra.auto
 except ImportError:
-    print('To build lightdm-gtk-greeter-settings you need https://launchpad.net/python-distutils-extra')
+    print(
+        'To build lightdm-gtk-greeter-settings you need '
+        'https://launchpad.net/python-distutils-extra')
     sys.exit(1)
-assert DistUtilsExtra.auto.__version__ >= '2.18', 'needs DistUtilsExtra.auto >= 2.18'
+assert DistUtilsExtra.auto.__version__ >= '2.18', \
+    'needs DistUtilsExtra.auto >= 2.18'
+
 
 def write_config(libdir, values):
-    filename = os.path.join(libdir, 'lightdm_gtk_greeter_settings/installation_config.py')
+    filename = os.path.join(
+        libdir, 'lightdm_gtk_greeter_settings/installation_config.py')
     try:
         f = open(filename, 'w')
         f.write('__all__ = [%s]\n' % ', '.join('"%s"' % k for k in values))
@@ -24,6 +28,7 @@ def write_config(libdir, values):
 
 
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
+
     def run(self):
         DistUtilsExtra.auto.install_auto.run(self)
 
@@ -36,8 +41,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         write_config(self.install_lib, values)
 
 
-DistUtilsExtra.auto.setup \
-(
+DistUtilsExtra.auto.setup(
     name='lightdm-gtk-greeter-settings',
     version='0.3',
     license='GPL-3',
@@ -48,4 +52,3 @@ DistUtilsExtra.auto.setup \
     url='https://launchpad.net/lightdm-gtk-greeter-settings',
     cmdclass={'install': InstallAndUpdateDataDirectory},
 )
-

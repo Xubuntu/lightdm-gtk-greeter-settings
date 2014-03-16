@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-02 16:43+0300\n"
+"POT-Creation-Date: 2014-03-15 23:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,11 +360,12 @@ msgctxt "indicators-dialog"
 msgid "Absolute path to indicator library file (*.so)"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:93
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:102
 msgid "No permissions to save configuration"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:95
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:104
+#, python-brace-format
 msgid ""
 "It seems that you don't have permissions to write to file:\n"
 "{path}\n"
@@ -372,92 +373,97 @@ msgid ""
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:116
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:133
+#, python-brace-format
 msgctxt "option|timeout"
 msgid "{count} min"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:132
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:150
+#, python-brace-format
 msgid "Failed to read configuration file: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:170
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:186
 msgctxt "icon-dialog"
 msgid "All contexts"
 msgstr ""
 
 #. separator
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:172
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:188
 msgctxt "icon-dialog"
 msgid "Actions"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:173
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:189
 msgctxt "icon-dialog"
 msgid "Applications"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:174
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:190
 msgctxt "icon-dialog"
 msgid "Categories"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:175
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:191
 msgctxt "icon-dialog"
 msgid "Devices"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:176
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:192
 msgctxt "icon-dialog"
 msgid "Emblems"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:177
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:193
 msgctxt "icon-dialog"
 msgid "Emoticons"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:178
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:194
 msgctxt "icon-dialog"
 msgid "International"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:179
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:195
 msgctxt "icon-dialog"
 msgid "MIME Types"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:180
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:196
 msgctxt "icon-dialog"
 msgid "Places"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:181
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:197
 msgctxt "icon-dialog"
 msgid "Status"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:284
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:290
+#, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:287
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:294
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:290
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:299
+#, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:293
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:303
 msgctxt "option-entry|icon"
 msgid "Select file..."
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/OptionEntry.py:427
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:444
+#, python-brace-format
 msgctxt "option-entry|indicators"
 msgid "Indicator \"{indicator}\" is already in the list"
 msgstr ""

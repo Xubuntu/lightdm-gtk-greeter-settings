@@ -8,7 +8,8 @@ import time
 from gi.repository import Gtk, Gdk, GObject
 
 from lightdm_gtk_greeter_settings.helpers import C_
-from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
+from lightdm_gtk_greeter_settings.IndicatorChooserDialog import \
+    IndicatorChooserDialog
 from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 
@@ -56,11 +57,11 @@ class BaseEntry(GObject.GObject):
         pass
 
     @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
-    def get(self, value: str) -> str:  #@IgnorePep8
+    def get(self, value: str) -> str:  # @IgnorePep8
         pass
 
     @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
-    def set(self, value: str) -> str:  #@IgnorePep8
+    def set(self, value: str) -> str:  # @IgnorePep8
         pass
 
     def __repr__(self):
@@ -68,7 +69,8 @@ class BaseEntry(GObject.GObject):
             value = self._get_value()
         except NotImplemented:
             value = '<Undefined>'
-        return '%s(%s:%s)' % (self.__class__.__name__, int(self.enabled), value)
+        return '%s(%s:%s)' % (self.__class__.__name__, int(self.enabled),
+                              value)
 
     def _get_value(self):
         raise NotImplementedError(self.__class__)
@@ -88,6 +90,7 @@ class BaseEntry(GObject.GObject):
 
 
 class BooleanEntry(BaseEntry):
+
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
@@ -97,7 +100,8 @@ class BooleanEntry(BaseEntry):
         return 'true' if self._value.props.active else 'false'
 
     def _set_value(self, value):
-        self._value.props.active = value and value.lower() not in ('false', 'no', '0')
+        self._value.props.active = value and value.lower() not in (
+            'false', 'no', '0')
 
     def _set_enabled(self, value):
         self._value.props.sensitive = value
@@ -199,7 +203,7 @@ class BackgroundEntry(BaseEntry):
         self._color_choice.props.active = color is not None
         self._image_choice.props.active = color is None
 
-        if color is not  None:
+        if color is not None:
             self._color_value.props.color = color
             self._image_value.unselect_all()
         else:
@@ -256,7 +260,8 @@ class IconEntry(BaseEntry):
         self._menu.connect('hide', self._on_menu_hide)
         self._icon_item.connect('activate', self._on_select_icon)
         self._path_item.connect('activate', self._on_select_path)
-        self._path_dialog.connect('update-preview', self._on_update_path_preview)
+        self._path_dialog.connect(
+            'update-preview', self._on_update_path_preview)
 
     def _get_value(self):
         return self._value
@@ -281,16 +286,21 @@ class IconEntry(BaseEntry):
 
     def _update_menu_items(self, icon=None, path=None):
         if icon:
-            self._icon_item.get_child().set_markup(C_('option-entry|icon', '<b>Icon: {icon}</b>')
-                                                      .format(icon=icon))
+            self._icon_item.get_child().set_markup(C_('option-entry|icon',
+                                                      '<b>Icon: {icon}</b>')
+                                                   .format(icon=icon))
         else:
-            self._icon_item.get_child().set_markup(C_('option-entry|icon', 'Select icon name...'))
+            self._icon_item.get_child().set_markup(
+                C_('option-entry|icon', 'Select icon name...'))
 
         if path:
-            self._path_item.get_child().set_markup(C_('option-entry|icon', '<b>File: {path}</b>')
-                                                     .format(path=os.path.basename(path)))
+            self._path_item.get_child()\
+                .set_markup(C_('option-entry|icon',
+                               '<b>File: {path}</b>')
+                            .format(path=os.path.basename(path)))
         else:
-            self._path_item.get_child().set_markup(C_('option-entry|icon', 'Select file...'))
+            self._path_item.get_child().set_markup(
+                C_('option-entry|icon', 'Select file...'))
 
     def _get_menu_position(self, menu, widget):
         allocation = widget.get_allocation()
@@ -334,7 +344,8 @@ class IconEntry(BaseEntry):
 class IndicatorsEntry(BaseEntry):
     NAMES_DELIMITER = ';'
     # It is the only place where model columns order defined
-    ModelRow = namedtuple('ModelRow', ('enabled', 'name', 'builtin', 'external'))
+    ModelRow = namedtuple(
+        'ModelRow', ('enabled', 'name', 'builtin', 'external'))
 
     def __init__(self, widgets):
         super().__init__(widgets)
@@ -356,7 +367,8 @@ class IndicatorsEntry(BaseEntry):
         self._model = widgets['model']
 
         self._initial_items = OrderedDict((item.name, item)
-                                          for item in map(self.ModelRow._make, self._model))
+                                          for item in map(self.ModelRow._make,
+                                                          self._model))
         self._indicators_dialog = None
 
         self._treeview.connect('key-press-event', self._on_key_press)
@@ -377,8 +389,10 @@ class IndicatorsEntry(BaseEntry):
         self._emit_changed()
 
     def _get_value(self):
-        return self.NAMES_DELIMITER.join(item.name for item in map(self.ModelRow._make, self._model)
-                                         if (item.builtin and item.enabled) or item.external)
+        return self.NAMES_DELIMITER.join(item.name for item in
+                                         map(self.ModelRow._make, self._model)
+                                         if (item.builtin and item.enabled)
+                                         or item.external)
 
     def _set_value(self, value, update_model=True):
         if update_model:
@@ -387,12 +401,14 @@ class IndicatorsEntry(BaseEntry):
             if value:
                 for name in value.split(self.NAMES_DELIMITER):
                     try:
-                        self._model.append(last_options.pop(name)._replace(enabled=True))
+                        self._model.append(
+                            last_options.pop(name)._replace(enabled=True))
                     except KeyError:
-                        self._model.append(self.ModelRow(name=name, external=True,
-                                                         builtin=False, enabled=False))
+                        self._model.append(
+                            self.ModelRow(name=name, external=True,
+                                          builtin=False, enabled=False))
 
-            for item in last_options.values():
+            for item in list(last_options.values()):
                 self._model.append(item)
 
         self._selection.select_path(0)
@@ -426,13 +442,14 @@ class IndicatorsEntry(BaseEntry):
             if any(row[self._model_name] == name for row in self._model):
                 return C_('option-entry|indicators',
                           'Indicator "{indicator}" is already in the list')\
-                          .format(indicator=name)
+                    .format(indicator=name)
             return True
 
     def _add_indicator(self, name):
         if name:
-            rowiter = self._model.append(self.ModelRow(name=name, external=True,
-                                                       builtin=False, enabled=False))
+            rowiter = self._model.append(
+                self.ModelRow(name=name, external=True,
+                              builtin=False, enabled=False))
             self._selection.select_iter(rowiter)
             self._treeview.grab_focus()
 
@@ -442,13 +459,15 @@ class IndicatorsEntry(BaseEntry):
         elif Gdk.keyval_name(event.keyval) == 'F2':
             model, rowiter = self._selection.get_selected()
             if rowiter and model[rowiter][self._model_external]:
-                self._treeview.set_cursor(model.get_path(rowiter), self._name_column, True)
+                self._treeview.set_cursor(
+                    model.get_path(rowiter), self._name_column, True)
         else:
             return False
         return True
 
     def _on_state_toggled(self, renderer, path):
-        self._model[path][self._model_enabled] = not self._model[path][self._model_enabled]
+        self._model[path][self._model_enabled] = not self._model[
+            path][self._model_enabled]
 
     def _on_name_edited(self, renderer, path, name):
         check = self._check_indicator(name)
@@ -458,17 +477,22 @@ class IndicatorsEntry(BaseEntry):
     def _on_selection_changed(self, selection):
         model, rowiter = selection.get_selected()
         has_selection = rowiter is not None
-        self._remove.props.sensitive = has_selection and model[rowiter][self._model_external]
-        self._down.props.sensitive = has_selection and model.iter_next(rowiter) is not None
-        self._up.props.sensitive = has_selection and model.iter_previous(rowiter) is not None
+        self._remove.props.sensitive = has_selection and model[
+            rowiter][self._model_external]
+        self._down.props.sensitive = has_selection and model.iter_next(
+            rowiter) is not None
+        self._up.props.sensitive = has_selection and model.iter_previous(
+            rowiter) is not None
         if has_selection:
             self._treeview.scroll_to_cell(model.get_path(rowiter))
 
     def _on_add(self, *args):
         if not self._indicators_dialog:
-            self._indicators_dialog = IndicatorChooserDialog(check_callback=self._check_indicator,
-                                                             add_callback=self._add_indicator)
-            self._indicators_dialog.props.transient_for = self._treeview.get_toplevel()
+            self._indicators_dialog = IndicatorChooserDialog(
+                check_callback=self._check_indicator,
+                add_callback=self._add_indicator)
+            self._indicators_dialog.props.transient_for = \
+                self._treeview.get_toplevel()
         name = self._indicators_dialog.get_indicator()
         if name:
             self._add_indicator(name)
@@ -486,19 +510,22 @@ class IndicatorsEntry(BaseEntry):
 class PositionEntry(BaseEntry):
 
     class Dimension:
+
         def __init__(self, name, widgets, anchors, on_changed):
             self.__dict__.update(('_%s' % w, widgets['%s_%s' % (name, w)])
-                                  for w in ('value', 'percents', 'mirror', 'adjustment'))
+                                 for w in ('value', 'percents', 'mirror',
+                                           'adjustment'))
             self._name = name
             self._on_changed = on_changed
             self._anchor = ''
 
             self._percents.connect('toggled', self._on_percents_toggled)
             self._mirror.connect('toggled', self._on_mirror_toggled)
-            self._on_value_changed_id = self._adjustment.connect('value-changed',
-                                                                 self._on_value_changed)
+            self._on_value_changed_id = self._adjustment.connect(
+                'value-changed',
+                self._on_value_changed)
 
-            for (x, y), widget  in anchors.items():
+            for (x, y), widget in list(anchors.items()):
                 widget.connect('toggled', self._on_anchor_toggled, self,
                                x if self._name == 'x' else y)
 
@@ -532,7 +559,8 @@ class PositionEntry(BaseEntry):
             self._anchor = anchor
 
             self._percents.props.active = percents
-            self._adjustment.props.upper = 100 if self._percents.props.active else 10000
+            self._adjustment.props.upper = 100 if self._percents.props.active \
+                else 10000
             self._mirror.props.active = negative
             with self._adjustment.handler_block(self._on_value_changed_id):
                 self._adjustment.props.value = -p if negative else p
@@ -572,14 +600,16 @@ class PositionEntry(BaseEntry):
             self._on_changed(self)
 
         def _on_percents_toggled(self, toggle):
-            self._adjustment.props.upper = 100 if toggle.props.active else 10000
+            self._adjustment.props.upper = 100 if toggle.props.active \
+                else 10000
             self._on_changed(self)
 
         def _on_mirror_toggled(self, toggle):
             self._on_changed(self)
 
         def _on_anchor_toggled(self, toggle, dimension, anchor):
-            if dimension == self and toggle.props.active and anchor != self._anchor:
+            if dimension == self and toggle.props.active \
+                    and anchor != self._anchor:
                 self._anchor = anchor
                 self._on_changed(self)
 
@@ -593,17 +623,22 @@ class PositionEntry(BaseEntry):
         self._screen_size = (0, 0)
 
         self._anchors = {(x, y): widgets['base_%s_%s' % (x, y)]
-                         for x, y in product(('start', 'center', 'end'), repeat=2)}
+                         for x, y in product(('start', 'center', 'end'),
+                                             repeat=2)}
 
-        self._on_resize_id = self._screen.connect('size-allocate', self._on_resize)
+        self._on_resize_id = self._screen.connect(
+            'size-allocate', self._on_resize)
         self._screen.connect('draw', self._on_draw_screen_border)
         self._screen.connect('screen-changed', self._on_gdkscreen_changed)
-        self._on_gdkscreen_monitors_changed_id = self._screen.get_screen().connect(
-                                                        'monitors-changed',
-                                                        self._on_gdkscreen_monitors_changed)
+        self._on_gdkscreen_monitors_changed_id = \
+            self._screen.get_screen().connect('monitors-changed',
+                                              self.
+                                              _on_gdkscreen_monitors_changed)
 
-        self._x = PositionEntry.Dimension('x', widgets, self._anchors, self._on_dimension_changed)
-        self._y = PositionEntry.Dimension('y', widgets, self._anchors, self._on_dimension_changed)
+        self._x = PositionEntry.Dimension(
+            'x', widgets, self._anchors, self._on_dimension_changed)
+        self._y = PositionEntry.Dimension(
+            'y', widgets, self._anchors, self._on_dimension_changed)
 
     def _get_value(self):
         return self._x.value + ' ' + self._y.value
@@ -623,8 +658,10 @@ class PositionEntry(BaseEntry):
         window_size = window_allocation.width, window_allocation.height
         scale = self._screen_size[0] / geometry.width
 
-        x = self._screen_pos[0] + self._x.get_scaled_position(self._screen_size, window_size, scale)
-        y = self._screen_pos[1] + self._y.get_scaled_position(self._screen_size, window_size, scale)
+        x = self._screen_pos[0] + \
+            self._x.get_scaled_position(self._screen_size, window_size, scale)
+        y = self._screen_pos[1] + \
+            self._y.get_scaled_position(self._screen_size, window_size, scale)
 
         self._screen.move(self._window, x, y)
         self._screen.check_resize()
@@ -645,8 +682,9 @@ class PositionEntry(BaseEntry):
 
         with self._screen.handler_block(self._on_resize_id):
             scale = width / geometry.width
-            self._window.set_size_request(PositionEntry.REAL_WINDOW_SIZE[0] * scale,
-                                          PositionEntry.REAL_WINDOW_SIZE[1] * scale)
+            self._window.set_size_request(
+                PositionEntry.REAL_WINDOW_SIZE[0] * scale,
+                PositionEntry.REAL_WINDOW_SIZE[1] * scale)
             self._update_layout()
 
     def _on_draw_screen_border(self, widget, cr):
@@ -675,8 +713,8 @@ class PositionEntry(BaseEntry):
         if prev_screen:
             prev_screen.disconnect(self._on_gdkscreen_monitors_changed_id)
         self._on_gdkscreen_monitors_changed_id = widget.get_screen().connect(
-                                                            'monitors-changed',
-                                                            self._on_gdkscreen_monitors_changed)
+            'monitors-changed',
+            self._on_gdkscreen_monitors_changed)
 
     def _on_gdkscreen_monitors_changed(self, screen):
         self._screen.queue_resize()
