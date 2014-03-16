@@ -5,7 +5,7 @@ from itertools import product
 from locale import gettext as _
 import os
 import time
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk, Gdk, GObject, GLib
 
 from lightdm_gtk_greeter_settings.helpers import C_
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import \
@@ -168,7 +168,7 @@ class ClockFormatEntry(StringEntry):
         super().__init__(widgets)
         self._preview = widgets['preview']
         self._value.connect('changed', self._on_changed)
-        GObject.timeout_add_seconds(1, self._on_changed, self._value)
+        GLib.timeout_add_seconds(1, self._on_changed, self._value)
 
     def _on_changed(self, entry):
         self._preview.props.label = time.strftime(self._value.props.text)
