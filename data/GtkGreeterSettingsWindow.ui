@@ -821,7 +821,7 @@
                             <property name="tooltip_text" translatable="yes" context="option|indicators">Add indicator to list</property>
                             <property name="label" translatable="yes" context="option|indicators">Add</property>
                             <property name="use_underline">True</property>
-                            <property name="icon_name">list-add</property>
+                            <property name="icon_name">list-add-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -835,7 +835,7 @@
                             <property name="tooltip_text" translatable="yes" context="option|indicators">Remove indicator from list</property>
                             <property name="label" translatable="yes" context="option|indicators">Remove</property>
                             <property name="use_underline">True</property>
-                            <property name="icon_name">list-remove</property>
+                            <property name="icon_name">list-remove-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -849,7 +849,7 @@
                             <property name="tooltip_text" translatable="yes" context="option|indicators">Move up</property>
                             <property name="label" translatable="yes" context="option|indicators">Up</property>
                             <property name="use_underline">True</property>
-                            <property name="icon_name">go-up</property>
+                            <property name="icon_name">go-up-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -863,7 +863,7 @@
                             <property name="tooltip_text" translatable="yes" context="option|indicators">Move down</property>
                             <property name="label" translatable="yes" context="option|indicators">Down</property>
                             <property name="use_underline">True</property>
-                            <property name="icon_name">go-down</property>
+                            <property name="icon_name">go-down-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
