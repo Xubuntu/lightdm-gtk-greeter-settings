@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+# -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+#   LightDM GTK Greeter Settings
+#   Copyright (C) 2014 Andrew P. <pan.pav.7c5@gmail.com>
+#
+#   This program is free software: you can redistribute it and/or modify it
+#   under the terms of the GNU General Public License version 3, as published
+#   by the Free Software Foundation.
+#
+#   This program is distributed in the hope that it will be useful, but
+#   WITHOUT ANY WARRANTY; without even the implied warranties of
+#   MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+#   PURPOSE.  See the GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License along
+#   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import sys
@@ -43,7 +58,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='lightdm-gtk-greeter-settings',
-    version='0.3',
+    version='1.0',
     license='GPL-3',
     author='Andrew P.',
     author_email='pan.pav.7c5@gmail.com',
