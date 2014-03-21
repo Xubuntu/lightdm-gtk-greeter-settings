@@ -1,7 +1,7 @@
 include lightdm-gtk-greeter-settings.desktop.in README COPYING
-include com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy
+include com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in
 include bin/*
 recursive-include data *.ui *.xml
-recursive-include icons *.svg
+recursive-include data/icons *.svg *.png
 recursive-include lightdm_gtk_greeter_settings *.py
-recursive-include po *.po *.in
+recursive-include po *.po *.pot *.in
