@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="com.ubuntu.pkexec.mytest">
+  <action id="com.ubuntu.pkexec.lightdm-gtk-greeter-settings">
     <_message>Authentication is required to run Settings editor for LightDM GTK+ Greeter</_message>
     <icon_name>lightdm-gtk-greeter-settings</icon_name>
     <defaults>

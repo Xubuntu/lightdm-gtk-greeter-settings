@@ -985,6 +985,7 @@
                         <property name="margin_left">24</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
+                        <property name="max_width_chars">6</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">position_x_adjustment</property>
                         <property name="snap_to_ticks">True</property>
@@ -1032,6 +1033,7 @@
                         <property name="margin_left">24</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
+                        <property name="max_width_chars">6</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">position_y_adjustment</property>
                         <property name="snap_to_ticks">True</property>
