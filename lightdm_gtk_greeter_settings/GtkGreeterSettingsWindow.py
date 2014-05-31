@@ -55,6 +55,8 @@ OPTIONS_BINDINGS = \
             'xft-hintstyle': (OptionEntry.ChoiceEntry, 'hintstyle', None),
             'background': (OptionEntry.BackgroundEntry, 'background',
                            '#000000'),
+            'user-background': (OptionEntry.BooleanEntry, 'user_background',
+                                'true'),
             'default-user-image': (OptionEntry.IconEntry, 'userimage',
                                    '#avatar-default'),
             # Panel
