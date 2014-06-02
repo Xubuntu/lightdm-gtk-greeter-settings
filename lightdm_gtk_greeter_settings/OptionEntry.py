@@ -16,7 +16,7 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from builtins import isinstance
-from collections import namedtuple, OrderedDict
+from collections import OrderedDict
 from itertools import product
 from locale import gettext as _
 import os
