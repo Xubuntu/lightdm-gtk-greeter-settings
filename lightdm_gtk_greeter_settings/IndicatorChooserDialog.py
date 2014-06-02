@@ -32,6 +32,7 @@ class IndicatorChooserDialog(Gtk.Dialog):
 
     BUILDER_WIDGETS = ('short_choice', 'short_value', 'short_model',
                        'path_choice', 'path_value',
+                       'expander_choice', 'separator_choice',
                        'add_button', 'ok_button', 'infobar', 'message')
 
     def __new__(cls, check_callback=None, add_callback=None):
@@ -66,8 +67,12 @@ class IndicatorChooserDialog(Gtk.Dialog):
     def _get_current_value(self):
         if self._short_choice.props.active:
             return self._short_value.props.text
-        else:
+        elif self._path_choice.props.active:
             return self._path_value.get_filename()
+        elif self._expander_choice.props.active:
+            return '~expander';
+        else:
+            return '~separator';
 
     def _update_state(self, force_state=None):
         message = None
