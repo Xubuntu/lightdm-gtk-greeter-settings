@@ -18,6 +18,8 @@
 import locale
 import os
 from gi.repository import Gtk
+from collections import namedtuple
+from itertools import chain
 
 
 __license__ = 'GPL-3'
@@ -33,7 +35,8 @@ except ImportError:
 
 
 __all__ = ['C_', 'NC_',
-           'get_data_path', 'get_config_path', 'show_message']
+           'get_data_path', 'get_config_path', 'show_message',
+           'ModelRowEnum']
 
 
 def C_(context, message):
@@ -66,3 +69,17 @@ def show_message(**kwargs):
 
 def get_version():
     return __version__
+
+
+class ModelRowEnum:
+    def __init__(self, *names):
+        self.__keys = tuple(names)
+        self.__values = {name: i for i, name in enumerate(names)}
+        self.__dict__.update(self.__values)
+        self.__RowTuple = namedtuple('ModelRowEnumTuple', names)
+
+    def __call__(self, *args, **kwargs):
+        if args:
+            return self.__RowTuple._make(chain.from_iterable(args))
+        else:
+            return self.__RowTuple._make(kwargs.get(name, i) for i, name in enumerate(self.__keys))

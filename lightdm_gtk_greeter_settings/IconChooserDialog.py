@@ -17,20 +17,21 @@
 
 from collections import namedtuple
 from gi.repository import Gtk, GObject
-from lightdm_gtk_greeter_settings.helpers import get_data_path, NC_, C_
+from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
+from lightdm_gtk_greeter_settings.helpers import get_data_path
+from lightdm_gtk_greeter_settings.helpers import NC_, C_
 
 
 __all__ = ['IconChooserDialog']
+
+CONTEXT_ROW = ModelRowEnum('NAME', 'STANDARD', 'TITLE')
+ICON_ROW = ModelRowEnum('NAME', 'STANDARD', 'CONTEXT')
 
 
 class IconChooserDialog(Gtk.Dialog):
 
     __gtype_name__ = 'IconChooserDialog'
 
-    ContextsModelRow = namedtuple('ContextsModelRow',
-                                  ('name', 'standard', 'title'))
-    IconsModelRow = namedtuple('IconsModelRow',
-                               ('name', 'standard', 'context'))
     IconsFilterArgs = namedtuple('IconsFilterArgs', ('standard', 'context'))
 
     BUILDER_WIDGETS = ('name', 'preview', 'standard_toggle', 'spinner',
@@ -51,12 +52,6 @@ class IconChooserDialog(Gtk.Dialog):
         return window
 
     def _init_window(self):
-        # Map ContextsModelRow fields to self._CONTEXT_{FIELD} = {field-index}
-        for i, field in enumerate(IconChooserDialog.ContextsModelRow._fields):
-            setattr(self, '_CONTEXT_' + field.upper(), i)
-        # Map IconsModelRow fields to self._ICON_{FIELD} = {field-index}
-        for i, field in enumerate(IconChooserDialog.IconsModelRow._fields):
-            setattr(self, '_ICON_' + field.upper(), i)
 
         self._icons_loaded = False
         self._icon_to_select = None
@@ -79,26 +74,20 @@ class IconChooserDialog(Gtk.Dialog):
 
         self._contexts_model.clear()
         for name, title in STANDARD_CONTEXTS:
-            translated_title = title and C_('icon-dialog', title)
-            self._contexts_model.append(self.ContextsModelRow(name=name,
-                                                              standard=True,
-                                                              title=
-                                                              translated_title)
-                                        )
+            row = CONTEXT_ROW(NAME=name, STANDARD=True,
+                              TITLE=title and C_('icon-dialog', title))
+            self._contexts_model.append(row)
 
         for name in theme.list_contexts():
             if name not in standard_contexts:
-                self._contexts_model.append(self.ContextsModelRow(name=name,
-                                                                  standard=
-                                                                  False,
-                                                                  title=name))
+                row = CONTEXT_ROW(NAME=name, STANDARD=False, TITLE=name)
+                self._contexts_model.append(row)
 
         self._icons_model.clear()
         for context in theme.list_contexts():
             for icon in theme.list_icons(context):
-                row = self.IconsModelRow(name=icon,
-                                         standard=icon in STANDARD_ICON_NAMES,
-                                         context=context)
+                row = ICON_ROW(NAME=icon, CONTEXT=context,
+                               STANDARD=icon in STANDARD_ICON_NAMES)
                 self._icons_model.append(row)
 
         self._icons_loaded = True
@@ -124,7 +113,7 @@ class IconChooserDialog(Gtk.Dialog):
         if rowiter:
             self._icons_filter_args = self.IconsFilterArgs(
                 self._standard_toggle.props.active,
-                model[rowiter][self._CONTEXT_NAME])
+                model[rowiter][CONTEXT_ROW.NAME])
         else:
             self._icons_filter_args = None
         self._icons_view.props.model = None
@@ -134,21 +123,21 @@ class IconChooserDialog(Gtk.Dialog):
     def _contexts_filter_visible_callback(self, model, rowiter, data):
         if not self._standard_toggle.props.active:
             return True
-        return model[rowiter][self._CONTEXT_STANDARD]
+        return model[rowiter][CONTEXT_ROW.STANDARD]
 
     def _contexts_row_separator_callback(self, model, rowiter, data):
-        return not model[rowiter][self._CONTEXT_NAME] and \
-            not model[rowiter][self._CONTEXT_TITLE]
+        return not model[rowiter][CONTEXT_ROW.NAME] and \
+            not model[rowiter][CONTEXT_ROW.TITLE]
 
     def _icons_filter_visible_callback(self, model, rowiter, data):
         if not self._icons_filter_args:
             return False
         if self._icons_filter_args.standard and \
-                not model[rowiter][self._ICON_STANDARD]:
+                not model[rowiter][ICON_ROW.STANDARD]:
             return False
         if not self._icons_filter_args.context:
             return True
-        return model[rowiter][self._ICON_CONTEXT] == \
+        return model[rowiter][ICON_ROW.CONTEXT] == \
             self._icons_filter_args.context
 
     def run(self):
@@ -168,7 +157,7 @@ class IconChooserDialog(Gtk.Dialog):
                 self._standard_toggle.props.active = False
             self._contexts_selection.select_path(0)
         for row in self._icons_sorted:
-            if row[self._ICON_NAME] == name:
+            if row[ICON_ROW.NAME] == name:
                 self._icons_view.set_cursor(row.path)
                 self._icons_selection.select_path(row.path)
                 break
@@ -178,7 +167,7 @@ class IconChooserDialog(Gtk.Dialog):
     def on_icons_selection_changed(self, selection):
         model, rowiter = self._icons_selection.get_selected()
         if rowiter:
-            name = model[rowiter][self._ICON_NAME]
+            name = model[rowiter][ICON_ROW.NAME]
             self._name.props.text = name
 
     def on_contexts_selection_changed(self, selection):
