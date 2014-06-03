@@ -24,7 +24,7 @@ import time
 from gi.repository import Gtk, Gdk, GObject, GLib
 
 from lightdm_gtk_greeter_settings.helpers import C_
-from lightdm_gtk_greeter_settings.helpers import ModelColumnEnum
+from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import \
     IndicatorChooserDialog
 from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
@@ -357,11 +357,9 @@ class IconEntry(BaseEntry):
             return
         self._path_dialog_preview.set_from_file(path)
 
-
 class IndicatorsEntry(BaseEntry):
+    ROW = ModelRowEnum('NAME', 'TOOLTIP', 'EDITABLE', 'HAS_STATE', 'STATE')
     NAMES_DELIMITER = ';'
-    COLUMN = ModelColumnEnum('NAME', 'TOOLTIP', 'EDITABLE',
-                             'HAS_STATE', 'STATE')
     DEFAULT_TOOLTIPS = {'~expander': C_('option-entry|indicators', 'Expander'),
                         '~separator': C_('option-entry|indicators', 'Separator')}
 
@@ -380,7 +378,7 @@ class IndicatorsEntry(BaseEntry):
         self._model = widgets['model']
         self._indicators_dialog = None
         self._initial_items = OrderedDict((item.NAME, item)
-                                          for item in map(self.COLUMN, self._model))
+                                          for item in map(self.ROW, self._model))
 
         self._treeview.connect('key-press-event', self._on_key_press)
         self._selection.connect('changed', self._on_selection_changed)
@@ -400,8 +398,8 @@ class IndicatorsEntry(BaseEntry):
         self._emit_changed()
 
     def _get_value(self):
-        names = (row[self.COLUMN.NAME] for row in self._model
-                 if not row[self.COLUMN.HAS_STATE] or row[self.COLUMN.STATE])
+        names = (row[self.ROW.NAME] for row in self._model
+                 if not row[self.ROW.HAS_STATE] or row[self.ROW.STATE])
         return self.NAMES_DELIMITER.join(names)
 
     def _set_value(self, value):
@@ -411,7 +409,7 @@ class IndicatorsEntry(BaseEntry):
             for name in value.split(self.NAMES_DELIMITER):
                 try:
                     self._model[self._model.append(last_options.pop(name))]\
-                         [self.COLUMN.STATE] = True
+                         [self.ROW.STATE] = True
                 except KeyError:
                     self._model.append(self._get_indicator_tuple(name))
 
@@ -446,7 +444,7 @@ class IndicatorsEntry(BaseEntry):
         if not name:
             return False
         elif name not in ('~expander', '~separator'):
-            if any(row[self.COLUMN.NAME] == name for row in self._model):
+            if any(row[self.ROW.NAME] == name for row in self._model):
                 return C_('option-entry|indicators',
                           'Indicator "{indicator}" is already in the list')\
                     .format(indicator=name)
@@ -463,8 +461,8 @@ class IndicatorsEntry(BaseEntry):
                         C_('option-entry|indicators', 'Indicator: {name}')
                            .format(name=name))
         editable = name not in ('~expander', '~separator')
-        return self.COLUMN(NAME=name, TOOLTIP=tooltip, EDITABLE=editable,
-                           HAS_STATE=False, STATE=False)
+        return self.ROW(NAME=name, TOOLTIP=tooltip, EDITABLE=editable,
+                        HAS_STATE=False, STATE=False)
 
     def _on_key_press(self, treeview, event):
         if Gdk.keyval_name(event.keyval) == 'Delete':
@@ -479,20 +477,19 @@ class IndicatorsEntry(BaseEntry):
         return True
 
     def _on_state_toggled(self, renderer, path):
-        self._model[path][self.COLUMN.STATE] = not self._model[path]\
-                                                        [self.COLUMN.STATE]
+        self._model[path][self.ROW.STATE] = not self._model[path]\
+                                                        [self.ROW.STATE]
 
     def _on_name_edited(self, renderer, path, name):
         check = self._check_indicator(name)
         if not isinstance(check, str) and check:
-            self._model[path][self.COLUMN.NAME] = name
+            self._model[path][self.ROW.NAME] = name
 
     def _on_selection_changed(self, selection):
         model, rowiter = selection.get_selected()
         has_selection = rowiter is not None
         self._remove.props.sensitive = has_selection and \
-                                       not model[rowiter]\
-                                                [self.COLUMN.HAS_STATE]
+                                       not model[rowiter][self.ROW.HAS_STATE]
         self._down.props.sensitive = has_selection and model.iter_next(
             rowiter) is not None
         self._up.props.sensitive = has_selection and model.iter_previous(

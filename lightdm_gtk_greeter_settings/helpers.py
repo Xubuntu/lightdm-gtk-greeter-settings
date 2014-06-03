@@ -36,7 +36,7 @@ except ImportError:
 
 __all__ = ['C_', 'NC_',
            'get_data_path', 'get_config_path', 'show_message',
-           'ModelColumnEnum']
+           'ModelRowEnum']
 
 
 def C_(context, message):
@@ -71,15 +71,15 @@ def get_version():
     return __version__
 
 
-class ModelColumnEnum:
+class ModelRowEnum:
     def __init__(self, *names):
         self.__keys = tuple(names)
         self.__values = {name: i for i, name in enumerate(names)}
         self.__dict__.update(self.__values)
-        self.ColumnTuple = namedtuple('ModelColumnEnumTuple', names)
+        self.__RowTuple = namedtuple('ModelRowEnumTuple', names)
 
     def __call__(self, *args, **kwargs):
         if args:
-            return self.ColumnTuple._make(chain.from_iterable(args))
+            return self.__RowTuple._make(chain.from_iterable(args))
         else:
-            return self.ColumnTuple._make(kwargs.get(name, i) for i, name in enumerate(self.__keys))
+            return self.__RowTuple._make(kwargs.get(name, i) for i, name in enumerate(self.__keys))
