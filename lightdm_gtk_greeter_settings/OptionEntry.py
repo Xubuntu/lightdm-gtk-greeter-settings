@@ -360,7 +360,7 @@ class IconEntry(BaseEntry):
 class IndicatorsEntry(BaseEntry):
     ROW = ModelRowEnum('NAME', 'TOOLTIP', 'EDITABLE', 'HAS_STATE', 'STATE')
     NAMES_DELIMITER = ';'
-    DEFAULT_TOOLTIPS = {'~expander': C_('option-entry|indicators', 'Expander'),
+    DEFAULT_TOOLTIPS = {'~spacer': C_('option-entry|indicators', 'Expander'),
                         '~separator': C_('option-entry|indicators', 'Separator')}
 
     def __init__(self, widgets):
@@ -443,7 +443,7 @@ class IndicatorsEntry(BaseEntry):
         ''' Returns True if name is valid, error message or False otherwise '''
         if not name:
             return False
-        elif name not in ('~expander', '~separator'):
+        elif name not in ('~spacer', '~separator'):
             if any(row[self.ROW.NAME] == name for row in self._model):
                 return C_('option-entry|indicators',
                           'Indicator "{indicator}" is already in the list')\
@@ -460,7 +460,7 @@ class IndicatorsEntry(BaseEntry):
         tooltip = self.DEFAULT_TOOLTIPS.get(name,
                         C_('option-entry|indicators', 'Indicator: {name}')
                            .format(name=name))
-        editable = name not in ('~expander', '~separator')
+        editable = name not in ('~spacer', '~separator')
         return self.ROW(NAME=name, TOOLTIP=tooltip, EDITABLE=editable,
                         HAS_STATE=False, STATE=False)
 

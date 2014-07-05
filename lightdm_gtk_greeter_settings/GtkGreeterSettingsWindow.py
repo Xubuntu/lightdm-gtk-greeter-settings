@@ -64,7 +64,7 @@ OPTIONS_BINDINGS = \
             'clock-format': (OptionEntry.ClockFormatEntry, 'clock_format',
                              '%a, %H:%M'),
             'indicators': (OptionEntry.IndicatorsEntry, 'indicators',
-                           '~host;~expander;~clock;~expander;~language;~session;~a11y;~power'),
+                           '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
             # Position
             'position': (OptionEntry.PositionEntry, 'position', '50%,center'),
             # Misc
