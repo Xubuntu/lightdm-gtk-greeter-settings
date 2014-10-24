@@ -15,11 +15,12 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import locale
-import os
-from gi.repository import Gtk
 from collections import namedtuple
 from itertools import chain
+import locale
+import os
+
+from gi.repository import Gtk
 
 
 __license__ = 'GPL-3'
@@ -36,7 +37,8 @@ except ImportError:
 
 __all__ = ['C_', 'NC_',
            'get_data_path', 'get_config_path', 'show_message',
-           'ModelRowEnum']
+           'bool2string', 'string2bool',
+           'ModelRowEnum', 'WidgetsWrapper']
 
 
 def C_(context, message):
@@ -62,16 +64,24 @@ def get_config_path():
 
 
 def show_message(**kwargs):
-    dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.CLOSE, **kwargs)
+    dialog = Gtk.MessageDialog(parent=Gtk.Window.list_toplevels()[0], buttons=Gtk.ButtonsType.CLOSE, **kwargs)
     dialog.run()
     dialog.destroy()
-
 
 def get_version():
     return __version__
 
 
+def bool2string(value):
+    return 'true' if value else 'false'
+
+
+def string2bool(value):
+    return value and value.lower() in ('true', 'yes', '1')
+
+
 class ModelRowEnum:
+
     def __init__(self, *names):
         self.__keys = tuple(names)
         self.__values = {name: i for i, name in enumerate(names)}
@@ -83,3 +93,21 @@ class ModelRowEnum:
             return self.__RowTuple._make(chain.from_iterable(args))
         else:
             return self.__RowTuple._make(kwargs.get(name, i) for i, name in enumerate(self.__keys))
+
+
+class WidgetsWrapper:
+
+    def __init__(self, source, *prefixes):
+        if isinstance(source, Gtk.Builder):
+            self._builder = source
+            self._prefixes = tuple(prefixes)
+        elif isinstance(source, WidgetsWrapper):
+            self._builder = source._builder
+            self._prefixes = source._prefixes + tuple(prefixes)
+        else:
+            raise TypeError(source)
+
+    def __getitem__(self, args):
+        if not isinstance(args, tuple):
+            args = (args,)
+        return self._builder.get_object('_'.join(chain(self._prefixes, args)))

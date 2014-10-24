@@ -21,13 +21,14 @@ from itertools import product
 from locale import gettext as _
 import os
 import time
-from gi.repository import Gtk, Gdk, GObject, GLib
 
-from lightdm_gtk_greeter_settings.helpers import C_
-from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
+from gi.repository import Gtk, Gdk, GObject, GLib
+from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 from lightdm_gtk_greeter_settings.IndicatorChooserDialog import \
     IndicatorChooserDialog
-from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
+from lightdm_gtk_greeter_settings.helpers import C_
+from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
+from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
@@ -35,10 +36,21 @@ __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
            'AdjustmentEntry', 'ChoiceEntry']
 
 
+class BuilderWrapper:
+
+    def __init__(self, builder, base):
+        self._builder = builder
+        self._base = base
+
+    def __getitem__(self, key):
+        return self._builder.get_object('%s_%s' % (self._base, key))
+
+
 class BaseEntry(GObject.GObject):
 
     def __init__(self, widgets):
         super().__init__()
+        self._widgets = widgets
         self._use = widgets['use']
         if self._use:
             self._use.connect('notify::active', self._on_use_toggled)
@@ -68,6 +80,10 @@ class BaseEntry(GObject.GObject):
     def enabled(self, value):
         if self._use:
             self._use.props.active = value
+
+    @property
+    def widgets(self):
+        return self._widgets
 
     @GObject.Signal
     def changed(self):
@@ -114,11 +130,10 @@ class BooleanEntry(BaseEntry):
         self._value.connect('notify::active', self._emit_changed)
 
     def _get_value(self):
-        return 'true' if self._value.props.active else 'false'
+        return bool2string(self._value.props.active)
 
     def _set_value(self, value):
-        self._value.props.active = value and value.lower() not in (
-            'false', 'no', '0')
+        self._value.props.active = string2bool(value)
 
     def _set_enabled(self, value):
         self._value.props.sensitive = value
@@ -209,19 +224,21 @@ class BackgroundEntry(BaseEntry):
         if self._image_choice.props.active:
             return self._image_value.get_filename() or ''
         else:
-            return self._color_value.props.color.to_string()
+            return self._color_value.props.rgba.to_string()
 
     def _set_value(self, value):
         if value is None:
             value = ''
 
-        color = Gdk.color_parse(value)
+        rgba = Gdk.RGBA()
+        if not rgba.parse(value):
+            rgba = None
 
-        self._color_choice.props.active = color is not None
-        self._image_choice.props.active = color is None
+        self._color_choice.props.active = rgba is not None
+        self._image_choice.props.active = rgba is None
 
-        if color is not None:
-            self._color_value.props.color = color
+        if rgba is not None:
+            self._color_value.props.rgba = rgba
             self._image_value.unselect_all()
         else:
             if value:
@@ -357,10 +374,11 @@ class IconEntry(BaseEntry):
             return
         self._path_dialog_preview.set_from_file(path)
 
+
 class IndicatorsEntry(BaseEntry):
     ROW = ModelRowEnum('NAME', 'TOOLTIP', 'EDITABLE', 'HAS_STATE', 'STATE')
     NAMES_DELIMITER = ';'
-    DEFAULT_TOOLTIPS = {'~spacer': C_('option-entry|indicators', 'Expander'),
+    DEFAULT_TOOLTIPS = {'~spacer': C_('option-entry|indicators', 'Spacer'),
                         '~separator': C_('option-entry|indicators', 'Separator')}
 
     def __init__(self, widgets):
@@ -477,8 +495,7 @@ class IndicatorsEntry(BaseEntry):
         return True
 
     def _on_state_toggled(self, renderer, path):
-        self._model[path][self.ROW.STATE] = not self._model[path]\
-                                                        [self.ROW.STATE]
+        self._model[path][self.ROW.STATE] = not self._model[path][self.ROW.STATE]
 
     def _on_name_edited(self, renderer, path, name):
         check = self._check_indicator(name)
