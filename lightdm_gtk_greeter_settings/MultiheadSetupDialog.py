@@ -22,9 +22,8 @@ from locale import gettext as _
 from gi.repository import Gtk, Gdk, GdkPixbuf
 from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
-from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper, C_, ModelRowEnum
-
 from lightdm_gtk_greeter_settings.OptionGroup import BaseGroup
+from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper, C_, ModelRowEnum
 
 
 __all__ = ['MultiheadSetupDialog']

@@ -25,11 +25,11 @@ import sys
 
 from gi.repository import Gtk
 from lightdm_gtk_greeter_settings import OptionEntry
+from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper
-
+from lightdm_gtk_greeter_settings import PositionEntry
 from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MonitorsGroup
-from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 
 
 __all__ = ['GtkGreeterSettingsWindow']
@@ -90,7 +90,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'indicators': (OptionEntry.IndicatorsEntry,
                                '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
                 # Position
-                'position': (OptionEntry.PositionEntry, '50%,center'),
+                'position': (PositionEntry.PositionEntry, '50%,center'),
                 # Misc
                 'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
                 'keyboard': (OptionEntry.StringEntry, None)

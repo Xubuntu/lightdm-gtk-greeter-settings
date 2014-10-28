@@ -17,8 +17,6 @@
 
 from builtins import isinstance
 from collections import OrderedDict
-from itertools import product
-from locale import gettext as _
 import os
 import time
 
@@ -32,7 +30,7 @@ from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
 
 
 __all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
-           'BackgroundEntry', 'IconEntry', 'IndicatorsEntry', 'PositionEntry',
+           'BackgroundEntry', 'IconEntry', 'IndicatorsEntry',
            'AdjustmentEntry', 'ChoiceEntry']
 
 
@@ -290,12 +288,13 @@ class IconEntry(BaseEntry):
         self._path_dialog_preview = widgets['path_dialog_preview']
         self._icon_dialog = None
 
+        #self._icon_item.set_ic
+
         self._button.connect('toggled', self._on_button_toggled)
         self._menu.connect('hide', self._on_menu_hide)
         self._icon_item.connect('activate', self._on_select_icon)
         self._path_item.connect('activate', self._on_select_path)
-        self._path_dialog.connect(
-            'update-preview', self._on_update_path_preview)
+        self._path_dialog.connect('update-preview', self._on_update_path_preview)
 
     def _get_value(self):
         return self._value
@@ -535,219 +534,3 @@ class IndicatorsEntry(BaseEntry):
         self._move_selection(move_up=False)
 
 
-class PositionEntry(BaseEntry):
-
-    class Dimension:
-
-        def __init__(self, name, widgets, anchors, on_changed):
-            self.__dict__.update(('_%s' % w, widgets['%s_%s' % (name, w)])
-                                 for w in ('value', 'percents', 'mirror',
-                                           'adjustment'))
-            self._name = name
-            self._on_changed = on_changed
-            self._anchor = ''
-
-            self._percents.connect('toggled', self._on_percents_toggled)
-            self._mirror.connect('toggled', self._on_mirror_toggled)
-            self._on_value_changed_id = self._adjustment.connect(
-                'value-changed',
-                self._on_value_changed)
-
-            for (x, y), widget in list(anchors.items()):
-                widget.connect('toggled', self._on_anchor_toggled, self,
-                               x if self._name == 'x' else y)
-
-        @property
-        def value(self):
-            return '%s%d%s,%s' % ('-' if self._mirror.props.active else '',
-                                  int(self._value.props.value),
-                                  '%' if self._percents.props.active else '',
-                                  self._anchor)
-
-        @value.setter
-        def value(self, dim_value):
-            value, _, anchor = dim_value.partition(',')
-
-            percents = value and value[-1] == '%'
-            if percents:
-                value = value[:-1]
-
-            try:
-                p = int(value)
-            except ValueError:
-                p = 0
-
-            negative = (p < 0) or (p == 0 and value and value[0] == '-')
-
-            if not anchor or anchor not in ('start', 'center', 'end'):
-                if negative:
-                    anchor = 'end'
-                else:
-                    anchor = 'start'
-            self._anchor = anchor
-
-            self._percents.props.active = percents
-            self._adjustment.props.upper = 100 if self._percents.props.active \
-                else 10000
-            self._mirror.props.active = negative
-            with self._adjustment.handler_block(self._on_value_changed_id):
-                self._adjustment.props.value = -p if negative else p
-
-        @property
-        def anchor(self):
-            return self._anchor
-
-        def get_scaled_position(self, screen, window, scale):
-            screen_size = screen[0] if self._name == 'x' else screen[1]
-            window_size = window[0] if self._name == 'x' else window[1]
-
-            p = int(self._adjustment.props.value)
-            if self._percents.props.active:
-                p = screen_size * p / 100
-            else:
-                p *= scale
-
-            if self._mirror.props.active:
-                p = screen_size - p
-
-            if self._anchor == 'center':
-                p -= window_size / 2
-            elif self._anchor == 'end':
-                p -= window_size
-
-            p = int(p)
-
-            if p + window_size > screen_size:
-                p = screen_size - window_size
-            if p < 0:
-                p = 0
-
-            return p
-
-        def _on_value_changed(self, widget):
-            self._on_changed(self)
-
-        def _on_percents_toggled(self, toggle):
-            self._adjustment.props.upper = 100 if toggle.props.active \
-                else 10000
-            self._on_changed(self)
-
-        def _on_mirror_toggled(self, toggle):
-            self._on_changed(self)
-
-        def _on_anchor_toggled(self, toggle, dimension, anchor):
-            if dimension == self and toggle.props.active \
-                    and anchor != self._anchor:
-                self._anchor = anchor
-                self._on_changed(self)
-
-    REAL_WINDOW_SIZE = 430, 210
-
-    def __init__(self, widgets):
-        super().__init__(widgets)
-        self._screen = widgets['screen']
-        self._window = widgets['window']
-        self._screen_pos = (0, 0)
-        self._screen_size = (0, 0)
-
-        self._anchors = {(x, y): widgets['base_%s_%s' % (x, y)]
-                         for x, y in product(('start', 'center', 'end'),
-                                             repeat=2)}
-
-        self._on_resize_id = self._screen.connect(
-            'size-allocate', self._on_resize)
-        self._screen.connect('draw', self._on_draw_screen_border)
-        self._screen.connect('screen-changed', self._on_gdkscreen_changed)
-        self._on_gdkscreen_monitors_changed_id = \
-            self._screen.get_screen().connect('monitors-changed',
-                                              self.
-                                              _on_gdkscreen_monitors_changed)
-
-        self._x = PositionEntry.Dimension(
-            'x', widgets, self._anchors, self._on_dimension_changed)
-        self._y = PositionEntry.Dimension(
-            'y', widgets, self._anchors, self._on_dimension_changed)
-
-    def _get_value(self):
-        return self._x.value + ' ' + self._y.value
-
-    def _set_value(self, value):
-        if value:
-            x, _, y = value.partition(' ')
-            self._x.value = x
-            self._y.value = y or x
-            self._anchors[self._x.anchor, self._y.anchor].props.active = True
-            self._update_layout()
-
-    def _update_layout(self):
-        screen = self._screen.get_toplevel().get_screen()
-        geometry = screen.get_monitor_geometry(screen.get_primary_monitor())
-        window_allocation = self._window.get_allocation()
-        window_size = window_allocation.width, window_allocation.height
-        scale = self._screen_size[0] / geometry.width
-
-        x = self._screen_pos[0] + \
-            self._x.get_scaled_position(self._screen_size, window_size, scale)
-        y = self._screen_pos[1] + \
-            self._y.get_scaled_position(self._screen_size, window_size, scale)
-
-        self._screen.move(self._window, x, y)
-        self._screen.check_resize()
-
-    def _on_resize(self, widget, allocation):
-        screen = self._screen.get_toplevel().get_screen()
-        geometry = screen.get_monitor_geometry(screen.get_primary_monitor())
-        screen_scale = geometry.height / geometry.width
-
-        width = allocation.width
-        height = int(width * screen_scale)
-
-        if height > allocation.height:
-            height = allocation.height
-            width = min(width, int(height / screen_scale))
-        self._screen_pos = int((allocation.width - width) / 2), 0
-        self._screen_size = (width, height)
-
-        with self._screen.handler_block(self._on_resize_id):
-            scale = width / geometry.width
-            self._window.set_size_request(
-                PositionEntry.REAL_WINDOW_SIZE[0] * scale,
-                PositionEntry.REAL_WINDOW_SIZE[1] * scale)
-            self._update_layout()
-
-    def _on_draw_screen_border(self, widget, cr):
-        width, height = self._screen_size
-        x, y = self._screen_pos
-        line_width = 2
-        width -= line_width
-        height -= line_width
-
-        x += line_width / 2
-        y += line_width / 2
-        cr.set_source_rgba(0.2, 0.1, 0.2, 0.8)
-        cr.set_line_width(line_width)
-
-        cr.move_to(x, y)
-        cr.line_to(x + width, y)
-        cr.line_to(x + width, y + height)
-        cr.line_to(x, y + height)
-        cr.line_to(x, y - line_width / 2)
-        cr.stroke_preserve()
-
-        return False
-
-    def _on_gdkscreen_changed(self, widget, prev_screen):
-        widget.queue_resize()
-        if prev_screen:
-            prev_screen.disconnect(self._on_gdkscreen_monitors_changed_id)
-        self._on_gdkscreen_monitors_changed_id = widget.get_screen().connect(
-            'monitors-changed',
-            self._on_gdkscreen_monitors_changed)
-
-    def _on_gdkscreen_monitors_changed(self, screen):
-        self._screen.queue_resize()
-
-    def _on_dimension_changed(self, dimension):
-        with self._screen.handler_block(self._on_resize_id):
-            self._update_layout()
-            self._emit_changed()

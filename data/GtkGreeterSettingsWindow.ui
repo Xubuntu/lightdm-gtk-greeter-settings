@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.4"/>
+  <requires lib="gtk+" version="3.8"/>
   <requires lib="gtk_greeter_settings" version="1.0"/>
+  <object class="GtkMenu" id="greeter_default-user-image_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkMenuItem" id="greeter_default-user-image_icon_item">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Icon</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="greeter_default-user-image_path_item">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Path</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkFileFilter" id="greeter_default-user-image_path_dialog_filter">
     <mime-types>
       <mime-type>image/*</mime-type>
@@ -162,42 +180,10 @@
     <property name="can_focus">False</property>
     <property name="icon_name">dialog-close</property>
   </object>
-  <object class="GtkImage" id="icon_image">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">image</property>
-  </object>
   <object class="GtkImage" id="icon_ok">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">dialog-ok</property>
-  </object>
-  <object class="GtkImage" id="icon_open">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-open</property>
-  </object>
-  <object class="GtkMenu" id="greeter_default-user-image_menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkImageMenuItem" id="greeter_default-user-image_icon_item">
-        <property name="label">Icon</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="image">icon_image</property>
-        <property name="use_stock">False</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="greeter_default-user-image_path_item">
-        <property name="label">Path</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="image">icon_open</property>
-        <property name="use_stock">False</property>
-      </object>
-    </child>
   </object>
   <object class="GtkImage" id="icon_reset">
     <property name="visible">True</property>
@@ -215,6 +201,7 @@
     <property name="title" translatable="yes">LightDM GTK+ Greeter: settings</property>
     <property name="window_position">center</property>
     <property name="icon_name">lightdm-gtk-greeter-settings</property>
+    <property name="has_resize_grip">True</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -234,6 +221,7 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
+            <property name="enable_popup">True</property>
             <child>
               <object class="GtkGrid" id="appearance_box">
                 <property name="visible">True</property>
@@ -381,7 +369,7 @@
                             <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
                             <property name="margin_left">24</property>
                             <property name="hexpand">True</property>
-                            <property name="xalign">0</property>
+                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -399,7 +387,7 @@
                             <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
                             <property name="margin_left">24</property>
                             <property name="hexpand">True</property>
-                            <property name="xalign">0</property>
+                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -417,7 +405,7 @@
                             <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
                             <property name="margin_left">24</property>
                             <property name="hexpand">True</property>
-                            <property name="xalign">0</property>
+                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -435,7 +423,7 @@
                             <property name="tooltip_text" translatable="yes">Enable this option to override system defaults</property>
                             <property name="margin_left">24</property>
                             <property name="hexpand">True</property>
-                            <property name="xalign">0</property>
+                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -487,7 +475,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
-                    <property name="xalign">0</property>
+                    <property name="xalign">0.5</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -516,7 +504,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
-                    <property name="xalign">0</property>
+                    <property name="xalign">0.5</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">greeter_background_image_choice</property>
@@ -613,7 +601,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="margin_left">24</property>
-                    <property name="xalign">0</property>
+                    <property name="xalign">0.5</property>
                     <property name="image_position">right</property>
                     <property name="draw_indicator">True</property>
                   </object>
@@ -676,7 +664,7 @@
                 <property name="label" translatable="yes">Appearance</property>
               </object>
               <packing>
-                <property name="tab_fill">False</property>
+                <property name="tab_expand">True</property>
               </packing>
             </child>
             <child>
@@ -959,7 +947,7 @@
               </object>
               <packing>
                 <property name="position">1</property>
-                <property name="tab_fill">False</property>
+                <property name="tab_expand">True</property>
               </packing>
             </child>
             <child>
@@ -975,35 +963,158 @@
                 <property name="row_spacing">8</property>
                 <property name="column_spacing">8</property>
                 <child>
-                  <object class="GtkLabel" id="label6">
+                  <object class="GtkLabel" id="greeter_position_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|position">Horizontal </property>
+                    <property name="label" translatable="yes" context="option|position">Select base point and its position</property>
                     <attributes>
-                      <attribute name="weight" value="semibold"/>
+                      <attribute name="style" value="oblique"/>
                     </attributes>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="box8">
+                  <object class="GtkAspectFrame" id="greeter_position_screen_frame">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="label_xalign">0</property>
+                    <property name="shadow_type">in</property>
+                    <property name="obey_child">False</property>
+                    <child>
+                      <object class="GtkOverlay" id="greeter_position_screen_overlay">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <child>
+                          <object class="GtkBox" id="box3">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="hexpand">True</property>
+                            <property name="vexpand">True</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="overlay">
+                          <object class="GtkFrame" id="greeter_position_window_frame">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">start</property>
+                            <property name="border_width">2</property>
+                            <property name="label_xalign">0</property>
+                            <property name="shadow_type">in</property>
+                            <child>
+                              <object class="GtkGrid" id="greeter_position_window_grid">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="column_spacing">30</property>
+                                <property name="row_homogeneous">True</property>
+                                <property name="column_homogeneous">True</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label_item">
+                              <placeholder/>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator" id="separator1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="height">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label9">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Horizontal</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Vertical</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box6">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="spacing">8</property>
                     <child>
-                      <object class="GtkSpinButton" id="greeter_position_x_value">
+                      <object class="GtkSpinButton" id="greeter_position_x_entry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
-                        <property name="margin_left">24</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
+                        <property name="text" translatable="yes">0</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">greeter_position_x_adjustment</property>
                         <property name="snap_to_ticks">True</property>
@@ -1033,22 +1144,22 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="top_attach">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="box9">
+                  <object class="GtkBox" id="box7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="spacing">8</property>
                     <child>
-                      <object class="GtkSpinButton" id="greeter_position_y_value">
+                      <object class="GtkSpinButton" id="greeter_position_y_entry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
-                        <property name="margin_left">24</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
+                        <property name="text" translatable="yes">0</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">greeter_position_y_adjustment</property>
                         <property name="snap_to_ticks">True</property>
@@ -1078,52 +1189,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
-                    <property name="top_attach">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label11">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|position">Vertical</property>
-                    <attributes>
-                      <attribute name="weight" value="semibold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">2</property>
                     <property name="top_attach">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSeparator" id="separator2">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
-                    <property name="height">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="greeter_position_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option|position">Select base point and its position</property>
-                    <attributes>
-                      <attribute name="style" value="oblique"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
@@ -1132,13 +1198,12 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="margin_left">24</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="top_attach">4</property>
                   </packing>
                 </child>
                 <child>
@@ -1147,201 +1212,12 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="margin_left">24</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
-                    <property name="top_attach">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkFixed" id="greeter_position_screen">
-                    <property name="visible">True</property>
-                    <property name="app_paintable">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="resize_mode">immediate</property>
-                    <child>
-                      <object class="GtkFrame" id="greeter_position_window">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="border_width">2</property>
-                        <property name="resize_mode">immediate</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">in</property>
-                        <child>
-                          <object class="GtkGrid" id="greeter_position_window_grid">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="column_spacing">30</property>
-                            <property name="row_homogeneous">True</property>
-                            <property name="column_homogeneous">True</property>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_start_start">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">start</property>
-                                <property name="valign">start</property>
-                                <property name="xalign">0</property>
-                                <property name="active">True</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_center_start">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">center</property>
-                                <property name="valign">start</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_end_start">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">start</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_start_center">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">start</property>
-                                <property name="valign">center</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_center_center">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_end_center">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_start_end">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">start</property>
-                                <property name="valign">end</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_center_end">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="greeter_position_base_end_end">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">end</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <property name="group">greeter_position_base_start_start</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                        <child type="label_item">
-                          <placeholder/>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">3</property>
-                    <property name="height">2</property>
+                    <property name="top_attach">4</property>
                   </packing>
                 </child>
               </object>
@@ -1351,14 +1227,14 @@
               </packing>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="label3">
+              <object class="GtkLabel" id="label5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Window position</property>
               </object>
               <packing>
                 <property name="position">2</property>
-                <property name="tab_fill">False</property>
+                <property name="tab_expand">True</property>
               </packing>
             </child>
             <child>
@@ -1500,14 +1376,14 @@
               </packing>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="label4">
+              <object class="GtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Misc.</property>
               </object>
               <packing>
                 <property name="position">3</property>
-                <property name="tab_fill">False</property>
+                <property name="tab_expand">True</property>
               </packing>
             </child>
           </object>
