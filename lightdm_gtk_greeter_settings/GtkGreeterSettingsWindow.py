@@ -15,21 +15,22 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from collections import namedtuple
+
 import configparser
+import os
+import sys
+from collections import namedtuple
 from glob import iglob
 from itertools import chain
 from locale import gettext as _
-import os
-import sys
-
 from gi.repository import Gtk
-from lightdm_gtk_greeter_settings import OptionEntry
-from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
+
 from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper
+from lightdm_gtk_greeter_settings import OptionEntry
+from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
+from lightdm_gtk_greeter_settings.MonitorsGroup import MonitorsGroup
 from lightdm_gtk_greeter_settings import PositionEntry
-from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MonitorsGroup
 
 
 __all__ = ['GtkGreeterSettingsWindow']
