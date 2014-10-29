@@ -17,6 +17,7 @@
 
 from builtins import isinstance
 from collections import OrderedDict
+from locale import gettext as _
 import os
 import time
 
@@ -29,7 +30,7 @@ from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
 from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
 
 
-__all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'ClockFormatEntry',
+__all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'StringPathEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry',
            'AdjustmentEntry', 'ChoiceEntry']
 
@@ -152,6 +153,54 @@ class StringEntry(BaseEntry):
 
     def _set_enabled(self, value):
         self._value.props.sensitive = value
+
+
+class StringPathEntry(BaseEntry):
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+
+        self._file_dialog = None
+
+        self._combo = widgets['combo']
+        self._entry = widgets['entry']
+
+        self._entry.connect('changed', self._emit_changed)
+        self._combo.connect('format-entry-text', self._on_combobox_format)
+
+        self._combo.set_row_separator_func(self._row_separator_callback, None)
+
+    def _get_value(self):
+        return self._entry.props.text
+
+    def _set_value(self, value):
+        self._entry.props.text = value or ''
+
+    def _set_enabled(self, value):
+        self._combo.props.sensitive = value
+
+    def _row_separator_callback(self, model, rowiter, data):
+        return model[rowiter][0] == '-'
+
+    def _on_combobox_format(self, combobox, path):
+        value = ''
+        item_id = combobox.get_active_id()
+        if item_id == 'select-path':
+            if not self._file_dialog:
+                self._file_dialog = Gtk.FileChooserDialog(
+                                            parent=self._combo.get_toplevel(),
+                                            buttons=(_('_OK'), Gtk.ResponseType.OK,
+                                                     _('_Cancel'), Gtk.ResponseType.CANCEL),
+                                            title=C_('option|StringPathEntry', 'Select path'))
+            if self._file_dialog.run() == Gtk.ResponseType.OK:
+                value = self._file_dialog.get_filename()
+            else:
+                value = combobox.get_active_text()
+            self._file_dialog.hide()
+        elif item_id == 'value':
+            value = combobox.props.model[path][0]
+        combobox.set_active(-1)
+        return value
 
 
 class AdjustmentEntry(BaseEntry):

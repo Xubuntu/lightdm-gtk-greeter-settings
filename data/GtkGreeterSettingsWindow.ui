@@ -221,7 +221,6 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="enable_popup">True</property>
             <child>
               <object class="GtkGrid" id="appearance_box">
                 <property name="visible">True</property>
@@ -665,6 +664,7 @@
               </object>
               <packing>
                 <property name="tab_expand">True</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
@@ -948,6 +948,7 @@
               <packing>
                 <property name="position">1</property>
                 <property name="tab_expand">True</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
@@ -1235,6 +1236,7 @@
               <packing>
                 <property name="position">2</property>
                 <property name="tab_expand">True</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
@@ -1264,54 +1266,6 @@
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
                     <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="greeter_keyboard_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|keyboard">Onscreen keyboard</property>
-                    <attributes>
-                      <attribute name="weight" value="semibold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="greeter_keyboard_values">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">24</property>
-                    <property name="has_entry">True</property>
-                    <items>
-                      <item>onboard</item>
-                    </items>
-                    <child internal-child="entry">
-                      <object class="GtkEntry" id="greeter_keyboard_value">
-                        <property name="can_focus">True</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="greeter_keyboard_use">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
@@ -1369,6 +1323,124 @@
                     <property name="width">2</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="label4">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Accessibility</property>
+                    <attributes>
+                      <attribute name="weight" value="semibold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">24</property>
+                    <property name="row_spacing">8</property>
+                    <property name="column_spacing">8</property>
+                    <child>
+                      <object class="GtkCheckButton" id="greeter_keyboard_use">
+                        <property name="label" translatable="yes">Keyboard</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="xalign">0</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="greeter_reader_use">
+                        <property name="label" translatable="yes">Reader</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="xalign">0</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label6">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">&lt;i&gt;You can choose accessibility features &lt;a href=""&gt;enabled at start&lt;/a&gt;&lt;/i&gt;</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_reader_combo">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="has_entry">True</property>
+                        <items>
+                          <item id="select-path" translatable="yes" context="option|greeter|reader">Select path to reader...</item>
+                          <item id="separator">-</item>
+                          <item id="value">orca</item>
+                        </items>
+                        <child internal-child="entry">
+                          <object class="GtkEntry" id="greeter_reader_entry">
+                            <property name="can_focus">True</property>
+                            <property name="placeholder_text" translatable="yes" context="option|greeter|reader">Command to launch screen reader</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_keyboard_combo">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="has_entry">True</property>
+                        <items>
+                          <item id="select-path" translatable="yes" context="option|greeter|keyboard">Select path to keyboard...</item>
+                          <item id="separator">-</item>
+                          <item id="value">onboard</item>
+                        </items>
+                        <child internal-child="entry">
+                          <object class="GtkEntry" id="greeter_keyboard_entry">
+                            <property name="can_focus">True</property>
+                            <property name="placeholder_text" translatable="yes" context="option|greeter|keyboard">Command to launch on-screen keyboard</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="position">3</property>
@@ -1384,6 +1456,7 @@
               <packing>
                 <property name="position">3</property>
                 <property name="tab_expand">True</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
           </object>

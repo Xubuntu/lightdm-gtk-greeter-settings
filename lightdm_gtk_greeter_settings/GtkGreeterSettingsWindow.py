@@ -93,7 +93,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'position': (PositionEntry.PositionEntry, '50%,center'),
                 # Misc
                 'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
-                'keyboard': (OptionEntry.StringEntry, None)
+                'keyboard': (OptionEntry.StringPathEntry, None),
+                'reader': (OptionEntry.StringPathEntry, None)
             }),
             MonitorsGroup(self._widgets)
         )
