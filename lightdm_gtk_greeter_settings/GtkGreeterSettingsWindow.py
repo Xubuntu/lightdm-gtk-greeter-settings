@@ -202,7 +202,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                                      10))):
             timeout_view.add_mark(mark, Gtk.PositionType.BOTTOM, None)
         total = int(timeout_adjustment.props.upper - 60) + 1
-        timeout_end_label.props.label = C_('option|timeout', '{count} min').format(count=total)
+        timeout_end_label.props.label = C_('option|greeter|screensaver-timeout', '{count} min').format(count=total)
 
         timeout_view.connect('format-value', self.on_entry_format_scale_greeter_screensaver_timeout, timeout_adjustment)
         entry.get.connect(self.on_entry_get_greeter_screensaver_timeout)

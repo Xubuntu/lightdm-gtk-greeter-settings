@@ -10,14 +10,14 @@
       <object class="GtkMenuItem" id="greeter_default-user-image_icon_item">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Icon</property>
+        <property name="label" translatable="yes" context="option|greeter|default-user-image">Icon</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="greeter_default-user-image_path_item">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Path</property>
+        <property name="label" translatable="yes" context="option|greeter|default-user-image">Path</property>
       </object>
     </child>
   </object>
@@ -50,49 +50,49 @@
     <data>
       <row>
         <col id="0">~host</col>
-        <col id="1" translatable="yes" context="option|indicators">Host name</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Host name</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~clock</col>
-        <col id="1" translatable="yes" context="option|indicators">Clock</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Clock</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~layout</col>
-        <col id="1" translatable="yes" context="option|indicators">Layout indicator</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Layout indicator</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~session</col>
-        <col id="1" translatable="yes" context="option|indicators">Sessions menu (xfce, unity, gnome etc.)</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Sessions menu (xfce, unity, gnome etc.)</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~language</col>
-        <col id="1" translatable="yes" context="option|indicators">Languages menu</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Languages menu</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~a11y</col>
-        <col id="1" translatable="yes" context="option|indicators">Accessibility menu</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Accessibility menu</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
       </row>
       <row>
         <col id="0">~power</col>
-        <col id="1" translatable="yes" context="option|indicators">Power menu</col>
+        <col id="1" translatable="yes" context="option|greeter|indicators">Power menu</col>
         <col id="2">False</col>
         <col id="3">True</col>
         <col id="4">False</col>
@@ -124,19 +124,19 @@
     <data>
       <row>
         <col id="0">hintnone</col>
-        <col id="1" translatable="yes" context="option|hintstyle">None</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">None</col>
       </row>
       <row>
         <col id="0">hintslight</col>
-        <col id="1" translatable="yes" context="option|hintstyle">Slight</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Slight</col>
       </row>
       <row>
         <col id="0">hintmedium</col>
-        <col id="1" translatable="yes" context="option|hintstyle">Medium</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Medium</col>
       </row>
       <row>
         <col id="0">hintfull</col>
-        <col id="1" translatable="yes" context="option|hintstyle">Full</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Full</col>
       </row>
     </data>
   </object>
@@ -150,23 +150,23 @@
     <data>
       <row>
         <col id="0">none</col>
-        <col id="1" translatable="yes" context="option|rgba">None</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-rgba">None</col>
       </row>
       <row>
         <col id="0">rgb</col>
-        <col id="1" translatable="yes" context="option|rgba">RGB</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-rgba">RGB</col>
       </row>
       <row>
         <col id="0">bgr</col>
-        <col id="1" translatable="yes" context="option|rgba">BGR</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-rgba">BGR</col>
       </row>
       <row>
         <col id="0">vrgb</col>
-        <col id="1" translatable="yes" context="option|rgba">Vertical RGB</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-rgba">Vertical RGB</col>
       </row>
       <row>
         <col id="0">vbgr</col>
-        <col id="1" translatable="yes" context="option|rgba">Vertical BGR</col>
+        <col id="1" translatable="yes" context="option|greeter|xft-rgba">Vertical BGR</col>
       </row>
     </data>
   </object>
@@ -240,7 +240,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|gtk-theme">Theme</property>
+                    <property name="label" translatable="yes" context="option|greeter|theme-name">Theme</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -256,7 +256,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|icons-theme">Icons</property>
+                    <property name="label" translatable="yes" context="option|greeter|icon-theme-name">Icons</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -272,7 +272,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|font">Font</property>
+                    <property name="label" translatable="yes" context="option|greeter|font-name">Font</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -360,7 +360,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="greeter_xft-rgba_use">
-                            <property name="label" translatable="yes" context="option|rgba">Subpixel rendering</property>
+                            <property name="label" translatable="yes" context="option|greeter|xft-rgba">Subpixel rendering</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -378,7 +378,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="greeter_xft-dpi_use">
-                            <property name="label" translatable="yes" context="option|dpi">DPI</property>
+                            <property name="label" translatable="yes" context="option|greeter|xft-dpi">DPI</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -396,7 +396,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="greeter_xft-antialias_use">
-                            <property name="label" translatable="yes" context="option|antialias">Antialias</property>
+                            <property name="label" translatable="yes" context="option|greeter|xft-antialias">Antialias</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -414,7 +414,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="greeter_xft-hintstyle_use">
-                            <property name="label" translatable="yes" context="option|hintstyle">Hinting</property>
+                            <property name="label" translatable="yes" context="option|greeter|xft-hintstyle">Hinting</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -467,7 +467,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="greeter_background_image_choice">
-                    <property name="label" translatable="yes" context="option|background">Image</property>
+                    <property name="label" translatable="yes" context="option|greeter|background">Image</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -496,7 +496,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="greeter_background_color_choice">
-                    <property name="label" translatable="yes" context="option|background">Color</property>
+                    <property name="label" translatable="yes" context="option|greeter|background">Color</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -530,7 +530,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
-                    <property name="label" translatable="yes" context="option|user-image">Default user image</property>
+                    <property name="label" translatable="yes" context="option|greeter|default-user-image">Default user image</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -595,7 +595,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="greeter_user-background_value">
-                    <property name="label" translatable="yes">Use user wallpaper if available</property>
+                    <property name="label" translatable="yes" context="option|greeter|user-background">Use user wallpaper if available</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -619,7 +619,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes" context="option|background">Background</property>
+                        <property name="label" translatable="yes" context="option|greeter|background">Background</property>
                         <attributes>
                           <attribute name="weight" value="semibold"/>
                         </attributes>
@@ -634,7 +634,7 @@
                       <object class="GtkLabel" id="multihead_label">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes"> &lt;i&gt;(or you can use &lt;a href=""&gt;multihead setup for individual monitors&lt;/a&gt;)&lt;/i&gt;</property>
+                        <property name="label" translatable="yes" context="option|multihead"> &lt;i&gt;(or you can use &lt;a href=""&gt;multihead setup for individual monitors&lt;/a&gt;)&lt;/i&gt;</property>
                         <property name="use_markup">True</property>
                         <property name="angle">0.029999999999999999</property>
                       </object>
@@ -685,7 +685,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|indicators">Redefine indicators</property>
+                    <property name="label" translatable="yes" context="option|greeter|indicators">Redefine indicators</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -730,7 +730,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|clock-format">%H %I - hours, %M - minutes, %S - seconds
+                    <property name="label" translatable="yes" context="option|greeter|clock-format">%H %I - hours, %M - minutes, %S - seconds
 %d - day, %m - month, %y %Y - year
 %a %A - day of the week, %b %B - month name</property>
                     <attributes>
@@ -821,8 +821,8 @@
                           <object class="GtkToolButton" id="greeter_indicators_add">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option|indicators">Add indicator to list</property>
-                            <property name="label" translatable="yes" context="option|indicators">Add</property>
+                            <property name="tooltip_text" translatable="yes" context="option|greeter|indicators">Add indicator to list</property>
+                            <property name="label" translatable="yes" context="option|greeter|indicators">Add</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-add-symbolic</property>
                           </object>
@@ -835,8 +835,8 @@
                           <object class="GtkToolButton" id="greeter_indicators_remove">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option|indicators">Remove indicator from list</property>
-                            <property name="label" translatable="yes" context="option|indicators">Remove</property>
+                            <property name="tooltip_text" translatable="yes" context="option|greeter|indicators">Remove indicator from list</property>
+                            <property name="label" translatable="yes" context="option|greeter|indicators">Remove</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">list-remove-symbolic</property>
                           </object>
@@ -849,8 +849,8 @@
                           <object class="GtkToolButton" id="greeter_indicators_up">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option|indicators">Move up</property>
-                            <property name="label" translatable="yes" context="option|indicators">Up</property>
+                            <property name="tooltip_text" translatable="yes" context="option|greeter|indicators">Move up</property>
+                            <property name="label" translatable="yes" context="option|greeter|indicators">Up</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-up-symbolic</property>
                           </object>
@@ -863,8 +863,8 @@
                           <object class="GtkToolButton" id="greeter_indicators_down">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes" context="option|indicators">Move down</property>
-                            <property name="label" translatable="yes" context="option|indicators">Down</property>
+                            <property name="tooltip_text" translatable="yes" context="option|greeter|indicators">Move down</property>
+                            <property name="label" translatable="yes" context="option|greeter|indicators">Down</property>
                             <property name="use_underline">True</property>
                             <property name="icon_name">go-down-symbolic</property>
                           </object>
@@ -900,7 +900,7 @@
                       <object class="GtkLabel" id="greeter_clock-format_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes" context="option|clock-format">Clock format:</property>
+                        <property name="label" translatable="yes" context="option|greeter|clock-format">Clock format:</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -968,7 +968,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option|position">Select base point and its position</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">Select base point and its position</property>
                     <attributes>
                       <attribute name="style" value="oblique"/>
                     </attributes>
@@ -1084,7 +1084,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Horizontal</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">Horizontal</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1096,7 +1096,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Vertical</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">Vertical</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -1129,7 +1129,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="greeter_position_x_percents">
-                        <property name="label" translatable="yes" context="option|position">in %</property>
+                        <property name="label" translatable="yes" context="option|greeter|position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1174,7 +1174,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="greeter_position_y_percents">
-                        <property name="label" translatable="yes" context="option|position">in %</property>
+                        <property name="label" translatable="yes" context="option|greeter|position">in %</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1195,7 +1195,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="greeter_position_x_mirror">
-                    <property name="label" translatable="yes" context="option|position">from right</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">from right</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1209,7 +1209,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="greeter_position_y_mirror">
-                    <property name="label" translatable="yes" context="option|position">from bottom</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">from bottom</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1257,7 +1257,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|timeout">Timeout until the screen blanks </property>
+                    <property name="label" translatable="yes" context="option|greeter|screensaver-timeout">Timeout until the screen blanks </property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
                     </attributes>
@@ -1279,7 +1279,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">start</property>
-                        <property name="label" translatable="yes" context="option|timeout">Never</property>
+                        <property name="label" translatable="yes" context="option|greeter|screensaver-timeout">Never</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1348,7 +1348,7 @@
                     <property name="column_spacing">8</property>
                     <child>
                       <object class="GtkCheckButton" id="greeter_keyboard_use">
-                        <property name="label" translatable="yes">Keyboard</property>
+                        <property name="label" translatable="yes" context="greeter|option|keyboard">Keyboard</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1362,7 +1362,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="greeter_reader_use">
-                        <property name="label" translatable="yes">Reader</property>
+                        <property name="label" translatable="yes" context="greeter|option|reader">Reader</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1588,7 +1588,7 @@
   <object class="GtkFileChooserDialog" id="greeter_default-user-image_path_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Select image</property>
+    <property name="title" translatable="yes" context="option|greeter|default-user-image">Select image</property>
     <property name="role">GtkFileChooserDialog</property>
     <property name="window_position">center</property>
     <property name="default_width">600</property>

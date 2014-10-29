@@ -74,7 +74,7 @@ class MultiheadSetupDialog(Gtk.Dialog):
         used = set(row[ROW.NAME] for row in self._model)
         monitors = ['<a href="{name}">{name}</a>'.format(name=name)
                     for name in self._available_monitors if name not in used]
-        label = C_('option|monitors', 'Available monitors: <i>{monitors}</i>')\
+        label = C_('option|multihead', 'Available monitors: <i>{monitors}</i>')\
                    .format(monitors=', '.join(monitors or ('none',)))
         self._widgets['monitors_label'].props.label = label
 
