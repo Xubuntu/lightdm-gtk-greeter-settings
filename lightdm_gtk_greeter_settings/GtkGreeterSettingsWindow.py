@@ -84,6 +84,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'xft-hintstyle': (OptionEntry.ChoiceEntry, None),
                 'background': (OptionEntry.BackgroundEntry, '#000000'),
                 'user-background': (OptionEntry.BooleanEntry, 'true'),
+                'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
                 'default-user-image': (OptionEntry.IconEntry, '#avatar-default'),
                 # Panel
                 'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),

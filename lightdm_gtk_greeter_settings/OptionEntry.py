@@ -30,7 +30,8 @@ from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
 from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
 
 
-__all__ = ['BaseEntry', 'BooleanEntry', 'StringEntry', 'StringPathEntry', 'ClockFormatEntry',
+__all__ = ['BaseEntry', 'BooleanEntry', 'InvertedBooleanEntry',
+           'StringEntry', 'StringPathEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry',
            'AdjustmentEntry', 'ChoiceEntry']
 
@@ -136,6 +137,18 @@ class BooleanEntry(BaseEntry):
 
     def _set_enabled(self, value):
         self._value.props.sensitive = value
+
+
+class InvertedBooleanEntry(BooleanEntry):
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+
+    def _get_value(self):
+        return bool2string(not self._value.props.active)
+
+    def _set_value(self, value):
+        self._value.props.active = not string2bool(value)
 
 
 class StringEntry(BaseEntry):
@@ -336,8 +349,6 @@ class IconEntry(BaseEntry):
         self._path_dialog = widgets['path_dialog']
         self._path_dialog_preview = widgets['path_dialog_preview']
         self._icon_dialog = None
-
-        #self._icon_item.set_ic
 
         self._button.connect('toggled', self._on_button_toggled)
         self._menu.connect('hide', self._on_menu_hide)

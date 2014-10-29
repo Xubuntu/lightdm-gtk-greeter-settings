@@ -309,7 +309,7 @@
                           <object class="GtkSwitch" id="greeter_xft-antialias_value">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">end</property>
+                            <property name="halign">start</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -530,14 +530,12 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
+                    <property name="margin_left">24</property>
                     <property name="label" translatable="yes" context="option|greeter|default-user-image">Default user image</property>
-                    <attributes>
-                      <attribute name="weight" value="semibold"/>
-                    </attributes>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="top_attach">9</property>
                   </packing>
                 </child>
                 <child>
@@ -590,7 +588,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">8</property>
+                    <property name="top_attach">9</property>
                   </packing>
                 </child>
                 <child>
@@ -634,7 +632,7 @@
                       <object class="GtkLabel" id="multihead_label">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes" context="option|multihead"> &lt;i&gt;(or you can use &lt;a href=""&gt;multihead setup for individual monitors&lt;/a&gt;)&lt;/i&gt;</property>
+                        <property name="label" translatable="yes" context="option|multihead"> &lt;i&gt;(or use &lt;a href=""&gt;multihead setup&lt;/a&gt; for individual monitors)&lt;/i&gt;</property>
                         <property name="use_markup">True</property>
                         <property name="angle">0.029999999999999999</property>
                       </object>
@@ -649,6 +647,32 @@
                     <property name="left_attach">0</property>
                     <property name="top_attach">4</property>
                     <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="greeter_hide-user-image_label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes" context="option|greeter|hide-user-image">User image</property>
+                    <attributes>
+                      <attribute name="weight" value="semibold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="greeter_hide-user-image_value">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">8</property>
                   </packing>
                 </child>
               </object>
