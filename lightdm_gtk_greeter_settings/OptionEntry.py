@@ -54,6 +54,7 @@ class BaseEntry(GObject.GObject):
         self._use = widgets['use']
         if self._use:
             self._use.connect('notify::active', self._on_use_toggled)
+            self._widgets_to_disable = None
 
     @property
     def value(self):
@@ -112,7 +113,9 @@ class BaseEntry(GObject.GObject):
         raise NotImplementedError(self.__class__)
 
     def _set_enabled(self, value):
-        raise NotImplementedError(self.__class__)
+        if self._widgets_to_disable:
+            for widget in self._widgets_to_disable:
+                widget.props.sensitive = value
 
     def _on_use_toggled(self, toggle, *args):
         self._set_enabled(self._use.props.active)
@@ -128,15 +131,13 @@ class BooleanEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['value']
         self._value.connect('notify::active', self._emit_changed)
+        self._widgets_to_disable = [self._value]
 
     def _get_value(self):
         return bool2string(self._value.props.active)
 
     def _set_value(self, value):
         self._value.props.active = string2bool(value)
-
-    def _set_enabled(self, value):
-        self._value.props.sensitive = value
 
 
 class InvertedBooleanEntry(BooleanEntry):
@@ -156,16 +157,14 @@ class StringEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
+        self._widgets_to_disable = [self._value]
         self._value.connect('changed', self._emit_changed)
-
+        
     def _get_value(self):
         return self._value.props.text
 
     def _set_value(self, value):
         self._value.props.text = value or ''
-
-    def _set_enabled(self, value):
-        self._value.props.sensitive = value
 
 
 class StringPathEntry(BaseEntry):
@@ -177,6 +176,7 @@ class StringPathEntry(BaseEntry):
 
         self._combo = widgets['combo']
         self._entry = widgets['entry']
+        self._widgets_to_disable = [self._combo]
 
         self._entry.connect('changed', self._emit_changed)
         self._combo.connect('format-entry-text', self._on_combobox_format)
@@ -188,9 +188,6 @@ class StringPathEntry(BaseEntry):
 
     def _set_value(self, value):
         self._entry.props.text = value or ''
-
-    def _set_enabled(self, value):
-        self._combo.props.sensitive = value
 
     def _row_separator_callback(self, model, rowiter, data):
         return model[rowiter][0] == '-'
@@ -222,6 +219,7 @@ class AdjustmentEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['adjustment']
         self._view = widgets['view']
+        self._widgets_to_disable = [self._view]
         self._value.connect('value-changed', self._emit_changed)
 
     def _get_value(self):
@@ -233,15 +231,13 @@ class AdjustmentEntry(BaseEntry):
         except ValueError:
             self._value.props.value = 0
 
-    def _set_enabled(self, value):
-        self._view.props.sensitive = value
-
 
 class ChoiceEntry(BaseEntry):
 
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
+        self._widgets_to_disable = [self._value]
         self._value.connect('changed', self._emit_changed)
 
     def _get_value(self):
@@ -249,9 +245,6 @@ class ChoiceEntry(BaseEntry):
 
     def _set_value(self, value):
         self._value.props.active_id = value or ''
-
-    def _set_enabled(self, value):
-        self._value.props.sensitive = value
 
 
 class ClockFormatEntry(StringEntry):
@@ -436,6 +429,7 @@ class IndicatorsEntry(BaseEntry):
         self._up = widgets['up']
         self._down = widgets['down']
         self._model = widgets['model']
+        self._widgets_to_disable = [self._treeview, self._toolbar]
         self._indicators_dialog = None
         self._initial_items = OrderedDict((item.NAME, item)
                                           for item in map(self.ROW, self._model))
@@ -477,10 +471,6 @@ class IndicatorsEntry(BaseEntry):
             self._model.append(item)
 
         self._selection.select_path(0)
-
-    def _set_enabled(self, value):
-        self._toolbar.props.sensitive = value
-        self._treeview.props.sensitive = value
 
     def _remove_selection(self):
         model, rowiter = self._selection.get_selected()
