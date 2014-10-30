@@ -350,8 +350,6 @@ class IconEntry(BaseEntry):
         self._path_dialog_preview = widgets['path_dialog_preview']
         self._icon_dialog = None
 
-        self._button.connect('toggled', self._on_button_toggled)
-        self._menu.connect('hide', self._on_menu_hide)
         self._icon_item.connect('activate', self._on_select_icon)
         self._path_item.connect('activate', self._on_select_path)
         self._path_dialog.connect('update-preview', self._on_update_path_preview)
@@ -394,21 +392,6 @@ class IconEntry(BaseEntry):
         else:
             self._path_item.get_child().set_markup(
                 C_('option-entry|icon', 'Select file...'))
-
-    def _get_menu_position(self, menu, widget):
-        allocation = widget.get_allocation()
-        x, y = widget.get_window().get_position()
-        x += allocation.x
-        y += allocation.y + allocation.height
-        return (x, y, False)
-
-    def _on_button_toggled(self, toggle):
-        if toggle.props.active:
-            self._menu.popup(None, None, self._get_menu_position,
-                             self._button, 3, Gtk.get_current_event_time())
-
-    def _on_menu_hide(self, toggle):
-        self._button.props.active = False
 
     def _on_select_icon(self, item):
         if not self._icon_dialog:

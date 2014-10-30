@@ -571,27 +571,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToggleButton" id="greeter_default-user-image_button">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="valign">start</property>
-                    <child>
-                      <object class="GtkImage" id="greeter_default-user-image_image">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixel_size">64</property>
-                        <property name="icon_name">avatar-default</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">9</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkCheckButton" id="greeter_user-background_value">
                     <property name="label" translatable="yes" context="option|greeter|user-background">Use user wallpaper if available</property>
                     <property name="visible">True</property>
@@ -675,6 +654,27 @@
                     <property name="top_attach">8</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkMenuButton" id="greeter_default-user-image_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">start</property>
+                    <property name="popup">greeter_default-user-image_menu</property>
+                    <child>
+                      <object class="GtkImage" id="greeter_default-user-image_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixel_size">64</property>
+                        <property name="icon_name">avatar-default</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">9</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="tab_expand">True</property>
@@ -684,7 +684,7 @@
               <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Appearance</property>
+                <property name="label" translatable="yes" context="tabs">Appearance</property>
               </object>
               <packing>
                 <property name="tab_expand">True</property>
@@ -967,7 +967,7 @@
               <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Panel</property>
+                <property name="label" translatable="yes" context="tabs">Panel</property>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -992,7 +992,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option|greeter|position">Select base point and its position</property>
+                    <property name="label" translatable="yes" context="option|greeter|position">Select base point and its position.</property>
                     <attributes>
                       <attribute name="style" value="oblique"/>
                     </attributes>
@@ -1255,7 +1255,7 @@
               <object class="GtkLabel" id="label5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Window position</property>
+                <property name="label" translatable="yes" context="tabs">Window position</property>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -1555,7 +1555,7 @@
               <object class="GtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Misc.</property>
+                <property name="label" translatable="yes" context="tabs">Misc.</property>
               </object>
               <packing>
                 <property name="position">3</property>
