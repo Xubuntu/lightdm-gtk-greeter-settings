@@ -150,11 +150,13 @@ class PositionEntry(BaseEntry):
         return x + ' ' + y if x != y else x
 
     def _set_value(self, value):
+        self._last_window_allocation = None
         if value:
             x, _, y = value.partition(' ')
             self._x.value = x
             self._y.value = y or x
             self._anchors[self._x.anchor, self._y.anchor].props.active = True
+        self._screen_overlay.queue_resize()
 
     def _get_corrected_position(self, p, screen, window, anchor):
         if anchor == 'center':
