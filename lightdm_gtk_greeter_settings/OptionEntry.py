@@ -33,7 +33,7 @@ from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
 __all__ = ['BaseEntry', 'BooleanEntry', 'InvertedBooleanEntry',
            'StringEntry', 'StringPathEntry', 'ClockFormatEntry',
            'BackgroundEntry', 'IconEntry', 'IndicatorsEntry',
-           'AdjustmentEntry', 'ChoiceEntry']
+           'AdjustmentEntry', 'ChoiceEntry', 'AccessibilityStatesEntry']
 
 
 class BuilderWrapper:
@@ -593,4 +593,30 @@ class IndicatorsEntry(BaseEntry):
     def _on_down(self, *args):
         self._move_selection(move_up=False)
 
+
+class AccessibilityStatesEntry(BaseEntry):
+
+    OPTIONS = {'keyboard', 'reader', 'contrast', 'font'}
+
+    def __init__(self, widgets):
+        super().__init__(widgets)
+
+        self._states = {name: widgets[name] for name in self.OPTIONS}
+
+        for w in self._states.values():
+            w.connect('changed', self._emit_changed)
+
+    def _get_value(self):
+        states = {name: widget.props.active_id for (name, widget) in self._states.items()}
+        return ';'.join(state + name
+                        for (name, state) in states.items() if state not in {None, '-'})
+
+    def _set_value(self, value):
+        if value:
+            states = dict((v[1:], v[0]) if v[0] in ('-', '+', '~') else (v, '-')
+                          for v in value.split(';') if v)
+        else:
+            states = {}
+        for name in self.OPTIONS:
+            self._states[name].props.active_id = states.get(name, '-')
 

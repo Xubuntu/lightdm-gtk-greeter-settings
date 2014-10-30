@@ -96,7 +96,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 # Misc
                 'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
                 'keyboard': (OptionEntry.StringPathEntry, None),
-                'reader': (OptionEntry.StringPathEntry, None)
+                'reader': (OptionEntry.StringPathEntry, None),
+                'a11y-states': (OptionEntry.AccessibilityStatesEntry, None)
             }),
             MonitorsGroup(self._widgets)
         )

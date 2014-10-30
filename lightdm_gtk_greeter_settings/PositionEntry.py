@@ -145,7 +145,9 @@ class PositionEntry(BaseEntry):
         self._screen_overlay.connect('screen-changed', self._on_gdk_screen_changed)
 
     def _get_value(self):
-        return self._x.value + ' ' + self._y.value
+        x = self._x.value
+        y = self._y.value
+        return x + ' ' + y if x != y else x
 
     def _set_value(self, value):
         if value:

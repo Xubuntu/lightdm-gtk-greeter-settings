@@ -1395,21 +1395,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label6">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="label" translatable="yes">&lt;i&gt;You can choose accessibility features &lt;a href=""&gt;enabled at start&lt;/a&gt;&lt;/i&gt;</property>
-                        <property name="use_markup">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
                         <property name="top_attach">2</property>
-                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1432,7 +1418,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1457,6 +1443,100 @@
                         <property name="left_attach">1</property>
                         <property name="top_attach">0</property>
                       </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_a11y-states_keyboard">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <items>
+                          <item id="-" translatable="yes" context="option|greeter|a11y-states">Disabled at start</item>
+                          <item id="+" translatable="yes" context="option|greeter|a11y-states">Enabled at start</item>
+                          <item id="~" translatable="yes" context="option|greeter|a11y-states">Save state between launches</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="greeter_a11y-theme">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes" context="option|greeter|a11y-theme">Contrast theme</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="greeter_a11y-font_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes" context="option|greeter|a11y-font">Large font</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_a11y-states_reader">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <items>
+                          <item id="-" translatable="yes" context="option|greeter|a11y-states">Disabled at start</item>
+                          <item id="+" translatable="yes" context="option|greeter|a11y-states">Enabled at start</item>
+                          <item id="~" translatable="yes" context="option|greeter|a11y-states">Save state between launches</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_a11y-states_contrast">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <items>
+                          <item id="-" translatable="yes" context="option|greeter|a11y-states">Disabled at start</item>
+                          <item id="+" translatable="yes" context="option|greeter|a11y-states">Enabled at start</item>
+                          <item id="~" translatable="yes" context="option|greeter|a11y-states">Save state between launches</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="greeter_a11y-states_font">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <items>
+                          <item id="-" translatable="yes" context="option|greeter|a11y-states">Disabled at start</item>
+                          <item id="+" translatable="yes" context="option|greeter|a11y-states">Enabled at start</item>
+                          <item id="~" translatable="yes" context="option|greeter|a11y-states">Save state between launches</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
