@@ -140,36 +140,6 @@
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="greeter_xft-rgba_model">
-    <columns>
-      <!-- column-name value -->
-      <column type="gchararray"/>
-      <!-- column-name title -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0">none</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-rgba">None</col>
-      </row>
-      <row>
-        <col id="0">rgb</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-rgba">RGB</col>
-      </row>
-      <row>
-        <col id="0">bgr</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-rgba">BGR</col>
-      </row>
-      <row>
-        <col id="0">vrgb</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-rgba">Vertical RGB</col>
-      </row>
-      <row>
-        <col id="0">vbgr</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-rgba">Vertical BGR</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkImage" id="icon_cancel">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -317,48 +287,6 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText" id="greeter_xft-dpi_values">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="has_entry">True</property>
-                            <items>
-                              <item>72</item>
-                              <item>96</item>
-                              <item>150</item>
-                              <item>300</item>
-                            </items>
-                            <child internal-child="entry">
-                              <object class="GtkEntry" id="greeter_xft-dpi_value">
-                                <property name="can_focus">True</property>
-                                <property name="xalign">1</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBox" id="greeter_xft-rgba_value">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="model">greeter_xft-rgba_model</property>
-                            <property name="active">0</property>
-                            <property name="id_column">0</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext1"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
                           <object class="GtkCheckButton" id="greeter_xft-rgba_use">
                             <property name="label" translatable="yes" context="option|greeter|xft-rgba">Subpixel rendering</property>
                             <property name="visible">True</property>
@@ -431,22 +359,77 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox" id="greeter_xft-hintstyle_value">
+                          <object class="GtkBox" id="box8">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="model">greeter_xft-hintstyle_model</property>
-                            <property name="active">0</property>
-                            <property name="id_column">0</property>
+                            <property name="halign">start</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">8</property>
                             <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext2"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
+                              <object class="GtkComboBoxText" id="greeter_xft-rgba_value">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="active">0</property>
+                                <items>
+                                  <item id="none" translatable="yes" context="option|greeter|xft-rgba">None</item>
+                                  <item id="rgb" translatable="yes" context="option|greeter|xft-rgba">RGB</item>
+                                  <item id="bgr" translatable="yes" context="option|greeter|xft-rgba">BGR</item>
+                                  <item id="vrgb" translatable="yes" context="option|greeter|xft-rgba">Vertical RGB</item>
+                                  <item id="vbgr" translatable="yes" context="option|greeter|xft-rgba">Vertical BGR</item>
+                                </items>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="greeter_xft-hintstyle_value">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="active">0</property>
+                                <items>
+                                  <item id="hintnone" translatable="yes" context="option|greeter|xft-hintstyle">None</item>
+                                  <item id="hintslight" translatable="yes" context="option|greeter|xft-hintstyle">Slight</item>
+                                  <item id="hintmedium" translatable="yes" context="option|greeter|xft-hintstyle">Medium</item>
+                                  <item id="hintfull" translatable="yes" context="option|greeter|xft-hintstyle">Full</item>
+                                </items>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
                             </child>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">3</property>
+                            <property name="top_attach">2</property>
+                            <property name="height">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="greeter_xft-dpi_values">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="has_entry">True</property>
+                            <items>
+                              <item>72</item>
+                              <item>96</item>
+                              <item>150</item>
+                              <item>300</item>
+                            </items>
+                            <child internal-child="entry">
+                              <object class="GtkEntry" id="greeter_xft-dpi_value">
+                                <property name="can_focus">True</property>
+                                <property name="xalign">1</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                       </object>
