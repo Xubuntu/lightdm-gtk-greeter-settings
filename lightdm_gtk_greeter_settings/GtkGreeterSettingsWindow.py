@@ -168,10 +168,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             helpers.show_message(e, Gtk.MessageType.ERROR)
 
     def on_entry_added(self, group, entry, key):
-        if isinstance(group, SimpleGroup):
-            setup = self._entries_setup.get((group.name, key))
-            if setup:
-                setup(entry)
+        if isinstance(group, SimpleGroup) and (group.name, key) in self._entries_setup:
+            self._entries_setup[(group.name, key)](entry)
         entry.changed.connect(self.on_entry_changed)
         self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
         self.on_entry_changed(entry, force=True)

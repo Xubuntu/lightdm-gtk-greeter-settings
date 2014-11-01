@@ -26,14 +26,6 @@
       <mime-type>image/*</mime-type>
     </mime-types>
   </object>
-  <object class="GtkImage" id="greeter_default-user-image_path_dialog_preview">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="yalign">0</property>
-    <property name="pixel_size">64</property>
-    <property name="icon_name">unknown</property>
-    <property name="icon_size">6</property>
-  </object>
   <object class="GtkListStore" id="greeter_indicators_model">
     <columns>
       <!-- column-name name -->
@@ -114,46 +106,10 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkListStore" id="greeter_xft-hintstyle_model">
-    <columns>
-      <!-- column-name value -->
-      <column type="gchararray"/>
-      <!-- column-name title -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0">hintnone</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">None</col>
-      </row>
-      <row>
-        <col id="0">hintslight</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Slight</col>
-      </row>
-      <row>
-        <col id="0">hintmedium</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Medium</col>
-      </row>
-      <row>
-        <col id="0">hintfull</col>
-        <col id="1" translatable="yes" context="option|greeter|xft-hintstyle">Full</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkImage" id="icon_cancel">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">dialog-cancel</property>
-  </object>
   <object class="GtkImage" id="icon_close">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">dialog-close</property>
-  </object>
-  <object class="GtkImage" id="icon_ok">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">dialog-ok</property>
   </object>
   <object class="GtkImage" id="icon_reset">
     <property name="visible">True</property>
@@ -209,7 +165,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="hexpand">True</property>
                     <property name="label" translatable="yes" context="option|greeter|theme-name">Theme</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
@@ -225,7 +180,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="hexpand">True</property>
                     <property name="label" translatable="yes" context="option|greeter|icon-theme-name">Icons</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
@@ -241,7 +195,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="hexpand">True</property>
                     <property name="label" translatable="yes" context="option|greeter|font-name">Font</property>
                     <attributes>
                       <attribute name="weight" value="semibold"/>
@@ -257,6 +210,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="halign">start</property>
                     <property name="font">Sans 12</property>
                   </object>
                   <packing>
@@ -456,7 +410,6 @@
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
-                    <property name="hexpand">True</property>
                     <property name="xalign">0.5</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
@@ -470,6 +423,7 @@
                   <object class="GtkFileChooserButton" id="greeter_background_image_value">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">start</property>
                     <property name="filter">greeter_default-user-image_path_dialog_filter</property>
                   </object>
                   <packing>
@@ -485,7 +439,6 @@
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
                     <property name="margin_left">24</property>
-                    <property name="hexpand">True</property>
                     <property name="xalign">0.5</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
@@ -501,6 +454,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="halign">start</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -525,6 +479,7 @@
                   <object class="GtkComboBoxText" id="greeter_theme-name_values">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="has_entry">True</property>
                     <child internal-child="entry">
                       <object class="GtkEntry" id="greeter_theme-name_value">
@@ -646,6 +601,8 @@
                     <property name="popup">greeter_default-user-image_menu</property>
                     <child>
                       <object class="GtkImage" id="greeter_default-user-image_image">
+                        <property name="width_request">64</property>
+                        <property name="height_request">64</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixel_size">64</property>
@@ -1671,74 +1628,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkFileChooserDialog" id="greeter_default-user-image_path_dialog">
-    <property name="can_focus">False</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes" context="option|greeter|default-user-image">Select image</property>
-    <property name="role">GtkFileChooserDialog</property>
-    <property name="window_position">center</property>
-    <property name="default_width">600</property>
-    <property name="default_height">450</property>
-    <property name="type_hint">dialog</property>
-    <property name="transient_for">settings_window</property>
-    <property name="create_folders">False</property>
-    <property name="filter">greeter_default-user-image_path_dialog_filter</property>
-    <property name="preview_widget">greeter_default-user-image_path_dialog_preview</property>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="filechooserdialog-vbox1">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="filechooserdialog-action_area1">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button2">
-                <property name="label" context="button">_Cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">True</property>
-                <property name="image">icon_cancel</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button1">
-                <property name="label" context="button">_OK</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="image">icon_ok</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="-6">button2</action-widget>
-      <action-widget response="-5">button1</action-widget>
-    </action-widgets>
   </object>
 </interface>

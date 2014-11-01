@@ -4,6 +4,7 @@ lightdm-gtk-greeter-settings.desktop.in
 # Glade Files
 [type: gettext/glade]data/GtkGreeterSettingsWindow.ui
 [type: gettext/glade]data/IconChooserDialog.ui
+[type: gettext/glade]data/ImageChooserDialog.ui
 [type: gettext/glade]data/IndicatorChooserDialog.ui
 [type: gettext/glade]data/MultiheadSetupDialog.ui
 

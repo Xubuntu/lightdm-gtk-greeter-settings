@@ -23,8 +23,8 @@ import time
 
 from gi.repository import Gtk, Gdk, GObject, GLib
 from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
-from lightdm_gtk_greeter_settings.IndicatorChooserDialog import \
-    IndicatorChooserDialog
+from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
+from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.helpers import C_
 from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
 from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
@@ -158,6 +158,8 @@ class StringEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['value']
         self._widgets_to_disable = [self._value]
+        if isinstance(self._value.props.parent, Gtk.ComboBox):
+            self._widgets_to_disable += [self._value.props.parent]
         self._value.connect('changed', self._emit_changed)
         
     def _get_value(self):
@@ -334,18 +336,15 @@ class IconEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = None
-        self._image = widgets['image']
         self._button = widgets['button']
-        self._menu = widgets['menu']
+        self._image = widgets['image']
         self._icon_item = widgets['icon_item']
         self._path_item = widgets['path_item']
-        self._path_dialog = widgets['path_dialog']
-        self._path_dialog_preview = widgets['path_dialog_preview']
         self._icon_dialog = None
+        self._path_dialog = None
 
         self._icon_item.connect('activate', self._on_select_icon)
         self._path_item.connect('activate', self._on_select_path)
-        self._path_dialog.connect('update-preview', self._on_update_path_preview)
 
     def _get_value(self):
         return self._value
@@ -359,32 +358,50 @@ class IconEntry(BaseEntry):
     def _set_icon(self, icon):
         self._value = '#' + icon
         self._image.set_from_icon_name(icon, Gtk.IconSize.DIALOG)
-        self._update_menu_items(icon=icon)
+        self._update(icon=icon)
         self._emit_changed()
 
     def _set_path(self, path):
         self._value = path
-        self._image.set_from_file(path)
-        self._update_menu_items(path=path)
+        failed = not self._set_image_from_path(self._image, path)
+        self._update(path=path, failed=failed)
         self._emit_changed()
 
-    def _update_menu_items(self, icon=None, path=None):
+    def _update(self, icon=None, path=None, failed=False):
         if icon:
-            self._icon_item.get_child().set_markup(C_('option-entry|icon',
-                                                      '<b>Icon: {icon}</b>')
-                                                   .format(icon=icon))
+            markup = C_('option-entry|icon', '<b>Icon: {icon}</b>').format(icon=icon)
+            self._icon_item.get_child().set_markup(markup)
+            self._button.set_tooltip_markup(markup)
         else:
             self._icon_item.get_child().set_markup(
                 C_('option-entry|icon', 'Select icon name...'))
 
         if path:
-            self._path_item.get_child()\
-                .set_markup(C_('option-entry|icon',
-                               '<b>File: {path}</b>')
-                            .format(path=os.path.basename(path)))
+            if failed:
+                markup = C_('option-entry|icon', '<b>File: {path}</b> (failed to load)')
+            else:
+                markup = C_('option-entry|icon', '<b>File: {path}</b>')
+            markup = markup.format(path=os.path.basename(path))
+            self._path_item.get_child().set_markup(markup)
+            self._button.set_tooltip_markup(markup)
         else:
             self._path_item.get_child().set_markup(
                 C_('option-entry|icon', 'Select file...'))
+
+    def _set_image_from_path(self, image, path):
+        if not path or not os.path.isfile(path):
+            image.props.icon_name = 'unknown'
+        else:
+            try:
+                width, height = image.get_size_request()
+                if -1 in (width, height):
+                    width, height = 64, 64
+                pixbuf = helpers.new_pixbuf_from_file_scaled_down(path, width, height)
+                image.set_from_pixbuf(pixbuf)
+                return True
+            except GLib.Error:
+                image.props.icon_name = 'file-broken'
+        return False
 
     def _on_select_icon(self, item):
         if not self._icon_dialog:
@@ -397,17 +414,26 @@ class IconEntry(BaseEntry):
         self._icon_dialog.hide()
 
     def _on_select_path(self, item):
+        if not self._path_dialog:
+            builder = Gtk.Builder()
+            builder.add_from_file(helpers.get_data_path('ImageChooserDialog.ui'))
+
+            self._path_dialog = builder.get_object('dialog')
+            self._path_dialog.props.transient_for = self._image.get_toplevel()
+            self._path_dialog.connect('update-preview', self._on_update_path_preview)
+
+            preview_size = self._image.props.pixel_size
+            preview = self._path_dialog.props.preview_widget
+            preview.props.pixel_size = preview_size
+            preview.set_size_request(preview_size, preview_size)
+
         self._path_dialog.select_filename(self._value)
         if self._path_dialog.run() == Gtk.ResponseType.OK:
             self._set_path(self._path_dialog.get_filename())
         self._path_dialog.hide()
 
     def _on_update_path_preview(self, chooser):
-        path = chooser.get_filename()
-        if not path or not os.path.isfile(path):
-            self._path_dialog_preview.props.icon_name = 'unknown'
-            return
-        self._path_dialog_preview.set_from_file(path)
+        self._set_image_from_path(chooser.props.preview_widget, chooser.get_filename())
 
 
 class IndicatorsEntry(BaseEntry):

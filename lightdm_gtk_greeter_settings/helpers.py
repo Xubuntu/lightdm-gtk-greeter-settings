@@ -20,7 +20,7 @@ from itertools import chain
 import locale
 import os
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 
 
 __license__ = 'GPL-3'
@@ -37,7 +37,7 @@ except ImportError:
 
 __all__ = ['C_', 'NC_',
            'get_data_path', 'get_config_path', 'show_message',
-           'bool2string', 'string2bool',
+           'bool2string', 'string2bool', 'new_pixbuf_from_file_scaled_down',
            'ModelRowEnum', 'WidgetsWrapper']
 
 
@@ -78,6 +78,18 @@ def bool2string(value):
 
 def string2bool(value):
     return value and value.lower() in ('true', 'yes', '1')
+
+
+def new_pixbuf_from_file_scaled_down(path: str, width: int, height: int):
+    pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
+    scale = max(pixbuf.props.width / width, pixbuf.props.height / height)
+
+    if scale > 1:
+        return GdkPixbuf.Pixbuf.scale_simple(pixbuf,
+                                             pixbuf.props.width / scale,
+                                             pixbuf.props.height / scale,
+                                             GdkPixbuf.InterpType.BILINEAR)
+    return pixbuf
 
 
 class ModelRowEnum:
