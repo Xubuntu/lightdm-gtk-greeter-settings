@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
-  <!-- interface-requires gtk_greeter_settings 1.0 -->
+  <requires lib="gtk+" version="3.8"/>
+  <requires lib="gtk_greeter_settings" version="1.0"/>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -19,6 +20,17 @@
     <property name="can_focus">False</property>
     <property name="xpad">2</property>
     <property name="icon_name">dialog-ok</property>
+  </object>
+  <object class="GtkFileFilter" id="library_file_filter">
+    <mime-types>
+      <mime-type>application/x-sharedlib</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkListStore" id="short_model">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
   </object>
   <object class="IndicatorChooserDialog" id="indicator_chooser_dialog">
     <property name="width_request">400</property>
@@ -163,8 +175,8 @@
                   <object class="GtkEntry" id="short_value">
                     <property name="can_focus">True</property>
                     <property name="is_focus">True</property>
-                    <signal name="changed" handler="on_short_value_changed" swapped="no"/>
                     <signal name="activate" handler="on_short_value_activate" swapped="no"/>
+                    <signal name="changed" handler="on_short_value_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -280,8 +292,6 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
@@ -308,8 +318,6 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
@@ -336,8 +344,6 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
@@ -353,8 +359,6 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
               </object>
@@ -370,6 +374,22 @@
                 <property name="app_paintable">True</property>
                 <property name="can_focus">False</property>
                 <property name="message_type">warning</property>
+                <child internal-child="action_area">
+                  <object class="GtkButtonBox" id="infobar-action_area1">
+                    <property name="can_focus">False</property>
+                    <property name="border_width">5</property>
+                    <property name="orientation">vertical</property>
+                    <property name="layout_style">start</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
                 <child internal-child="content_area">
                   <object class="GtkBox" id="infobar-content_area1">
                     <property name="can_focus">False</property>
@@ -392,22 +412,6 @@
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
-                  </packing>
-                </child>
-                <child internal-child="action_area">
-                  <object class="GtkButtonBox" id="infobar-action_area1">
-                    <property name="can_focus">False</property>
-                    <property name="border_width">5</property>
-                    <property name="orientation">vertical</property>
-                    <property name="layout_style">start</property>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -441,16 +445,5 @@
       <action-widget response="-7">cancel_button</action-widget>
       <action-widget response="-5">ok_button</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkFileFilter" id="library_file_filter">
-    <mime-types>
-      <mime-type>application/x-sharedlib</mime-type>
-    </mime-types>
-  </object>
-  <object class="GtkListStore" id="short_model">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

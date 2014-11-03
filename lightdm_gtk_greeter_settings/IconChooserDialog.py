@@ -143,7 +143,7 @@ class IconChooserDialog(Gtk.Dialog):
     def run(self):
         return super().run()
 
-    def get_iconname(self):
+    def get_icon_name(self):
         return self._name.props.text
 
     def select_icon(self, name):
@@ -184,7 +184,7 @@ class IconChooserDialog(Gtk.Dialog):
         self._preview.props.icon_name = name
 
 
-#http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
+# http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
 
 STANDARD_CONTEXTS =\
     (

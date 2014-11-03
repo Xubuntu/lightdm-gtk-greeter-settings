@@ -410,7 +410,7 @@ class IconEntry(BaseEntry):
         if self._value.startswith('#'):
             self._icon_dialog.select_icon(self._value[1:])
         if self._icon_dialog.run() == Gtk.ResponseType.OK:
-            self._set_icon(self._icon_dialog.get_iconname())
+            self._set_icon(self._icon_dialog.get_icon_name())
         self._icon_dialog.hide()
 
     def _on_select_path(self, item):
