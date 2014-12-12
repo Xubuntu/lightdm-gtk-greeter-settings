@@ -156,36 +156,6 @@
                 <property name="row_spacing">8</property>
                 <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkLabel" id="greeter_gtk-theme_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option|greeter|theme-name">Theme</property>
-                    <attributes>
-                      <attribute name="weight" value="semibold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="greeter_icon-theme-name_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes" context="option|greeter|icon-theme-name">Icons</property>
-                    <attributes>
-                      <attribute name="weight" value="semibold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="greeter_font-name_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -456,20 +426,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="greeter_default-user-image_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="valign">start</property>
-                    <property name="margin_left">24</property>
-                    <property name="label" translatable="yes" context="option|greeter|default-user-image">Default user image</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkComboBoxText" id="greeter_theme-name_values">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -606,6 +562,126 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
+                    <property name="top_attach">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box9">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel" id="greeter_theme-name_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes" context="option|greeter|theme-name">Theme</property>
+                        <attributes>
+                          <attribute name="weight" value="semibold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="greeter_theme-name_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel" id="greeter_icon-theme-name_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes" context="option|greeter|icon-theme-name">Icons</property>
+                        <attributes>
+                          <attribute name="weight" value="semibold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="greeter_icon-theme-name_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box11">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="valign">start</property>
+                    <child>
+                      <object class="GtkLabel" id="greeter_default-user-image_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="valign">start</property>
+                        <property name="margin_left">24</property>
+                        <property name="label" translatable="yes" context="option|greeter|default-user-image">Default user image</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="cgreeter_default-user-image_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">9</property>
                   </packing>
                 </child>
@@ -1480,15 +1556,40 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="greeter_allow-debugging_value">
-                    <property name="label" translatable="yes" context="greeter|option|allow-debugging">Debugging mode</property>
+                  <object class="GtkBox" id="box12">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_text" translatable="yes" context="greeter|option|allow-debugging">Enable keys to launch GtkInspector
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckButton" id="greeter_allow-debugging_value">
+                        <property name="label" translatable="yes" context="greeter|option|allow-debugging">Debugging mode</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes" context="greeter|option|allow-debugging">Enable keys to launch GtkInspector
 More informative log</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
+                        <property name="xalign">0</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="greeter_allow-debugging_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>

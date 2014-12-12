@@ -55,6 +55,7 @@ class BaseEntry(GObject.GObject):
         if self._use:
             self._use.connect('notify::active', self._on_use_toggled)
             self._widgets_to_disable = None
+        self._error = widgets['error']
 
     @property
     def value(self):
@@ -81,6 +82,14 @@ class BaseEntry(GObject.GObject):
     def enabled(self, value):
         if self._use:
             self._use.props.active = value
+
+    @property
+    def error(self):
+        return self._get_error()
+
+    @error.setter
+    def error(self, value):
+        self._set_error(value)
 
     @property
     def widgets(self):
@@ -111,6 +120,14 @@ class BaseEntry(GObject.GObject):
 
     def _set_value(self, value):
         raise NotImplementedError(self.__class__)
+
+    def _get_error(self):
+        raise NotImplementedError(self.__class__)
+
+    def _set_error(self, text):
+        if self._error:
+            self._error.props.visible = text is not None
+            self._error.props.tooltip_text = text
 
     def _set_enabled(self, value):
         if self._widgets_to_disable:

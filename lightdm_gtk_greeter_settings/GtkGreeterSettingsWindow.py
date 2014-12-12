@@ -26,7 +26,7 @@ from locale import gettext as _
 from gi.repository import Gtk
 
 from lightdm_gtk_greeter_settings import helpers
-from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper
+from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper, string2bool
 from lightdm_gtk_greeter_settings import OptionEntry
 from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 from lightdm_gtk_greeter_settings.MonitorsGroup import MonitorsGroup
@@ -65,6 +65,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             ('greeter', 'screensaver-timeout'): self.on_entry_setup_greeter_screensaver_timeout,
             ('greeter', 'theme-name'): self.on_entry_setup_greeter_theme_name,
             ('greeter', 'icon-theme-name'): self.on_entry_setup_greeter_icon_theme_name,
+            ('greeter', 'default-user-image'): self.on_entry_setup_greeter_default_user_image,
+            ('greeter', 'allow-debugging'): self.on_entry_setup_greeter_allow_debugging,
         }
 
         self._multihead_dialog = None
@@ -214,11 +216,20 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         values = entry.widgets['values']
         for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0'))):
             values.append_text(theme.split(os.path.sep)[-2])
+        entry.changed.connect(self.on_entry_changed_greeter_theme_name)
 
     def on_entry_setup_greeter_icon_theme_name(self, entry):
         values = entry.widgets['values']
         for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme'))):
             values.append_text(theme.split(os.path.sep)[-2])
+        entry.changed.connect(self.on_entry_changed_greeter_icon_theme_name)
+
+    def on_entry_setup_greeter_default_user_image(self, entry):
+        entry.changed.connect(self.on_entry_changed_greeter_default_user_image)
+
+    def on_entry_setup_greeter_allow_debugging(self, entry):
+        if (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION) < (3, 14, 0):
+            entry.changed.connect(self.on_entry_changed_greeter_allow_debugging)
 
     def on_entry_get_greeter_screensaver_timeout(self, entry=None, value=None):
         value = int(float(value))
@@ -231,6 +242,28 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         if value > 60:
             return value // 60 + 59
         return value
+
+    def on_entry_changed_greeter_theme_name(self, entry):
+        if not entry.value or entry.value in (row[0] for row in entry.widgets['values'].props.model):
+            entry.error = None
+        else:
+            entry.error = C_('option|greeter|theme-name', 'Selected theme is not available')
+
+    def on_entry_changed_greeter_icon_theme_name(self, entry):
+        if not entry.value or entry.value in (row[0] for row in entry.widgets['values'].props.model):
+            entry.error = None
+        else:
+            entry.error = C_('option|greeter|icon-theme-name', 'Selected theme is not available')
+
+    def on_entry_changed_greeter_default_user_image(self, entry):
+        pass
+
+    def on_entry_changed_greeter_allow_debugging(self, entry):
+        if string2bool(entry.value):
+            entry.error = C_('option|greeter|allow-debugging',
+                             'GtkInspector is not available on your system')
+        else:
+            entry.error = None
 
     def on_entry_format_scale_greeter_screensaver_timeout(self, scale, value, adjustment):
         if value != adjustment.props.lower and value != adjustment.props.upper:
