@@ -17,8 +17,12 @@
 
 from collections import namedtuple
 from itertools import chain
+import configparser
+import glob
 import locale
+import pwd
 import os
+import stat
 
 from gi.repository import Gtk, GdkPixbuf
 
@@ -38,6 +42,7 @@ except ImportError:
 __all__ = ['C_', 'NC_',
            'get_data_path', 'get_config_path', 'show_message',
            'bool2string', 'string2bool', 'new_pixbuf_from_file_scaled_down',
+           'file_is_readable_by_greeter',
            'ModelRowEnum', 'WidgetsWrapper']
 
 
@@ -90,6 +95,40 @@ def new_pixbuf_from_file_scaled_down(path: str, width: int, height: int):
                                              pixbuf.props.height / scale,
                                              GdkPixbuf.InterpType.BILINEAR)
     return pixbuf
+
+
+def file_is_readable_by_greeter(path):
+    try:
+        uid, groups = file_is_readable_by_greeter.id_cached_data
+    except AttributeError:
+        files = glob.glob('/etc/lightdm/lightdm.d/*.conf')
+        files += ['/etc/lightdm/lightdm.conf']
+        config = configparser.RawConfigParser(strict=False)
+        config.read(files)
+        username = config.get('LightDM', 'greeter-user', fallback='lightdm')
+
+        pw = pwd.getpwnam(username)
+        uid = pw.pw_uid
+        groups = set(os.getgrouplist(username, pw.pw_gid))
+        file_is_readable_by_greeter.id_cached_data = uid, groups
+
+    parts = os.path.normpath(path).split(os.path.sep)
+    if not parts[0]:
+        parts[0] = os.path.sep
+
+    def readable(st, uid, gids):
+        if stat.S_ISDIR(st.st_mode) and not stat.S_IREAD:
+            return False
+        if st.st_uid == uid and bool(st.st_mode & stat.S_IRUSR):
+            return True
+        if st.st_gid in groups and bool(st.st_mode & stat.S_IRGRP):
+            return True
+        if bool(st.st_mode & stat.S_IROTH):
+            return True
+        return False
+
+    return all(readable(os.stat(os.path.join(*parts[:i+1])), uid, groups)
+               for i in range(len(parts)))
 
 
 class ModelRowEnum:

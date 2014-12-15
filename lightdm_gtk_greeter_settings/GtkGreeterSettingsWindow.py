@@ -23,7 +23,7 @@ from collections import namedtuple
 from glob import iglob
 from itertools import chain
 from locale import gettext as _
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
 from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper, string2bool
@@ -66,6 +66,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             ('greeter', 'theme-name'): self.on_entry_setup_greeter_theme_name,
             ('greeter', 'icon-theme-name'): self.on_entry_setup_greeter_icon_theme_name,
             ('greeter', 'default-user-image'): self.on_entry_setup_greeter_default_user_image,
+            ('greeter', 'background'): self.on_entry_setup_greeter_background,
             ('greeter', 'allow-debugging'): self.on_entry_setup_greeter_allow_debugging,
         }
 
@@ -227,6 +228,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
     def on_entry_setup_greeter_default_user_image(self, entry):
         entry.changed.connect(self.on_entry_changed_greeter_default_user_image)
 
+    def on_entry_setup_greeter_background(self, entry):
+        entry.changed.connect(self.on_entry_changed_greeter_background)
+
     def on_entry_setup_greeter_allow_debugging(self, entry):
         if (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION) < (3, 14, 0):
             entry.changed.connect(self.on_entry_changed_greeter_allow_debugging)
@@ -256,7 +260,34 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             entry.error = C_('option|greeter|icon-theme-name', 'Selected theme is not available')
 
     def on_entry_changed_greeter_default_user_image(self, entry):
-        pass
+        value = entry.value
+        if value.startswith('#'):
+            entry.error = None
+        elif not os.path.exists(value):
+            entry.error = C_('option|greeter|default-user-image', 'File not found: {path}'.format(path=value))
+        else:
+            try:
+                if not helpers.file_is_readable_by_greeter(value):
+                    entry.error = C_('option|greeter|default-user-image', 'File may be not readable for greeter: {path}'.format(path=value))
+                else:
+                    entry.error = None
+            except:
+                entry.error = C_('option|greeter|default-user-image', 'Failed to check permissions for file: {path}'.format(path=value))
+
+    def on_entry_changed_greeter_background(self, entry):
+        value = entry.value
+        if Gdk.RGBA().parse(value):
+            entry.error = None
+        elif not os.path.exists(value):
+            entry.error = C_('option|greeter|background', 'File not found: {path}'.format(path=value))
+        else:
+            try:
+                if not helpers.file_is_readable_by_greeter(value):
+                    entry.error = C_('option|greeter|background', 'File may be not readable for greeter: {path}'.format(path=value))
+                else:
+                    entry.error = None
+            except:
+                entry.error = C_('option|greeter|background', 'Failed to check permissions for file: {path}'.format(path=value))
 
     def on_entry_changed_greeter_allow_debugging(self, entry):
         if string2bool(entry.value):
