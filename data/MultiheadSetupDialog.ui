@@ -60,6 +60,10 @@
       <column type="GdkPixbuf"/>
       <!-- column-name background-is-color -->
       <column type="gboolean"/>
+      <!-- column-name error-visible -->
+      <column type="gboolean"/>
+      <!-- column-name error-text -->
+      <column type="gchararray"/>
     </columns>
   </object>
   <object class="MultiheadSetupDialog" id="multihead_setup_dialog">
@@ -168,6 +172,14 @@
                               </object>
                               <attributes>
                                 <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                            <child>
+                              <object class="GtkCellRendererPixbuf" id="error_renderer">
+                                <property name="icon_name">dialog-warning</property>
+                              </object>
+                              <attributes>
+                                <attribute name="visible">8</attribute>
                               </attributes>
                             </child>
                           </object>

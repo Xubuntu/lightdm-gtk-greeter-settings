@@ -16,6 +16,7 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+import os
 from builtins import max
 from locale import gettext as _
 from gi.repository import Gtk, Gdk, GdkPixbuf
@@ -30,7 +31,8 @@ __all__ = ['MultiheadSetupDialog']
 ROW = ModelRowEnum('NAME', 'BACKGROUND',
                    'USER_BG', 'USER_BG_DISABLED',
                    'LAPTOP', 'LAPTOP_DISABLED',
-                   'BACKGROUND_PIXBUF', 'BACKGROUND_IS_COLOR')
+                   'BACKGROUND_PIXBUF', 'BACKGROUND_IS_COLOR',
+                   'ERROR_VISIBLE', 'ERROR_TEXT')
 
 BG_ROW = ModelRowEnum('TEXT', 'TYPE')
 
@@ -65,6 +67,7 @@ class MultiheadSetupDialog(Gtk.Dialog):
         self._invalid_name_dialog = None
         self._name_exists_dialog = None
 
+        self._treeview.props.tooltip_column = ROW.ERROR_TEXT
         self._bg_renderer.set_property('placeholder-text',
                                        C_('option|multihead', 'Use default value'))
 
@@ -87,7 +90,9 @@ class MultiheadSetupDialog(Gtk.Dialog):
                                              LAPTOP=entry['laptop'],
                                              LAPTOP_DISABLED=entry['laptop'] is None,
                                              BACKGROUND_PIXBUF=None,
-                                             BACKGROUND_IS_COLOR=False))
+                                             BACKGROUND_IS_COLOR=False,
+                                             ERROR_VISIBLE=False,
+                                             ERROR_TEXT=None))
             self._update_row_appearance(rowiter)
         screen = Gdk.Screen.get_default()
         self._available_monitors = [screen.get_monitor_plug_name(i)
@@ -107,6 +112,7 @@ class MultiheadSetupDialog(Gtk.Dialog):
         row = self._model[rowiter]
         bg = row[ROW.BACKGROUND]
 
+        error = None
         color = Gdk.color_parse(bg)
         if color:
             pixbuf = row[ROW.BACKGROUND_PIXBUF]
@@ -121,6 +127,17 @@ class MultiheadSetupDialog(Gtk.Dialog):
             row[ROW.BACKGROUND_IS_COLOR] = True
         else:
             row[ROW.BACKGROUND_IS_COLOR] = False
+            if not os.path.exists(bg):
+                error = C_('option|multihead', 'File not found: {path}'.format(path=bg))
+            else:
+                try:
+                    if not helpers.file_is_readable_by_greeter(bg):
+                        error = C_('option|multihead', 'File may be not readable for greeter: {path}'.format(path=bg))
+                except:
+                    error = C_('option|multihead', 'Failed to check permissions for file: {path}'.format(path=bg))
+
+        row[ROW.ERROR_VISIBLE] = error is not None
+        row[ROW.ERROR_TEXT] = error
 
     _TOGGLE_STATES = {None: True, False: None, True: False}
 
@@ -147,7 +164,9 @@ class MultiheadSetupDialog(Gtk.Dialog):
                                          LAPTOP_ENABLED=False,
                                          BACKGROUND='',
                                          BACKGROUND_PIXBUF=None,
-                                         BACKGROUND_IS_COLOR=False))
+                                         BACKGROUND_IS_COLOR=False,
+                                         ERROR_VISIBLE=False,
+                                         ERROR_TEXT=None))
         self._treeview.set_cursor(self._model.get_path(rowiter), self._name_column, True)
 
     def on_monitors_remove_clicked(self, button):
