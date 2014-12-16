@@ -119,13 +119,11 @@ def file_is_readable_by_greeter(path):
     def readable(st, uid, gids):
         if stat.S_ISDIR(st.st_mode) and not stat.S_IREAD:
             return False
-        if st.st_uid == uid and bool(st.st_mode & stat.S_IRUSR):
-            return True
-        if st.st_gid in groups and bool(st.st_mode & stat.S_IRGRP):
-            return True
-        if bool(st.st_mode & stat.S_IROTH):
-            return True
-        return False
+        if st.st_uid == uid:
+            return bool(st.st_mode & stat.S_IRUSR)
+        if st.st_gid in groups:
+            return bool(st.st_mode & stat.S_IRGRP)
+        return bool(st.st_mode & stat.S_IROTH)
 
     return all(readable(os.stat(os.path.join(*parts[:i+1])), uid, groups)
                for i in range(len(parts)))
