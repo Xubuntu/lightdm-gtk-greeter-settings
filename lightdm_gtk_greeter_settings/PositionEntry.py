@@ -15,10 +15,12 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from gi.repository import Gtk
 from itertools import product
-from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
+
+from gi.repository import Gtk
+
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
+from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
 
 
 __all__ = ['PositionEntry']
@@ -27,6 +29,7 @@ __all__ = ['PositionEntry']
 class PositionEntry(BaseEntry):
 
     class Dimension:
+
         def __init__(self, widgets, on_changed):
             self._entry = widgets['entry']
             self._percents = widgets['percents']
@@ -105,7 +108,6 @@ class PositionEntry(BaseEntry):
         def _on_value_changed(self, widget):
             self._on_changed(self)
 
-
     ASSUMED_WINDOW_SIZE = 430, 240
 
     def __init__(self, widgets):
@@ -129,7 +131,8 @@ class PositionEntry(BaseEntry):
         for (left, x_anchor), (top, y_anchor), w in anchors:
             w.props.halign = anchors_align[left]
             w.props.valign = anchors_align[top]
-            w.props.group = anchors[0][-1]
+            if w != anchors[0][-1]:
+                w.props.group = anchors[0][-1]
             w.connect('toggled', self._on_anchor_toggled, x_anchor, y_anchor)
             self._grid.attach(w, left, top, 1, 1)
             self._anchors[x_anchor, y_anchor] = w
@@ -141,7 +144,8 @@ class PositionEntry(BaseEntry):
 
         self._on_gdk_screen_changed()
 
-        self._screen_overlay.connect('get-child-position', self._on_screen_overlay_get_child_position)
+        self._screen_overlay.connect(
+            'get-child-position', self._on_screen_overlay_get_child_position)
         self._screen_overlay.connect('screen-changed', self._on_gdk_screen_changed)
 
     def _get_value(self):
@@ -179,8 +183,10 @@ class PositionEntry(BaseEntry):
     def _on_screen_overlay_get_child_position(self, overlay, child, allocation):
         screen = overlay.get_allocation()
 
-        if self._last_window_allocation and self._last_overlay_size == (screen.width, screen.height):
-            allocation.x, allocation.y, allocation.width, allocation.height = self._last_window_allocation
+        if self._last_window_allocation and \
+                self._last_overlay_size == (screen.width, screen.height):
+            (allocation.x, allocation.y,
+             allocation.width, allocation.height) = self._last_window_allocation
             return True
         self._last_overlay_size = screen.width, screen.height
 
@@ -194,10 +200,11 @@ class PositionEntry(BaseEntry):
         # And check what actually we have now
         width, height = child.size_request().width, child.size_request().height
 
-        x = self._get_corrected_position(int(self._x.get_value_for_screen(self._screen_size[0]) * scale),
-                                         screen.width, width, self._x.anchor)
-        y = self._get_corrected_position(int(self._y.get_value_for_screen(self._screen_size[1]) * scale),
-                                         screen.height, height, self._y.anchor)
+        x = int(self._x.get_value_for_screen(self._screen_size[0]) * scale)
+        y = int(self._y.get_value_for_screen(self._screen_size[1]) * scale)
+
+        x = self._get_corrected_position(x, screen.width, width, self._x.anchor)
+        y = self._get_corrected_position(y, screen.height, height, self._y.anchor)
 
         self._last_window_allocation = x, y, width, height
         allocation.x, allocation.y, allocation.width, allocation.height = x, y, width, height
@@ -213,10 +220,8 @@ class PositionEntry(BaseEntry):
         self._screen_overlay.queue_resize()
         self._emit_changed()
 
-    def _on_gdk_screen_changed(self, widget = None, prev_screen = None):
+    def _on_gdk_screen_changed(self, widget=None, prev_screen=None):
         screen = self._screen_overlay.get_toplevel().get_screen()
         geometry = screen.get_monitor_geometry(screen.get_primary_monitor())
         self._screen_size = geometry.width, geometry.height
         self._screen_frame.props.ratio = geometry.width / geometry.height
-
-

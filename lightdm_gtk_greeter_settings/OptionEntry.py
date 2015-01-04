@@ -15,35 +15,36 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from builtins import isinstance
-from collections import OrderedDict
-from locale import gettext as _
+
 import os
 import time
+from locale import gettext as _
 
-from gi.repository import Gtk, Gdk, GObject, GLib
-from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
-from lightdm_gtk_greeter_settings.IndicatorChooserDialog import IndicatorChooserDialog
+from gi.repository import (
+    Gdk,
+    GLib,
+    GObject,
+    Gtk)
 from lightdm_gtk_greeter_settings import helpers
-from lightdm_gtk_greeter_settings.helpers import C_
-from lightdm_gtk_greeter_settings.helpers import ModelRowEnum
-from lightdm_gtk_greeter_settings.helpers import string2bool, bool2string
+from lightdm_gtk_greeter_settings.helpers import (
+    C_,
+    bool2string,
+    string2bool, SimpleEnum)
+from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 
-__all__ = ['BaseEntry', 'BooleanEntry', 'InvertedBooleanEntry',
-           'StringEntry', 'StringPathEntry', 'ClockFormatEntry',
-           'BackgroundEntry', 'IconEntry', 'IndicatorsEntry',
-           'AdjustmentEntry', 'ChoiceEntry', 'AccessibilityStatesEntry']
-
-
-class BuilderWrapper:
-
-    def __init__(self, builder, base):
-        self._builder = builder
-        self._base = base
-
-    def __getitem__(self, key):
-        return self._builder.get_object('%s_%s' % (self._base, key))
+__all__ = [
+    'AccessibilityStatesEntry',
+    'AdjustmentEntry',
+    'BackgroundEntry',
+    'BaseEntry',
+    'BooleanEntry',
+    'ChoiceEntry',
+    'ClockFormatEntry',
+    'IconEntry',
+    'InvertedBooleanEntry',
+    'StringEntry',
+    'StringPathEntry']
 
 
 class BaseEntry(GObject.GObject):
@@ -52,9 +53,9 @@ class BaseEntry(GObject.GObject):
         super().__init__()
         self._widgets = widgets
         self._use = widgets['use']
+        self._widgets_to_disable = []
         if self._use:
             self._use.connect('notify::active', self._on_use_toggled)
-            self._widgets_to_disable = None
         self._error = widgets['error']
 
     @property
@@ -100,11 +101,11 @@ class BaseEntry(GObject.GObject):
         pass
 
     @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
-    def get(self, value: str) -> str:  # @IgnorePep8
+    def get(self, value: str) -> str:
         pass
 
     @GObject.Signal(flags=GObject.SIGNAL_RUN_CLEANUP)
-    def set(self, value: str) -> str:  # @IgnorePep8
+    def set(self, value: str) -> str:
         pass
 
     def __repr__(self):
@@ -122,7 +123,9 @@ class BaseEntry(GObject.GObject):
         raise NotImplementedError(self.__class__)
 
     def _get_error(self):
-        raise NotImplementedError(self.__class__)
+        if self._error:
+            return self._error.props.tooltip_text
+        return None
 
     def _set_error(self, text):
         if self._error:
@@ -148,7 +151,7 @@ class BooleanEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['value']
         self._value.connect('notify::active', self._emit_changed)
-        self._widgets_to_disable = [self._value]
+        self._widgets_to_disable.append(self._value)
 
     def _get_value(self):
         return bool2string(self._value.props.active)
@@ -174,11 +177,11 @@ class StringEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
-        self._widgets_to_disable = [self._value]
+        self._widgets_to_disable.append(self._value)
         if isinstance(self._value.props.parent, Gtk.ComboBox):
             self._widgets_to_disable += [self._value.props.parent]
         self._value.connect('changed', self._emit_changed)
-        
+
     def _get_value(self):
         return self._value.props.text
 
@@ -188,6 +191,15 @@ class StringEntry(BaseEntry):
 
 class StringPathEntry(BaseEntry):
 
+    class Row(helpers.SimpleEnum):
+        Title = ()
+        Type = ()
+
+    class ItemType(SimpleEnum):
+        Select = 'select-path'
+        Value = 'value'
+        Separator = 'separator'
+
     def __init__(self, widgets):
         super().__init__(widgets)
 
@@ -195,12 +207,21 @@ class StringPathEntry(BaseEntry):
 
         self._combo = widgets['combo']
         self._entry = widgets['entry']
-        self._widgets_to_disable = [self._combo]
+        self._widgets_to_disable.append(self._combo)
+        self._filters = ()
 
         self._entry.connect('changed', self._emit_changed)
         self._combo.connect('format-entry-text', self._on_combobox_format)
 
         self._combo.set_row_separator_func(self._row_separator_callback, None)
+
+    def add_filter(self, file_filter):
+        if self._file_dialog:
+            self._file_dialog.add_filter(file_filter)
+        elif self._filters:
+            self._filters.append(file_filter)
+        else:
+            self._filters = [file_filter]
 
     def _get_value(self):
         return self._entry.props.text
@@ -209,26 +230,28 @@ class StringPathEntry(BaseEntry):
         self._entry.props.text = value or ''
 
     def _row_separator_callback(self, model, rowiter, data):
-        return model[rowiter][0] == '-'
+        return model[rowiter][self.Row.Type] == self.ItemType.Separator
 
     def _on_combobox_format(self, combobox, path):
-        value = ''
+        value = self._entry.props.text
         item_id = combobox.get_active_id()
-        if item_id == 'select-path':
+        if item_id == self.ItemType.Select:
             if not self._file_dialog:
                 self._file_dialog = Gtk.FileChooserDialog(
-                                            parent=self._combo.get_toplevel(),
-                                            buttons=(_('_OK'), Gtk.ResponseType.OK,
-                                                     _('_Cancel'), Gtk.ResponseType.CANCEL),
-                                            title=C_('option|StringPathEntry', 'Select path'))
+                    parent=self._combo.get_toplevel(),
+                    buttons=(_('_OK'), Gtk.ResponseType.OK,
+                             _('_Cancel'), Gtk.ResponseType.CANCEL),
+                    title=C_('option|StringPathEntry', 'Select path'))
+                for f in self._filters:
+                    self._file_dialog.add_filter(f)
             if self._file_dialog.run() == Gtk.ResponseType.OK:
                 value = self._file_dialog.get_filename()
-            else:
-                value = combobox.get_active_text()
             self._file_dialog.hide()
-        elif item_id == 'value':
-            value = combobox.props.model[path][0]
+        elif item_id == self.ItemType.Value:
+            value = combobox.props.model[path][self.Row.Title]
+
         combobox.set_active(-1)
+        combobox.grab_focus()
         return value
 
 
@@ -238,7 +261,7 @@ class AdjustmentEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['adjustment']
         self._view = widgets['view']
-        self._widgets_to_disable = [self._view]
+        self._widgets_to_disable.append(self._view)
         self._value.connect('value-changed', self._emit_changed)
 
     def _get_value(self):
@@ -256,7 +279,7 @@ class ChoiceEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
-        self._widgets_to_disable = [self._value]
+        self._widgets_to_disable.append(self._value)
         self._value.connect('changed', self._emit_changed)
 
     def _get_value(self):
@@ -339,6 +362,7 @@ class FontEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
+        self._widgets_to_disable.append(self._value)
         self._value.connect('font-set', self._emit_changed)
 
     def _get_value(self):
@@ -357,6 +381,7 @@ class IconEntry(BaseEntry):
         self._image = widgets['image']
         self._icon_item = widgets['icon_item']
         self._path_item = widgets['path_item']
+        self._widgets_to_disable.append(self._button)
         self._icon_dialog = None
         self._path_dialog = None
 
@@ -413,7 +438,7 @@ class IconEntry(BaseEntry):
                 width, height = image.get_size_request()
                 if -1 in (width, height):
                     width, height = 64, 64
-                pixbuf = helpers.new_pixbuf_from_file_scaled_down(path, width, height)
+                pixbuf = helpers.pixbuf_from_file_scaled_down(path, width, height)
                 image.set_from_pixbuf(pixbuf)
                 return True
             except GLib.Error:
@@ -424,10 +449,10 @@ class IconEntry(BaseEntry):
         if not self._icon_dialog:
             self._icon_dialog = IconChooserDialog()
             self._icon_dialog.props.transient_for = self._image.get_toplevel()
-        if self._value.startswith('#'):
+        if self._value and self._value.startswith('#'):
             self._icon_dialog.select_icon(self._value[1:])
         if self._icon_dialog.run() == Gtk.ResponseType.OK:
-            self._set_icon(self._icon_dialog.get_icon_name())
+            self._set_icon(self._icon_dialog.get_selected_icon())
         self._icon_dialog.hide()
 
     def _on_select_path(self, item):
@@ -444,7 +469,8 @@ class IconEntry(BaseEntry):
             preview.props.pixel_size = preview_size
             preview.set_size_request(preview_size, preview_size)
 
-        self._path_dialog.select_filename(self._value)
+        if self._value:
+            self._path_dialog.select_filename(self._value)
         if self._path_dialog.run() == Gtk.ResponseType.OK:
             self._set_path(self._path_dialog.get_filename())
         self._path_dialog.hide()
@@ -453,177 +479,21 @@ class IconEntry(BaseEntry):
         self._set_image_from_path(chooser.props.preview_widget, chooser.get_filename())
 
 
-class IndicatorsEntry(BaseEntry):
-    ROW = ModelRowEnum('NAME', 'TOOLTIP', 'EDITABLE', 'HAS_STATE', 'STATE')
-    NAMES_DELIMITER = ';'
-    DEFAULT_TOOLTIPS = {'~spacer': C_('option-entry|indicators', 'Spacer'),
-                        '~separator': C_('option-entry|indicators', 'Separator')}
-
-    def __init__(self, widgets):
-        super().__init__(widgets)
-        self._toolbar = widgets['toolbar']
-        self._treeview = widgets['treeview']
-        self._selection = widgets['selection']
-        self._state_renderer = widgets['state_renderer']
-        self._name_column = widgets['name_column']
-        self._name_renderer = widgets['name_renderer']
-        self._add = widgets['add']
-        self._remove = widgets['remove']
-        self._up = widgets['up']
-        self._down = widgets['down']
-        self._model = widgets['model']
-        self._widgets_to_disable = [self._treeview, self._toolbar]
-        self._indicators_dialog = None
-        self._initial_items = OrderedDict((item.NAME, item)
-                                          for item in map(self.ROW, self._model))
-
-        self._treeview.connect('key-press-event', self._on_key_press)
-        self._selection.connect('changed', self._on_selection_changed)
-        self._state_renderer.connect('toggled', self._on_state_toggled)
-        self._name_renderer.connect('edited', self._on_name_edited)
-        self._add.connect('clicked', self._on_add)
-        self._remove.connect('clicked', self._on_remove)
-        self._up.connect('clicked', self._on_up)
-        self._down.connect('clicked', self._on_down)
-
-        self._model.connect('row-changed', self._on_model_changed)
-        self._model.connect('row-deleted', self._on_model_changed)
-        self._model.connect('row-inserted', self._on_model_changed)
-        self._model.connect('rows-reordered', self._on_model_changed)
-
-    def _on_model_changed(self, *unused):
-        self._emit_changed()
-
-    def _get_value(self):
-        names = (row[self.ROW.NAME] for row in self._model
-                 if not row[self.ROW.HAS_STATE] or row[self.ROW.STATE])
-        return self.NAMES_DELIMITER.join(names)
-
-    def _set_value(self, value):
-        self._model.clear()
-        last_options = self._initial_items.copy()
-        if value:
-            for name in value.split(self.NAMES_DELIMITER):
-                try:
-                    self._model[self._model.append(last_options.pop(name))]\
-                         [self.ROW.STATE] = True
-                except KeyError:
-                    self._model.append(self._get_indicator_tuple(name))
-
-        for item in list(last_options.values()):
-            self._model.append(item)
-
-        self._selection.select_path(0)
-
-    def _remove_selection(self):
-        model, rowiter = self._selection.get_selected()
-        if rowiter:
-            previter = model.iter_previous(rowiter)
-            model.remove(rowiter)
-            if previter:
-                self._selection.select_iter(previter)
-
-    def _move_selection(self, move_up):
-        model, rowiter = self._selection.get_selected()
-        if rowiter:
-            if move_up:
-                model.swap(rowiter, model.iter_previous(rowiter))
-            else:
-                model.swap(rowiter, model.iter_next(rowiter))
-            self._on_selection_changed(self._selection)
-
-    def _check_indicator(self, name):
-        ''' Returns True if name is valid, error message or False otherwise '''
-        if not name:
-            return False
-        elif name not in ('~spacer', '~separator'):
-            if any(row[self.ROW.NAME] == name for row in self._model):
-                return C_('option-entry|indicators',
-                          'Indicator "{indicator}" is already in the list')\
-                    .format(indicator=name)
-        return True
-
-    def _add_indicator(self, name):
-        if name:
-            rowiter = self._model.append(self._get_indicator_tuple(name))
-            self._selection.select_iter(rowiter)
-            self._treeview.grab_focus()
-
-    def _get_indicator_tuple(self, name):
-        tooltip = self.DEFAULT_TOOLTIPS.get(name,
-                        C_('option-entry|indicators', 'Indicator: {name}')
-                           .format(name=name))
-        editable = name not in ('~spacer', '~separator')
-        return self.ROW(NAME=name, TOOLTIP=tooltip, EDITABLE=editable,
-                        HAS_STATE=False, STATE=False)
-
-    def _on_key_press(self, treeview, event):
-        if Gdk.keyval_name(event.keyval) == 'Delete':
-            self._remove_selection()
-        elif Gdk.keyval_name(event.keyval) == 'F2':
-            model, rowiter = self._selection.get_selected()
-            if rowiter and model[rowiter][self.COLUMN.EDITABLE]:
-                self._treeview.set_cursor(
-                    model.get_path(rowiter), self.COLUMN.NAME, True)
-        else:
-            return False
-        return True
-
-    def _on_state_toggled(self, renderer, path):
-        self._model[path][self.ROW.STATE] = not self._model[path][self.ROW.STATE]
-
-    def _on_name_edited(self, renderer, path, name):
-        check = self._check_indicator(name)
-        if not isinstance(check, str) and check:
-            self._model[path][self.ROW.NAME] = name
-
-    def _on_selection_changed(self, selection):
-        model, rowiter = selection.get_selected()
-        has_selection = rowiter is not None
-        self._remove.props.sensitive = has_selection and \
-                                       not model[rowiter][self.ROW.HAS_STATE]
-        self._down.props.sensitive = has_selection and model.iter_next(
-            rowiter) is not None
-        self._up.props.sensitive = has_selection and model.iter_previous(
-            rowiter) is not None
-        if has_selection:
-            self._treeview.scroll_to_cell(model.get_path(rowiter))
-
-    def _on_add(self, *args):
-        if not self._indicators_dialog:
-            self._indicators_dialog = IndicatorChooserDialog(
-                check_callback=self._check_indicator,
-                add_callback=self._add_indicator)
-            self._indicators_dialog.props.transient_for = \
-                self._treeview.get_toplevel()
-        name = self._indicators_dialog.get_indicator()
-        if name:
-            self._add_indicator(name)
-
-    def _on_remove(self, *args):
-        self._remove_selection()
-
-    def _on_up(self, *args):
-        self._move_selection(move_up=True)
-
-    def _on_down(self, *args):
-        self._move_selection(move_up=False)
-
-
 class AccessibilityStatesEntry(BaseEntry):
 
-    OPTIONS = {'keyboard', 'reader', 'contrast', 'font'}
+    Options = {'keyboard', 'reader', 'contrast', 'font'}
 
     def __init__(self, widgets):
         super().__init__(widgets)
 
-        self._states = {name: widgets[name] for name in self.OPTIONS}
+        self._states = {name: widgets[name] for name in self.Options}
 
         for w in self._states.values():
             w.connect('changed', self._emit_changed)
 
     def _get_value(self):
-        states = {name: widget.props.active_id for (name, widget) in self._states.items()}
+        states = {name: widget.props.active_id
+                  for (name, widget) in self._states.items()}
         return ';'.join(state + name
                         for (name, state) in states.items() if state not in {None, '-'})
 
@@ -633,6 +503,5 @@ class AccessibilityStatesEntry(BaseEntry):
                           for v in value.split(';') if v)
         else:
             states = {}
-        for name in self.OPTIONS:
+        for name in self.Options:
             self._states[name].props.active_id = states.get(name, '-')
-

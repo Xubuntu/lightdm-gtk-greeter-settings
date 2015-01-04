@@ -2,6 +2,7 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <requires lib="" version="3.8"/>
   <requires lib="gtk_greeter_settings" version="1.0"/>
   <object class="GtkMenu" id="greeter_default-user-image_menu">
     <property name="visible">True</property>
@@ -27,64 +28,17 @@
       <column type="gchararray"/>
       <!-- column-name tooltip -->
       <column type="gchararray"/>
-      <!-- column-name editable -->
-      <column type="gboolean"/>
       <!-- column-name has-state -->
       <column type="gboolean"/>
       <!-- column-name state -->
       <column type="gboolean"/>
+      <!-- column-name options -->
+      <column type="GObject"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+      <!-- column-name markup -->
+      <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0">~host</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Host name</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~clock</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Clock</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~layout</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Layout indicator</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~session</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Sessions menu (xfce, unity, gnome etc.)</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~language</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Languages menu</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~a11y</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Accessibility menu</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-      <row>
-        <col id="0">~power</col>
-        <col id="1" translatable="yes" context="option|greeter|indicators">Power menu</col>
-        <col id="2">False</col>
-        <col id="3">True</col>
-        <col id="4">False</col>
-      </row>
-    </data>
   </object>
   <object class="GtkAdjustment" id="greeter_position_x_adjustment">
     <property name="upper">10000</property>
@@ -122,7 +76,6 @@
     <property name="title" translatable="yes">LightDM GTK+ Greeter: settings</property>
     <property name="window_position">center</property>
     <property name="icon_name">lightdm-gtk-greeter-settings</property>
-    <property name="has_resize_grip">True</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -368,23 +321,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRadioButton" id="greeter_background_image_choice">
-                    <property name="label" translatable="yes" context="option|greeter|background">Image</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">24</property>
-                    <property name="xalign">0.5</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkFileChooserButton" id="greeter_background_image_value">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -393,24 +329,6 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="greeter_background_color_choice">
-                    <property name="label" translatable="yes" context="option|greeter|background">Color</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">24</property>
-                    <property name="xalign">0.5</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
-                    <property name="group">greeter_background_image_choice</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
                   </packing>
                 </child>
                 <child>
@@ -709,6 +627,41 @@
                     <property name="top_attach">9</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkRadioButton" id="greeter_background_color_choice">
+                    <property name="label" translatable="yes" context="option|greeter|background">Color</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">24</property>
+                    <property name="xalign">0.5</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">greeter_background_image_choice</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="greeter_background_image_choice">
+                    <property name="label" translatable="yes" context="option|greeter|background">Image</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">24</property>
+                    <property name="xalign">0.5</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">5</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="tab_expand">True</property>
@@ -810,7 +763,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow1">
-                        <property name="height_request">160</property>
+                        <property name="height_request">170</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="hexpand">True</property>
@@ -826,7 +779,7 @@
                             <property name="headers_visible">False</property>
                             <property name="headers_clickable">False</property>
                             <property name="reorderable">True</property>
-                            <property name="search_column">0</property>
+                            <property name="search_column">3</property>
                             <property name="tooltip_column">1</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection" id="greeter_indicators_selection">
@@ -835,14 +788,15 @@
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn" id="greeter_indicators_state_column">
+                                <property name="visible">False</property>
                                 <property name="sizing">autosize</property>
                                 <property name="title">column</property>
                                 <property name="clickable">True</property>
                                 <child>
                                   <object class="GtkCellRendererToggle" id="greeter_indicators_state_renderer"/>
                                   <attributes>
-                                    <attribute name="visible">3</attribute>
-                                    <attribute name="active">4</attribute>
+                                    <attribute name="visible">2</attribute>
+                                    <attribute name="active">3</attribute>
                                   </attributes>
                                 </child>
                               </object>
@@ -853,10 +807,15 @@
                                 <property name="title">column</property>
                                 <property name="expand">True</property>
                                 <child>
+                                  <object class="GtkCellRendererPixbuf" id="greeter_indicators_image_renderer"/>
+                                  <attributes>
+                                    <attribute name="icon-name">5</attribute>
+                                  </attributes>
+                                </child>
+                                <child>
                                   <object class="GtkCellRendererText" id="greeter_indicators_name_renderer"/>
                                   <attributes>
-                                    <attribute name="editable">3</attribute>
-                                    <attribute name="text">0</attribute>
+                                    <attribute name="markup">6</attribute>
                                   </attributes>
                                 </child>
                               </object>
@@ -929,6 +888,19 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="homogeneous">True</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkToolButton" id="greeter_indicators_tools">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes" context="option|greeter|indicators">Templates</property>
+                            <property name="use_underline">True</property>
+                            <property name="icon_name">preferences-other</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="homogeneous">False</property>
                           </packing>
                         </child>
                         <style>
@@ -1647,7 +1619,7 @@ More informative log</property>
           </packing>
         </child>
         <child>
-          <object class="GtkInfoBar" id="no_access_infobar">
+          <object class="GtkInfoBar" id="infobar">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>

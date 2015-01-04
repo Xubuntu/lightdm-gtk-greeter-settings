@@ -17,15 +17,17 @@
 
 
 from gi.repository import GObject
-from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
+
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
+from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
 
 
-__all__ = ['BaseGroup', 'SimpleGroup']
+__all__ = [
+    'BaseGroup',
+    'SimpleGroup']
 
 
 # Broken solution - too complex
-
 class BaseGroup(GObject.GObject):
 
     def __init__(self, widgets):
@@ -89,4 +91,3 @@ class SimpleGroup(BaseGroup):
                 config.set(self._name, key, entry.value)
             else:
                 config.remove_option(self._name, key)
-

@@ -18,10 +18,10 @@
 
 from gi.repository import Gtk
 
-from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
-from lightdm_gtk_greeter_settings.OptionGroup import BaseGroup
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
 from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MultiheadSetupDialog
+from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
+from lightdm_gtk_greeter_settings.OptionGroup import BaseGroup
 
 
 __all__ = ['MonitorsGroup']
