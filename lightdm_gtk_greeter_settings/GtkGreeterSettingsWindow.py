@@ -19,6 +19,7 @@
 import collections
 import configparser
 import os
+import shlex
 import sys
 from glob import iglob
 from itertools import chain
@@ -72,7 +73,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         ('greeter', 'default-user-image'): ('changed',),
         ('greeter', 'screensaver-timeout'): ('setup', 'get', 'set'),
         ('greeter', 'theme-name'): ('setup', 'changed'),
-        ('greeter', 'icon-theme-name'): ('setup', 'changed')}
+        ('greeter', 'icon-theme-name'): ('setup', 'changed'),
+        ('greeter', 'keyboard'): ('changed',),
+        ('greeter', 'reader'): ('changed',)}
 
     def init_window(self):
         self._widgets = self.Widgets(builder=self.builder)
@@ -84,8 +87,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._groups = (
             SimpleGroup('greeter', self.builder, {
                 # Appearance
-                'theme-name': (OptionEntry.StringEntry, None),
-                'icon-theme-name': (OptionEntry.StringEntry, None),
+                'theme-name': (OptionEntry.StringEntry, ''),
+                'icon-theme-name': (OptionEntry.StringEntry, ''),
                 'font-name': (OptionEntry.FontEntry, 'Sans 10'),
                 'xft-antialias': (OptionEntry.BooleanEntry, 'false'),
                 'xft-dpi': (OptionEntry.StringEntry, None),
@@ -105,7 +108,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
                 'keyboard': (OptionEntry.StringPathEntry, None),
                 'reader': (OptionEntry.StringPathEntry, None),
-                'a11y-states': (OptionEntry.AccessibilityStatesEntry, None),
+                'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
                 'allow-debugging': (OptionEntry.BooleanEntry, 'false'), }),
             MonitorsGroup(WidgetsWrapper(self.builder)))
 
@@ -224,13 +227,21 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                      adjustment)
 
     def on_entry_get_greeter_screensaver_timeout(self, entry=None, value=None):
-        value = int(float(value))
+        try:
+            value = int(float(value))
+        except ValueError:
+            value = 60
+
         if value > 60:
             return (value - 59) * 60
         return value
 
     def on_entry_set_greeter_screensaver_timeout(self, entry=None, value=None):
-        value = int(float(value))
+        try:
+            value = int(float(value))
+        except ValueError:
+            value = 60
+
         if value > 60:
             return value // 60 + 59
         return value
@@ -291,6 +302,21 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             entry.error = None
         else:
             entry.error = helpers.check_path_accessibility(value)
+
+    # [greeter] keyboard
+    def on_entry_changed_greeter_keyboard(self, entry):
+        error = None
+        if entry.enabled:
+            value = entry.value
+            if os.path.isabs(value):
+                argv = shlex.split(value)
+                error = helpers.check_path_accessibility(argv[0], executable=True)
+            elif not value:
+                error = _('Do not leave this field empty')
+        entry.error = error
+
+    # [greeter] reader
+    on_entry_changed_greeter_reader = on_entry_changed_greeter_keyboard
 
     def on_destroy(self, *unused):
         Gtk.main_quit()

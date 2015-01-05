@@ -481,7 +481,7 @@ class IconEntry(BaseEntry):
 
 class AccessibilityStatesEntry(BaseEntry):
 
-    Options = {'keyboard', 'reader', 'contrast', 'font'}
+    Options = ('keyboard', 'reader', 'contrast', 'font')
 
     def __init__(self, widgets):
         super().__init__(widgets)

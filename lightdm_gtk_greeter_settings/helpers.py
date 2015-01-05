@@ -129,7 +129,7 @@ def pixbuf_from_file_scaled_down(path, width, height):
     return pixbuf
 
 
-def check_path_accessibility(path):
+def check_path_accessibility(path, file=True, executable=False):
     """Return None  if file is readable by greeter and error message otherwise"""
 
     if not os.path.exists(path):
@@ -171,7 +171,23 @@ def check_path_accessibility(path):
             _('LighDM do not have permissions to read path: {path}'.format(path=p))
 
     errors = (check(p) for p in accumulate(parts, os.path.join))
-    return next((error for error in errors if error), None)
+    error = next((error for error in errors if error), None)
+
+    if not error and file and not os.path.isfile(path):
+        return _('Path is not a regular file: {path}'.format(path=path))
+
+    if not error and executable:
+        st = os.stat(path)
+        if st.st_uid == uid:
+            if not st.st_mode & stat.S_IXUSR:
+                return _('LighDM do not have permissions to execute file: {path}'.format(path=path))
+        elif st.st_gid in gids:
+            if not st.st_mode & stat.S_IXGRP:
+                return _('LighDM do not have permissions to execute file: {path}'.format(path=path))
+        elif not st.st_mode & stat.S_IXOTH:
+            return _('LighDM do not have permissions to execute file: {path}'.format(path=path))
+
+    return error
 
 
 def get_markup_error(markup):

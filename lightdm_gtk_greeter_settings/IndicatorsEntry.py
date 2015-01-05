@@ -231,8 +231,6 @@ class IndicatorsEntry(BaseEntry):
             # text, image, layout=image-text -> text, image
             if options.get(Option.Layout) == {LayoutSet.Text, LayoutSet.Image}:
                 del options[Option.Layout]
-                # defaults.pop(Option.Image, None)
-                # defaults.pop(Option.Text, None)
 
             for k in defaults.keys() & options.keys():
                 if defaults[k] == options[k]:
