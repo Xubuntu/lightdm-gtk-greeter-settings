@@ -657,13 +657,11 @@ class IndicatorsEntry(BaseEntry):
             self._tools_menu = Gtk.Menu()
             self._tools_menu.attach_to_widget(self._tools)
 
-            unused_item = Gtk.CheckMenuItem(
-                C_('option-entry|indicators', 'Show unused items'))
+            unused_item = Gtk.CheckMenuItem(C_('option-entry|indicators', 'Show unused items'))
             unused_item.connect('toggled', self._tools_show_unused_toggled)
             self._tools_menu.append(unused_item)
 
-            header_item = Gtk.MenuItem(
-                C_('option-entry|indicators', 'Predefined templates:'))
+            header_item = Gtk.MenuItem(C_('option-entry|indicators', 'Predefined templates:'))
             header_item.props.sensitive = False
             self._tools_menu.append(Gtk.SeparatorMenuItem())
             self._tools_menu.append(header_item)
@@ -678,8 +676,7 @@ class IndicatorsEntry(BaseEntry):
 
             for title, value in templates:
                 item = Gtk.MenuItem(title)
-                item.connect(
-                    'activate', self._on_tools_template_clicked, value)
+                item.connect('activate', self._on_tools_template_clicked, value)
                 self._tools_menu.append(item)
 
             self._tools_menu.show_all()

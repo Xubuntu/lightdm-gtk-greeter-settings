@@ -110,7 +110,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'reader': (OptionEntry.StringPathEntry, None),
                 'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
                 'allow-debugging': (OptionEntry.BooleanEntry, 'false'), }),
-            MonitorsGroup(WidgetsWrapper(self.builder)))
+            MonitorsGroup(self.builder))
 
         for group in self._groups:
             group.entry_added.connect(self.on_entry_added)

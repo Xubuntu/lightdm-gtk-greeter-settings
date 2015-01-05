@@ -58,6 +58,7 @@ except ImportError:
 __all__ = [
     'bool2string',
     'C_',
+    'clamp',
     'check_path_accessibility',
     'DefaultValueDict',
     'file_is_readable_by_greeter',
@@ -196,6 +197,14 @@ def get_markup_error(markup):
     except GLib.Error as e:
         return e.message
     return None
+
+
+def clamp(v, a, b):
+    if v < a:
+        return a
+    if v > b:
+        return b
+    return v
 
 
 class DefaultValueDict(defaultdict):

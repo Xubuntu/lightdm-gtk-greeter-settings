@@ -17,7 +17,9 @@
 
 from itertools import product
 
-from gi.repository import Gtk
+from gi.repository import (
+    Gdk,
+    Gtk)
 
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
 from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
@@ -53,26 +55,29 @@ class PositionEntry(BaseEntry):
 
         @value.setter
         def value(self, s):
-            value, _, anchor = s.partition(',')
+            if isinstance(s, tuple):
+                p, percents, negative, anchor = s
+            else:
+                value, __, anchor = s.partition(',')
 
-            percents = value and value[-1] == '%'
-            if percents:
-                value = value[:-1]
+                percents = value and value[-1] == '%'
+                if percents:
+                    value = value[:-1]
 
-            try:
-                p = int(value)
-            except ValueError:
-                p = 0
+                try:
+                    p = int(value)
+                except ValueError:
+                    p = 0
 
-            negative = (p < 0) or (p == 0 and value and value[0] == '-')
+                negative = (p < 0) or (p == 0 and value and value[0] == '-')
 
-            if not anchor or anchor not in ('start', 'center', 'end'):
-                if negative:
-                    anchor = 'end'
-                else:
-                    anchor = 'start'
+                if not anchor or anchor not in ('start', 'center', 'end'):
+                    if negative:
+                        anchor = 'end'
+                    else:
+                        anchor = 'start'
+
             self._anchor = anchor
-
             self._percents.props.active = percents
             self._adjustment.props.upper = 100 if self._percents.props.active else 10000
             self._mirror.props.active = negative
@@ -87,6 +92,14 @@ class PositionEntry(BaseEntry):
         def anchor(self, value):
             self._anchor = value
 
+        @property
+        def negative(self):
+            return self._mirror.props.active
+
+        @negative.setter
+        def negative(self, value):
+            self._mirror.props.active = value
+
         def get_value_for_screen(self, screen: int):
             p = int(self._adjustment.props.value)
 
@@ -98,8 +111,7 @@ class PositionEntry(BaseEntry):
             return int(p)
 
         def _on_percents_toggled(self, toggle):
-            self._adjustment.props.upper = 100 if toggle.props.active \
-                else 10000
+            self._adjustment.props.upper = 100 if toggle.props.active else 10000
             self._on_changed(self)
 
         def _on_mirror_toggled(self, toggle):
@@ -108,7 +120,7 @@ class PositionEntry(BaseEntry):
         def _on_value_changed(self, widget):
             self._on_changed(self)
 
-    ASSUMED_WINDOW_SIZE = 430, 240
+    AssumedWindowSize = 430, 240
 
     def __init__(self, widgets):
         super().__init__(widgets)
@@ -119,8 +131,14 @@ class PositionEntry(BaseEntry):
 
         self._screen_frame = widgets['screen_frame']
         self._screen_overlay = widgets['screen_overlay']
-        self._window_frame = widgets['window_frame']
-        self._grid = widgets['window_grid']
+        window_box = widgets['window_box']
+        grid = widgets['window_grid']
+
+        self._motion = False
+
+        window_box.connect('motion-notify-event', self._on_window_motion)
+        window_box.connect('button-press-event', self._on_window_button_press)
+        window_box.connect('button-release-event', self._on_window_button_release)
 
         # Creating points grid
         anchors_align = (Gtk.Align.START, Gtk.Align.CENTER, Gtk.Align.END)
@@ -134,18 +152,18 @@ class PositionEntry(BaseEntry):
             if w != anchors[0][-1]:
                 w.props.group = anchors[0][-1]
             w.connect('toggled', self._on_anchor_toggled, x_anchor, y_anchor)
-            self._grid.attach(w, left, top, 1, 1)
+            grid.attach(w, left, top, 1, 1)
             self._anchors[x_anchor, y_anchor] = w
 
-        self._grid.show_all()
+        grid.show_all()
 
         self._x = PositionEntry.Dimension(WidgetsWrapper(widgets, 'x'), self._on_dimension_changed)
         self._y = PositionEntry.Dimension(WidgetsWrapper(widgets, 'y'), self._on_dimension_changed)
 
         self._on_gdk_screen_changed()
 
-        self._screen_overlay.connect(
-            'get-child-position', self._on_screen_overlay_get_child_position)
+        self._screen_overlay.connect('get-child-position',
+                                     self._on_screen_overlay_get_child_position)
         self._screen_overlay.connect('screen-changed', self._on_gdk_screen_changed)
 
     def _get_value(self):
@@ -192,8 +210,8 @@ class PositionEntry(BaseEntry):
 
         scale = screen.width / self._screen_size[0]
 
-        width = int(self.ASSUMED_WINDOW_SIZE[0] * scale)
-        height = int(self.ASSUMED_WINDOW_SIZE[1] * scale)
+        width = int(self.AssumedWindowSize[0] * scale)
+        height = int(self.AssumedWindowSize[1] * scale)
 
         # Set desired size
         child.set_size_request(width, height)
@@ -225,3 +243,35 @@ class PositionEntry(BaseEntry):
         geometry = screen.get_monitor_geometry(screen.get_primary_monitor())
         self._screen_size = geometry.width, geometry.height
         self._screen_frame.props.ratio = geometry.width / geometry.height
+
+    def _on_window_motion(self, widget, event):
+        if not event.state & Gdk.ModifierType.BUTTON1_MASK:
+            return False
+
+        screen = self._screen_overlay.get_allocation()
+        x, y = widget.translate_coordinates(self._screen_overlay, event.x, event.y)
+
+        for d, p in ((self._x, int(100 * x / screen.width)),
+                     (self._y, int(100 * y / screen.height))):
+            if p < 0:
+                p = 0
+            elif p > 100:
+                p = 100
+            if d.negative:
+                d.value = p - 100, True, True, d.anchor
+            else:
+                d.value = p, True, False, d.anchor
+
+        self._motion = True
+        self._last_window_allocation = None
+        self._screen_overlay.queue_resize()
+        return True
+
+    def _on_window_button_press(self, widget, event):
+        if event.button == 1:
+            self._motion = False
+
+    def _on_window_button_release(self, widget, event):
+        if self._motion and event.button == 1:
+            self._motion = False
+            self._emit_changed()
