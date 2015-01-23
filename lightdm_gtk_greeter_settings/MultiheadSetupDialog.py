@@ -242,7 +242,7 @@ class MultiheadSetupDialog(Gtk.Dialog):
             if self._file_dialog.run() == Gtk.ResponseType.OK:
                 value = self._file_dialog.get_filename()
             self._file_dialog.hide()
-        elif item_type == 'icon':
+        elif item_type == 'color':
             if not self._color_dialog:
                 self._color_dialog = Gtk.ColorChooserDialog(parent=self)
             if self._color_dialog.run() == Gtk.ResponseType.OK:

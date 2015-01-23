@@ -41,10 +41,9 @@ class PositionEntry(BaseEntry):
 
             self._anchor = None
 
-            self._percents.connect('toggled', self._on_percents_toggled)
-            self._mirror.connect('toggled', self._on_mirror_toggled)
-            self._on_value_changed_id = self._adjustment.connect('value-changed',
-                                                                 self._on_value_changed)
+            self._on_percents_id = self._percents.connect('toggled', self._on_percents_toggled)
+            self._on_mirror_id = self._mirror.connect('toggled', self._on_mirror_toggled)
+            self._on_value_id = self._adjustment.connect('value-changed', self._on_value_changed)
 
         @property
         def value(self):
@@ -78,10 +77,12 @@ class PositionEntry(BaseEntry):
                         anchor = 'start'
 
             self._anchor = anchor
-            self._percents.props.active = percents
+            with self._percents.handler_block(self._on_percents_id):
+                self._percents.props.active = percents
             self._adjustment.props.upper = 100 if self._percents.props.active else 10000
-            self._mirror.props.active = negative
-            with self._adjustment.handler_block(self._on_value_changed_id):
+            with self._mirror.handler_block(self._on_mirror_id):
+                self._mirror.props.active = negative
+            with self._adjustment.handler_block(self._on_value_id):
                 self._adjustment.props.value = -p if negative else p
 
         @property
@@ -146,14 +147,16 @@ class PositionEntry(BaseEntry):
                    for x, y in product(enumerate(('start', 'center', 'end')), repeat=2)]
 
         self._anchors = {}
+        self._anchors_handlers = {}
         for (left, x_anchor), (top, y_anchor), w in anchors:
             w.props.halign = anchors_align[left]
             w.props.valign = anchors_align[top]
             if w != anchors[0][-1]:
                 w.props.group = anchors[0][-1]
-            w.connect('toggled', self._on_anchor_toggled, x_anchor, y_anchor)
             grid.attach(w, left, top, 1, 1)
             self._anchors[x_anchor, y_anchor] = w
+            self._anchors_handlers[w] = w.connect('toggled', self._on_anchor_toggled,
+                                                  x_anchor, y_anchor)
 
         grid.show_all()
 
@@ -174,11 +177,14 @@ class PositionEntry(BaseEntry):
     def _set_value(self, value):
         self._last_window_allocation = None
         if value:
-            x, _, y = value.partition(' ')
+            x, __, y = value.partition(' ')
             self._x.value = x
             self._y.value = y or x
-            self._anchors[self._x.anchor, self._y.anchor].props.active = True
+            anchor = self._anchors[self._x.anchor, self._y.anchor]
+            with anchor.handler_block(self._anchors_handlers[anchor]):
+                anchor.props.active = True
         self._screen_overlay.queue_resize()
+        self._emit_changed()
 
     def _get_corrected_position(self, p, screen, window, anchor):
         if anchor == 'center':

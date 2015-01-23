@@ -17,7 +17,7 @@
       </row>
       <row>
         <col id="0" translatable="yes" context="option|multihead">Select color</col>
-        <col id="1">icon</col>
+        <col id="1">color</col>
       </row>
       <row>
         <col id="0" translatable="yes" context="option|multihead">Use default value</col>

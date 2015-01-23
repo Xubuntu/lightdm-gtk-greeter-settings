@@ -52,11 +52,13 @@ class BaseEntry(GObject.GObject):
     def __init__(self, widgets):
         super().__init__()
         self._widgets = widgets
-        self._use = widgets['use']
         self._widgets_to_disable = []
-        if self._use:
-            self._use.connect('notify::active', self._on_use_toggled)
-        self._error = widgets['error']
+
+        self.__use = widgets['use']
+        if self.__use:
+            self.__use.connect('notify::active', self.__on_use_toggled)
+
+        self.__error = widgets['error']
 
     @property
     def value(self):
@@ -67,22 +69,22 @@ class BaseEntry(GObject.GObject):
 
     @value.setter
     def value(self, value):
-        if self._use:
-            self._use.props.active = True
+        if self.__use:
+            self.__use.props.active = True
         formatted = self.set.emit(value)
         self._set_value(value if formatted is None else formatted)
 
     @property
     def enabled(self):
         '''Visual option state. You can get/set value of disabled option'''
-        if self._use:
-            return self._use.props.active
+        if self.__use:
+            return self.__use.props.active
         return True
 
     @enabled.setter
     def enabled(self, value):
-        if self._use:
-            self._use.props.active = value
+        if self.__use:
+            self.__use.props.active = value
 
     @property
     def error(self):
@@ -123,26 +125,31 @@ class BaseEntry(GObject.GObject):
         raise NotImplementedError(self.__class__)
 
     def _get_error(self):
-        if self._error:
-            return self._error.props.tooltip_text
+        if self.__error:
+            return self.__error.props.tooltip_text
         return None
 
     def _set_error(self, text):
-        if self._error:
-            self._error.props.visible = text is not None
-            self._error.props.tooltip_text = text
+        if self.__error:
+            self.__error.props.visible = text is not None
+            self.__error.props.tooltip_text = text
 
     def _set_enabled(self, value):
+        if self.__use:
+            self.__use.props.active = value
         if self._widgets_to_disable:
             for widget in self._widgets_to_disable:
                 widget.props.sensitive = value
 
-    def _on_use_toggled(self, toggle, *args):
-        self._set_enabled(self._use.props.active)
-        self._emit_changed()
+    def _show_menu(self):
+        self.__on_label_clicked()
 
     def _emit_changed(self, *unused):
         self.changed.emit()
+
+    def __on_use_toggled(self, toggle, *args):
+        self._set_enabled(self.__use.props.active)
+        self._emit_changed()
 
 
 class BooleanEntry(BaseEntry):
@@ -311,7 +318,7 @@ class BackgroundEntry(BaseEntry):
         self._image_value = widgets['image_value']
         self._color_value = widgets['color_value']
 
-        self._color_choice.connect('toggled', self._on_color_choice_toggled)
+        self._on_choice_id = self._color_choice.connect('toggled', self._on_color_choice_toggled)
         self._color_value.connect('color-set', self._on_color_set)
         self._image_value.connect('file-set', self._on_file_set)
 
@@ -319,7 +326,8 @@ class BackgroundEntry(BaseEntry):
         if self._image_choice.props.active:
             return self._image_value.get_filename() or ''
         else:
-            return self._color_value.props.rgba.to_string()
+            r, g, b, __ = (int(0xFF * v) for v in self._color_value.props.rgba)
+            return '#%02x%02x%02x' % (r, g, b)
 
     def _set_value(self, value):
         if value is None:
@@ -329,8 +337,9 @@ class BackgroundEntry(BaseEntry):
         if not rgba.parse(value):
             rgba = None
 
-        self._color_choice.props.active = rgba is not None
-        self._image_choice.props.active = rgba is None
+        with self._color_choice.handler_block(self._on_choice_id):
+            self._color_choice.props.active = rgba is not None
+            self._image_choice.props.active = rgba is None
 
         if rgba is not None:
             self._color_value.props.rgba = rgba
@@ -340,6 +349,8 @@ class BackgroundEntry(BaseEntry):
                 self._image_value.select_filename(value)
             else:
                 self._image_value.unselect_all()
+
+        self._emit_changed()
 
     def _on_color_choice_toggled(self, toggle):
         self._emit_changed()

@@ -28,6 +28,8 @@ from locale import gettext as _
 from gi.repository import (
     Gdk,
     Gtk)
+from gi.repository import Pango
+from gi.repository.GObject import markup_escape_text as escape_markup
 
 from lightdm_gtk_greeter_settings import (
     helpers,
@@ -37,7 +39,7 @@ from lightdm_gtk_greeter_settings import (
 from lightdm_gtk_greeter_settings.helpers import (
     C_,
     string2bool,
-    WidgetsWrapper, WidgetsEnum)
+    WidgetsEnum)
 from lightdm_gtk_greeter_settings.MonitorsGroup import MonitorsGroup
 from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 
@@ -81,6 +83,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._widgets = self.Widgets(builder=self.builder)
 
         self._multihead_dialog = None
+        self._entry_menu = None
         self._initial_values = {}
         self._changed_entries = None
         self._entries = None
@@ -105,9 +108,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 # Position
                 'position': (PositionEntry.PositionEntry, '50%,center'),
                 # Misc
-                'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
-                'keyboard': (OptionEntry.StringPathEntry, None),
-                'reader': (OptionEntry.StringPathEntry, None),
+                'screensaver-timeout': (OptionEntry.AdjustmentEntry, '60'),
+                'keyboard': (OptionEntry.StringPathEntry, ''),
+                'reader': (OptionEntry.StringPathEntry, ''),
                 'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
                 'allow-debugging': (OptionEntry.BooleanEntry, 'false'), }),
             MonitorsGroup(self.builder))
@@ -185,12 +188,18 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 else:
                     entry.connect(action, f)
 
+        label_holder = entry.widgets['label_holder']
+        if label_holder and isinstance(group, SimpleGroup):
+            label_holder.connect('button-press-event', self.on_entry_label_clicked,
+                                 entry, group, key)
+
         entry.changed.connect(self.on_entry_changed)
         self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
         self.on_entry_changed(entry, force=True)
 
     def on_entry_removed(self, group, entry, key):
         self._initial_values.pop(entry)
+
         if self._changed_entries is None:
             return
 
@@ -209,6 +218,80 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._changed_entries.discard(entry)
 
         self._widgets.apply.props.sensitive = self._allow_edit and self._changed_entries
+
+    def on_entry_reset_clicked(self, item):
+        entry, value, enabled = item._reset_entry_data
+        if enabled is None:
+            entry.value = value
+        else:
+            entry.enabled = enabled
+
+    def on_entry_label_clicked(self, widget, event, entry, group, key):
+        if event.button != 3:
+            return
+
+        if not self._entry_menu:
+            def new_reset_item():
+                item = Gtk.MenuItem('')
+                item.get_child().props.use_markup = True
+                item.get_child().props.ellipsize = Pango.EllipsizeMode.END
+                item.get_child().props.max_width_chars = 90
+                item.connect('activate', self.on_entry_reset_clicked)
+                return item
+
+            self._entry_menu = Gtk.Menu()
+            self._entry_menu_label_item = Gtk.MenuItem()
+            self._entry_menu_label_item.props.sensitive = False
+            self._entry_menu_separator_item = Gtk.SeparatorMenuItem()
+            self._entry_menu_initial_item = new_reset_item()
+            self._entry_menu_default_item = new_reset_item()
+
+            self._entry_menu.append(self._entry_menu_label_item)
+            self._entry_menu.append(self._entry_menu_separator_item)
+            self._entry_menu.append(self._entry_menu_initial_item)
+            self._entry_menu.append(self._entry_menu_default_item)
+            self._entry_menu.show_all()
+
+        self._entry_menu_label_item.props.label = '%s/%s' % (group.name, key)
+
+        if entry in self._changed_entries:
+            initial = self._initial_values[entry]
+            if entry.enabled != initial.enabled and not initial.enabled:
+                value = _('<i>enabled</i>') if initial.enabled else _('<i>disabled</i>')
+                self._entry_menu_initial_item._reset_entry_data = entry, None, initial.enabled
+            else:
+                if initial.value == '':
+                    value = _('<i>empty string</i>')
+                else:
+                    value = escape_markup(str(initial.value))
+                self._entry_menu_initial_item._reset_entry_data = entry, initial.value, None
+
+            self._entry_menu_initial_item.set_tooltip_markup(value)
+            self._entry_menu_initial_item.props.visible = True
+            self._entry_menu_initial_item.props.label = \
+                _('Reset to initial value: <b>{value}</b>').format(value=value)
+        else:
+            self._entry_menu_initial_item.props.visible = False
+
+        default = group.defaults[key]
+        if default is not None and entry.value != default:
+            if default == '':
+                value = _('<i>empty string</i>')
+            else:
+                value = escape_markup(str(default))
+
+            self._entry_menu_default_item._reset_entry_data = entry, default, None
+            self._entry_menu_default_item.set_tooltip_markup(value)
+            self._entry_menu_default_item.props.visible = True
+            self._entry_menu_default_item.props.label = \
+                _('Reset to default value: <b>{value}</b>').format(value=value)
+        else:
+            self._entry_menu_default_item.props.visible = False
+
+        self._entry_menu_separator_item.props.visible = \
+            (self._entry_menu_initial_item.props.visible or
+             self._entry_menu_default_item.props.visible)
+        self._entry_menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
 
     # [greeter] screensaver-timeout
     def on_entry_setup_greeter_screensaver_timeout(self, entry):
