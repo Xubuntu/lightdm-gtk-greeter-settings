@@ -231,20 +231,22 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             return
 
         if not self._entry_menu:
-            def new_reset_item():
+            def new_item(activate=None):
                 item = Gtk.MenuItem('')
                 item.get_child().props.use_markup = True
                 item.get_child().props.ellipsize = Pango.EllipsizeMode.END
                 item.get_child().props.max_width_chars = 90
-                item.connect('activate', self.on_entry_reset_clicked)
+                if activate:
+                    item.connect('activate', activate)
+                else:
+                    item.props.sensitive = False
                 return item
 
             self._entry_menu = Gtk.Menu()
-            self._entry_menu_label_item = Gtk.MenuItem()
-            self._entry_menu_label_item.props.sensitive = False
+            self._entry_menu_label_item = new_item()
             self._entry_menu_separator_item = Gtk.SeparatorMenuItem()
-            self._entry_menu_initial_item = new_reset_item()
-            self._entry_menu_default_item = new_reset_item()
+            self._entry_menu_initial_item = new_item(self.on_entry_reset_clicked)
+            self._entry_menu_default_item = new_item(self.on_entry_reset_clicked)
 
             self._entry_menu.append(self._entry_menu_label_item)
             self._entry_menu.append(self._entry_menu_separator_item)
@@ -252,18 +254,28 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._entry_menu.append(self._entry_menu_default_item)
             self._entry_menu.show_all()
 
-        self._entry_menu_label_item.props.label = '%s/%s' % (group.name, key)
+        def format_value(value=None, enabled=None):
+            if enabled is not None:
+                return _('<i>enabled</i>') if initial.enabled else _('<i>disabled</i>')
+            if value == '':
+                return _('<i>empty string</i>')
+            elif value is None:
+                return _('<i>None</i>')
+            else:
+                return escape_markup(str(value))
+
+        self._entry_menu_label_item.props.label = '{key} = {value}'.format(
+            group=group.name,
+            key=key,
+            value=format_value(value=entry.value))
 
         if entry in self._changed_entries:
             initial = self._initial_values[entry]
             if entry.enabled != initial.enabled and not initial.enabled:
-                value = _('<i>enabled</i>') if initial.enabled else _('<i>disabled</i>')
+                value = format_value(enabled=initial.enabled)
                 self._entry_menu_initial_item._reset_entry_data = entry, None, initial.enabled
             else:
-                if initial.value == '':
-                    value = _('<i>empty string</i>')
-                else:
-                    value = escape_markup(str(initial.value))
+                value = format_value(value=initial.value)
                 self._entry_menu_initial_item._reset_entry_data = entry, initial.value, None
 
             self._entry_menu_initial_item.set_tooltip_markup(value)
@@ -275,11 +287,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
         default = group.defaults[key]
         if default is not None and entry.value != default:
-            if default == '':
-                value = _('<i>empty string</i>')
-            else:
-                value = escape_markup(str(default))
-
+            value = format_value(value=default)
             self._entry_menu_default_item._reset_entry_data = entry, default, None
             self._entry_menu_default_item.set_tooltip_markup(value)
             self._entry_menu_default_item.props.visible = True

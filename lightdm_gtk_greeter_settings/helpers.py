@@ -64,6 +64,7 @@ __all__ = [
     'file_is_readable_by_greeter',
     'get_config_path',
     'get_data_path',
+    'get_greeter_version'
     'get_markup_error',
     'get_version',
     'ModelRowEnum',
@@ -101,6 +102,18 @@ def get_config_path():
 
 def get_version():
     return __version__
+
+
+def get_greeter_version():
+    try:
+        return get_greeter_version._version
+    except AttributeError:
+        try:
+            get_greeter_version._version = int(os.getenv('GTK_GREETER_VERSION', '0x010900'), 16)
+        except ValueError:
+            get_greeter_version._version = 0x010900
+
+    return get_greeter_version._version
 
 
 def bool2string(value):

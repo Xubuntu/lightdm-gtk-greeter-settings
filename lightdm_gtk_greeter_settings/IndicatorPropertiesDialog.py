@@ -29,6 +29,7 @@ from lightdm_gtk_greeter_settings.helpers import (
     bool2string,
     string2bool,
     get_data_path,
+    get_greeter_version,
     SimpleEnum,
     WidgetsEnum,
     WidgetsWrapper)
@@ -145,6 +146,7 @@ class IndicatorPropertiesDialog(Gtk.Dialog):
         ok = 'ok_button'
         infobar = 'infobar'
         message = 'message'
+        common_options = 'common_options_box'
         custom_options = 'custom_options_box'
         path = 'option_path_combo'
         path_model = 'option_path_model'
@@ -175,8 +177,19 @@ class IndicatorPropertiesDialog(Gtk.Dialog):
             name = Gtk.Buildable.get_name(page)
             self._name2page['~' + name.rsplit('_')[-1]] = i
 
+        if get_greeter_version() < 0x020100:
+            self._widgets.common_options.props.visible = False
+
+            self._name2page = {
+                Indicators.External: self._name2page[Indicators.External],
+                Indicators.Text: self._name2page[Indicators.Text]}
+            text_prefix = 'option_text_fallback'
+        else:
+            self._name2page[Indicators.Text] = -1
+            text_prefix = 'option_text'
+
         self._option_type = IndicatorTypeEntry(WidgetsWrapper(self.builder, 'option_type'))
-        self._option_text = OptionEntry.StringEntry(WidgetsWrapper(self.builder, 'option_text'))
+        self._option_text = OptionEntry.StringEntry(WidgetsWrapper(self.builder, text_prefix))
         self._option_image = IndicatorIconEntry(WidgetsWrapper(self.builder, 'option_image'))
         self._option_path = IndicatorPath(WidgetsWrapper(self.builder, 'option_path'))
         self._option_hide_disabled = \

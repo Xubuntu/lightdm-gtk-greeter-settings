@@ -27,6 +27,7 @@ from gi.repository.GObject import markup_escape_text as escape_markup
 
 from lightdm_gtk_greeter_settings.helpers import (
     C_,
+    get_greeter_version,
     get_markup_error,
     SimpleEnum,
     TreeStoreDataWrapper)
@@ -173,6 +174,10 @@ class IndicatorsEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
 
+        if get_greeter_version() < 0x020100:
+            self._get_value = self._get_value_19
+            self._on_button_release = self._on_button_release_19
+
         for k, v in self.DefaultOptions.items():
             v[Option.Name] = k
 
@@ -258,6 +263,25 @@ class IndicatorsEntry(BaseEntry):
                           for k, v in sorted(options.items(), key=operator.itemgetter(0)))
                 items.append(fix_token(name) + ': ' + ', '.join(values))
         return '; '.join(items)
+
+    def _get_value_19(self):
+
+        items = []
+        for row in self._model:
+            if row[Row.HasState] and not row[Row.State]:
+                continue
+
+            options = deepcopy(row[Row.Options].data)
+            name = options.pop(Option.Name)
+
+            # name=~text, text=value -> ~~value
+            if name == Indicators.Text:
+                name = '~~' + (options.pop(Option.Text, None) or '')
+            elif name == Indicators.External:
+                name = options.pop(Option.Path, None) or ''
+
+            items.append(name)
+        return ';'.join(items)
 
     def _set_value(self, value):
         with self._model.handler_block(self._on_row_deleted_id):
@@ -421,8 +445,8 @@ class IndicatorsEntry(BaseEntry):
         else:
             markup = title
 
-        if Option.Image in options:
-            icon = options[Option.Image]
+        if Option.Image in options or get_greeter_version() < 0x020100:
+            icon = options.get(Option.Image)
             if icon and icon.startswith('#'):
                 icon = icon[1:]
             elif icon:
@@ -600,6 +624,9 @@ class IndicatorsEntry(BaseEntry):
                              Gtk.get_current_event_time())
 
         return True
+
+    def _on_button_release_19(self, treeview, event):
+        pass
 
     def _on_row_menu_reset_clicked(self, item):
         model, rowiter = self._selection.get_selected()
