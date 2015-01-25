@@ -123,6 +123,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._allow_edit = self._has_access_to_write(self._config_path)
         self._widgets.infobar.props.visible = not self._allow_edit
         self._widgets.apply.props.visible = self._allow_edit
+
         if not self._allow_edit:
             helpers.show_message(
                 text=_('No permissions to save configuration'),
@@ -254,9 +255,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._entry_menu.append(self._entry_menu_default_item)
             self._entry_menu.show_all()
 
-        def format_value(value=None, enabled=None):
-            if enabled is not None:
-                return _('<i>enabled</i>') if initial.enabled else _('<i>disabled</i>')
+        def format_value(value=None, enabled=True):
+            if not enabled:
+                return _('<i>disabled</i>')
             if value == '':
                 return _('<i>empty string</i>')
             elif value is None:
@@ -267,17 +268,17 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._entry_menu_label_item.props.label = '{key} = {value}'.format(
             group=group.name,
             key=key,
-            value=format_value(value=entry.value))
+            value=format_value(value=entry.value, enabled=entry.enabled))
 
         if entry in self._changed_entries:
             initial = self._initial_values[entry]
+
             if entry.enabled != initial.enabled and not initial.enabled:
-                value = format_value(enabled=initial.enabled)
                 self._entry_menu_initial_item._reset_entry_data = entry, None, initial.enabled
             else:
-                value = format_value(value=initial.value)
                 self._entry_menu_initial_item._reset_entry_data = entry, initial.value, None
 
+            value = format_value(value=initial.value, enabled=initial.enabled)
             self._entry_menu_initial_item.set_tooltip_markup(value)
             self._entry_menu_initial_item.props.visible = True
             self._entry_menu_initial_item.props.label = \

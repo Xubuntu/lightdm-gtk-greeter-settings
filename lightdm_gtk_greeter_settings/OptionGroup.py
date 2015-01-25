@@ -104,10 +104,11 @@ class SimpleGroup(BaseGroup):
             config.add_section(self._name)
 
         for key, entry in self._entries.items():
-            if entry.enabled:
+            value = entry.value
+            if entry.enabled and value != self._get_default(key):
                 config.set(self._name, key, entry.value)
             else:
                 config.remove_option(self._name, key)
 
     def _get_default(self, key):
-        return self._defaults[key]
+        return self._defaults.get(key)

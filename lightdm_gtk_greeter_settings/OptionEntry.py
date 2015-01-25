@@ -70,21 +70,17 @@ class BaseEntry(GObject.GObject):
     @value.setter
     def value(self, value):
         if self.__use:
-            self.__use.props.active = True
+            self.__use.set_active(True)
         formatted = self.set.emit(value)
         self._set_value(value if formatted is None else formatted)
 
     @property
     def enabled(self):
-        '''Visual option state. You can get/set value of disabled option'''
-        if self.__use:
-            return self.__use.props.active
-        return True
+        return self._get_enabled()
 
     @enabled.setter
     def enabled(self, value):
-        if self.__use:
-            self.__use.props.active = value
+        self._set_enabled(value)
 
     @property
     def error(self):
@@ -134,12 +130,18 @@ class BaseEntry(GObject.GObject):
             self.__error.props.visible = text is not None
             self.__error.props.tooltip_text = text
 
+    def _get_enabled(self):
+        if self.__use:
+            return self.__use.get_active()
+        return True
+
     def _set_enabled(self, value):
         if self.__use:
-            self.__use.props.active = value
-        if self._widgets_to_disable:
-            for widget in self._widgets_to_disable:
-                widget.props.sensitive = value
+            self.__use.set_active(value)
+            if self._widgets_to_disable:
+                for widget in self._widgets_to_disable:
+                    widget.props.sensitive = value
+        self._emit_changed()
 
     def _show_menu(self):
         self.__on_label_clicked()
@@ -147,9 +149,8 @@ class BaseEntry(GObject.GObject):
     def _emit_changed(self, *unused):
         self.changed.emit()
 
-    def __on_use_toggled(self, toggle, *args):
+    def __on_use_toggled(self, toggle, *unused):
         self._set_enabled(self.__use.props.active)
-        self._emit_changed()
 
 
 class BooleanEntry(BaseEntry):

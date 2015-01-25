@@ -5,7 +5,7 @@ lightdm-gtk-greeter-settings.desktop.in
 [type: gettext/glade]data/GtkGreeterSettingsWindow.ui
 [type: gettext/glade]data/IconChooserDialog.ui
 [type: gettext/glade]data/ImageChooserDialog.ui
-[type: gettext/glade]data/IndicatorChooserDialog.ui
+[type: gettext/glade]data/IndicatorPropertiesDialog.ui
 [type: gettext/glade]data/MultiheadSetupDialog.ui
 
 # Python Files
@@ -13,8 +13,13 @@ lightdm_gtk_greeter_settings/__init__.py
 lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py
 lightdm_gtk_greeter_settings/helpers.py
 lightdm_gtk_greeter_settings/IconChooserDialog.py
-lightdm_gtk_greeter_settings/IndicatorChooserDialog.py
+lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py
+lightdm_gtk_greeter_settings/IndicatorsEntry.py
+lightdm_gtk_greeter_settings/MonitorsGroup.py
 lightdm_gtk_greeter_settings/MultiheadSetupDialog.py
 lightdm_gtk_greeter_settings/OptionEntry.py
+lightdm_gtk_greeter_settings/OptionGroup.py
+lightdm_gtk_greeter_settings/PositionEntry.py
+
 
 com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in
