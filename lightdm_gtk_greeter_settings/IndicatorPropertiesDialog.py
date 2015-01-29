@@ -23,7 +23,9 @@ from glob import iglob
 
 from gi.repository import Gtk
 
-from lightdm_gtk_greeter_settings import OptionEntry
+from lightdm_gtk_greeter_settings import (
+    IconEntry,
+    OptionEntry)
 from lightdm_gtk_greeter_settings.helpers import (
     C_,
     bool2string,
@@ -51,38 +53,36 @@ class IndicatorPath(OptionEntry.StringPathEntry):
         Icon = ()
 
 
-class IndicatorIconEntry(OptionEntry.IconEntry):
+class IndicatorIconEntry(IconEntry.IconEntry):
+
+    DefaultValue = ()
 
     def __init__(self, widgets):
-        super().__init__(widgets)
         self._label = widgets['label']
-        self._default_item = widgets['default_item']
-        self._default_item.connect('activate', self._on_select_default)
+        super().__init__(widgets)
 
     def _set_value(self, value):
-        if value is None:
-            self._on_select_default()
-        else:
-            super()._set_value(value)
+        super()._set_value(self.DefaultValue if value is None else value)
+        self._label.set_markup(self._current_item.menuitem.get_label())
+        self._image.props.visible = value not in (None, self.DefaultValue)
 
-    def _update(self, icon=None, path=None, failed=False, default=None):
-        super()._update(icon, path, failed)
-        if default:
-            markup = C_('option-entry|indicators', '<b>Using default value</b>')
-            self._default_item.get_child().set_markup(markup)
-            self._button.set_tooltip_markup(markup)
-            self._image.props.visible = False
-        else:
-            self._default_item.get_child().set_markup(
-                C_('option-entry|indicators', 'Use default value...'))
-            self._image.props.visible = True
-        self._label.props.label = self._button.get_tooltip_text()
+    def _get_value(self):
+        return super()._get_value() or None
 
-    def _on_select_default(self, item=None):
-        self._value = None
+    def _get_items(self):
+        for item in super()._get_items():
+            yield item
+        yield -1, (self._update_default, self._ask_default)
+
+    def _update_default(self, value, just_label):
+        if just_label or value is not self.DefaultValue:
+            return C_('option-entry|indicators', 'Use default value...'), None
         self._image.props.icon_name = ''
-        self._update(default=True)
-        self._emit_changed()
+        label = C_('option-entry|indicators', '<b>Using default value</b>')
+        return label, label
+
+    def _ask_default(self, oldvalue):
+        return self.DefaultValue
 
 
 class IndicatorTypeEntry(OptionEntry.BaseEntry):

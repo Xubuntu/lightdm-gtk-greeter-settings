@@ -26,32 +26,6 @@
       <mime-type>application/x-sharedlib</mime-type>
     </mime-types>
   </object>
-  <object class="GtkMenu" id="option_image_menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkMenuItem" id="option_image_default_item">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label">[default]</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="option_image_icon_item">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label">[icon]</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="option_image_path_item">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label">[path]</property>
-      </object>
-    </child>
-  </object>
   <object class="GtkListStore" id="option_path_model">
     <columns>
       <!-- column-name title -->
@@ -268,7 +242,6 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
-                    <property name="popup">option_image_menu</property>
                     <child>
                       <object class="GtkBox" id="box3">
                         <property name="visible">True</property>

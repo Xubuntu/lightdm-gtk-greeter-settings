@@ -70,6 +70,7 @@ __all__ = [
     'ModelRowEnum',
     'NC_',
     'pixbuf_from_file_scaled_down',
+    'set_image_from_path',
     'show_message',
     'SimpleEnum',
     'string2bool',
@@ -141,6 +142,22 @@ def pixbuf_from_file_scaled_down(path, width, height):
                                              pixbuf.props.height / scale,
                                              GdkPixbuf.InterpType.BILINEAR)
     return pixbuf
+
+
+def set_image_from_path(image, path):
+    if not path or not os.path.isfile(path):
+        image.props.icon_name = 'unknown'
+    else:
+        try:
+            width, height = image.get_size_request()
+            if -1 in (width, height):
+                width, height = 64, 64
+            pixbuf = pixbuf_from_file_scaled_down(path, width, height)
+            image.set_from_pixbuf(pixbuf)
+            return True
+        except GLib.Error:
+            image.props.icon_name = 'file-broken'
+    return False
 
 
 def check_path_accessibility(path, file=True, executable=False):
@@ -281,6 +298,9 @@ class SimpleEnum(metaclass=SimpleEnumMeta):
 
     def __iter__(self):
         return (self.__dict__[k] for k in self._dict)
+
+    def __repr__(self):
+        return repr(tuple((k, self.__dict__[k]) for k in self._dict))
 
     @classmethod
     def _accept_member_(cls, name, value):

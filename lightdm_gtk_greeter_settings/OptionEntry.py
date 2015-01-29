@@ -16,7 +16,6 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import os
 import time
 from locale import gettext as _
 
@@ -30,7 +29,6 @@ from lightdm_gtk_greeter_settings.helpers import (
     C_,
     bool2string,
     string2bool, SimpleEnum)
-from lightdm_gtk_greeter_settings.IconChooserDialog import IconChooserDialog
 
 
 __all__ = [
@@ -41,7 +39,6 @@ __all__ = [
     'BooleanEntry',
     'ChoiceEntry',
     'ClockFormatEntry',
-    'IconEntry',
     'InvertedBooleanEntry',
     'StringEntry',
     'StringPathEntry']
@@ -382,113 +379,6 @@ class FontEntry(BaseEntry):
 
     def _set_value(self, value):
         self._value.props.font_name = value or ''
-
-
-class IconEntry(BaseEntry):
-
-    def __init__(self, widgets):
-        super().__init__(widgets)
-        self._value = None
-        self._button = widgets['button']
-        self._image = widgets['image']
-        self._icon_item = widgets['icon_item']
-        self._path_item = widgets['path_item']
-        self._widgets_to_disable.append(self._button)
-        self._icon_dialog = None
-        self._path_dialog = None
-
-        self._icon_item.connect('activate', self._on_select_icon)
-        self._path_item.connect('activate', self._on_select_path)
-
-    def _get_value(self):
-        return self._value
-
-    def _set_value(self, value):
-        if value.startswith('#'):
-            self._set_icon(value[1:])
-        else:
-            self._set_path(value)
-
-    def _set_icon(self, icon):
-        self._value = '#' + icon
-        self._image.set_from_icon_name(icon, Gtk.IconSize.DIALOG)
-        self._update(icon=icon)
-        self._emit_changed()
-
-    def _set_path(self, path):
-        self._value = path
-        failed = not self._set_image_from_path(self._image, path)
-        self._update(path=path, failed=failed)
-        self._emit_changed()
-
-    def _update(self, icon=None, path=None, failed=False):
-        if icon:
-            markup = C_('option-entry|icon', '<b>Icon: {icon}</b>').format(icon=icon)
-            self._icon_item.get_child().set_markup(markup)
-            self._button.set_tooltip_markup(markup)
-        else:
-            self._icon_item.get_child().set_markup(
-                C_('option-entry|icon', 'Select icon name...'))
-
-        if path:
-            if failed:
-                markup = C_('option-entry|icon', '<b>File: {path}</b> (failed to load)')
-            else:
-                markup = C_('option-entry|icon', '<b>File: {path}</b>')
-            markup = markup.format(path=os.path.basename(path))
-            self._path_item.get_child().set_markup(markup)
-            self._button.set_tooltip_markup(markup)
-        else:
-            self._path_item.get_child().set_markup(
-                C_('option-entry|icon', 'Select file...'))
-
-    def _set_image_from_path(self, image, path):
-        if not path or not os.path.isfile(path):
-            image.props.icon_name = 'unknown'
-        else:
-            try:
-                width, height = image.get_size_request()
-                if -1 in (width, height):
-                    width, height = 64, 64
-                pixbuf = helpers.pixbuf_from_file_scaled_down(path, width, height)
-                image.set_from_pixbuf(pixbuf)
-                return True
-            except GLib.Error:
-                image.props.icon_name = 'file-broken'
-        return False
-
-    def _on_select_icon(self, item):
-        if not self._icon_dialog:
-            self._icon_dialog = IconChooserDialog()
-            self._icon_dialog.props.transient_for = self._image.get_toplevel()
-        if self._value and self._value.startswith('#'):
-            self._icon_dialog.select_icon(self._value[1:])
-        if self._icon_dialog.run() == Gtk.ResponseType.OK:
-            self._set_icon(self._icon_dialog.get_selected_icon())
-        self._icon_dialog.hide()
-
-    def _on_select_path(self, item):
-        if not self._path_dialog:
-            builder = Gtk.Builder()
-            builder.add_from_file(helpers.get_data_path('ImageChooserDialog.ui'))
-
-            self._path_dialog = builder.get_object('dialog')
-            self._path_dialog.props.transient_for = self._image.get_toplevel()
-            self._path_dialog.connect('update-preview', self._on_update_path_preview)
-
-            preview_size = self._image.props.pixel_size
-            preview = self._path_dialog.props.preview_widget
-            preview.props.pixel_size = preview_size
-            preview.set_size_request(preview_size, preview_size)
-
-        if self._value:
-            self._path_dialog.select_filename(self._value)
-        if self._path_dialog.run() == Gtk.ResponseType.OK:
-            self._set_path(self._path_dialog.get_filename())
-        self._path_dialog.hide()
-
-    def _on_update_path_preview(self, chooser):
-        self._set_image_from_path(chooser.props.preview_widget, chooser.get_filename())
 
 
 class AccessibilityStatesEntry(BaseEntry):

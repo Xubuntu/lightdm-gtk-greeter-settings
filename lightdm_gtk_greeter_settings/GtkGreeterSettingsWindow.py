@@ -33,6 +33,7 @@ from gi.repository.GObject import markup_escape_text as escape_markup
 
 from lightdm_gtk_greeter_settings import (
     helpers,
+    IconEntry,
     IndicatorsEntry,
     OptionEntry,
     PositionEntry)
@@ -100,7 +101,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'background': (OptionEntry.BackgroundEntry, '#000000'),
                 'user-background': (OptionEntry.BooleanEntry, 'true'),
                 'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
-                'default-user-image': (OptionEntry.IconEntry, '#avatar-default'),
+                'default-user-image': (IconEntry.IconEntry, '#avatar-default'),
                 # Panel
                 'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),
                 'indicators': (IndicatorsEntry.IndicatorsEntry,
