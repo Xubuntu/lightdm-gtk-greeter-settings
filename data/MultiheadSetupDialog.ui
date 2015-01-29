@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.6"/>
+  <requires lib="gtk+" version="3.8"/>
   <requires lib="gtk_greeter_settings" version="1.0"/>
   <object class="GtkListStore" id="background_model">
     <columns>
@@ -17,7 +17,7 @@
       </row>
       <row>
         <col id="0" translatable="yes" context="option|multihead">Select color</col>
-        <col id="1">icon</col>
+        <col id="1">color</col>
       </row>
       <row>
         <col id="0" translatable="yes" context="option|multihead">Use default value</col>
@@ -60,12 +60,16 @@
       <column type="GdkPixbuf"/>
       <!-- column-name background-is-color -->
       <column type="gboolean"/>
+      <!-- column-name error-visible -->
+      <column type="gboolean"/>
+      <!-- column-name error-text -->
+      <column type="gchararray"/>
     </columns>
   </object>
   <object class="MultiheadSetupDialog" id="multihead_setup_dialog">
     <property name="width_request">500</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes" context="option|monitors">Multihead setup</property>
+    <property name="title" translatable="yes" context="option|multihead">Multihead setup</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="destroy_with_parent">True</property>
@@ -153,7 +157,7 @@
                         <property name="headers_clickable">False</property>
                         <property name="search_column">0</property>
                         <child internal-child="selection">
-                          <object class="GtkTreeSelection" id="treeview-selection">
+                          <object class="GtkTreeSelection" id="monitors_selection">
                             <signal name="changed" handler="on_selection_changed" swapped="no"/>
                           </object>
                         </child>
@@ -168,6 +172,14 @@
                               </object>
                               <attributes>
                                 <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                            <child>
+                              <object class="GtkCellRendererPixbuf" id="error_renderer">
+                                <property name="icon_name">dialog-warning</property>
+                              </object>
+                              <attributes>
+                                <attribute name="visible">8</attribute>
                               </attributes>
                             </child>
                           </object>
@@ -206,7 +218,9 @@
                         <child>
                           <object class="GtkTreeViewColumn" id="background_column">
                             <property name="resizable">True</property>
+                            <property name="sizing">autosize</property>
                             <property name="title" translatable="yes" context="option|multihead">Background</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererPixbuf" id="color_renderer"/>
                               <attributes>
@@ -246,8 +260,8 @@
                       <object class="GtkToolButton" id="add_button">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes" context="option|monitors">Add monior to the list</property>
-                        <property name="label" translatable="yes" context="option|monitors">Add</property>
+                        <property name="tooltip_text" translatable="yes" context="option|multihead">Add monior to the list</property>
+                        <property name="label" translatable="yes" context="option|multihead">Add</property>
                         <property name="use_underline">True</property>
                         <property name="icon_name">list-add-symbolic</property>
                         <signal name="clicked" handler="on_monitors_add_clicked" swapped="no"/>
@@ -261,8 +275,8 @@
                       <object class="GtkToolButton" id="remove_button">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes" context="option|monitors">Remove monitor from the list</property>
-                        <property name="label" translatable="yes" context="option|monitors">Remove</property>
+                        <property name="tooltip_text" translatable="yes" context="option|multihead">Remove monitor from the list</property>
+                        <property name="label" translatable="yes" context="option|multihead">Remove</property>
                         <property name="use_underline">True</property>
                         <property name="icon_name">list-remove-symbolic</property>
                         <signal name="clicked" handler="on_monitors_remove_clicked" swapped="no"/>

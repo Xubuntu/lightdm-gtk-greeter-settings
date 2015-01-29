@@ -15,68 +15,84 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from collections import namedtuple
+
+import collections
 import configparser
+import os
+import shlex
+import sys
 from glob import iglob
 from itertools import chain
 from locale import gettext as _
-import os
-import sys
 
-from gi.repository import Gtk
-from lightdm_gtk_greeter_settings import OptionEntry
-from lightdm_gtk_greeter_settings import helpers
-from lightdm_gtk_greeter_settings.helpers import C_, WidgetsWrapper
+from gi.repository import (
+    Gdk,
+    Gtk)
+from gi.repository import Pango
+from gi.repository.GObject import markup_escape_text as escape_markup
 
-from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MonitorsGroup
+from lightdm_gtk_greeter_settings import (
+    helpers,
+    IconEntry,
+    IndicatorsEntry,
+    OptionEntry,
+    PositionEntry)
+from lightdm_gtk_greeter_settings.helpers import (
+    C_,
+    string2bool,
+    WidgetsEnum)
+from lightdm_gtk_greeter_settings.MonitorsGroup import MonitorsGroup
 from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 
 
 __all__ = ['GtkGreeterSettingsWindow']
 
 
-InitialValue = namedtuple('InitialValue', ('value', 'enabled'))
+InitialValue = collections.namedtuple('InitialValue', ('value', 'enabled'))
 
 
 class GtkGreeterSettingsWindow(Gtk.Window):
 
     __gtype_name__ = 'GtkGreeterSettingsWindow'
 
-    BUILDER_WIDGETS = ('apply_button', 'no_access_infobar',
-                       'gtk_theme_values', 'icons_theme_values')
+    class Widgets(WidgetsEnum):
+        apply = 'apply_button'
+        infobar = 'infobar'
 
     def __new__(cls):
         builder = Gtk.Builder()
         builder.add_from_file(helpers.get_data_path('%s.ui' % cls.__name__))
         window = builder.get_object('settings_window')
-        window._builder = builder
-        window._widgets = WidgetsWrapper(builder)
-        window.__dict__.update(('_' + w, builder.get_object(w))
-                               for w in cls.BUILDER_WIDGETS)
+        window.builder = builder
         builder.connect_signals(window)
-        window._init_window()
+        window.init_window()
         return window
 
-    def _init_window(self):
+    builder = None
 
-        self._entries_setup = \
-        {
-            ('greeter', 'screensaver-timeout'): self.on_entry_setup_greeter_screensaver_timeout,
-            ('greeter', 'theme-name'): self.on_entry_setup_greeter_theme_name,
-            ('greeter', 'icon-theme-name'): self.on_entry_setup_greeter_icon_theme_name,
-        }
+    entries_setup = {
+        ('greeter', 'allow-debugging'): ('changed',),
+        ('greeter', 'background'): ('changed',),
+        ('greeter', 'default-user-image'): ('changed',),
+        ('greeter', 'screensaver-timeout'): ('setup', 'get', 'set'),
+        ('greeter', 'theme-name'): ('setup', 'changed'),
+        ('greeter', 'icon-theme-name'): ('setup', 'changed'),
+        ('greeter', 'keyboard'): ('changed',),
+        ('greeter', 'reader'): ('changed',)}
+
+    def init_window(self):
+        self._widgets = self.Widgets(builder=self.builder)
 
         self._multihead_dialog = None
+        self._entry_menu = None
         self._initial_values = {}
         self._changed_entries = None
         self._entries = None
-        self._groups = \
-        (
-            SimpleGroup('greeter', self._builder,
-            {
+        self._groups = (
+            SimpleGroup('greeter', self.builder, {
                 # Appearance
-                'theme-name': (OptionEntry.StringEntry, None),
-                'icon-theme-name': (OptionEntry.StringEntry, None),
+                'theme-name': (OptionEntry.StringEntry, ''),
+                'icon-theme-name': (OptionEntry.StringEntry, ''),
                 'font-name': (OptionEntry.FontEntry, 'Sans 10'),
                 'xft-antialias': (OptionEntry.BooleanEntry, 'false'),
                 'xft-dpi': (OptionEntry.StringEntry, None),
@@ -84,30 +100,31 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 'xft-hintstyle': (OptionEntry.ChoiceEntry, None),
                 'background': (OptionEntry.BackgroundEntry, '#000000'),
                 'user-background': (OptionEntry.BooleanEntry, 'true'),
-                'default-user-image': (OptionEntry.IconEntry, '#avatar-default'),
+                'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
+                'default-user-image': (IconEntry.IconEntry, '#avatar-default'),
                 # Panel
                 'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),
-                'indicators': (OptionEntry.IndicatorsEntry,
+                'indicators': (IndicatorsEntry.IndicatorsEntry,
                                '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
                 # Position
-                'position': (OptionEntry.PositionEntry, '50%,center'),
+                'position': (PositionEntry.PositionEntry, '50%,center'),
                 # Misc
-                'screensaver-timeout': (OptionEntry.AdjustmentEntry, 60),
-                'keyboard': (OptionEntry.StringEntry, None)
-            }),
-            MonitorsGroup(self._widgets)
-        )
+                'screensaver-timeout': (OptionEntry.AdjustmentEntry, '60'),
+                'keyboard': (OptionEntry.StringPathEntry, ''),
+                'reader': (OptionEntry.StringPathEntry, ''),
+                'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
+                'allow-debugging': (OptionEntry.BooleanEntry, 'false'), }),
+            MonitorsGroup(self.builder))
 
         for group in self._groups:
             group.entry_added.connect(self.on_entry_added)
             group.entry_removed.connect(self.on_entry_removed)
 
-        self._timeout_adjustment = self._widgets['greeter', 'screensaver-timeout', 'adjustment']
-
         self._config_path = helpers.get_config_path()
         self._allow_edit = self._has_access_to_write(self._config_path)
-        self._no_access_infobar.props.visible = not self._allow_edit
-        self._apply_button.props.visible = self._allow_edit
+        self._widgets.infobar.props.visible = not self._allow_edit
+        self._widgets.apply.props.visible = self._allow_edit
+
         if not self._allow_edit:
             helpers.show_message(
                 text=_('No permissions to save configuration'),
@@ -143,9 +160,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             group.read(self._config)
 
         self._initial_values = {entry: InitialValue(entry.value, entry.enabled)
-                                       for entry in self._initial_values.keys()}
+                                for entry in self._initial_values.keys()}
         self._changed_entries = set()
-        self._apply_button.props.sensitive = False
+        self._widgets.apply.props.sensitive = False
 
     def _write(self):
         for group in self._groups:
@@ -155,7 +172,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
 
         self._changed_entries.clear()
-        self._apply_button.props.sensitive = False
+        self._widgets.apply.props.sensitive = False
 
         try:
             with open(self._config_path, 'w') as file:
@@ -164,67 +181,160 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             helpers.show_message(e, Gtk.MessageType.ERROR)
 
     def on_entry_added(self, group, entry, key):
-        if isinstance(group, SimpleGroup):
-            setup = self._entries_setup.get((group.name, key))
-            if setup:
-                setup(entry)
+        if isinstance(group, SimpleGroup) and (group.name, key) in self.entries_setup:
+            for action in self.entries_setup[(group.name, key)]:
+                fname = 'on_entry_%s_%s_%s' % (action, group.name, key)
+                f = getattr(self, fname.replace('-', '_'))
+                if action == 'setup':
+                    f(entry)
+                else:
+                    entry.connect(action, f)
+
+        label_holder = entry.widgets['label_holder']
+        if label_holder and isinstance(group, SimpleGroup):
+            label_holder.connect('button-press-event', self.on_entry_label_clicked,
+                                 entry, group, key)
+
         entry.changed.connect(self.on_entry_changed)
         self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
         self.on_entry_changed(entry, force=True)
 
     def on_entry_removed(self, group, entry, key):
         self._initial_values.pop(entry)
+
         if self._changed_entries is None:
             return
 
         self._changed_entries.discard(entry)
-        self._apply_button.props.sensitive = self._allow_edit and self._changed_entries
+        self._widgets.apply.props.sensitive = self._allow_edit and self._changed_entries
 
     def on_entry_changed(self, entry, force=False):
         if self._changed_entries is None:
             return
 
-        if force or entry.enabled != self._initial_values[entry].enabled or \
-           (entry.enabled and entry.value != self._initial_values[entry].value):
+        initial = self._initial_values[entry]
+        if force or entry.enabled != initial.enabled or \
+           (entry.enabled and entry.value != initial.value):
             self._changed_entries.add(entry)
         else:
             self._changed_entries.discard(entry)
-        self._apply_button.props.sensitive = self._allow_edit and self._changed_entries
 
+        self._widgets.apply.props.sensitive = self._allow_edit and self._changed_entries
+
+    def on_entry_reset_clicked(self, item):
+        entry, value, enabled = item._reset_entry_data
+        if enabled is None:
+            entry.value = value
+        else:
+            entry.enabled = enabled
+
+    def on_entry_label_clicked(self, widget, event, entry, group, key):
+        if event.button != 3:
+            return
+
+        if not self._entry_menu:
+            def new_item(activate=None):
+                item = Gtk.MenuItem('')
+                item.get_child().props.use_markup = True
+                item.get_child().props.ellipsize = Pango.EllipsizeMode.END
+                item.get_child().props.max_width_chars = 90
+                if activate:
+                    item.connect('activate', activate)
+                else:
+                    item.props.sensitive = False
+                return item
+
+            self._entry_menu = Gtk.Menu()
+            self._entry_menu_label_item = new_item()
+            self._entry_menu_separator_item = Gtk.SeparatorMenuItem()
+            self._entry_menu_initial_item = new_item(self.on_entry_reset_clicked)
+            self._entry_menu_default_item = new_item(self.on_entry_reset_clicked)
+
+            self._entry_menu.append(self._entry_menu_label_item)
+            self._entry_menu.append(self._entry_menu_separator_item)
+            self._entry_menu.append(self._entry_menu_initial_item)
+            self._entry_menu.append(self._entry_menu_default_item)
+            self._entry_menu.show_all()
+
+        def format_value(value=None, enabled=True):
+            if not enabled:
+                return _('<i>disabled</i>')
+            if value == '':
+                return _('<i>empty string</i>')
+            elif value is None:
+                return _('<i>None</i>')
+            else:
+                return escape_markup(str(value))
+
+        self._entry_menu_label_item.props.label = '{key} = {value}'.format(
+            group=group.name,
+            key=key,
+            value=format_value(value=entry.value, enabled=entry.enabled))
+
+        if entry in self._changed_entries:
+            initial = self._initial_values[entry]
+
+            if entry.enabled != initial.enabled and not initial.enabled:
+                self._entry_menu_initial_item._reset_entry_data = entry, None, initial.enabled
+            else:
+                self._entry_menu_initial_item._reset_entry_data = entry, initial.value, None
+
+            value = format_value(value=initial.value, enabled=initial.enabled)
+            self._entry_menu_initial_item.set_tooltip_markup(value)
+            self._entry_menu_initial_item.props.visible = True
+            self._entry_menu_initial_item.props.label = \
+                _('Reset to initial value: <b>{value}</b>').format(value=value)
+        else:
+            self._entry_menu_initial_item.props.visible = False
+
+        default = group.defaults[key]
+        if default is not None and entry.value != default:
+            value = format_value(value=default)
+            self._entry_menu_default_item._reset_entry_data = entry, default, None
+            self._entry_menu_default_item.set_tooltip_markup(value)
+            self._entry_menu_default_item.props.visible = True
+            self._entry_menu_default_item.props.label = \
+                _('Reset to default value: <b>{value}</b>').format(value=value)
+        else:
+            self._entry_menu_default_item.props.visible = False
+
+        self._entry_menu_separator_item.props.visible = \
+            (self._entry_menu_initial_item.props.visible or
+             self._entry_menu_default_item.props.visible)
+        self._entry_menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
+
+    # [greeter] screensaver-timeout
     def on_entry_setup_greeter_screensaver_timeout(self, entry):
-        timeout_view = entry.widgets['view']
-        timeout_adjustment = entry.widgets['adjustment']
-        timeout_end_label = entry.widgets['end-label']
-        for mark in chain(list(range(10, 61, 10)),
-                          list(range(69,
-                                     int(timeout_adjustment.props.upper),
-                                     10))):
-            timeout_view.add_mark(mark, Gtk.PositionType.BOTTOM, None)
-        total = int(timeout_adjustment.props.upper - 60) + 1
-        timeout_end_label.props.label = C_('option|timeout', '{count} min').format(count=total)
+        view = entry.widgets['view']
+        adjustment = entry.widgets['adjustment']
+        end_label = entry.widgets['end-label']
+        for mark in chain((range(10, 61, 10)),
+                          (range(69, int(adjustment.props.upper), 10))):
+            view.add_mark(mark, Gtk.PositionType.BOTTOM, None)
+        total = int(adjustment.props.upper - 60) + 1
+        end_label.props.label = C_('option|greeter|screensaver-timeout',
+                                   '{count} min').format(count=total)
 
-        timeout_view.connect('format-value', self.on_entry_format_scale_greeter_screensaver_timeout, timeout_adjustment)
-        entry.get.connect(self.on_entry_get_greeter_screensaver_timeout)
-        entry.set.connect(self.on_entry_set_greeter_screensaver_timeout)
-
-    def on_entry_setup_greeter_theme_name(self, entry):
-        values = entry.widgets['values']
-        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0'))):
-            values.append_text(theme.split(os.path.sep)[-2])
-
-    def on_entry_setup_greeter_icon_theme_name(self, entry):
-        values = entry.widgets['values']
-        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme'))):
-            values.append_text(theme.split(os.path.sep)[-2])
+        view.connect('format-value',
+                     self.on_entry_format_scale_greeter_screensaver_timeout,
+                     adjustment)
 
     def on_entry_get_greeter_screensaver_timeout(self, entry=None, value=None):
-        value = int(float(value))
+        try:
+            value = int(float(value))
+        except ValueError:
+            value = 60
+
         if value > 60:
             return (value - 59) * 60
         return value
 
     def on_entry_set_greeter_screensaver_timeout(self, entry=None, value=None):
-        value = int(float(value))
+        try:
+            value = int(float(value))
+        except ValueError:
+            value = 60
+
         if value > 60:
             return value // 60 + 59
         return value
@@ -233,8 +343,73 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         if value != adjustment.props.lower and value != adjustment.props.upper:
             value = self.on_entry_get_greeter_screensaver_timeout(value=value)
             return '%02d:%02d' % (value // 60, value % 60)
+        return ''
+
+    # [greeter] theme-name
+    def on_entry_setup_greeter_theme_name(self, entry):
+        values = entry.widgets['values']
+        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0'))):
+            values.append_text(theme.split(os.path.sep)[-2])
+
+    def on_entry_changed_greeter_theme_name(self, entry):
+        if not entry.value or \
+                entry.value in (row[0] for row in entry.widgets['values'].props.model):
+            entry.error = None
         else:
-            return ''
+            entry.error = C_('option|greeter|theme-name', 'Selected theme is not available')
+
+    # [greeter] icon-theme-name
+    def on_entry_setup_greeter_icon_theme_name(self, entry):
+        values = entry.widgets['values']
+        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme'))):
+            values.append_text(theme.split(os.path.sep)[-2])
+
+    def on_entry_changed_greeter_icon_theme_name(self, entry):
+        if not entry.value or \
+                entry.value in (row[0] for row in entry.widgets['values'].props.model):
+            entry.error = None
+        else:
+            entry.error = C_('option|greeter|icon-theme-name', 'Selected theme is not available')
+
+    # [greeter] allow-debugging
+    def on_entry_changed_greeter_allow_debugging(self, entry):
+        if (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION) < (3, 14, 0) and \
+                string2bool(entry.value):
+            entry.error = C_('option|greeter|allow-debugging',
+                             'GtkInspector is not available on your system')
+        else:
+            entry.error = None
+
+    # [greeter] default-user-image
+    def on_entry_changed_greeter_default_user_image(self, entry):
+        value = entry.value
+        if value.startswith('#'):
+            entry.error = None
+        else:
+            entry.error = helpers.check_path_accessibility(value)
+
+    # [greeter] background
+    def on_entry_changed_greeter_background(self, entry):
+        value = entry.value
+        if not value or Gdk.RGBA().parse(value):
+            entry.error = None
+        else:
+            entry.error = helpers.check_path_accessibility(value)
+
+    # [greeter] keyboard
+    def on_entry_changed_greeter_keyboard(self, entry):
+        error = None
+        if entry.enabled:
+            value = entry.value
+            if os.path.isabs(value):
+                argv = shlex.split(value)
+                error = helpers.check_path_accessibility(argv[0], executable=True)
+            elif not value:
+                error = _('Do not leave this field empty')
+        entry.error = error
+
+    # [greeter] reader
+    on_entry_changed_greeter_reader = on_entry_changed_greeter_keyboard
 
     def on_destroy(self, *unused):
         Gtk.main_quit()
