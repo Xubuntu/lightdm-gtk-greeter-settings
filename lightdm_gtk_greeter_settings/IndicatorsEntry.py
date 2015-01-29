@@ -211,11 +211,17 @@ class IndicatorsEntry(BaseEntry):
 
         self._on_row_changed_id = self._model.connect('row-changed', self._on_model_changed)
         self._on_row_deleted_id = self._model.connect('row-deleted', self._on_model_changed)
-        self._on_row_inserted_id = self._model.connect('row-inserted', self._on_model_changed)
+        self._on_row_inserted_id = self._model.connect('row-inserted', self._on_model_row_inserted)
         self._on_rows_reordered_id = self._model.connect('rows-reordered', self._on_model_changed)
 
     def _on_model_changed(self, *unused):
         self._emit_changed()
+
+    def _on_model_row_inserted(self, model, path, rowiter):
+        # Do not emit 'changed' for uninitialized row (dragging rows)
+        # It can cause calling get_value() for model with invalid values
+        if model[rowiter][Row.Name] is not None:
+            self._emit_changed()
 
     def _get_value(self):
         def fix_token(s):
@@ -265,7 +271,6 @@ class IndicatorsEntry(BaseEntry):
         return '; '.join(items)
 
     def _get_value_19(self):
-
         items = []
         for row in self._model:
             if row[Row.HasState] and not row[Row.State]:
