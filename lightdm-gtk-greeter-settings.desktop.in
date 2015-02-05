@@ -1,6 +1,7 @@
 [Desktop Entry]
 _Name=LightDM GTK+ Greeter settings
-Categories=GNOME;GTK;Settings;System;Utility;X-XFCE-SettingsDialog;
+_Comment=Configure LightDM GTK+ Greeter
+Categories=GNOME;GTK;Settings;System;Utility;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
 Keywords=Configuration;Utility;
 Exec=lightdm-gtk-greeter-settings-pkexec
 Icon=lightdm-gtk-greeter-settings

@@ -41,12 +41,20 @@ from lightdm_gtk_greeter_settings import (
 from lightdm_gtk_greeter_settings.helpers import (
     C_,
     string2bool,
+    SimpleEnum,
     WidgetsEnum)
 from lightdm_gtk_greeter_settings.MonitorsGroup import MonitorsGroup
 from lightdm_gtk_greeter_settings.OptionGroup import SimpleGroup
 
 
-__all__ = ['GtkGreeterSettingsWindow']
+__all__ = ['GtkGreeterSettingsWindow',
+           'WindowMode']
+
+
+class WindowMode(SimpleEnum):
+    Default = 'default'
+    Embedded = 'embedded'
+    GtkHeader = 'gtk-header'
 
 
 InitialValue = collections.namedtuple('InitialValue', ('value', 'enabled'))
@@ -58,18 +66,25 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     class Widgets(WidgetsEnum):
         apply = 'apply_button'
+        reload = 'reset_button'
+        close = 'close_button'
+        buttons = 'dialog_buttons'
+        content = 'content_box'
         infobar = 'infobar'
+        infobar_label = 'infobar_label'
 
-    def __new__(cls):
+    def __new__(cls, mode=WindowMode.Default):
         builder = Gtk.Builder()
         builder.add_from_file(helpers.get_data_path('%s.ui' % cls.__name__))
         window = builder.get_object('settings_window')
         window.builder = builder
+        window.mode = mode
         builder.connect_signals(window)
         window.init_window()
         return window
 
     builder = None
+    mode = WindowMode.Default
 
     entries_setup = {
         ('greeter', 'allow-debugging'): ('changed',),
@@ -122,17 +137,39 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
         self._config_path = helpers.get_config_path()
         self._allow_edit = self._has_access_to_write(self._config_path)
-        self._widgets.infobar.props.visible = not self._allow_edit
         self._widgets.apply.props.visible = self._allow_edit
 
         if not self._allow_edit:
-            helpers.show_message(
-                text=_('No permissions to save configuration'),
-                secondary_text=_(
-                    'It seems that you don\'t have permissions to write to '
-                    'file:\n{path}\n\nTry to run this program using "sudo" '
-                    'or "pkexec"').format(path=self._config_path),
-                message_type=Gtk.MessageType.WARNING)
+            self._set_message(_('You don\'t have permissions to change greeter configuration'),
+                              Gtk.MessageType.WARNING)
+            if self.mode != WindowMode.Embedded:
+                helpers.show_message(
+                    text=_('No permissions to save configuration'),
+                    secondary_text=_(
+                        'It seems that you don\'t have permissions to write to '
+                        'file:\n{path}\n\nTry to run this program using "sudo" '
+                        'or "pkexec"').format(path=self._config_path),
+                    message_type=Gtk.MessageType.WARNING)
+
+        if self.mode == WindowMode.Embedded:
+            self._widgets.buttons.hide()
+            self.on_entry_changed = self.on_entry_changed_embedded
+            self._widgets.content.reorder_child(self._widgets.infobar, 0)
+        elif self.mode == WindowMode.GtkHeader:
+            self._widgets.buttons.remove(self._widgets.apply)
+            self._widgets.buttons.remove(self._widgets.reload)
+            self._widgets.buttons.hide()
+            self._widgets.apply.set_label('')
+            self._widgets.reload.set_label('')
+
+            header = Gtk.HeaderBar()
+            header.set_show_close_button(True)
+            header.props.title = self.get_title()
+            header.pack_start(self._widgets.reload)
+            header.pack_start(self._widgets.apply)
+            header.show_all()
+
+            self.set_titlebar(header)
 
         self._config = configparser.RawConfigParser(strict=False)
         self._read()
@@ -142,12 +179,20 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             return True
         return os.access(os.path.dirname(self._config_path), os.W_OK | os.X_OK)
 
+    def _set_message(self, message, type_=Gtk.MessageType.INFO):
+        if not message:
+            self._widgets.infobar.hide()
+
+        self._widgets.infobar.props.message_type = type_
+        self._widgets.infobar_label.props.label = message
+        self._widgets.infobar.show()
+
     def _read(self):
         self._config.clear()
         try:
-            if not self._config.read(self._config_path):
-                helpers.show_message(text=_('Failed to read configuration '
-                                            'file: {path}')
+            if not self._config.read(self._config_path) and \
+               self.mode != WindowMode.Embedded:
+                helpers.show_message(text=_('Failed to read configuration file: {path}')
                                      .format(path=self._config_path),
                                      message_type=Gtk.MessageType.ERROR)
         except (configparser.DuplicateSectionError,
@@ -168,11 +213,12 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         for group in self._groups:
             group.write(self._config)
 
-        for entry in self._changed_entries:
-            self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
+        if self.mode != WindowMode.Embedded:
+            for entry in self._changed_entries:
+                self._initial_values[entry] = InitialValue(entry.value, entry.enabled)
 
-        self._changed_entries.clear()
-        self._widgets.apply.props.sensitive = False
+            self._changed_entries.clear()
+            self._widgets.apply.props.sensitive = False
 
         try:
             with open(self._config_path, 'w') as file:
@@ -220,6 +266,20 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._changed_entries.discard(entry)
 
         self._widgets.apply.props.sensitive = self._allow_edit and self._changed_entries
+
+    def on_entry_changed_embedded(self, entry, force=False):
+        if self._changed_entries is None:
+            return
+
+        initial = self._initial_values[entry]
+        if force or entry.enabled != initial.enabled or \
+           (entry.enabled and entry.value != initial.value):
+            self._changed_entries.add(entry)
+        else:
+            self._changed_entries.discard(entry)
+
+        if self._allow_edit:
+            self._write()
 
     def on_entry_reset_clicked(self, item):
         entry, value, enabled = item._reset_entry_data

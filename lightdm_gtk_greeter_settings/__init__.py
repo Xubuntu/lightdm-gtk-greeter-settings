@@ -18,14 +18,40 @@
 
 def main():
     from gi.repository import Gtk
+    from lightdm_gtk_greeter_settings import helpers
     from lightdm_gtk_greeter_settings import GtkGreeterSettingsWindow
+    from lightdm_gtk_greeter_settings.GtkGreeterSettingsWindow import WindowMode
 
+    import argparse
     import locale
     locale.textdomain('lightdm-gtk-greeter-settings')
 
-    window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow()
-    window.show()
-    Gtk.main()
+    parser = argparse.ArgumentParser(description='LightDM Gtk+ Greeter settings editor')
+    parser.add_argument('-s', '--socket-id', action='store', help='Settings manager socket')
+    parser.add_argument('--use-gtk-header', action='store_const', const=True,
+                        help='Use GtkHeaderBar')
+    args = parser.parse_args()
+
+    try:
+        socket_id = int(args.socket_id or '')
+    except ValueError:
+        socket_id = None
+
+    if socket_id:
+        window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow(WindowMode.Embedded)
+        plug = Gtk.Plug.new(socket_id)
+        plug.connect('delete-event', Gtk.main_quit)
+        plug.show()
+        content = window.builder.get_object('content_box')
+        content.reparent(plug)
+        Gtk.main()
+    else:
+        if args.use_gtk_header:
+            window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow(mode=WindowMode.GtkHeader)
+        else:
+            window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow()
+        window.show()
+        Gtk.main()
 
 
 if __name__ == '__main__':

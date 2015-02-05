@@ -60,7 +60,7 @@
     <property name="icon_name">lightdm-gtk-greeter-settings</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="GtkBox" id="content_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_left">8</property>
@@ -753,6 +753,9 @@
                   <object class="GtkLabel" id="greeter_clock-format_preview">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes" context="option|greeter|clock-format">%H %I - hours, %M - minutes, %S - seconds
+%d - day, %m - month, %y %Y - year
+%a %A - day of the week, %b %B - month name</property>
                     <property name="margin_left">24</property>
                     <property name="hexpand">True</property>
                     <property name="label">&lt;preview&gt;</property>
@@ -763,26 +766,6 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="greeter_clock-format_help">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">24</property>
-                    <property name="hexpand">True</property>
-                    <property name="label" translatable="yes" context="option|greeter|clock-format">%H %I - hours, %M - minutes, %S - seconds
-%d - day, %m - month, %y %Y - year
-%a %A - day of the week, %b %B - month name</property>
-                    <attributes>
-                      <attribute name="style" value="oblique"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
@@ -1791,7 +1774,6 @@ More informative log</property>
         </child>
         <child>
           <object class="GtkInfoBar" id="infobar">
-            <property name="visible">True</property>
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="message_type">warning</property>
@@ -1815,10 +1797,10 @@ More informative log</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">8</property>
                 <child>
-                  <object class="GtkLabel" id="label8">
+                  <object class="GtkLabel" id="infobar_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">You don't have permissions to change greeter configuration</property>
+                    <property name="label" translatable="yes">label</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                   </object>
