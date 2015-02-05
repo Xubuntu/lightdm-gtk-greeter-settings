@@ -22,6 +22,7 @@ import os
 import shlex
 import sys
 from glob import iglob
+from functools import partialmethod
 from itertools import chain
 from locale import gettext as _
 
@@ -82,7 +83,6 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     def init_window(self):
         self._widgets = self.Widgets(builder=self.builder)
-
         self._multihead_dialog = None
         self._entry_menu = None
         self._initial_values = {}
@@ -235,9 +235,10 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         if not self._entry_menu:
             def new_item(activate=None):
                 item = Gtk.MenuItem('')
-                item.get_child().props.use_markup = True
-                item.get_child().props.ellipsize = Pango.EllipsizeMode.END
-                item.get_child().props.max_width_chars = 90
+                label = item.get_child()
+                label.props.use_markup = True
+                label.props.ellipsize = Pango.EllipsizeMode.END
+                label.props.max_width_chars = 90
                 if activate:
                     item.connect('activate', activate)
                 else:
@@ -346,37 +347,39 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         return ''
 
     # [greeter] theme-name
-    def on_entry_setup_greeter_theme_name(self, entry):
-        values = entry.widgets['values']
-        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'themes', '*', 'gtk-3.0'))):
-            values.append_text(theme.split(os.path.sep)[-2])
+    GtkThemesPattern = (sys.prefix, 'share', 'themes', '*', 'gtk-3.0', 'gtk.css')
 
-    def on_entry_changed_greeter_theme_name(self, entry):
-        if not entry.value or \
-                entry.value in (row[0] for row in entry.widgets['values'].props.model):
-            entry.error = None
+    def on_entry_setup_greeter_theme_name(self, entry, pattern=GtkThemesPattern):
+        values = entry.widgets['values']
+        idx = pattern.index('*') - len(pattern)
+        for path in sorted(iglob(os.path.join(*pattern))):
+            values.append_text(path.split(os.path.sep)[idx])
+
+    def on_entry_changed_greeter_theme_name(self, entry, pattern=GtkThemesPattern):
+        value = entry.value
+        if value:
+            path = (p if p != '*' else value.strip() for p in pattern)
+            entry.error = helpers.check_path_accessibility(os.path.join(*path))
         else:
-            entry.error = C_('option|greeter|theme-name', 'Selected theme is not available')
+            entry.error = None
 
     # [greeter] icon-theme-name
-    def on_entry_setup_greeter_icon_theme_name(self, entry):
-        values = entry.widgets['values']
-        for theme in sorted(iglob(os.path.join(sys.prefix, 'share', 'icons', '*', 'index.theme'))):
-            values.append_text(theme.split(os.path.sep)[-2])
+    IconThemesPattern = (sys.prefix, 'share', 'icons', '*', 'index.theme')
+    on_entry_setup_greeter_icon_theme_name = partialmethod(on_entry_setup_greeter_theme_name,
+                                                           pattern=IconThemesPattern)
 
-    def on_entry_changed_greeter_icon_theme_name(self, entry):
-        if not entry.value or \
-                entry.value in (row[0] for row in entry.widgets['values'].props.model):
-            entry.error = None
-        else:
-            entry.error = C_('option|greeter|icon-theme-name', 'Selected theme is not available')
+    on_entry_changed_greeter_icon_theme_name = partialmethod(on_entry_changed_greeter_theme_name,
+                                                             pattern=IconThemesPattern)
 
     # [greeter] allow-debugging
     def on_entry_changed_greeter_allow_debugging(self, entry):
-        if (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION) < (3, 14, 0) and \
-                string2bool(entry.value):
+        gtk_version = Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION
+        minimal_version = 3, 14, 0
+        if gtk_version < minimal_version and string2bool(entry.value):
             entry.error = C_('option|greeter|allow-debugging',
-                             'GtkInspector is not available on your system')
+                             'GtkInspector is not available on your system\n'
+                             'Gtk version: {current} < {minimal}').format(
+                current=gtk_version, minimal=minimal_version)
         else:
             entry.error = None
 
@@ -404,8 +407,6 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             if os.path.isabs(value):
                 argv = shlex.split(value)
                 error = helpers.check_path_accessibility(argv[0], executable=True)
-            elif not value:
-                error = _('Do not leave this field empty')
         entry.error = error
 
     # [greeter] reader

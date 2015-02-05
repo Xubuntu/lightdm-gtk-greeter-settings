@@ -121,8 +121,13 @@ def bool2string(value):
     return 'true' if value else 'false'
 
 
-def string2bool(value):
-    return value and value.lower() in ('true', 'yes', '1')
+def string2bool(value, fallback=False):
+    if isinstance(value, str):
+        if value in ('true', 'yes', '1'):
+            return True
+        if value in ('false', 'no', '0'):
+            return False
+    return fallback
 
 
 def show_message(**kwargs):
