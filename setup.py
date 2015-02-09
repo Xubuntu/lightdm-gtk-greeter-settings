@@ -38,11 +38,22 @@ def write_config(libdir, values):
         for k, v in values.items():
             f.write('%s = %s\n' % (k, v))
     except OSError as e:
-            print ("ERROR: Can't write installation config: %s" % e)
-            sys.exit(1)
+        print("ERROR: Can't write installation config: %s" % e)
+        sys.exit(1)
 
 
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
+
+    user_options = DistUtilsExtra.auto.install_auto.user_options + \
+        [('xfce-integration', None,
+          'adds application icon to Xfce settings manager'),
+         ('use-gtk-header', None,
+          'use GtkHeaderBar instead of default DE window header')]
+
+    def initialize_options(self):
+        super().initialize_options()
+        self.xfce_integration = None
+        self.use_gtk_header = None
 
     def run(self):
         DistUtilsExtra.auto.install_auto.run(self)
@@ -54,6 +65,24 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
                   '__version__': "%s" % self.distribution.get_version(),
                   '__config_path__': '"/etc/lightdm/lightdm-gtk-greeter.conf"'}
         write_config(self.install_lib, values)
+
+        desktop_file_path = os.path.join(self.install_data, 'share', 'applications',
+                                         'lightdm-gtk-greeter-settings.desktop')
+
+        if self.xfce_integration:
+            with open(desktop_file_path, 'a') as f:
+                f.write('X-XfcePluggable=true\n')
+
+        if self.use_gtk_header:
+            with open(desktop_file_path, 'r+') as f:
+                lines = f.readlines()
+                for i, line in enumerate(lines):
+                    if line.startswith('Exec='):
+                        lines[i] = line.strip() + ' --use-gtk-header\n'
+                        break
+                f.seek(0)
+                f.truncate(0)
+                f.writelines(lines)
 
 
 DistUtilsExtra.auto.setup(

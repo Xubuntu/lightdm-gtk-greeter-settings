@@ -46,10 +46,16 @@ def main():
         content.reparent(plug)
         Gtk.main()
     else:
+        if args.use_gtk_header is None:
+            args.use_gtk_header = helpers.string2bool(os.getenv('GTK_CSD'), False)
+        elif args.use_gtk_header:
+            os.putenv('GTK_CSD', '1')
+
+        window_mode = WindowMode.Default
         if args.use_gtk_header:
-            window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow(mode=WindowMode.GtkHeader)
-        else:
-            window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow()
+            window_mode = WindowMode.GtkHeader
+
+        window = GtkGreeterSettingsWindow.GtkGreeterSettingsWindow(mode=window_mode)
         window.show()
         Gtk.main()
 
