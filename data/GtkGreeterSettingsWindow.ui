@@ -1006,6 +1006,12 @@
                 <child>
                   <placeholder/>
                 </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -1179,7 +1185,7 @@
                         <property name="halign">start</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
-                        <property name="text" translatable="yes">0</property>
+                        <property name="text">0</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">greeter_position_x_adjustment</property>
                         <property name="snap_to_ticks">True</property>
@@ -1224,7 +1230,7 @@
                         <property name="halign">start</property>
                         <property name="invisible_char">●</property>
                         <property name="width_chars">6</property>
-                        <property name="text" translatable="yes">0</property>
+                        <property name="text">0</property>
                         <property name="xalign">1</property>
                         <property name="adjustment">greeter_position_y_adjustment</property>
                         <property name="snap_to_ticks">True</property>
@@ -1800,7 +1806,6 @@ More informative log</property>
                   <object class="GtkLabel" id="infobar_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">label</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                   </object>
