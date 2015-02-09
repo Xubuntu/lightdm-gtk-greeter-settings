@@ -17,13 +17,15 @@
 
 
 def main():
+    import argparse
+    import locale
+    import os
+
     from gi.repository import Gtk
     from lightdm_gtk_greeter_settings import helpers
     from lightdm_gtk_greeter_settings import GtkGreeterSettingsWindow
     from lightdm_gtk_greeter_settings.GtkGreeterSettingsWindow import WindowMode
 
-    import argparse
-    import locale
     locale.textdomain('lightdm-gtk-greeter-settings')
 
     parser = argparse.ArgumentParser(description='LightDM Gtk+ Greeter settings editor')

@@ -156,11 +156,11 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self.on_entry_changed = self.on_entry_changed_embedded
             self._widgets.content.reorder_child(self._widgets.infobar, 0)
         elif self.mode == WindowMode.GtkHeader:
-            self._widgets.buttons.remove(self._widgets.apply)
-            self._widgets.buttons.remove(self._widgets.reload)
+            for button in (self._widgets.apply, self._widgets.reload):
+                self._widgets.buttons.remove(button)
+                button.set_label('')
+                button.set_always_show_image(True)
             self._widgets.buttons.hide()
-            self._widgets.apply.set_label('')
-            self._widgets.reload.set_label('')
 
             header = Gtk.HeaderBar()
             header.set_show_close_button(True)
