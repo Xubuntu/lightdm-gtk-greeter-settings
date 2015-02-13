@@ -32,7 +32,15 @@ def main():
     parser.add_argument('-s', '--socket-id', action='store', help='Settings manager socket')
     parser.add_argument('--use-gtk-header', action='store_const', const=True,
                         help='Use GtkHeaderBar')
+    parser.add_argument('--test-socket', action='store_const', const=True)
     args = parser.parse_args()
+
+    if args.test_socket:
+        w = Gtk.Window()
+        socket = Gtk.Socket.new()
+        w.add(socket)
+        w.show_all()
+        args.socket_id = socket.get_id()
 
     try:
         socket_id = int(args.socket_id or '')

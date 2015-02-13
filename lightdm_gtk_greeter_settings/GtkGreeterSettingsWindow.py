@@ -72,6 +72,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         content = 'content_box'
         infobar = 'infobar'
         infobar_label = 'infobar_label'
+        multihead_label = 'multihead_label'
 
     def __new__(cls, mode=WindowMode.Default):
         builder = Gtk.Builder()
@@ -152,9 +153,11 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     message_type=Gtk.MessageType.WARNING)
 
         if self.mode == WindowMode.Embedded:
-            self._widgets.buttons.hide()
             self.on_entry_changed = self.on_entry_changed_embedded
+            self._widgets.buttons.hide()
             self._widgets.content.reorder_child(self._widgets.infobar, 0)
+            # Socket/Plug focus issues workaround
+            self._widgets.multihead_label.connect('button-press-event', self.on_multihead_click)
         elif self.mode == WindowMode.GtkHeader:
             for button in (self._widgets.apply, self._widgets.reload):
                 self._widgets.buttons.remove(button)
@@ -471,6 +474,12 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     # [greeter] reader
     on_entry_changed_greeter_reader = on_entry_changed_greeter_keyboard
+
+    def on_multihead_click(self, label, event):
+        if event.button == 1:
+            label.emit('activate-link', '')
+            return True
+        return False
 
     def on_destroy(self, *unused):
         Gtk.main_quit()
