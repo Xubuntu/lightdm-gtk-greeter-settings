@@ -291,34 +291,47 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         else:
             entry.enabled = enabled
 
+    def on_entry_fix_clicked(self, item):
+        entry, action = item._fix_entry_data
+        action(entry)
+
     def on_entry_label_clicked(self, widget, event, entry, group, key):
         if event.button != 3:
             return
 
         if not self._entry_menu:
-            def new_item(activate=None):
+            def new_item(activate=None, width=90):
                 item = Gtk.MenuItem('')
                 label = item.get_child()
                 label.props.use_markup = True
                 label.props.ellipsize = Pango.EllipsizeMode.END
-                label.props.max_width_chars = 90
+                label.props.max_width_chars = width
                 if activate:
                     item.connect('activate', activate)
                 else:
                     item.props.sensitive = False
                 return item
 
-            self._entry_menu = Gtk.Menu()
-            self._entry_menu_label_item = new_item()
-            self._entry_menu_separator_item = Gtk.SeparatorMenuItem()
-            self._entry_menu_initial_item = new_item(self.on_entry_reset_clicked)
-            self._entry_menu_default_item = new_item(self.on_entry_reset_clicked)
+            class EntryMenu:
+                menu = Gtk.Menu()
+                value = new_item()
+                error_separator = Gtk.SeparatorMenuItem()
+                error = new_item()
+                error_action = new_item(self.on_entry_fix_clicked)
+                reset_separator = Gtk.SeparatorMenuItem()
+                initial = new_item(self.on_entry_reset_clicked)
+                default = new_item(self.on_entry_reset_clicked)
 
-            self._entry_menu.append(self._entry_menu_label_item)
-            self._entry_menu.append(self._entry_menu_separator_item)
-            self._entry_menu.append(self._entry_menu_initial_item)
-            self._entry_menu.append(self._entry_menu_default_item)
-            self._entry_menu.show_all()
+                menu.append(value)
+                menu.append(error_separator)
+                menu.append(error)
+                menu.append(error_action)
+                menu.append(reset_separator)
+                menu.append(initial)
+                menu.append(default)
+                menu.show_all()
+
+            self._entry_menu = EntryMenu()
 
         def format_value(value=None, enabled=True):
             if not enabled:
@@ -330,42 +343,61 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             else:
                 return escape_markup(str(value))
 
-        self._entry_menu_label_item.props.label = '{key} = {value}'.format(
+        menu = self._entry_menu
+
+        menu.value.props.label = '{key} = {value}'.format(
             group=group.name,
             key=key,
             value=format_value(value=entry.value, enabled=entry.enabled))
+
+        error = entry.error
+        error_action = None
+        if error:
+            aname = ('get_entry_fix_%s_%s' % (group.name, key)).replace('-', '_')
+            get_fix = getattr(self, aname, None)
+            if get_fix:
+                label, error_action = get_fix(entry)
+                if label:
+                    menu.error_action.props.label = label or ''
+                if error_action:
+                    menu.error_action._fix_entry_data = entry, error_action
+            menu.error.set_label(error)
+
+        menu.error.props.visible = error is not None
+        menu.error_action.props.visible = error_action is not None
+        menu.error_separator.props.visible = error_action is not None
 
         if entry in self._changed_entries:
             initial = self._initial_values[entry]
 
             if entry.enabled != initial.enabled and not initial.enabled:
-                self._entry_menu_initial_item._reset_entry_data = entry, None, initial.enabled
+                menu.initial._reset_entry_data = entry, None, initial.enabled
             else:
-                self._entry_menu_initial_item._reset_entry_data = entry, initial.value, None
+                menu.initial._reset_entry_data = entry, initial.value, None
 
             value = format_value(value=initial.value, enabled=initial.enabled)
-            self._entry_menu_initial_item.set_tooltip_markup(value)
-            self._entry_menu_initial_item.props.visible = True
-            self._entry_menu_initial_item.props.label = \
+            menu.initial.set_tooltip_markup(value)
+            menu.initial.props.visible = True
+            menu.initial.props.label = \
                 _('Reset to initial value: <b>{value}</b>').format(value=value)
         else:
-            self._entry_menu_initial_item.props.visible = False
+            menu.initial.props.visible = False
 
         default = group.defaults[key]
         if default is not None and entry.value != default:
             value = format_value(value=default)
-            self._entry_menu_default_item._reset_entry_data = entry, default, None
-            self._entry_menu_default_item.set_tooltip_markup(value)
-            self._entry_menu_default_item.props.visible = True
-            self._entry_menu_default_item.props.label = \
+            menu.default._reset_entry_data = entry, default, None
+            menu.default.set_tooltip_markup(value)
+            menu.default.props.visible = True
+            menu.default.props.label = \
                 _('Reset to default value: <b>{value}</b>').format(value=value)
         else:
-            self._entry_menu_default_item.props.visible = False
+            menu.default.props.visible = False
 
-        self._entry_menu_separator_item.props.visible = \
-            (self._entry_menu_initial_item.props.visible or
-             self._entry_menu_default_item.props.visible)
-        self._entry_menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
+        menu.reset_separator.props.visible = \
+            menu.initial.props.visible or menu.default.props.visible
+
+        self._entry_menu.menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
 
     # [greeter] screensaver-timeout
     def on_entry_setup_greeter_screensaver_timeout(self, entry):
@@ -453,6 +485,12 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             entry.error = None
         else:
             entry.error = helpers.check_path_accessibility(value)
+
+    def get_entry_fix_greeter_default_user_image(self, entry):
+        value = entry.value
+        if not entry.error or value.startswith('#'):
+            return None, None
+        return None, None
 
     # [greeter] background
     def on_entry_changed_greeter_background(self, entry):
