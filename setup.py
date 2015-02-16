@@ -62,7 +62,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         target_pkgdata = target_data + 'share/lightdm-gtk-greeter-settings/'
 
         values = {'__data_directory__': "'%s'" % (target_pkgdata),
-                  '__version__': "%s" % self.distribution.get_version(),
+                  '__version__': "'%s'" % self.distribution.get_version(),
                   '__config_path__': '"/etc/lightdm/lightdm-gtk-greeter.conf"'}
         write_config(self.install_lib, values)
 
