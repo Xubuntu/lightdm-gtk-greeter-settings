@@ -1,2 +1,13 @@
 #!/bin/sh
-pkexec "/usr/bin/lightdm-gtk-greeter-settings" "$@"
+
+APP_PATH="/usr/bin/lightdm-gtk-greeter-settings"
+
+# Check for "socket" argument
+for i in "$@"; do
+  if [[ "$i" == "-s="* ]] || [[ "$i" == "--socket-id="* ]]; then
+    pkexec "${APP_PATH}" "$@" || "${APP_PATH}" "$@"
+    exit $?
+  fi
+done
+
+pkexec "${APP_PATH}" "$@"
