@@ -16,41 +16,36 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from builtins import max
-from locale import gettext as _
-
 from gi.repository import (
     Gdk,
-    GdkPixbuf,
     Gtk)
 
+import lightdm_gtk_greeter_settings.helpers
+
 from lightdm_gtk_greeter_settings.helpers import (
-    C_,
     check_path_accessibility,
     get_data_path,
-    SimpleEnum,
-    WidgetsEnum)
+    WidgetsEnum,
+    WidgetsWrapper)
+from lightdm_gtk_greeter_settings import OptionEntry
+
+from gi.overrides import GLib
 
 
 __all__ = ['MultiheadSetupDialog']
 
-
-class Row(SimpleEnum):
-    Name = ()
-    Background = ()
-    UserBg = ()
-    UserBgDisabled = ()
-    Laptop = ()
-    LaptopDisabled = ()
-    BackgroundPixbuf = ()
-    BackgroundIsColor = ()
-    ErrorVisible = ()
-    ErrorText = ()
+C_ = lambda t: lightdm_gtk_greeter_settings.helpers.C_('option|multihead', t)
 
 
-class BackgroundRow(SimpleEnum):
-    Text = ()
-    Type = ()
+class PageOptions:
+    name = None
+    background = None
+    background_disabled = None
+    user_background = None
+    user_background_disabled = None
+    laptop = None
+    laptop_disabled = None
+    label = None
 
 
 class MultiheadSetupDialog(Gtk.Dialog):
@@ -58,7 +53,7 @@ class MultiheadSetupDialog(Gtk.Dialog):
 
     def __new__(cls):
         builder = Gtk.Builder()
-        builder.add_from_file(get_data_path('%s.ui' % cls.__name__))
+        builder.add_from_file(get_data_path('%s.ui' % cls.__gtype_name__))
         window = builder.get_object('multihead_setup_dialog')
         window.builder = builder
         builder.connect_signals(window)
@@ -66,224 +61,255 @@ class MultiheadSetupDialog(Gtk.Dialog):
         return window
 
     class Widgets(WidgetsEnum):
-        treeview = 'monitors_treeview'
-        model = 'monitors_model'
-        selection = 'monitors_selection'
-        bg_model = 'background_model'
-        bg_renderer = 'bg_renderer'
-        bg_column = 'background_column'
-        name_column = 'name_column'
-        remove = 'remove_button'
-        available = 'monitors_label'
+        notebook = 'monitors_notebook'
+        available_menu = 'available_menu'
+        name = 'name_value'
+        name_combo = 'name_combo'
+
+        editor = 'editor_page'
+        editor_add_button = 'editor_add_button'
+        editor_add_menu_button = 'editor_add_menu_button'
+        empty = 'empty_page'
+        empty_add_button = 'empty_add_button'
+        empty_add_menu_button = 'empty_add_menu_button'
 
     builder = None
 
     def init_window(self):
         self._widgets = self.Widgets(builder=self.builder)
-        self._group = None
-        self._available_monitors = None
 
-        self._file_dialog = None
-        self._color_dialog = None
-        self._invalid_name_dialog = None
-        self._name_exists_dialog = None
+        self._widgets.notebook.remove_page(self._widgets.notebook.page_num(self._widgets.editor))
 
-        self._widgets.treeview.props.tooltip_column = Row.ErrorText
-        self._widgets.bg_renderer.set_property('placeholder-text',
-                                               C_('option|multihead', 'Use default value'))
+        self._current_page = None
+        self._defaults = {}
+        self._options = {}
 
-    def _update_monitors_label(self):
-        if not self._available_monitors:
-            self._widgets.available.props.visible = False
-            return
+        self._option_name = OptionEntry.StringEntry(WidgetsWrapper(self.builder, 'name'))
+        self._option_bg = OptionEntry.BackgroundEntry(WidgetsWrapper(self.builder, 'background'))
+        self._option_user_bg = OptionEntry.BooleanEntry(WidgetsWrapper(self.builder,
+                                                                       'user-background'))
+        self._option_laptop = OptionEntry.BooleanEntry(WidgetsWrapper(self.builder, 'laptop'))
 
-        used = set(row[Row.Name] for row in self._widgets.model)
-        monitors = []
-        for name in self._available_monitors:
-            if name in used:
-                monitors.append(name)
-            else:
-                monitors.append('<i><a href="{name}">{name}</a></i>'.format(name=name))
+        self._option_name.changed.connect(self._on_name_changed)
+        for entry in (self._option_bg, self._option_user_bg, self._option_laptop):
+            entry.changed.connect(self._on_option_changed)
 
-        label = C_('option|multihead',
-                   'Available monitors: {monitors}').format(monitors=', '.join(monitors))
-        self._widgets.available.props.label = label
-        self._widgets.available.props.visible = True
+        screen = Gdk.Screen.get_default()
+        self._available_monitors = [(screen.get_monitor_plug_name(i),
+                                     Gtk.MenuItem(screen.get_monitor_plug_name(i)))
+                                    for i in range(screen.get_n_monitors())]
+
+        menu_header = Gtk.MenuItem(C_('Detected monitors:'))
+        menu_header.set_sensitive(False)
+        self._widgets.available_menu.append(menu_header)
+        self._widgets.available_menu.append(Gtk.SeparatorMenuItem())
+        self._widgets.available_menu.show_all()
+        for name, item in self._available_monitors:
+            self._widgets.available_menu.append(item)
+            item.connect('activate', self.on_add_button_clicked, name)
 
     def set_model(self, values):
-        self._widgets.model.clear()
+        self._widgets.notebook.handler_block_by_func(self.on_monitors_notebook_switch_page)
+        for page in self._widgets.notebook.get_children():
+            self._remove_monitor(page, update=False)
+        self._widgets.notebook.handler_unblock_by_func(self.on_monitors_notebook_switch_page)
+
+        self._options.clear()
         for name, entry in values.items():
-            row = Row._make(Name=name,
-                            Background=entry['background'],
-                            UserBg=entry['user-background'],
-                            UserBgDisabled=entry['user-background'] is None,
-                            Laptop=entry['laptop'],
-                            LaptopDisabled=entry['laptop'] is None,
-                            BackgroundPixbuf=None,
-                            BackgroundIsColor=False,
-                            ErrorVisible=False,
-                            ErrorText=None)
-            self._update_row_appearance(self._widgets.model.append(row))
-        screen = Gdk.Screen.get_default()
-        self._available_monitors = [screen.get_monitor_plug_name(i)
-                                    for i in range(screen.get_n_monitors())]
-        self._update_monitors_label()
+            options = PageOptions()
+            options.name = name
+            options.background = entry['background']
+            options.user_background = entry['user-background']
+            options.laptop = entry['laptop']
+
+            options.background_disabled = self._get_first_not_none(
+                options.background, self._defaults.get('background'), '')
+            options.user_background_disabled = self._get_first_not_none(
+                options.user_background, self._defaults.get('user-background'), 'true')
+            options.laptop_disabled = self._get_first_not_none(
+                options.laptop, self._defaults.get('laptop'), 'false')
+
+            self._add_monitor(options)
+
+        self._widgets.empty.props.visible = not self._options
+
+        self._update_monitors_list()
 
     def get_model(self):
-        return {
-            row[Row.Name]:
-            {
-                'background': row[Row.Background],
-                'user-background': self._get_toggle_state(row, Row.UserBg, Row.UserBgDisabled),
-                'laptop': self._get_toggle_state(row, Row.Laptop, Row.LaptopDisabled)
-            }
-            for row in self._widgets.model}
+        sections = []
+        for page in self._widgets.notebook.get_children():
+            options = self._options.get(page)
+            if not options or not options.name:
+                continue
+            sections.append((options.name,
+                             {'background': options.background,
+                              'user-background': options.user_background,
+                              'laptop': options.laptop}))
+        return sections
 
-    def _update_row_appearance(self, rowiter):
-        row = self._widgets.model[rowiter]
-        bg = row[Row.Background]
+    def set_defaults(self, values):
+        self._defaults = values.copy()
 
+    def _get_first_not_none(self, *values, fallback=None):
+        return next((v for v in values if v is not None), fallback)
+
+    def _add_monitor(self, options):
+        holder = Gtk.Box()
+        holder.show()
+
+        options.label = Gtk.Label(options.name)
+        options.error_image = Gtk.Image.new_from_icon_name('dialog-warning', Gtk.IconSize.INVALID)
+        options.error_image.set_pixel_size(16)
+        options.error_image.set_no_show_all(True)
+
+        close_button = Gtk.Button()
+        close_button.set_focus_on_click(False)
+        close_button.set_relief(Gtk.ReliefStyle.NONE)
+        close_button.connect('clicked', lambda w, p: self._remove_monitor(p), holder)
+        close_image = Gtk.Image.new_from_icon_name('stock_close', Gtk.IconSize.INVALID)
+        close_image.set_pixel_size(16)
+        close_button.add(close_image)
+
+        label_box = Gtk.Box(Gtk.Orientation.HORIZONTAL)
+        label_box.pack_start(options.error_image, False, False, 1)
+        label_box.pack_start(options.label, False, False, 3)
+        label_box.pack_start(close_button, False, False, 0)
+
+        label_eventbox = Gtk.EventBox()
+        label_eventbox.add(label_box)
+        label_eventbox.show_all()
+
+        self._options[holder] = options
+
+        if self._widgets.empty.get_parent():
+            self._widgets.empty.hide()
+
+        current_idx = self._widgets.notebook.get_current_page()
+        current_idx = self._widgets.notebook.insert_page(holder, label_eventbox, current_idx + 1)
+
+        # self._widgets.notebook.set_tab_reorderable(holder, True)
+
+        return current_idx
+
+    def _remove_monitor(self, page, update=True):
+        if page not in self._options:
+            return
+
+        self._options.pop(page)
+
+        if page == self._widgets.editor.props.parent:
+            page.remove(self._widgets.editor)
+
+        if update:
+            self._update_monitors_list()
+            if not self._options:
+                self._widgets.empty.show()
+
+        self._widgets.notebook.remove_page(self._widgets.notebook.page_num(page))
+
+    def _apply_monitor_options(self, options):
+        for entry, value, fallback in \
+            ((self._option_bg, options.background, options.background_disabled),
+             (self._option_user_bg, options.user_background, options.user_background_disabled),
+             (self._option_laptop, options.laptop, options.laptop_disabled)):
+            entry.handler_block_by_func(self._on_option_changed)
+            entry.value = fallback if value is None else value
+            entry.enabled = value is not None
+            entry.handler_unblock_by_func(self._on_option_changed)
+
+        self._option_name.value = options.name or ''
+        self._on_option_changed()
+        self._on_name_changed()
+
+    def _on_option_changed(self, entry=None):
+        options = self._options.get(self._current_page)
+        options.background_disabled = self._option_bg.value
+        options.background = options.background_disabled if self._option_bg.enabled else None
+        options.user_background_disabled = self._option_user_bg.value
+        options.user_background = (options.user_background_disabled
+                                   if self._option_user_bg.enabled else None)
+        options.laptop_disabled = self._option_laptop.value
+        options.laptop = options.laptop_disabled if self._option_laptop.enabled else None
+
+        if not options.background or Gdk.RGBA().parse(options.background):
+            self._option_bg.error = None
+        else:
+            self._option_bg.error = check_path_accessibility(options.background)
+
+    def _on_name_changed(self, entry=None):
+        options = self._options[self._current_page]
+        options.name = self._option_name.value.strip()
+        self._update_monitors_list()
+
+        markup = None
         error = None
-        color = Gdk.RGBA()
-        if color.parse(bg):
-            pixbuf = row[Row.BackgroundPixbuf]
-            if not pixbuf:
-                pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, 16, 16)
-                row[Row.BackgroundPixbuf] = pixbuf
-            value = (int(0xFF * color.red) << 24) + \
-                    (int(0xFF * color.green) << 16) + \
-                    (int(0xFF * color.blue) << 8)
-            pixbuf.fill(value)
-            row[Row.BackgroundIsColor] = True
+
+        if not options.name:
+            markup = C_('<i>No name</i>')
+            error = C_('The name can\'t be empty. Configuration will not be saved.')
+        elif any(options.name == o.name and p != self._current_page
+                 for p, o in self._options.items()):
+            error = (C_('"{name}" is already defined. Only last configuration will be saved.')
+                     .format(name=options.name))
+
+        if markup:
+            options.label.set_markup(markup)
         else:
-            row[Row.BackgroundIsColor] = False
-            if bg:
-                error = check_path_accessibility(bg)
+            options.label.set_label(options.name)
 
-        row[Row.ErrorVisible] = error is not None
-        row[Row.ErrorText] = error
+        self._option_name.error = error
 
-    ToggleStatesSeq = {None: True, False: None, True: False}
+    def _focus_name_entry(self):
+        self._widgets.name.grab_focus()
+        self._widgets.name.set_position(0)
 
-    def _get_toggle_state(self, row, active_column, inconsistent_column):
-        return None if row[inconsistent_column] else row[active_column]
+    def on_add_button_clicked(self, widget, name=""):
+        options = PageOptions()
+        options.name = name
 
-    def _toggle_state(self, row, active_column, inconsistent_column):
-        state = self._get_toggle_state(row, active_column, inconsistent_column)
-        row[active_column] = self.ToggleStatesSeq[state]
-        row[inconsistent_column] = self.ToggleStatesSeq[state] is None
+        options.background_disabled = self._get_first_not_none(
+            self._defaults.get('background'), '')
+        options.user_background_disabled = self._get_first_not_none(
+            self._defaults.get('user-background'), 'true')
+        options.laptop = self._get_first_not_none(self._defaults.get('laptop'), 'false')
 
-    def on_monitors_add_clicked(self, button):
-        prefix = 'monitor'
-        numbers = (row[Row.Name][len(prefix):]
-                   for row in self._widgets.model if row[Row.Name].startswith(prefix))
-        try:
-            max_number = max(int(v) for v in numbers if v.isdigit())
-        except ValueError:
-            max_number = 0
+        self._widgets.notebook.set_current_page(self._add_monitor(options))
+        if name:
+            self._update_monitors_list()
 
-        row = Row._make(Name='%s%d' % (prefix, max_number + 1),
-                        UserBg=False,
-                        UserBgDisabled=False,
-                        Laptop=True,
-                        LaptopDisabled=False,
-                        Background='',
-                        BackgroundPixbuf=None,
-                        BackgroundIsColor=False,
-                        ErrorVisible=False,
-                        ErrorText=None)
-        rowiter = self._widgets.model.append(row)
-        self._widgets.treeview.set_cursor(self._widgets.model.get_path(rowiter),
-                                          self._widgets.name_column, True)
-
-    def on_monitors_remove_clicked(self, button):
-        model, rowiter = self._widgets.selection.get_selected()
-        model.remove(rowiter)
-        self._update_monitors_label()
-
-    def on_selection_changed(self, selection):
-        self._widgets.remove.props.sensitive = all(selection.get_selected())
-
-    def on_monitors_label_activate_link(self, label, name):
-        row = Row._make(Name=name,
-                        UserBg=False,
-                        UserBgDisabled=False,
-                        Laptop=True,
-                        LaptopDisabled=False,
-                        Background='',
-                        BackgroundPixbuf=None,
-                        BackgroundIsColor=True,
-                        ErrorVisible=False,
-                        ErrorText=None)
-
-        rowiter = self._widgets.model.append(row)
-        self._update_row_appearance(rowiter)
-        self._widgets.selection.select_iter(rowiter)
-        self._update_monitors_label()
-        return True
-
-    def on_bg_renderer_editing_started(self, renderer, combobox, path):
-        combobox.connect('format-entry-text', self.on_bg_combobox_format)
-
-    def on_bg_combobox_format(self, combobox, path):
-        model, rowiter = self._widgets.selection.get_selected()
-        item_type = combobox.props.model[path][BackgroundRow.Type]
-        value = model[rowiter][Row.Background]
-
-        if item_type == 'path':
-            if not self._file_dialog:
-                self._file_dialog = Gtk.FileChooserDialog(
-                    parent=self,
-                    buttons=(_('_OK'), Gtk.ResponseType.OK,
-                             _('_Cancel'), Gtk.ResponseType.CANCEL),
-                    title=C_('option|multihead', 'Select background file'))
-                self._file_dialog.props.filter = Gtk.FileFilter()
-                self._file_dialog.props.filter.add_mime_type('image/*')
-            if self._file_dialog.run() == Gtk.ResponseType.OK:
-                value = self._file_dialog.get_filename()
-            self._file_dialog.hide()
-        elif item_type == 'color':
-            if not self._color_dialog:
-                self._color_dialog = Gtk.ColorChooserDialog(parent=self)
-            if self._color_dialog.run() == Gtk.ResponseType.OK:
-                value = self._color_dialog.get_rgba().to_color().to_string()
-            self._color_dialog.hide()
+    def on_monitors_notebook_switch_page(self, notebook, page, page_idx):
+        if page == self._widgets.empty:
+            self._current_page = None
+            buttons = self._widgets.editor_add_menu_button, self._widgets.empty_add_menu_button
         else:
-            value = ''
+            self._current_page = page
+            buttons = self._widgets.empty_add_menu_button, self._widgets.editor_add_menu_button
 
-        combobox.set_active(-1)
-        return value
+            old_parent = self._widgets.editor.get_parent()
+            if old_parent:
+                old_parent.remove(self._widgets.editor)
+            page.add(self._widgets.editor)
+            self._apply_monitor_options(self._options[page])
 
-    def on_bg_renderer_edited(self, renderer, path, new_text):
-        self._widgets.model[path][Row.Background] = new_text
-        self._update_row_appearance(self._widgets.model.get_iter(path))
+            GLib.idle_add(self._focus_name_entry)
 
-    def on_name_renderer_edited(self, renderer, path, new_name):
-        old_name = self._widgets.model[path][Row.Name]
-        invalid_name = not new_name.strip()
-        name_in_use = new_name != old_name and any(new_name == row[Row.Name]
-                                                   for row in self._widgets.model)
-        if invalid_name or name_in_use:
-            if not self._invalid_name_dialog:
-                self._invalid_name_dialog = Gtk.MessageDialog(parent=self,
-                                                              buttons=Gtk.ButtonsType.OK)
-            self._invalid_name_dialog.set_property('text',
-                                                   C_('option|multihead',
-                                                      'Invalid name: "{name}"')
-                                                   .format(name=new_name))
-            if name_in_use:
-                message = C_('option|multihead', 'This name already in use.')
-            else:
-                message = C_('option|multihead', 'This name is not valid.')
-            self._invalid_name_dialog.set_property('secondary-text', message)
-            self._invalid_name_dialog.run()
-            self._invalid_name_dialog.hide()
-        else:
-            self._widgets.model[path][Row.Name] = new_name
-        self._update_monitors_label()
+        buttons[0].props.popup = None
+        buttons[1].props.popup = self._widgets.available_menu
 
-    def on_user_bg_renderer_toggled(self, renderer, path):
-        self._toggle_state(self._widgets.model[path], Row.UserBg, Row.UserBgDisabled)
+    def _update_monitors_list(self):
+        used_monitors = set(options.name for options in self._options.values())
+        used_count = 0
+        self._widgets.name_combo.get_model().clear()
+        for name, item in self._available_monitors:
+            used = name in used_monitors
+            if used:
+                used_count += 1
+            item.props.visible = not used
+            if not used:
+                self._widgets.name_combo.append_text(name)
 
-    def on_laptop_renderer_toggled(self, renderer, path):
-        self._toggle_state(self._widgets.model[path], Row.Laptop, Row.LaptopDisabled)
+        show_button = used_count < len(self._available_monitors)
+        self._widgets.name_combo.props.button_sensitivity = (Gtk.SensitivityType.ON if show_button
+                                                             else Gtk.SensitivityType.OFF)
+        self._widgets.editor_add_menu_button.props.visible = show_button
+        self._widgets.empty_add_menu_button.props.visible = show_button

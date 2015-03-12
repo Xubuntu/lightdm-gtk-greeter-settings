@@ -30,8 +30,17 @@ __all__ = [
 # Broken solution - too complex
 class BaseGroup(GObject.GObject):
 
+    class __DictWrapper:
+
+        def __init__(self, getter):
+            self._getter = getter
+
+        def __getitem__(self, key):
+            return self._getter(key)
+
     def __init__(self, widgets):
         super().__init__()
+        self.__entries_wrapper = None
         self.__defaults_wrapper = None
 
     def read(self, config):
@@ -41,19 +50,21 @@ class BaseGroup(GObject.GObject):
         raise NotImplementedError(self.__class__)
 
     @property
+    def entries(self):
+        if not self.__entries_wrapper:
+            self.__entries_wrapper = BaseGroup.__DictWrapper(self._get_entry)
+        return self.__entries_wrapper
+
+    @property
     def defaults(self):
         if not self.__defaults_wrapper:
-            class DefaultsWrapper:
-
-                def __init__(self, getter):
-                    self._getter = getter
-
-                def __getitem__(self, key):
-                    return self._getter(key)
-            self.__defaults_wrapper = DefaultsWrapper(self._get_default)
+            self.__defaults_wrapper = BaseGroup.__DictWrapper(self._get_default)
         return self.__defaults_wrapper
 
     def _get_default(self, key):
+        raise NotImplementedError(self.__class__)
+
+    def _get_entry(self, key):
         raise NotImplementedError(self.__class__)
 
     @GObject.Signal
@@ -109,6 +120,9 @@ class SimpleGroup(BaseGroup):
                 config.set(self._name, key, entry.value)
             else:
                 config.remove_option(self._name, key)
+
+    def _get_entry(self, key):
+        return self._entries.get(key)
 
     def _get_default(self, key):
         return self._defaults.get(key)

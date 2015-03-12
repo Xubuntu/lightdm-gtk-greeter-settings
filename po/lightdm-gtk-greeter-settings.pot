@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-09 12:54+0300\n"
+"POT-Creation-Date: 2015-03-12 11:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,13 @@ msgid ""
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr ""
@@ -149,6 +151,7 @@ msgid "Default user image"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
+#: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
 msgstr ""
@@ -374,13 +377,13 @@ msgctxt "icon-dialog"
 msgid "Select icon"
 msgstr ""
 
-#: ../data/IconChooserDialog.ui.h:2 ../data/MultiheadSetupDialog.ui.h:5
+#: ../data/IconChooserDialog.ui.h:2 ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "button"
 msgid "_Cancel"
 msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
-#: ../data/MultiheadSetupDialog.ui.h:6
+#: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "button"
 msgid "_OK"
 msgstr ""
@@ -410,13 +413,11 @@ msgid "List _standard icons only"
 msgstr ""
 
 #: ../data/ImageChooserDialog.ui.h:1
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:238
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:248
 msgid "_Cancel"
 msgstr ""
 
 #: ../data/ImageChooserDialog.ui.h:2
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:237
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:247
 msgid "_OK"
 msgstr ""
@@ -483,81 +484,65 @@ msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
-msgid "Select a file"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:2
-msgctxt "option|multihead"
-msgid "Select color"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:3
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:93
-msgctxt "option|multihead"
-msgid "Use default value"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:4
-msgctxt "option|multihead"
 msgid "Multihead setup"
 msgstr ""
 
-#: ../data/MultiheadSetupDialog.ui.h:7
-msgctxt "option|multihead"
-msgid "Monitor"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:8
-msgctxt "option|multihead"
-msgid "User's"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:9
-msgctxt "option|multihead"
-msgid "Laptop"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:10
-msgctxt "option|multihead"
-msgid "Background"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:11
-msgctxt "option|multihead"
-msgid "Add monior to the list"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:12
-msgctxt "option|multihead"
-msgid "Add"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:13
-msgctxt "option|multihead"
-msgid "Remove monitor from the list"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:14
-msgctxt "option|multihead"
-msgid "Remove"
-msgstr ""
-
-#: ../data/MultiheadSetupDialog.ui.h:15
+#: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid ""
 "<i>Note: greeter do not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:143
+#: ../data/MultiheadSetupDialog.ui.h:8
+msgctxt "option|greeter|laptop"
+msgid "This monitor is laptop display (detect lid closing)"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:9
+msgctxt "option|multihead"
+msgid "Overwrite default \"user-background\" option"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:10
+msgctxt "option|multihead"
+msgid "Overwrite default \"laptop\" option"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:11
+msgctxt "option|multihead"
+msgid "Monitor name:"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:12
+msgctxt "option|multihead"
+msgid "Don't leave empty"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:13
+msgctxt "option|multihead"
+msgid "Add new monitor configuration"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:14
+msgctxt "option|multihead"
+msgid "Overwrite default \"background\" option"
+msgstr ""
+
+#: ../data/MultiheadSetupDialog.ui.h:16
+msgctxt "option|multihead"
+msgid "Add configuration"
+msgstr ""
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:146
 msgid "You don't have permissions to change greeter configuration"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:147
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:150
 msgid "No permissions to save configuration"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:149
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:152
 #, python-brace-format
 msgid ""
 "It seems that you don't have permissions to write to file:\n"
@@ -566,40 +551,40 @@ msgid ""
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:195
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:202
 #, python-brace-format
 msgid "Failed to read configuration file: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:322
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:346
 msgid "<i>disabled</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:324
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:348
 msgid "<i>empty string</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:326
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:350
 msgid "<i>None</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:347
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:390
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:358
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:401
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:377
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:420
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:440
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:483
 #, python-brace-format
 msgctxt "option|greeter|allow-debugging"
 msgid ""
@@ -853,33 +838,6 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:696
 msgctxt "option-entry|indicators"
 msgid "Predefined templates:"
-msgstr ""
-
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:109
-#, python-brace-format
-msgctxt "option|multihead"
-msgid "Available monitors: {monitors}"
-msgstr ""
-
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:239
-msgctxt "option|multihead"
-msgid "Select background file"
-msgstr ""
-
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:272
-#, python-brace-format
-msgctxt "option|multihead"
-msgid "Invalid name: \"{name}\""
-msgstr ""
-
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:275
-msgctxt "option|multihead"
-msgid "This name already in use."
-msgstr ""
-
-#: ../lightdm_gtk_greeter_settings/MultiheadSetupDialog.py:277
-msgctxt "option|multihead"
-msgid "This name is not valid."
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:249

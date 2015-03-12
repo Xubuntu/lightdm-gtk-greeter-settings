@@ -2,33 +2,21 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <requires lib="*MultiheadSetupDialog (copy 2).ui" version="0.0"/>
   <requires lib="gtk_greeter_settings" version="1.0"/>
-  <object class="GtkListStore" id="background_model">
-    <columns>
-      <!-- column-name text -->
-      <column type="gchararray"/>
-      <!-- column-name type -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes" context="option|multihead">Select a file</col>
-        <col id="1">path</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes" context="option|multihead">Select color</col>
-        <col id="1">color</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes" context="option|multihead">Use default value</col>
-        <col id="1">default</col>
-      </row>
-    </data>
+  <object class="GtkMenu" id="available_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
   </object>
   <object class="GtkFileFilter" id="filefilter1">
     <mime-types>
       <mime-type>image/*</mime-type>
     </mime-types>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">add</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
@@ -42,29 +30,10 @@
     <property name="xpad">2</property>
     <property name="icon_name">dialog-ok</property>
   </object>
-  <object class="GtkListStore" id="monitors_model">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name background -->
-      <column type="gchararray"/>
-      <!-- column-name user-background -->
-      <column type="gboolean"/>
-      <!-- column-name user-background-enabled -->
-      <column type="gboolean"/>
-      <!-- column-name laptop -->
-      <column type="gboolean"/>
-      <!-- column-name laptop-enabled -->
-      <column type="gboolean"/>
-      <!-- column-name background-pixbuf -->
-      <column type="GdkPixbuf"/>
-      <!-- column-name background-is-color -->
-      <column type="gboolean"/>
-      <!-- column-name error-visible -->
-      <column type="gboolean"/>
-      <!-- column-name error-text -->
-      <column type="gchararray"/>
-    </columns>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">add</property>
   </object>
   <object class="MultiheadSetupDialog" id="multihead_setup_dialog">
     <property name="width_request">500</property>
@@ -128,121 +97,64 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box7">
+          <object class="GtkNotebook" id="monitors_notebook">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="valign">start</property>
-            <property name="hexpand">True</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">8</property>
+            <property name="can_focus">True</property>
+            <property name="show_border">False</property>
+            <property name="scrollable">True</property>
+            <property name="group_name">monitors</property>
+            <signal name="switch-page" handler="on_monitors_notebook_switch_page" swapped="no"/>
             <child>
-              <object class="GtkBox" id="box1">
+              <object class="GtkBox" id="empty_page">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolledwindow1">
-                    <property name="height_request">160</property>
+                  <object class="GtkBox" id="empty_add_placeholder">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="margin_left">24</property>
+                    <property name="margin_right">24</property>
+                    <property name="margin_top">24</property>
+                    <property name="margin_bottom">24</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkTreeView" id="monitors_treeview">
-                        <property name="width_request">300</property>
+                      <object class="GtkButton" id="empty_add_button">
+                        <property name="label" translatable="yes" context="option|multihead">Add configuration</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="model">monitors_model</property>
-                        <property name="headers_clickable">False</property>
-                        <property name="search_column">0</property>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection" id="monitors_selection">
-                            <signal name="changed" handler="on_selection_changed" swapped="no"/>
-                          </object>
-                        </child>
+                        <property name="receives_default">True</property>
+                        <property name="image">image4</property>
+                        <property name="relief">none</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="on_add_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="empty_add_menu_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="relief">none</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="draw_indicator">True</property>
                         <child>
-                          <object class="GtkTreeViewColumn" id="name_column">
-                            <property name="resizable">True</property>
-                            <property name="title" translatable="yes" context="option|multihead">Monitor</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="name_renderer">
-                                <property name="editable">True</property>
-                                <signal name="edited" handler="on_name_renderer_edited" swapped="no"/>
-                              </object>
-                              <attributes>
-                                <attribute name="text">0</attribute>
-                              </attributes>
-                            </child>
-                            <child>
-                              <object class="GtkCellRendererPixbuf" id="error_renderer">
-                                <property name="icon_name">dialog-warning</property>
-                              </object>
-                              <attributes>
-                                <attribute name="visible">8</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="user_bg_column">
-                            <property name="resizable">True</property>
-                            <property name="sizing">autosize</property>
-                            <property name="title" translatable="yes" context="option|multihead">User's</property>
-                            <child>
-                              <object class="GtkCellRendererToggle" id="user_bg_renderer">
-                                <signal name="toggled" handler="on_user_bg_renderer_toggled" swapped="no"/>
-                              </object>
-                              <attributes>
-                                <attribute name="active">2</attribute>
-                                <attribute name="inconsistent">3</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="laptop_column">
-                            <property name="sizing">autosize</property>
-                            <property name="title" translatable="yes" context="option|multihead">Laptop</property>
-                            <child>
-                              <object class="GtkCellRendererToggle" id="laptop_renderer">
-                                <signal name="toggled" handler="on_laptop_renderer_toggled" swapped="no"/>
-                              </object>
-                              <attributes>
-                                <attribute name="active">4</attribute>
-                                <attribute name="inconsistent">5</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="background_column">
-                            <property name="resizable">True</property>
-                            <property name="sizing">autosize</property>
-                            <property name="title" translatable="yes" context="option|multihead">Background</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererPixbuf" id="color_renderer"/>
-                              <attributes>
-                                <attribute name="visible">7</attribute>
-                                <attribute name="pixbuf">6</attribute>
-                              </attributes>
-                            </child>
-                            <child>
-                              <object class="GtkCellRendererCombo" id="bg_renderer">
-                                <property name="editable">True</property>
-                                <property name="model">background_model</property>
-                                <property name="text_column">0</property>
-                                <signal name="edited" handler="on_bg_renderer_edited" swapped="no"/>
-                                <signal name="editing-started" handler="on_bg_renderer_editing_started" swapped="no"/>
-                              </object>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
-                            </child>
-                          </object>
+                          <placeholder/>
                         </child>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
@@ -251,92 +163,329 @@
                     <property name="position">0</property>
                   </packing>
                 </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes" context="option|multihead">No configured monitors found</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="editor_page">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">8</property>
+                <property name="margin_right">8</property>
+                <property name="margin_top">8</property>
+                <property name="margin_bottom">8</property>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkToolbar" id="monitors_toolbar">
+                  <object class="GtkRadioButton" id="background_image_choice">
+                    <property name="label" translatable="yes" context="option|greeter|background">Image</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_size">2</property>
-                    <child>
-                      <object class="GtkToolButton" id="add_button">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes" context="option|multihead">Add monior to the list</property>
-                        <property name="label" translatable="yes" context="option|multihead">Add</property>
-                        <property name="use_underline">True</property>
-                        <property name="icon_name">list-add-symbolic</property>
-                        <signal name="clicked" handler="on_monitors_add_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolButton" id="remove_button">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes" context="option|multihead">Remove monitor from the list</property>
-                        <property name="label" translatable="yes" context="option|multihead">Remove</property>
-                        <property name="use_underline">True</property>
-                        <property name="icon_name">list-remove-symbolic</property>
-                        <signal name="clicked" handler="on_monitors_remove_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <style>
-                      <class name="inline-toolbar"/>
-                    </style>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">24</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">background_color_choice</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="background_color_choice">
+                    <property name="label" translatable="yes" context="option|greeter|background">Color</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">24</property>
+                    <property name="xalign">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkFileChooserButton" id="background_image_value">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="hexpand">True</property>
+                    <property name="create_folders">False</property>
+                    <property name="local_only">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkColorButton" id="background_color_value">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">start</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="laptop_value">
+                    <property name="label" translatable="yes" context="option|greeter|laptop">This monitor is laptop display (detect lid closing)</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_left">24</property>
+                    <property name="hexpand">True</property>
+                    <property name="xalign">0</property>
+                    <property name="image_position">right</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">7</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="user-background_use">
+                    <property name="label" translatable="yes" context="option|multihead">Overwrite default "user-background" option</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_top">2</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="laptop_use">
+                    <property name="label" translatable="yes" context="option|multihead">Overwrite default "laptop" option</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_top">2</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">6</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="monitor_name_box">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes" context="option|multihead">Monitor name:</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="name_combo">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">4</property>
+                        <property name="margin_right">4</property>
+                        <property name="has_entry">True</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry" id="name_value">
+                            <property name="can_focus">True</property>
+                            <property name="width_chars">25</property>
+                            <property name="placeholder_text" translatable="yes">Don't leave empty</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="name_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="editor_add_menu_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="relief">none</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="draw_indicator">True</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="pack_type">end</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="editor_add_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes" context="option|multihead">Add new monitor configuration</property>
+                        <property name="image">image1</property>
+                        <property name="relief">none</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="on_add_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="pack_type">end</property>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckButton" id="background_use">
+                        <property name="label" translatable="yes" context="option|multihead">Overwrite default "background" option</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="xalign">0</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="background_error">
+                        <property name="can_focus">False</property>
+                        <property name="yalign">0</property>
+                        <property name="pixel_size">12</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="user-background_value">
+                    <property name="label" translatable="yes" context="option|greeter|user-background">Use user wallpaper if available</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_left">24</property>
+                    <property name="hexpand">True</property>
+                    <property name="xalign">0</property>
+                    <property name="image_position">right</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">5</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="monitors_label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label">[available monitors]</property>
-                <property name="use_markup">True</property>
-                <signal name="activate-link" handler="on_monitors_label_activate_link" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkLabel" id="label2">
+            <child type="tab">
+              <object class="GtkLabel" id="label4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes" context="option|multihead">&lt;i&gt;Note: greeter do not set monitors geometry.
-You need to configure it by yourself.&lt;/i&gt;</property>
-                <property name="use_markup">True</property>
-                <property name="wrap">True</property>
+                <property name="label">[editor]</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">8</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes" context="option|multihead">&lt;i&gt;Note: greeter do not set monitors geometry.
+You need to configure it by yourself.&lt;/i&gt;</property>
+            <property name="use_markup">True</property>
+            <property name="wrap">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>

@@ -104,33 +104,35 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._initial_values = {}
         self._changed_entries = None
         self._entries = None
-        self._groups = (
-            SimpleGroup('greeter', self.builder, {
-                # Appearance
-                'theme-name': (OptionEntry.StringEntry, ''),
-                'icon-theme-name': (OptionEntry.StringEntry, ''),
-                'font-name': (OptionEntry.FontEntry, 'Sans 10'),
-                'xft-antialias': (OptionEntry.BooleanEntry, 'false'),
-                'xft-dpi': (OptionEntry.StringEntry, None),
-                'xft-rgba': (OptionEntry.ChoiceEntry, None),
-                'xft-hintstyle': (OptionEntry.ChoiceEntry, None),
-                'background': (OptionEntry.BackgroundEntry, '#000000'),
-                'user-background': (OptionEntry.BooleanEntry, 'true'),
-                'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
-                'default-user-image': (IconEntry.IconEntry, '#avatar-default'),
-                # Panel
-                'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),
-                'indicators': (IndicatorsEntry.IndicatorsEntry,
-                               '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
-                # Position
-                'position': (PositionEntry.PositionEntry, '50%,center'),
-                # Misc
-                'screensaver-timeout': (OptionEntry.AdjustmentEntry, '60'),
-                'keyboard': (OptionEntry.StringPathEntry, ''),
-                'reader': (OptionEntry.StringPathEntry, ''),
-                'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
-                'allow-debugging': (OptionEntry.BooleanEntry, 'false'), }),
-            MonitorsGroup(self.builder))
+
+        self._group_greeter = SimpleGroup('greeter', self.builder, {
+            # Appearance
+            'theme-name': (OptionEntry.StringEntry, ''),
+            'icon-theme-name': (OptionEntry.StringEntry, ''),
+            'font-name': (OptionEntry.FontEntry, 'Sans 10'),
+            'xft-antialias': (OptionEntry.BooleanEntry, 'false'),
+            'xft-dpi': (OptionEntry.StringEntry, None),
+            'xft-rgba': (OptionEntry.ChoiceEntry, None),
+            'xft-hintstyle': (OptionEntry.ChoiceEntry, None),
+            'background': (OptionEntry.BackgroundEntry, '#000000'),
+            'user-background': (OptionEntry.BooleanEntry, 'true'),
+            'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
+            'default-user-image': (IconEntry.IconEntry, '#avatar-default'),
+            # Panel
+            'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),
+            'indicators': (IndicatorsEntry.IndicatorsEntry,
+                           '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
+            # Position
+            'position': (PositionEntry.PositionEntry, '50%,center'),
+            # Misc
+            'screensaver-timeout': (OptionEntry.AdjustmentEntry, '60'),
+            'keyboard': (OptionEntry.StringPathEntry, ''),
+            'reader': (OptionEntry.StringPathEntry, ''),
+            'a11y-states': (OptionEntry.AccessibilityStatesEntry, ''),
+            'allow-debugging': (OptionEntry.BooleanEntry, 'false'), })
+        self._group_monitors = MonitorsGroup(self.builder, self._get_default_monitors_options)
+
+        self._groups = self._group_greeter, self._group_monitors
 
         for group in self._groups:
             group.entry_added.connect(self.on_entry_added)
@@ -228,6 +230,10 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 self._config.write(file)
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)
+
+    def _get_default_monitors_options(self):
+        return {key: self._group_greeter.entries[key].value or self._group_greeter.defaults[key]
+                for key in ('background', 'user-background')}
 
     def on_entry_added(self, group, entry, key):
         if isinstance(group, SimpleGroup) and (group.name, key) in self.entries_setup:

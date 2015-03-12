@@ -316,6 +316,11 @@ class BackgroundEntry(BaseEntry):
         self._image_value = widgets['image_value']
         self._color_value = widgets['color_value']
 
+        self._widgets_to_disable.append(self._image_choice)
+        self._widgets_to_disable.append(self._color_choice)
+        self._widgets_to_disable.append(self._image_value)
+        self._widgets_to_disable.append(self._color_value)
+
         self._on_choice_id = self._color_choice.connect('toggled', self._on_color_choice_toggled)
         self._color_value.connect('color-set', self._on_color_set)
         self._image_value.connect('file-set', self._on_file_set)

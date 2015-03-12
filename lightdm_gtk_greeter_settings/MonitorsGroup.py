@@ -16,6 +16,8 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+from collections import OrderedDict
+
 from gi.repository import Gtk
 
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
@@ -30,12 +32,13 @@ __all__ = ['MonitorsGroup']
 class MonitorsGroup(BaseGroup):
     GROUP_PREFIX = 'monitor:'
 
-    def __init__(self, widgets):
+    def __init__(self, widgets, defaults_callback=None):
         super().__init__(widgets)
-        self._entries = {}
+        self._entries = OrderedDict()
         self._widgets = WidgetsWrapper(widgets, 'multihead')
-        self._dialog = None
         self._widgets['label'].connect('activate-link', self._on_label_link_activate)
+        self._dialog = None
+        self._get_defaults_callback = defaults_callback
 
     def read(self, config):
         self._entries.clear()
@@ -54,8 +57,9 @@ class MonitorsGroup(BaseGroup):
         for name in config.sections():
             if name.startswith(self.GROUP_PREFIX):
                 config.remove_section(name)
+
         for name, entry in self._entries.items():
-            section = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name)
+            section = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name.strip())
             config.add_section(section)
             for key, value in entry:
                 if value is not None:
@@ -66,11 +70,14 @@ class MonitorsGroup(BaseGroup):
             self._dialog = MultiheadSetupDialog()
             self._dialog.props.transient_for = self._widgets['label'].get_toplevel()
 
+        if self._get_defaults_callback:
+            self._dialog.set_defaults(self._get_defaults_callback())
+
         self._dialog.set_model(self._entries)
 
         if self._dialog.run() == Gtk.ResponseType.OK:
             current_names = set(self._entries.keys())
-            for name, values in self._dialog.get_model().items():
+            for name, values in self._dialog.get_model():
                 if name in self._entries:
                     self._entries[name].assign(values)
                     current_names.discard(name)
