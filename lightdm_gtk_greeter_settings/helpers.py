@@ -117,8 +117,8 @@ def get_greeter_version():
     return get_greeter_version._version
 
 
-def bool2string(value):
-    return 'true' if value else 'false'
+def bool2string(value, skip_none=False):
+    return 'true' if value else 'false' if not skip_none or value is not None else None
 
 
 def string2bool(value, fallback=False):

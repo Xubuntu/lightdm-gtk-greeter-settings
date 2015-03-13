@@ -20,7 +20,9 @@ from collections import OrderedDict
 
 from gi.repository import Gtk
 
-from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
+from lightdm_gtk_greeter_settings.helpers import (
+    bool2string,
+    WidgetsWrapper)
 from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MultiheadSetupDialog
 from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
 from lightdm_gtk_greeter_settings.OptionGroup import BaseGroup
@@ -48,8 +50,8 @@ class MonitorsGroup(BaseGroup):
             name = name[len(self.GROUP_PREFIX):].strip()
             entry = MonitorEntry(self._widgets)
             entry['background'] = section.get('background', None)
-            entry['user-background'] = section.getboolean('user-background', None)
-            entry['laptop'] = section.getboolean('laptop', None)
+            entry['user-background'] = bool2string(section.getboolean('user-background', None), 1)
+            entry['laptop'] = bool2string(section.getboolean('laptop', None), True)
             self._entries[name] = entry
             self.entry_added.emit(entry, name)
 

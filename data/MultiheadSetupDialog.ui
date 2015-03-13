@@ -103,7 +103,7 @@
             <property name="show_border">False</property>
             <property name="scrollable">True</property>
             <property name="group_name">monitors</property>
-            <signal name="switch-page" handler="on_monitors_notebook_switch_page" swapped="no"/>
+            <signal name="switch-page" handler="on_switch_page" swapped="no"/>
             <child>
               <object class="GtkBox" id="empty_page">
                 <property name="visible">True</property>
