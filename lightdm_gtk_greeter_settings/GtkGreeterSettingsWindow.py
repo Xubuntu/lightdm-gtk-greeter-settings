@@ -111,7 +111,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             'theme-name': (OptionEntry.StringEntry, ''),
             'icon-theme-name': (OptionEntry.StringEntry, ''),
             'font-name': (OptionEntry.FontEntry, 'Sans 10'),
-            'xft-antialias': (OptionEntry.BooleanEntry, 'false'),
+            'xft-antialias': (OptionEntry.BooleanEntry, None),
             'xft-dpi': (OptionEntry.StringEntry, None),
             'xft-rgba': (OptionEntry.ChoiceEntry, None),
             'xft-hintstyle': (OptionEntry.ChoiceEntry, None),
