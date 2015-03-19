@@ -118,6 +118,8 @@ def get_greeter_version():
 
 
 def bool2string(value, skip_none=False):
+    if isinstance(value, str):
+        value = string2bool(value)
     return 'true' if value else 'false' if not skip_none or value is not None else None
 
 

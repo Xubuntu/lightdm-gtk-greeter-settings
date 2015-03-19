@@ -17,22 +17,23 @@
 
 
 import collections
-import configparser
 import os
 import shlex
 import sys
-from glob import iglob
 from functools import partialmethod
+from glob import iglob
 from itertools import chain
 from locale import gettext as _
 
 from gi.repository import (
     Gdk,
+    GLib,
     Gtk)
 from gi.repository import Pango
 from gi.repository.GObject import markup_escape_text as escape_markup
 
 from lightdm_gtk_greeter_settings import (
+    Config,
     helpers,
     IconEntry,
     IndicatorsEntry,
@@ -138,8 +139,17 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             group.entry_added.connect(self.on_entry_added)
             group.entry_removed.connect(self.on_entry_removed)
 
-        self._config_path = helpers.get_config_path()
-        self._allow_edit = self._has_access_to_write(self._config_path)
+        config_pathes = []
+        config_pathes.extend(os.path.join(p, 'lightdm-gtk-greeter.conf.d')
+                             for p in GLib.get_system_data_dirs())
+        config_pathes.extend(os.path.join(p, 'lightdm-gtk-greeter.conf.d')
+                             for p in GLib.get_system_config_dirs())
+        config_pathes.append(os.path.join(os.path.dirname(helpers.get_config_path()),
+                                          'lightdm-gtk-greeter.conf.d'))
+
+        self._config = Config.Config(config_pathes, helpers.get_config_path())
+
+        self._allow_edit = self._has_access_to_write(helpers.get_config_path())
         self._widgets.apply.props.visible = self._allow_edit
 
         if not self._allow_edit:
@@ -151,7 +161,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     secondary_text=_(
                         'It seems that you don\'t have permissions to write to '
                         'file:\n{path}\n\nTry to run this program using "sudo" '
-                        'or "pkexec"').format(path=self._config_path),
+                        'or "pkexec"').format(path=helpers.get_config_path()),
                     message_type=Gtk.MessageType.WARNING)
 
         if self.mode == WindowMode.Embedded:
@@ -176,13 +186,12 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
             self.set_titlebar(header)
 
-        self._config = configparser.RawConfigParser(strict=False)
         self._read()
 
     def _has_access_to_write(self, path):
-        if os.path.exists(path) and os.access(self._config_path, os.W_OK):
+        if os.path.exists(path) and os.access(helpers.get_config_path(), os.W_OK):
             return True
-        return os.access(os.path.dirname(self._config_path), os.W_OK | os.X_OK)
+        return os.access(os.path.dirname(helpers.get_config_path()), os.W_OK | os.X_OK)
 
     def _set_message(self, message, type_=Gtk.MessageType.INFO):
         if not message:
@@ -193,17 +202,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         self._widgets.infobar.show()
 
     def _read(self):
-        self._config.clear()
-        try:
-            if not self._config.read(self._config_path) and \
-               self.mode != WindowMode.Embedded:
-                helpers.show_message(text=_('Failed to read configuration file: {path}')
-                                     .format(path=self._config_path),
-                                     message_type=Gtk.MessageType.ERROR)
-        except (configparser.DuplicateSectionError,
-                configparser.MissingSectionHeaderError):
-            pass
-
+        self._config.read()
         self._changed_entries = None
 
         for group in self._groups:
@@ -226,8 +225,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._widgets.apply.props.sensitive = False
 
         try:
-            with open(self._config_path, 'w') as file:
-                self._config.write(file)
+            self._config.write()
         except OSError as e:
             helpers.show_message(e, Gtk.MessageType.ERROR)
 
@@ -321,6 +319,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             class EntryMenu:
                 menu = Gtk.Menu()
                 value = new_item()
+                file = new_item()
                 error_separator = Gtk.SeparatorMenuItem()
                 error = new_item()
                 error_action = new_item(self.on_entry_fix_clicked)
@@ -329,6 +328,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 default = new_item(self.on_entry_reset_clicked)
 
                 menu.append(value)
+                menu.append(file)
                 menu.append(error_separator)
                 menu.append(error)
                 menu.append(error_action)
@@ -356,6 +356,17 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             key=key,
             value=format_value(value=entry.value, enabled=entry.enabled))
 
+        key_file = None
+        if entry not in self._changed_entries:
+            key_file = self._config.get_key_file(group.name, key)
+        if key_file and key_file == helpers.get_config_path():
+            key_file = None
+        elif key_file:
+            menu.file.props.label = _('Value defined in file: {path}')\
+                .format(path=escape_markup(key_file))
+            menu.file.set_tooltip_text(key_file)
+        menu.file.props.visible = key_file is not None
+
         error = entry.error
         error_action = None
         if error:
@@ -367,7 +378,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                     menu.error_action.props.label = label or ''
                 if error_action:
                     menu.error_action._fix_entry_data = entry, error_action
-            menu.error.set_label(error)
+            menu.error.set_label(escape_markup(error))
 
         menu.error.props.visible = error is not None
         menu.error_action.props.visible = error_action is not None

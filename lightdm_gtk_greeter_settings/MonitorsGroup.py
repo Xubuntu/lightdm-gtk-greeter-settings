@@ -44,28 +44,31 @@ class MonitorsGroup(BaseGroup):
 
     def read(self, config):
         self._entries.clear()
-        for name, section in config.items():
+        for name, group in config.items():
             if not name.startswith(self.GROUP_PREFIX):
                 continue
             name = name[len(self.GROUP_PREFIX):].strip()
             entry = MonitorEntry(self._widgets)
-            entry['background'] = section.get('background', None)
-            entry['user-background'] = bool2string(section.getboolean('user-background', None), 1)
-            entry['laptop'] = bool2string(section.getboolean('laptop', None), True)
+            entry['background'] = group['background']
+            entry['user-background'] = bool2string(group['user-background'], True)
+            entry['laptop'] = bool2string(group['laptop'], True)
             self._entries[name] = entry
             self.entry_added.emit(entry, name)
 
     def write(self, config):
-        for name in config.sections():
-            if name.startswith(self.GROUP_PREFIX):
-                config.remove_section(name)
+        groups = set(name for name, __ in self._entries.items())
+        groups_to_remove = tuple(name for name in config
+                                 if (name.startswith(self.GROUP_PREFIX) and
+                                     name[len(self.GROUP_PREFIX):].strip() not in groups))
 
         for name, entry in self._entries.items():
-            section = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name.strip())
-            config.add_section(section)
+            groupname = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name.strip())
+            group = config.add_group(groupname)
             for key, value in entry:
-                if value is not None:
-                    config.set(section, key, value)
+                group[key] = value
+
+        for name in groups_to_remove:
+            del config[name]
 
     def _on_label_link_activate(self, label, uri):
         if not self._dialog:

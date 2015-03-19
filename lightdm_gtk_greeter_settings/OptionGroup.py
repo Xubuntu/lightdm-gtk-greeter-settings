@@ -44,27 +44,31 @@ class BaseGroup(GObject.GObject):
         self.__defaults_wrapper = None
 
     def read(self, config):
+        '''Read group content from specified GreeterConfig object'''
         raise NotImplementedError(self.__class__)
 
     def write(self, config):
+        '''Writes content of this group to specified GreeterConfig object'''
         raise NotImplementedError(self.__class__)
 
     @property
     def entries(self):
+        '''entries["key"] - key => Entry mapping. Read only.'''
         if not self.__entries_wrapper:
             self.__entries_wrapper = BaseGroup.__DictWrapper(self._get_entry)
         return self.__entries_wrapper
 
     @property
     def defaults(self):
+        '''defaults["key"] - default value for "key" entry. Read only.'''
         if not self.__defaults_wrapper:
             self.__defaults_wrapper = BaseGroup.__DictWrapper(self._get_default)
         return self.__defaults_wrapper
 
-    def _get_default(self, key):
+    def _get_entry(self, key):
         raise NotImplementedError(self.__class__)
 
-    def _get_entry(self, key):
+    def _get_default(self, key):
         raise NotImplementedError(self.__class__)
 
     @GObject.Signal
@@ -93,7 +97,6 @@ class SimpleGroup(BaseGroup):
         return self._name
 
     def read(self, config):
-
         if not self._entries:
             for key, (klass, default) in self._options.items():
                 entry = klass(WidgetsWrapper(self._widgets, key))
@@ -102,24 +105,15 @@ class SimpleGroup(BaseGroup):
                 self.entry_added.emit(entry, key)
 
         for key, entry in self._entries.items():
-            if config.has_option(self._name, key):
-                entry.value = config.get(self._name, key)
-                entry.enabled = True
-            else:
-                entry.value = self._defaults[key]
-                entry.enabled = False
+            value = config[self._name, key]
+            entry.value = value if value is not None else self._defaults[key]
+            entry.enabled = value is not None
 
     def write(self, config):
-
-        if not config.has_section(self._name):
-            config.add_section(self._name)
-
         for key, entry in self._entries.items():
-            value = entry.value
-            if entry.enabled and value != self._get_default(key):
-                config.set(self._name, key, entry.value)
-            else:
-                config.remove_option(self._name, key)
+            del config[self._name, key]
+            if entry.enabled:
+                config[self._name, key] = entry.value, self._get_default(key)
 
     def _get_entry(self, key):
         return self._entries.get(key)
