@@ -345,11 +345,8 @@ class IndicatorsEntry(BaseEntry):
         self._on_model_changed()
 
     def _read_options_string(self, s):
-
         while s:
             name, s = self._next_string_token(s, ':;')
-            if not name:
-                continue
             options = {Option.Name: name}
 
             if s.startswith(':'):
