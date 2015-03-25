@@ -20,6 +20,9 @@ import os
 from collections import OrderedDict
 from glob import iglob
 
+from gi.repository import GLib
+from lightdm_gtk_greeter_settings import helpers
+
 
 class Config:
 
@@ -46,6 +49,10 @@ class Config:
                 default = None
 
             values = self._items.get(item)
+
+            if values and values[-1][1] == value:
+                return
+
             if values and values[-1][0] == self._config._output_path:
                 if default is not None and value == default and len(values) == 1:
                     values.clear()
@@ -70,25 +77,28 @@ class Config:
             values = self._items.get(key)
             return values[-1][0] if values else None
 
-    def __init__(self, input_pathes, output_path):
-        self._input_pathes = tuple(input_pathes)
-        self._output_path = output_path
+    def __init__(self):
+        self._output_path = helpers.get_config_path()
         self._groups = OrderedDict()
 
     def read(self):
-        files = []
-        for path in self._input_pathes:
-            if os.path.isdir(path):
-                files.extend(sorted(iglob(os.path.join(path, '*.conf'))))
-            elif os.path.exists(path):
-                files.append(path)
-        if self._output_path not in files:
-            files.append(self._output_path)
-
         self._groups.clear()
-        for path in files:
-            config_file = configparser.RawConfigParser(strict=False, allow_no_value=True)
-            config_file.read(path)
+
+        pathes = []
+        pathes += GLib.get_system_data_dirs()
+        pathes += GLib.get_system_config_dirs()
+        pathes.append(os.path.dirname(os.path.dirname(self._output_path)))
+
+        files = []
+        for path in pathes:
+            files += sorted(iglob(os.path.join(path, 'lightdm',
+                                               'lightdm-gtk-greeter.conf.d', '*.conf')))
+            files.append(os.path.join(path, 'lightdm', 'lightdm-gtk-greeter.conf'))
+
+        for path in filter(os.path.isfile, files):
+            config_file = configparser.RawConfigParser(strict=False)
+            if not config_file.read(path):
+                continue
 
             for groupname, values in config_file.items():
                 if groupname == 'DEFAULT':
@@ -99,6 +109,10 @@ class Config:
                 group = self._groups[groupname]
 
                 for key, value in values.items():
+                    if key.startswith('-'):
+                        key = key[1:]
+                        value = None
+
                     if key in group._items:
                         values = group._items[key]
                         if value is not None or values:
@@ -107,20 +121,30 @@ class Config:
                         group._items[key] = [(path, value)]
 
     def write(self):
-        config_file = configparser.RawConfigParser(strict=False, allow_no_value=True)
+        config_file = configparser.RawConfigParser(strict=False)
 
         for groupname, group in self._groups.items():
-            config_file.add_section(groupname)
-            config_section = config_file[groupname]
-
+            config_section = None
             for key, values in group._items.items():
                 if not values or values[-1][0] != self._output_path:
                     continue
+
                 if values[-1][1] is not None or len(values) > 1:
-                    config_section[key] = values[-1][1]
+                    if not config_section:
+                        config_file.add_section(groupname)
+                        config_section = config_file[groupname]
+                    if values[-1][1] is None:
+                        config_section['-' + key] = ''
+                    else:
+                        config_section[key] = values[-1][1]
 
         with open(self._output_path, 'w') as file:
             config_file.write(file)
+
+    def is_writable(self):
+        if os.path.exists(self._output_path) and os.access(self._output_path, os.W_OK):
+            return True
+        return os.access(os.path.dirname(self._output_path), os.W_OK | os.X_OK)
 
     def items(self):
         return self._groups.items()

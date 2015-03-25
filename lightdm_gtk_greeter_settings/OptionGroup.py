@@ -47,7 +47,7 @@ class BaseGroup(GObject.GObject):
         '''Read group content from specified GreeterConfig object'''
         raise NotImplementedError(self.__class__)
 
-    def write(self, config):
+    def write(self, config, changed=None):
         '''Writes content of this group to specified GreeterConfig object'''
         raise NotImplementedError(self.__class__)
 
@@ -109,8 +109,10 @@ class SimpleGroup(BaseGroup):
             entry.value = value if value is not None else self._defaults[key]
             entry.enabled = value is not None
 
-    def write(self, config):
+    def write(self, config, changed=None):
         for key, entry in self._entries.items():
+            if changed and not changed(entry):
+                continue
             del config[self._name, key]
             if entry.enabled:
                 config[self._name, key] = entry.value, self._get_default(key)

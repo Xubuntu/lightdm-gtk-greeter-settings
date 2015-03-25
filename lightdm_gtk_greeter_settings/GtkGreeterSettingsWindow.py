@@ -27,7 +27,6 @@ from locale import gettext as _
 
 from gi.repository import (
     Gdk,
-    GLib,
     Gtk)
 from gi.repository import Pango
 from gi.repository.GObject import markup_escape_text as escape_markup
@@ -139,17 +138,9 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             group.entry_added.connect(self.on_entry_added)
             group.entry_removed.connect(self.on_entry_removed)
 
-        config_pathes = []
-        config_pathes.extend(os.path.join(p, 'lightdm-gtk-greeter.conf.d')
-                             for p in GLib.get_system_data_dirs())
-        config_pathes.extend(os.path.join(p, 'lightdm-gtk-greeter.conf.d')
-                             for p in GLib.get_system_config_dirs())
-        config_pathes.append(os.path.join(os.path.dirname(helpers.get_config_path()),
-                                          'lightdm-gtk-greeter.conf.d'))
+        self._config = Config.Config()
 
-        self._config = Config.Config(config_pathes, helpers.get_config_path())
-
-        self._allow_edit = self._has_access_to_write(helpers.get_config_path())
+        self._allow_edit = self._config.is_writable()
         self._widgets.apply.props.visible = self._allow_edit
 
         if not self._allow_edit:
@@ -188,11 +179,6 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
         self._read()
 
-    def _has_access_to_write(self, path):
-        if os.path.exists(path) and os.access(helpers.get_config_path(), os.W_OK):
-            return True
-        return os.access(os.path.dirname(helpers.get_config_path()), os.W_OK | os.X_OK)
-
     def _set_message(self, message, type_=Gtk.MessageType.INFO):
         if not message:
             self._widgets.infobar.hide()
@@ -215,7 +201,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
 
     def _write(self):
         for group in self._groups:
-            group.write(self._config)
+            group.write(self._config, self._changed_entries.__contains__)
 
         if self.mode != WindowMode.Embedded:
             for entry in self._changed_entries:

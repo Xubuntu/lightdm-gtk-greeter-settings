@@ -55,13 +55,15 @@ class MonitorsGroup(BaseGroup):
             self._entries[name] = entry
             self.entry_added.emit(entry, name)
 
-    def write(self, config):
+    def write(self, config, changed=None):
         groups = set(name for name, __ in self._entries.items())
         groups_to_remove = tuple(name for name in config
                                  if (name.startswith(self.GROUP_PREFIX) and
                                      name[len(self.GROUP_PREFIX):].strip() not in groups))
 
         for name, entry in self._entries.items():
+            if changed and not changed(entry):
+                continue
             groupname = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name.strip())
             group = config.add_group(groupname)
             for key, value in entry:

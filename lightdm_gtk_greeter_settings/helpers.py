@@ -43,7 +43,7 @@ from gi.repository import (
 __license__ = 'GPL-3'
 __version__ = 'dev'
 __data_directory__ = '../data/'
-__config_path__ = 'lightdm-gtk-greeter.conf'
+__config_path__ = 'lightdm/lightdm-gtk-greeter.conf'
 
 
 try:
