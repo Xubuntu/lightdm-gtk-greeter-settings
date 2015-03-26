@@ -289,19 +289,19 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         if event.button != 3:
             return
 
-        if not self._entry_menu:
-            def new_item(activate=None, width=90):
-                item = Gtk.MenuItem('')
-                label = item.get_child()
-                label.props.use_markup = True
-                label.props.ellipsize = Pango.EllipsizeMode.END
-                label.props.max_width_chars = width
-                if activate:
-                    item.connect('activate', activate)
-                else:
-                    item.props.sensitive = False
-                return item
+        def new_item(activate=None, width=90):
+            item = Gtk.MenuItem('')
+            label = item.get_child()
+            label.props.use_markup = True
+            label.props.ellipsize = Pango.EllipsizeMode.END
+            label.props.max_width_chars = width
+            if activate:
+                item.connect('activate', activate)
+            else:
+                item.props.sensitive = False
+            return item
 
+        if not self._entry_menu:
             class EntryMenu:
                 menu = Gtk.Menu()
                 value = new_item()
@@ -312,6 +312,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
                 reset_separator = Gtk.SeparatorMenuItem()
                 initial = new_item(self.on_entry_reset_clicked)
                 default = new_item(self.on_entry_reset_clicked)
+                other = []
 
                 menu.append(value)
                 menu.append(file)
@@ -342,16 +343,16 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             key=key,
             value=format_value(value=entry.value, enabled=entry.enabled))
 
-        key_file = None
-        if entry not in self._changed_entries:
-            key_file = self._config.get_key_file(group.name, key)
-        if key_file and key_file == helpers.get_config_path():
-            key_file = None
-        elif key_file:
+        config_values = self._config.key_values[group.name, key]
+
+        if entry not in self._changed_entries and \
+           config_values and config_values[-1][0] != helpers.get_config_path():
             menu.file.props.label = _('Value defined in file: {path}')\
-                .format(path=escape_markup(key_file))
-            menu.file.set_tooltip_text(key_file)
-        menu.file.props.visible = key_file is not None
+                .format(path=escape_markup(config_values[-1][0]))
+            menu.file.set_tooltip_text(config_values[-1][0])
+            menu.file.show()
+        else:
+            menu.file.hide()
 
         error = entry.error
         error_action = None
@@ -397,8 +398,31 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         else:
             menu.default.props.visible = False
 
+        item_idx = 0
+        if config_values and len(config_values) > 1:
+            values = {None, default, self._initial_values[entry].value, entry.value}
+            for __, value in config_values[:-1]:
+                if value in values:
+                    continue
+
+                if len(menu.other) <= item_idx:
+                    item = new_item(self.on_entry_reset_clicked)
+                    menu.other.append(item)
+                    menu.menu.append(item)
+                else:
+                    item = menu.other[item_idx]
+                item._reset_entry_data = entry, value, None
+                value = format_value(value=value)
+                item.set_tooltip_markup(value)
+                item.props.label = _('Reset to value: <b>{value}</b>').format(value=value)
+                item.show()
+                item_idx += 1
+        for item in menu.other[item_idx:]:
+            item.hide()
+
         menu.reset_separator.props.visible = \
-            menu.initial.props.visible or menu.default.props.visible
+            menu.initial.props.visible or menu.default.props.visible or \
+            any(item.props.visible for item in menu.other)
 
         self._entry_menu.menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
 

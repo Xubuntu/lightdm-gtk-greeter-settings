@@ -73,6 +73,7 @@ __all__ = [
     'set_image_from_path',
     'show_message',
     'SimpleEnum',
+    'SimpleDictWrapper',
     'string2bool',
     'TreeStoreDataWrapper',
     'WidgetsEnum',
@@ -84,7 +85,7 @@ def C_(context, message):
     message_with_context = '{}{}{}'.format(context, separator, message)
     result = locale.gettext(message_with_context)
     if separator in result:
-        result = message
+        return message
     return result
 
 
@@ -350,3 +351,12 @@ class TreeStoreDataWrapper(GObject.Object):
     def __init__(self, data):
         super().__init__()
         self.data = data
+
+
+class SimpleDictWrapper:
+
+    def __init__(self, getter):
+        self._getter = getter
+
+    def __getitem__(self, key):
+        return self._getter(key)

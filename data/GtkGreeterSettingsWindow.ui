@@ -97,6 +97,7 @@
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
                     <property name="font">Sans 12</property>
+                    <property name="use_font">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

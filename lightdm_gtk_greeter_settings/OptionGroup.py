@@ -20,6 +20,7 @@ from gi.repository import GObject
 
 from lightdm_gtk_greeter_settings.helpers import WidgetsWrapper
 from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
+from lightdm_gtk_greeter_settings import helpers
 
 
 __all__ = [
@@ -30,18 +31,10 @@ __all__ = [
 # Broken solution - too complex
 class BaseGroup(GObject.GObject):
 
-    class __DictWrapper:
-
-        def __init__(self, getter):
-            self._getter = getter
-
-        def __getitem__(self, key):
-            return self._getter(key)
-
     def __init__(self, widgets):
         super().__init__()
-        self.__entries_wrapper = None
-        self.__defaults_wrapper = None
+        self.__entries_wrapper = helpers.SimpleDictWrapper(self._get_entry)
+        self.__defaults_wrapper = helpers.SimpleDictWrapper(self._get_default)
 
     def read(self, config):
         '''Read group content from specified GreeterConfig object'''
@@ -54,15 +47,11 @@ class BaseGroup(GObject.GObject):
     @property
     def entries(self):
         '''entries["key"] - key => Entry mapping. Read only.'''
-        if not self.__entries_wrapper:
-            self.__entries_wrapper = BaseGroup.__DictWrapper(self._get_entry)
         return self.__entries_wrapper
 
     @property
     def defaults(self):
         '''defaults["key"] - default value for "key" entry. Read only.'''
-        if not self.__defaults_wrapper:
-            self.__defaults_wrapper = BaseGroup.__DictWrapper(self._get_default)
         return self.__defaults_wrapper
 
     def _get_entry(self, key):

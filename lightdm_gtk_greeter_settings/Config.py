@@ -75,13 +75,10 @@ class Config:
                 if not values:
                     del self._items[item]
 
-        def get_key_file(self, key):
-            values = self._items.get(key)
-            return values[-1][0] if values else None
-
     def __init__(self):
         self._output_path = helpers.get_config_path()
         self._groups = OrderedDict()
+        self._key_values = helpers.SimpleDictWrapper(getter=self._get_key_values)
 
     def read(self):
         self._groups.clear()
@@ -160,9 +157,17 @@ class Config:
         else:
             return self._groups.setdefault(name, Config.ConfigGroup(self))
 
-    def get_key_file(self, groupname, key):
-        group = self._groups.get(groupname)
-        return group.get_key_file(key) if group is not None else None
+    @property
+    def key_values(self):
+        return self._key_values
+
+    def _get_key_values(self, item):
+        group = self._groups.get(item[0])
+        if group:
+            values = group._items.get(item[1])
+            if values is not None:
+                return tuple(values)
+        return None
 
     def __iter__(self):
         return iter(self._groups)
