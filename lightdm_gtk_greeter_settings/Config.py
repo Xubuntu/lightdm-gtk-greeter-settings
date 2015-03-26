@@ -54,7 +54,9 @@ class Config:
                 return
 
             if values and values[-1][0] == self._config._output_path:
-                if default is not None and value == default and len(values) == 1:
+                if len(values) > 1 and values[-2][1] == value:
+                    del values[-1]
+                elif default is not None and value == default and len(values) == 1:
                     values.clear()
                 else:
                     values[-1] = (self._config._output_path, value)

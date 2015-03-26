@@ -113,9 +113,7 @@ class SimpleGroup(BaseGroup):
         for key, entry in self._entries.items():
             if changed and not changed(entry):
                 continue
-            del config[self._name, key]
-            if entry.enabled:
-                config[self._name, key] = entry.value, self._get_default(key)
+            config[self._name, key] = entry.value if entry.enabled else None, self._get_default(key)
 
     def _get_entry(self, key):
         return self._entries.get(key)
