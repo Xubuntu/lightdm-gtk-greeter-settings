@@ -331,6 +331,8 @@ class WidgetsWrapper:
     _prefixes = None
 
     def __init__(self, source, *prefixes):
+        if source is None:
+            return
         if isinstance(source, Gtk.Builder):
             self._builder = source
             self._prefixes = tuple(prefixes)
@@ -341,9 +343,15 @@ class WidgetsWrapper:
             raise TypeError(source)
 
     def __getitem__(self, args):
+        if not self._builder:
+            return None
         if not isinstance(args, tuple):
             args = (args,)
         return self._builder.get_object('_'.join(chain(self._prefixes, args)))
+
+    @property
+    def path(self):
+        return '_'.join(self._prefixes) if self._prefixes else ''
 
 
 class TreeStoreDataWrapper(GObject.Object):
@@ -355,8 +363,24 @@ class TreeStoreDataWrapper(GObject.Object):
 
 class SimpleDictWrapper:
 
-    def __init__(self, getter):
+    def __init__(self, getter=None, setter=None, add=None, deleter=None, itergetter=None):
         self._getter = getter
+        self._setter = setter
+        self._deleter = deleter
+        self._itergetter = itergetter
+        self._add = add
 
     def __getitem__(self, key):
         return self._getter(key)
+
+    def __setitem__(self, key, value):
+        return self._setter(key, value)
+
+    def __delitem__(self, key):
+        return self._deleter(key)
+
+    def __iter__(self):
+        return self._itergetter()
+
+    def add(self, value):
+        return self._add(value)

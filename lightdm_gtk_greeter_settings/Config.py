@@ -21,6 +21,7 @@ from collections import OrderedDict
 from glob import iglob
 
 from gi.repository import GLib
+
 from lightdm_gtk_greeter_settings import helpers
 
 
@@ -75,7 +76,9 @@ class Config:
                 if not values:
                     del self._items[item]
 
-    def __init__(self):
+    def __init__(self, base_dir='lightdm', base_name='lightdm-gtk-greeter.conf'):
+        self._base_dir = base_dir
+        self._base_name = base_name
         self._output_path = helpers.get_config_path()
         self._groups = OrderedDict()
         self._key_values = helpers.SimpleDictWrapper(getter=self._get_key_values)
@@ -90,9 +93,9 @@ class Config:
 
         files = []
         for path in pathes:
-            files += sorted(iglob(os.path.join(path, 'lightdm',
-                                               'lightdm-gtk-greeter.conf.d', '*.conf')))
-            files.append(os.path.join(path, 'lightdm', 'lightdm-gtk-greeter.conf'))
+            files += sorted(iglob(os.path.join(path, self._base_dir,
+                                               self._base_name + '.d', '*.conf')))
+            files.append(os.path.join(path, self._base_dir, self._base_name))
 
         for path in filter(os.path.isfile, files):
             config_file = configparser.RawConfigParser(strict=False)
@@ -181,7 +184,7 @@ class Config:
     def __setitem__(self, item, value):
         if isinstance(item, tuple):
             if not item[0] in self._groups:
-                self._groups = Config.ConfigGroup(self)
+                self._groups[item[0]] = Config.ConfigGroup(self)
             self._groups[item[0]][item[1]] = value
 
     def __delitem__(self, item):

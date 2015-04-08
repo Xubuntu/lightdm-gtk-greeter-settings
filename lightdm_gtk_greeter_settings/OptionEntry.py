@@ -55,6 +55,10 @@ class BaseEntry(GObject.GObject):
         if self.__use:
             self.__use.connect('notify::active', self.__on_use_toggled)
 
+        label_holder = widgets['label_holder']
+        if label_holder:
+            label_holder.connect('button-press-event', self.__on_label_clicked)
+
         self.__error = widgets['error']
 
     @property
@@ -103,6 +107,10 @@ class BaseEntry(GObject.GObject):
     def set(self, value: str) -> str:
         pass
 
+    @GObject.Signal('show-menu')
+    def show_menu(self):
+        pass
+
     def __repr__(self):
         try:
             value = self._get_value()
@@ -148,6 +156,10 @@ class BaseEntry(GObject.GObject):
 
     def __on_use_toggled(self, toggle, *unused):
         self._set_enabled(self.__use.props.active)
+
+    def __on_label_clicked(self, widget, event):
+        if event.button == 3:
+            self.show_menu.emit()
 
 
 class BooleanEntry(BaseEntry):

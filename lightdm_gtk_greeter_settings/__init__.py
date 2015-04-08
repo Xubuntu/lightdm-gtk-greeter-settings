@@ -37,6 +37,7 @@ def main():
 
     if args.test_socket:
         w = Gtk.Window()
+        w.props.title = 'Testing embedded mode'
         socket = Gtk.Socket.new()
         w.add(socket)
         w.show_all()

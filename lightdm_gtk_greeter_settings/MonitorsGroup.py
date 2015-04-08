@@ -16,110 +16,127 @@
 #   with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from collections import OrderedDict
-
-from gi.repository import Gtk
-
-from lightdm_gtk_greeter_settings.helpers import (
-    bool2string,
-    WidgetsWrapper)
 from lightdm_gtk_greeter_settings.MultiheadSetupDialog import MultiheadSetupDialog
-from lightdm_gtk_greeter_settings.OptionEntry import BaseEntry
-from lightdm_gtk_greeter_settings.OptionGroup import BaseGroup
+from lightdm_gtk_greeter_settings import (
+    helpers,
+    OptionEntry,
+    OptionGroup)
+from lightdm_gtk_greeter_settings.helpers import (
+    WidgetsWrapper)
 
 
 __all__ = ['MonitorsGroup']
 
 
-class MonitorsGroup(BaseGroup):
-    GROUP_PREFIX = 'monitor:'
+class MonitorsGroup(OptionGroup.BaseGroup):
 
-    def __init__(self, widgets, defaults_callback=None):
+    GroupPrefix = 'monitor:'
+    EntriesSetup = (('name', OptionEntry.StringEntry),
+                    ('background', OptionEntry.BackgroundEntry),
+                    ('user-background', OptionEntry.BooleanEntry),
+                    ('laptop', OptionEntry.BooleanEntry))
+
+    def __init__(self, widgets):
         super().__init__(widgets)
-        self._entries = OrderedDict()
-        self._widgets = WidgetsWrapper(widgets, 'multihead')
-        self._widgets['label'].connect('activate-link', self._on_label_link_activate)
+        self._widgets = helpers.WidgetsWrapper(widgets)
+        self._groups = []
+        self._adapters = None
         self._dialog = None
-        self._get_defaults_callback = defaults_callback
+
+        self._groups_wrapper = helpers.SimpleDictWrapper(
+            deleter=self._remove_group,
+            add=self._add_group,
+            itergetter=lambda: iter(self._groups))
+
+        self._widgets['multihead_label'].connect('activate-link', self._on_label_link_activate)
 
     def read(self, config):
-        self._entries.clear()
-        for name, group in config.items():
-            if not name.startswith(self.GROUP_PREFIX):
-                continue
-            name = name[len(self.GROUP_PREFIX):].strip()
-            entry = MonitorEntry(self._widgets)
-            entry['background'] = group['background']
-            entry['user-background'] = bool2string(group['user-background'], True)
-            entry['laptop'] = bool2string(group['laptop'], True)
-            self._entries[name] = entry
-            self.entry_added.emit(entry, name)
+        for group in self._groups:
+            group.clear()
+        self._groups.clear()
 
-    def write(self, config, changed=None):
-        groups = set(name for name, __ in self._entries.items())
+        for groupname in config:
+            if not groupname.startswith(MonitorsGroup.GroupPrefix):
+                continue
+            if not self._adapters:
+                self._adapters = {key: OptionGroup.OneToManyEntryAdapter()
+                                  for key, __ in self.EntriesSetup}
+
+            monitor = groupname[len(MonitorsGroup.GroupPrefix):].strip()
+            self._add_group(monitor, groupname, config)
+
+    def write(self, config, is_changed=None):
+        groups = set(group.entries['name'].value for group in self._groups)
         groups_to_remove = tuple(name for name in config
-                                 if (name.startswith(self.GROUP_PREFIX) and
-                                     name[len(self.GROUP_PREFIX):].strip() not in groups))
+                                 if (name.startswith(self.GroupPrefix) and
+                                     name[len(self.GroupPrefix):].strip() not in groups))
 
-        for name, entry in self._entries.items():
-            if changed and not changed(entry):
-                continue
-            groupname = '{prefix} {name}'.format(prefix=self.GROUP_PREFIX, name=name.strip())
-            group = config.add_group(groupname)
-            for key, value in entry:
-                group[key] = value
+        for group in self._groups:
+            name = group.entries['name']
+            new_name = self.GroupPrefix + ' ' + name.value
+
+            if group.name == new_name:
+                def changed_(entry):
+                    if entry == name:
+                        return False
+                    return not is_changed or is_changed(entry)
+            else:
+                def changed_(entry):
+                    return entry != name
+
+            group.name = new_name
+            group.write(config, is_changed=changed_)
 
         for name in groups_to_remove:
-            del config[name]
+            config_group = config[name]
+            for key, *__ in self.EntriesSetup:
+                del config_group[key]
+
+    def clear(self):
+        if not self._groups and not self._adapters:
+            return
+        for group in self._groups:
+            group.clear()
+        self._groups.clear()
+
+    def activate(self, key, entry):
+        self._adapters[key].activate(entry)
+
+    @property
+    def groups(self):
+        return self._groups_wrapper
+
+    def _add_group(self, monitor='', groupname='', config=None):
+        group = OptionGroup.SimpleGroup(groupname, self._widgets)
+
+        group.entry_added.connect(lambda g, s, e, k: self.entry_added.emit(s, e, k))
+        group.entry_removed.connect(lambda g, s, e, k: self.entry_removed.emit(s, e, k))
+
+        group.options = {key: (adapter.new_entry, None)
+                         for key, adapter in self._adapters.items()}
+
+        if config:
+            group.read(config)
+
+        name = group.entries['name']
+        name.enabled = True
+        name.value = monitor
+
+        self._groups.append(group)
+        return group
+
+    def _remove_group(self, group):
+        group.clear()
+        self._groups.remove(group)
 
     def _on_label_link_activate(self, label, uri):
         if not self._dialog:
-            self._dialog = MultiheadSetupDialog()
-            self._dialog.props.transient_for = self._widgets['label'].get_toplevel()
+            self._dialog = MultiheadSetupDialog(self)
+            self._dialog.props.transient_for = self._widgets['multihead_label'].get_toplevel()
 
-        if self._get_defaults_callback:
-            self._dialog.set_defaults(self._get_defaults_callback())
+            for key, klass in self.EntriesSetup:
+                self._adapters[key].base_entry = klass(WidgetsWrapper(self._dialog.builder, key))
 
-        self._dialog.set_model(self._entries)
-
-        if self._dialog.run() == Gtk.ResponseType.OK:
-            current_names = set(self._entries.keys())
-            for name, values in self._dialog.get_model():
-                if name in self._entries:
-                    self._entries[name].assign(values)
-                    current_names.discard(name)
-                else:
-                    entry = MonitorEntry(self._widgets, values)
-                    self._entries[name] = entry
-                    self.entry_added.emit(entry, name)
-            for name in current_names:
-                self.entry_added.emit(self._entries.pop(name), name)
+        self._dialog.run()
         self._dialog.hide()
         return True
-
-
-class MonitorEntry(BaseEntry):
-
-    def __init__(self, widgets, values=None):
-        super().__init__(widgets)
-        self._values = values or {}
-
-    def _get_value(self):
-        return self._values.copy()
-
-    def _set_value(self, value):
-        self._values = value.copy()
-
-    def __getitem__(self, key):
-        return self._values[key]
-
-    def __setitem__(self, key, value):
-        self._values[key] = value
-
-    def __iter__(self):
-        return iter(self._values.items())
-
-    def assign(self, values):
-        if not self._values == values:
-            self._values.update(values)
-            self._emit_changed()
