@@ -2,8 +2,7 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <requires lib="*MultiheadSetupDialog (copy 2).ui" version="0.0"/>
-  <requires lib="gtk_greeter_settings" version="1.0"/>
+  <!-- interface-requires gtk_greeter_settings 1.0 -->
   <object class="GtkMenu" id="available_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -46,35 +45,6 @@
         <property name="margin_bottom">8</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="ok_button">
-                <property name="label" translatable="yes" context="button">_OK</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="image">image3</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
         <child>
           <object class="GtkNotebook" id="monitors_notebook">
             <property name="visible">True</property>
@@ -85,7 +55,6 @@
             <signal name="switch-page" handler="on_switch_page" swapped="no"/>
             <child>
               <object class="GtkBox" id="empty_page">
-                <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
@@ -330,6 +299,8 @@
                               <packing>
                                 <property name="left_attach">0</property>
                                 <property name="top_attach">0</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
                               </packing>
                             </child>
                             <child>
@@ -346,6 +317,8 @@
                               <packing>
                                 <property name="left_attach">0</property>
                                 <property name="top_attach">1</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
                               </packing>
                             </child>
                             <child>
@@ -360,6 +333,8 @@
                               <packing>
                                 <property name="left_attach">1</property>
                                 <property name="top_attach">0</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
                               </packing>
                             </child>
                             <child>
@@ -373,6 +348,8 @@
                               <packing>
                                 <property name="left_attach">1</property>
                                 <property name="top_attach">1</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
                               </packing>
                             </child>
                           </object>
@@ -517,6 +494,35 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="ok_button">
+                <property name="label" translatable="yes" context="button">_OK</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="image">image3</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>

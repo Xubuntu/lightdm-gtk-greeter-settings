@@ -40,7 +40,8 @@ class MonitorsGroup(OptionGroup.BaseGroup):
         super().__init__(widgets)
         self._widgets = helpers.WidgetsWrapper(widgets)
         self._groups = []
-        self._adapters = None
+        self._adapters = {key: OptionGroup.OneToManyEntryAdapter()
+                          for key, __ in self.EntriesSetup}
         self._dialog = None
 
         self._groups_wrapper = helpers.SimpleDictWrapper(
@@ -58,9 +59,6 @@ class MonitorsGroup(OptionGroup.BaseGroup):
         for groupname in config:
             if not groupname.startswith(MonitorsGroup.GroupPrefix):
                 continue
-            if not self._adapters:
-                self._adapters = {key: OptionGroup.OneToManyEntryAdapter()
-                                  for key, __ in self.EntriesSetup}
 
             monitor = groupname[len(MonitorsGroup.GroupPrefix):].strip()
             self._add_group(monitor, groupname, config)
