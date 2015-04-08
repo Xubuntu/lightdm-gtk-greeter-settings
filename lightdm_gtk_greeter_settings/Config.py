@@ -17,6 +17,7 @@
 
 import configparser
 import os
+import sys
 from collections import OrderedDict
 from glob import iglob
 
@@ -98,8 +99,12 @@ class Config:
             files.append(os.path.join(path, self._base_dir, self._base_name))
 
         for path in filter(os.path.isfile, files):
-            config_file = configparser.RawConfigParser(strict=False)
-            if not config_file.read(path):
+            config_file = configparser.RawConfigParser(strict=False, allow_no_value=True)
+            try:
+                if not config_file.read(path):
+                    continue
+            except configparser.Error as e:
+                print(e, file=sys.stderr)
                 continue
 
             for groupname, values in config_file.items():
@@ -111,6 +116,10 @@ class Config:
                 group = self._groups[groupname]
 
                 for key, value in values.items():
+                    if value is None:
+                        print('[{group}] {key}: Keys without values are not allowed'.format(
+                            group=groupname, key=key), file=sys.stderr)
+                        continue
                     if key.startswith('-'):
                         key = key[1:]
                         value = None
