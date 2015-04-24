@@ -24,11 +24,11 @@ from gi.repository import (
     GLib,
     GObject,
     Gtk)
-from lightdm_gtk_greeter_settings import helpers
 from lightdm_gtk_greeter_settings.helpers import (
     C_,
     bool2string,
-    string2bool, SimpleEnum)
+    string2bool,
+    SimpleEnum)
 
 
 __all__ = [
@@ -208,7 +208,7 @@ class StringEntry(BaseEntry):
 
 class StringPathEntry(BaseEntry):
 
-    class Row(helpers.SimpleEnum):
+    class Row(SimpleEnum):
         Title = ()
         Type = ()
 
