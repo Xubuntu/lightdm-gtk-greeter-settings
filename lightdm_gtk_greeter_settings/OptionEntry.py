@@ -49,17 +49,15 @@ class BaseEntry(GObject.GObject):
     def __init__(self, widgets):
         super().__init__()
         self._widgets = widgets
-        self._widgets_to_disable = []
+        self.__widgets_to_disable = []
 
         self.__use = widgets['use']
         if self.__use:
             self.__use.connect('notify::active', self.__on_use_toggled)
 
-        label_holder = widgets['label_holder']
-        if label_holder:
-            label_holder.connect('button-press-event', self.__on_label_clicked)
-
         self.__error = widgets['error']
+
+        self._add_label_widget(widgets['label_holder'])
 
     @property
     def value(self):
@@ -143,10 +141,17 @@ class BaseEntry(GObject.GObject):
     def _set_enabled(self, value):
         if self.__use:
             self.__use.set_active(value)
-            if self._widgets_to_disable:
-                for widget in self._widgets_to_disable:
-                    widget.props.sensitive = value
+            for widget in self.__widgets_to_disable:
+                widget.props.sensitive = value
         self._emit_changed()
+
+    def _add_label_widget(self, *widgets):
+        for widget in widgets:
+            if widget:
+                widget.connect('button-press-event', self.__on_label_clicked)
+
+    def _add_controlled_by_state_widget(self, *widgets):
+        self.__widgets_to_disable += widgets
 
     def _show_menu(self):
         self.__on_label_clicked()
@@ -168,7 +173,7 @@ class BooleanEntry(BaseEntry):
         super().__init__(widgets)
         self._value = widgets['value']
         self._value.connect('notify::active', self._emit_changed)
-        self._widgets_to_disable.append(self._value)
+        self._add_controlled_by_state_widget(self._value)
 
     def _get_value(self):
         return bool2string(self._value.props.active)
@@ -194,9 +199,9 @@ class StringEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
-        self._widgets_to_disable.append(self._value)
+        self._add_controlled_by_state_widget(self._value)
         if isinstance(self._value.props.parent, Gtk.ComboBox):
-            self._widgets_to_disable += [self._value.props.parent]
+            self._add_controlled_by_state_widget(self._value.props.parent)
         self._value.connect('changed', self._emit_changed)
 
     def _get_value(self):
@@ -221,11 +226,10 @@ class StringPathEntry(BaseEntry):
         super().__init__(widgets)
 
         self._file_dialog = None
-
         self._combo = widgets['combo']
         self._entry = widgets['entry']
-        self._widgets_to_disable.append(self._combo)
         self._filters = ()
+        self._add_controlled_by_state_widget(self._combo)
 
         self._entry.connect('changed', self._emit_changed)
         self._combo.connect('format-entry-text', self._on_combobox_format)
@@ -277,9 +281,9 @@ class AdjustmentEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['adjustment']
-        self._view = widgets['view']
-        self._widgets_to_disable.append(self._view)
         self._value.connect('value-changed', self._emit_changed)
+        self._view = widgets['view']
+        self._add_controlled_by_state_widget(self._view)
 
     def _get_value(self):
         return str(self._value.props.value)
@@ -296,8 +300,8 @@ class ChoiceEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
-        self._widgets_to_disable.append(self._value)
         self._value.connect('changed', self._emit_changed)
+        self._add_controlled_by_state_widget(self._value)
 
     def _get_value(self):
         return self._value.props.active_id
@@ -328,10 +332,8 @@ class BackgroundEntry(BaseEntry):
         self._image_value = widgets['image_value']
         self._color_value = widgets['color_value']
 
-        self._widgets_to_disable.append(self._image_choice)
-        self._widgets_to_disable.append(self._color_choice)
-        self._widgets_to_disable.append(self._image_value)
-        self._widgets_to_disable.append(self._color_value)
+        self._add_controlled_by_state_widget(self._image_choice, self._color_choice,
+                                             self._image_value, self._color_value)
 
         self._on_choice_id = self._color_choice.connect('toggled', self._on_color_choice_toggled)
         self._color_value.connect('color-set', self._on_color_set)
@@ -388,8 +390,8 @@ class FontEntry(BaseEntry):
     def __init__(self, widgets):
         super().__init__(widgets)
         self._value = widgets['value']
-        self._widgets_to_disable.append(self._value)
         self._value.connect('font-set', self._emit_changed)
+        self._add_controlled_by_state_widget(self._value)
 
     def _get_value(self):
         return self._value.get_font_name()

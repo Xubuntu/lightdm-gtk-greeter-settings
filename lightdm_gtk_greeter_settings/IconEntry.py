@@ -48,10 +48,11 @@ class IconEntry(BaseEntry):
         self._image = widgets['image']
         self._button = widgets['button']
         self._button.props.popup = Gtk.Menu()
-        self._widgets_to_disable.append(self._button)
         self._icon_dialog = None
         self._path_dialog = None
         self._current_item = None
+
+        self._add_controlled_by_state_widget(self._button)
 
         self._items = []
         for priority, (update, ask) in self._get_items():
