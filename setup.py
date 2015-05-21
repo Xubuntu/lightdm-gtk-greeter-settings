@@ -87,7 +87,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='lightdm-gtk-greeter-settings',
-    version='1.1.0',
+    version='1.2.0',
     license='GPL-3',
     author='Andrew P.',
     author_email='pan.pav.7c5@gmail.com',

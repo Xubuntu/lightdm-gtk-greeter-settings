@@ -1,4 +1,15 @@
-12.02.2015, Version 1.1
+20.05.2015, Version 1.2
+
+ - Greeter version: 2.0.1
+ - New Features:
+   - xembed mode: run app without privelages if pkexec failed
+   - New Multihead setup dialog
+   - Support of multiple configuration files (lightdm-gtk-greeter 2.0.1)
+ - Bugs Fixed:
+   - Infinite loop in IndicatorsEntry (LP: #1435635)
+   - Table column title hard to understand (LP: #1428224)
+
+16.02.2015, Version 1.1
 
  - Greeter version: 2.0.
 
