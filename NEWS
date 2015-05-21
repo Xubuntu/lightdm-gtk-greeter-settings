@@ -8,6 +8,11 @@
  - Bugs Fixed:
    - Infinite loop in IndicatorsEntry (LP: #1435635)
    - Table column title hard to understand (LP: #1428224)
+ - New Translations:
+   - Arabic, Brazilian Portuguese, Catalan, Croatian, Finnish, French, German,
+     Japanese, Lithuanian, Polish, Portuguese, Serbian, Spanish
+ - Updated Translations:
+   - Russian
 
 16.02.2015, Version 1.1
 

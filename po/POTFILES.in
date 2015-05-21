@@ -13,6 +13,7 @@ lightdm_gtk_greeter_settings/__init__.py
 lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py
 lightdm_gtk_greeter_settings/helpers.py
 lightdm_gtk_greeter_settings/IconChooserDialog.py
+lightdm_gtk_greeter_settings/IconEntry.py
 lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py
 lightdm_gtk_greeter_settings/IndicatorsEntry.py
 lightdm_gtk_greeter_settings/MonitorsGroup.py
