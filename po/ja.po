@@ -11,12 +11,12 @@ msgstr ""
 "PO-Revision-Date: 2015-03-18 15:18+0000\n"
 "Last-Translator: Kiyotaka Nishibori <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-19 05:44+0000\n"
-"X-Generator: Launchpad (build 17403)\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:10+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
+"Language: ja\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
@@ -509,9 +509,8 @@ msgid "Monitor name:"
 msgstr "モニター名:"
 
 #: ../data/MultiheadSetupDialog.ui.h:5
-#, fuzzy
 msgid "Don't leave empty"
-msgstr "空にしない"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
@@ -566,8 +565,7 @@ msgstr ""
 "次のファイルに書き込むパーミッションがないようです:\n"
 "{path}\n"
 "\n"
-"このプログラムを、 \"sudo\" または \"pkexec\" を使用して実行してみてくださ"
-"い。"
+"このプログラムを、 \"sudo\" または \"pkexec\" を使用して実行してみてください。"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:373
 msgid "<i>disabled</i>"
@@ -582,9 +580,9 @@ msgid "<i>None</i>"
 msgstr "<i>なし</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:401
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Value defined in file: {path}"
-msgstr "設定ファイルを読み込めません: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:438
 #, python-brace-format
@@ -597,9 +595,9 @@ msgid "Reset to default value: <b>{value}</b>"
 msgstr "既定値にリセット: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:471
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Reset to value: <b>{value}</b>"
-msgstr "初期値にリセット: <b>{value}</b>"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:493
 #, python-brace-format
@@ -714,10 +712,9 @@ msgid "Unrecognized value: {value}"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
-#, fuzzy
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr "アイコンの選択"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format
@@ -726,10 +723,9 @@ msgid "<b>Icon: {icon}</b>"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
-#, fuzzy
 msgctxt "option-entry|icon"
 msgid "Select file..."
-msgstr "ファイルの選択..."
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:129
 #, python-brace-format
@@ -911,5 +907,4 @@ msgstr "パスの選択"
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr ""
-"LightDM GTK+ Greeter の設定エディターを実行するためには、認証が必要です。"
+msgstr "LightDM GTK+ Greeter の設定エディターを実行するためには、認証が必要です。"
