@@ -534,8 +534,8 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter do not set monitors geometry.\n"
-"You need to configure it by yourself.</i>"
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
