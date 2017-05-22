@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 APP_PATH="/usr/bin/lightdm-gtk-greeter-settings"
 
