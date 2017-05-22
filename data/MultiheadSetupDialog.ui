@@ -532,7 +532,7 @@
             <property name="can_focus">False</property>
             <property name="margin_left">8</property>
             <property name="xalign">0</property>
-            <property name="label" translatable="yes" context="option|multihead">&lt;i&gt;Note: greeter do not set monitors geometry.
+            <property name="label" translatable="yes" context="option|multihead">&lt;i&gt;Note: greeter does not set monitors geometry.
 You need to configure it by yourself.&lt;/i&gt;</property>
             <property name="use_markup">True</property>
             <property name="wrap">True</property>

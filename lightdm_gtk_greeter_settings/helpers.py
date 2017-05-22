@@ -202,12 +202,12 @@ def check_path_accessibility(path, file=True, executable=False):
             return _('Directory is not readable: {path}'.format(path=p))
         if st.st_uid == uid:
             return not (st.st_mode & stat.S_IRUSR) and \
-                _('LightDM do not have permissions to read path: {path}'.format(path=p))
+                _('LightDM does not have permissions to read path: {path}'.format(path=p))
         if st.st_gid in gids:
             return not (st.st_mode & stat.S_IRGRP) and \
-                _('LightDM do not have permissions to read path: {path}'.format(path=p))
+                _('LightDM does not have permissions to read path: {path}'.format(path=p))
         return not (st.st_mode & stat.S_IROTH) and \
-            _('LightDM do not have permissions to read path: {path}'.format(path=p))
+            _('LightDM does not have permissions to read path: {path}'.format(path=p))
 
     errors = (check(p) for p in accumulate(parts, os.path.join))
     error = next((error for error in errors if error), None)
@@ -219,14 +219,14 @@ def check_path_accessibility(path, file=True, executable=False):
         st = os.stat(path)
         if st.st_uid == uid:
             if not st.st_mode & stat.S_IXUSR:
-                return _('LightDM do not have permissions to execute file: {path}'
+                return _('LightDM does not have permissions to execute file: {path}'
                          .format(path=path))
         elif st.st_gid in gids:
             if not st.st_mode & stat.S_IXGRP:
-                return _('LightDM do not have permissions to execute file: {path}'
+                return _('LightDM does not have permissions to execute file: {path}'
                          .format(path=path))
         elif not st.st_mode & stat.S_IXOTH:
-            return _('LightDM do not have permissions to execute file: {path}'.format(path=path))
+            return _('LightDM does not have permissions to execute file: {path}'.format(path=path))
 
     return error
 
