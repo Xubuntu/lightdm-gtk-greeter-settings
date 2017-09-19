@@ -523,13 +523,22 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         return ''
 
     # [greeter] theme-name
-    GtkThemesPattern = (sys.prefix, 'share', 'themes', '*', 'gtk-3.0', 'gtk.css')
+    # LP: #1709864, Support gtk-3.* themes
+    GtkThemesPattern = (sys.prefix, 'share', 'themes', '*', 'gtk-3.*', 'gtk.css')
 
     def on_entry_setup_greeter_theme_name(self, entry, pattern=GtkThemesPattern):
         values = entry.widgets['values']
+        themes = []
         idx = pattern.index('*') - len(pattern)
         for path in sorted(iglob(os.path.join(*pattern))):
-            values.append_text(path.split(os.path.sep)[idx])
+            theme = path.split(os.path.sep)[idx]
+            if theme not in themes:
+                themes.append(theme)
+
+        themes = sorted(themes, key=lambda theme: theme.lower())
+
+        for theme in themes:
+            values.append_text(theme)
 
     def on_entry_changed_greeter_theme_name(self, entry, pattern=GtkThemesPattern):
         value = entry.value

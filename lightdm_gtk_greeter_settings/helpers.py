@@ -171,6 +171,13 @@ def set_image_from_path(image, path):
 def check_path_accessibility(path, file=True, executable=False):
     """Return None  if file is readable by greeter and error message otherwise"""
 
+    # LP: #1709864, Support gtk-3.* themes
+    if "gtk-3.*" in path:
+        for x in range(0, 40):
+            if os.path.exists(path.replace("gtk-3.*", "gtk-3.%i" % x)):
+                path = path.replace("gtk-3.*", "gtk-3.%i" % x)
+                return check_path_accessibility(path, file, executable)
+
     if not os.path.exists(path):
         return _('File not found: {path}').format(path=path)
 
