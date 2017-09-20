@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2015-04-19 13:01+0000\n"
-"Last-Translator: chinoune <chinoune.mehdi@gmail.com>\n"
+"PO-Revision-Date: 2017-05-27 01:24+0000\n"
+"Last-Translator: Abdulaziz AlFahad <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:10+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
+"X-Generator: Launchpad (build 18449)\n"
 "Language: ar\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
@@ -92,7 +92,7 @@ msgstr "نقطة\\بوصة"
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr ""
+msgstr "استدعاء بكسل الفرعي"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
@@ -538,8 +538,8 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter do not set monitors geometry.\n"
-"You need to configure it by yourself.</i>"
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
@@ -624,7 +624,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/helpers.py:208
 #: ../lightdm_gtk_greeter_settings/helpers.py:210
 #, python-brace-format
-msgid "LightDM do not have permissions to read path: {path}"
+msgid "LightDM does not have permissions to read path: {path}"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:216
@@ -636,7 +636,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #, python-brace-format
-msgid "LightDM do not have permissions to execute file: {path}"
+msgid "LightDM does not have permissions to execute file: {path}"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200

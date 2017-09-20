@@ -1,39 +1,39 @@
-# Brazilian Portuguese translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# Danish translation for lightdm-gtk-greeter-settings
+# Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
 # This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
+# scootergrisen, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2015-03-31 18:17+0000\n"
-"Last-Translator: Leonardo Wizenfard de Oliveira <leooliveiraofs@gmail.com>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2017-07-28 16:34+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
+"Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
 "X-Generator: Launchpad (build 18449)\n"
-"Language: pt_BR\n"
+"Language: da\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
-msgstr "Configurações do LightDM GTK+ Greeter"
+msgstr "Indstillinger for LightDM GTK+ Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK+ Greeter"
-msgstr "Configure o LightDM GTK+ Greeter"
+msgstr "Konfigurer LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: configurações"
+msgstr "LightDM GTK+ Greeter: indstillinger"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
 msgid "None"
-msgstr "Nenhum"
+msgstr "Ingen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
 msgctxt "option|greeter|xft-rgba"
@@ -48,41 +48,41 @@ msgstr "BGR"
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical RGB"
-msgstr "RGB Vertical"
+msgstr "Lodret RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical BGR"
-msgstr "BGR Vertical"
+msgstr "Lodret BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr "Nenhum"
+msgstr "Ingen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr "Discreto"
+msgstr "Svag"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Medium"
-msgstr "Médio"
+msgstr "Medium"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Full"
-msgstr "Completo"
+msgstr "Fuld"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
 msgid "Antialias"
-msgstr "Suavizar"
+msgstr "Antialias"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr "Ative essa opção para substituir os padrões do sistema"
+msgstr "Aktivér denne valgmulighed for at tilsidesætte systemets standarder"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
@@ -92,7 +92,7 @@ msgstr "DPI"
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr "Ordem de subpixel"
+msgstr "Gengivelse under pixelniveau"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
@@ -101,30 +101,32 @@ msgstr "Hinting"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
-msgstr "Opções adicionais de fonte"
+msgstr "Yderligere valgmuligheder for skrifttype"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
 msgid "Background"
-msgstr "Plano de fundo"
+msgstr "Baggrund"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
 msgid ""
 " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
+" <i>(eller brug <a href=\"\">multihead-opsætning</a> for individuelle "
+"skærme)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
 #: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
-msgstr "Cor"
+msgstr "Farve"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
 #: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
-msgstr "Imagem"
+msgstr "Billede"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
@@ -134,33 +136,33 @@ msgstr "Tema"
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
 msgid "Icons"
-msgstr "Ícones"
+msgstr "Ikoner"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
 msgctxt "option|greeter|font-name"
 msgid "Font"
-msgstr "Fonte"
+msgstr "Skrifttype"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:24
 msgctxt "option|greeter|hide-user-image"
 msgid "User image"
-msgstr "Imagem de usuário"
+msgstr "Brugerbillede"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
 msgid "Default user image"
-msgstr "Imagem padrão de usuário"
+msgstr "Standardbrugerbillede"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr "Usar papel de parede do usuário"
+msgstr "Brug brugertapet hvis det er tilgængeligt"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
 msgid "Appearance"
-msgstr "Aparência"
+msgstr "Udseende"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:29
 #, no-c-format
@@ -170,179 +172,179 @@ msgid ""
 "%d - day, %m - month, %y %Y - year\n"
 "%a %A - day of the week, %b %B - month name"
 msgstr ""
-"%H %I - horas, %M - minutos, %S - segundos\n"
-"%d - dia, %m - mês, %y %Y - ano\n"
-"%a %A - dia da semana, %b %B - nome do mês"
+"%H %I - timer, %M - minutter, %S - sekunder\n"
+"%d - dag, %m - måned, %y %Y - år\n"
+"%a %A - ugedag, %b %B - månedsnavn"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
 msgctxt "option|greeter|indicators"
 msgid "Add indicator to list"
-msgstr "Adicionar indicador à lista"
+msgstr "Tilføj indikator til liste"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
 msgctxt "option|greeter|indicators"
 msgid "Add"
-msgstr "Adicionar"
+msgstr "Tilføj"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:34
 msgctxt "option|greeter|indicators"
 msgid "Remove indicator from list"
-msgstr "Remover indicador da lista"
+msgstr "Fjern indikator fra liste"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:35
 msgctxt "option|greeter|indicators"
 msgid "Remove"
-msgstr "Remover"
+msgstr "Fjern"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
 msgctxt "option|greeter|indicators"
 msgid "Move up"
-msgstr "Mover para cima"
+msgstr "Flyt op"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
 msgctxt "option|greeter|indicators"
 msgid "Up"
-msgstr "Acima"
+msgstr "Op"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr "Mover para baixo"
+msgstr "Flyt ned"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
 msgid "Down"
-msgstr "Abaixo"
+msgstr "Ned"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:40
 msgctxt "option|greeter|indicators"
 msgid "Templates"
-msgstr "Modelos"
+msgstr "Skabeloner"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:41
 msgctxt "option|greeter|clock-format"
 msgid "Clock format:"
-msgstr "Formato do relógio:"
+msgstr "Urformat:"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:42
 msgctxt "option|greeter|indicators"
 msgid "Redefine indicators"
-msgstr "Redefinir indicadores"
+msgstr "Omdefinér indikatorer"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 msgctxt "tabs"
 msgid "Panel"
-msgstr "Painel"
+msgstr "Panel"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:44
 msgctxt "option|greeter|position"
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "Vandret"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:45
 msgctxt "option|greeter|position"
 msgid "Vertical"
-msgstr "Vertical"
+msgstr "Lodret"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:47
 #, no-c-format
 msgctxt "option|greeter|position"
 msgid "in %"
-msgstr ""
+msgstr "i %"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:48
 msgctxt "option|greeter|position"
 msgid "from right"
-msgstr "Da direita"
+msgstr "fra højre"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
 msgid "from bottom"
-msgstr "De baixo"
+msgstr "fra bunden"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
 msgid "Select base point and its position."
-msgstr ""
+msgstr "Vælg basispunkt og dets placering."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
 msgid "Window position"
-msgstr "Posição da janela"
+msgstr "Vinduesplacering"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:52
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Never"
-msgstr "Nunca"
+msgstr "Aldrig"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:53
 msgid "Accessibility"
-msgstr "Acessibilidade"
+msgstr "Tilgængelighed"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr ""
+msgstr "Vælg sti til læser..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
 msgid "Command to launch screen reader"
-msgstr "Comando para iniciar leitor de tela"
+msgstr "Kommando til at starte skærmlæser"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr "Selecione o caminho para teclado virtual"
+msgstr "Vælg sti til tastatur..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
 msgid "Command to launch on-screen keyboard"
-msgstr "Comando para iniciar teclado virtual"
+msgstr "Kommando til at starte skærmtastatur"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgctxt "option|greeter|a11y-states"
 msgid "Disabled at start"
-msgstr "Desativado na inicialização"
+msgstr "Deaktivér ved start"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
 msgid "Enabled at start"
-msgstr "Ativado na inicialização"
+msgstr "Aktivér ved start"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:60
 msgctxt "option|greeter|a11y-states"
 msgid "Save state between launches"
-msgstr ""
+msgstr "Gem tilstand mellem starter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:61
 msgctxt "option|greeter|a11y-theme"
 msgid "Contrast theme"
-msgstr "Contraste do tema"
+msgstr "Kontrasttema"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large font"
-msgstr "Fonte grande"
+msgstr "Stor skrifttype"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
 msgid "Reader"
-msgstr "Leitor"
+msgstr "Læser"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:64
 msgctxt "greeter|option|keyboard"
 msgid "Keyboard"
-msgstr "Teclado virtual"
+msgstr "Tastatur"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Timeout until the screen blanks "
-msgstr ""
+msgstr "Ventetid inden skærmen bliver blank "
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:66
 msgctxt "greeter|option|allow-debugging"
 msgid "Debugging mode"
-msgstr "Modo de depuração (debug)"
+msgstr "Fejlretningstilstand"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:67
 msgctxt "greeter|option|allow-debugging"
@@ -350,41 +352,43 @@ msgid ""
 "Enable keys to launch GtkInspector\n"
 "More informative log"
 msgstr ""
+"Aktivér taster til start af GtkInspector\n"
+"Mere informativ log"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
 msgid "Misc."
-msgstr ""
+msgstr "Div."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:70
 #: ../data/IndicatorPropertiesDialog.ui.h:3
 msgctxt "button"
 msgid "_Close"
-msgstr "_Fechar"
+msgstr "_Luk"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:71
 msgctxt "button"
 msgid "_Save"
-msgstr "_Salvar"
+msgstr "_Gem"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:72
 msgctxt "button"
 msgid "_Reload"
-msgstr "_Atualizar"
+msgstr "_Genindlæs"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:73
 msgid "Read configuration file"
-msgstr "Ler arquivo de configuração"
+msgstr "Læs konfigurationsfil"
 
 #: ../data/IconChooserDialog.ui.h:1
 msgctxt "icon-dialog"
 msgid "Select icon"
-msgstr "Selecionar ícone"
+msgstr "Vælg ikon"
 
 #: ../data/IconChooserDialog.ui.h:2
 msgctxt "button"
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Annuller"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
 #: ../data/MultiheadSetupDialog.ui.h:14
@@ -394,32 +398,32 @@ msgstr "_OK"
 
 #: ../data/IconChooserDialog.ui.h:4
 msgid "Add selected indicator to the list and close this window"
-msgstr "Adicionar indicador selecionado para a lista e fechar esta janela"
+msgstr "Tilføj valgte indikator til listen og luk dette vindue"
 
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr ""
+msgstr "Ikon_navn:"
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
 msgid "_Contexts:"
-msgstr ""
+msgstr "_Sammenhænge:"
 
 #: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
-msgstr ""
+msgstr "_Ikonnavne:"
 
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
-msgstr ""
+msgstr "Vis kun _standardikoner"
 
 #: ../data/ImageChooserDialog.ui.h:1
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Annuller"
 
 #: ../data/ImageChooserDialog.ui.h:2
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
@@ -429,111 +433,111 @@ msgstr "_OK"
 #: ../data/IndicatorPropertiesDialog.ui.h:1
 msgctxt "option-entry|indicators"
 msgid "Select file..."
-msgstr "Selecionar arquivo..."
+msgstr "Vælg fil..."
 
 #: ../data/IndicatorPropertiesDialog.ui.h:2
 msgctxt "option-entry|indicators"
 msgid "Indicator properties"
-msgstr ""
+msgstr "Indikatoregenskaber"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:5
 msgctxt "button"
 msgid "_Add"
-msgstr "_Adicionar"
+msgstr "_Tilføj"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:6
 msgctxt "option-entry|indicators"
 msgid "Indicator"
-msgstr "Indicador"
+msgstr "Indikator"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:7
 msgctxt "option-entry|indicators"
 msgid "Display label"
-msgstr ""
+msgstr "Vis etiket"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr ""
+msgstr "Lad være tom for at bruge standardværdi"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
 msgid "Display image"
-msgstr ""
+msgstr "Vis billede"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
 msgid "Indicator library/service:"
-msgstr ""
+msgstr "Indikatorbibliotek/-tjeneste:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr ""
+msgstr "Skjul deaktiverede strømhandlinger"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
 msgid "Text to display:"
-msgstr "Texto para exibir:"
+msgstr "Tekst som skal vises:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
 msgid "Spacer - fills the maximum available space"
-msgstr ""
+msgstr "Afstandsstykke - udfylder den maksimale tilgængelige plads"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr ""
+msgstr "Separator - tegn en separator"
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
 msgid "Multihead setup"
-msgstr ""
+msgstr "Multihead-opsætning"
 
 #: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "option|multihead"
 msgid "Add configuration"
-msgstr ""
+msgstr "Tilføj konfiguration"
 
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "No configured monitors found"
-msgstr ""
+msgstr "Ingen konfigurerede skærme fundet"
 
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "Monitor name:"
-msgstr ""
+msgstr "Skærmnavn:"
 
 #: ../data/MultiheadSetupDialog.ui.h:5
 msgid "Don't leave empty"
-msgstr ""
+msgstr "Lad ikke være tom"
 
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
-msgstr ""
+msgstr "Tilføj ny skærmkonfiguration"
 
 #: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr ""
+msgstr "Overskriv standard-\"background\"-tilvalg"
 
 #: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr ""
+msgstr "Overskriv standard-\"user-background\"-tilvalg"
 
 #: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr ""
+msgstr "Overskriv standard-\"laptop\"-tilvalg"
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr ""
+msgstr "Dette er en skærm på en bærbar (registrerer lukning af låg)"
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -541,14 +545,16 @@ msgid ""
 "<i>Note: greeter does not set monitor geometry.\n"
 "You need to configure it manually.</i>"
 msgstr ""
+"<i>Bemærk: greeter indstiller ikke skærmgeometrien.\n"
+"Det skal du konfigurere manuelt.</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
 msgid "You don't have permissions to change greeter configuration"
-msgstr ""
+msgstr "Du har ikke rettigheder til at ændre greeter-konfiguration"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:183
 msgid "No permissions to save configuration"
-msgstr ""
+msgstr "Ingen rettigheder til at gemme konfiguration"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:185
 #, python-brace-format
@@ -558,44 +564,48 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
+"Det ser ikke ud til at du har rettigheder til at skrive til filen:\n"
+"{path}\n"
+"\n"
+"Prøv at køre dette program ved brug af \"sudo\" eller \"pkexec\""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:373
 msgid "<i>disabled</i>"
-msgstr ""
+msgstr "<i>deaktiveret</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:375
 msgid "<i>empty string</i>"
-msgstr ""
+msgstr "<i>tom streng</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:377
 msgid "<i>None</i>"
-msgstr ""
+msgstr "<i>Ingen</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:401
 #, python-brace-format
 msgid "Value defined in file: {path}"
-msgstr ""
+msgstr "Værdi defineret i filen: {path}"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:438
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
-msgstr ""
+msgstr "Nulstil til indledende værdi: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:450
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
-msgstr ""
+msgstr "Nulstil til standardværdi: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:471
 #, python-brace-format
 msgid "Reset to value: <b>{value}</b>"
-msgstr ""
+msgstr "Nulstil til værdi: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:493
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
-msgstr ""
+msgstr "{count} min"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:556
 #, python-brace-format
@@ -604,145 +614,147 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
+"GtkInspector er ikke tilgængelig på dit system\n"
+"Gtk-version: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:175
 #, python-brace-format
 msgid "File not found: {path}"
-msgstr ""
+msgstr "Fil ikke fundet: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:199
 #, python-brace-format
 msgid "Failed to check permissions: {error}"
-msgstr ""
+msgstr "Kunne ikke tjekke rettigheder: {error}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:202
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr ""
+msgstr "Mappe kan ikke læses: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:205
 #: ../lightdm_gtk_greeter_settings/helpers.py:208
 #: ../lightdm_gtk_greeter_settings/helpers.py:210
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
-msgstr ""
+msgstr "LightDM har ikke rettigheder til at læse stien: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:216
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr ""
+msgstr "Stien er ikke en almindelig fil: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:222
 #: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
-msgstr ""
+msgstr "LightDM har ikke rettigheder til at køre filen: {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
 msgid "All contexts"
-msgstr ""
+msgstr "Alle sammenhænge"
 
 #. separator
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
 msgctxt "icon-dialog"
 msgid "Actions"
-msgstr ""
+msgstr "Handlinger"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
 msgctxt "icon-dialog"
 msgid "Applications"
-msgstr ""
+msgstr "Programmer"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
 msgctxt "icon-dialog"
 msgid "Categories"
-msgstr ""
+msgstr "Kategorier"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
 msgctxt "icon-dialog"
 msgid "Devices"
-msgstr ""
+msgstr "Enheder"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
 msgctxt "icon-dialog"
 msgid "Emblems"
-msgstr ""
+msgstr "Emblemer"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
 msgctxt "icon-dialog"
 msgid "Emoticons"
-msgstr ""
+msgstr "Emotikoner"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
 msgctxt "icon-dialog"
 msgid "International"
-msgstr ""
+msgstr "Internationalt"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
 msgctxt "icon-dialog"
 msgid "MIME Types"
-msgstr ""
+msgstr "MIME-typer"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
 msgctxt "icon-dialog"
 msgid "Places"
-msgstr ""
+msgstr "Steder"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
 msgctxt "icon-dialog"
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:85
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "Unrecognized value: {value}"
-msgstr ""
+msgstr "Ukendt værdi: {value}"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr ""
+msgstr "Vælg ikonnavn..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
-msgstr ""
+msgstr "<b>Ikon: {icon}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
 msgctxt "option-entry|icon"
 msgid "Select file..."
-msgstr ""
+msgstr "Vælg fil..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:129
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
-msgstr ""
+msgstr "<b>Fil: {path}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:131
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b> (failed to load)"
-msgstr ""
+msgstr "<b>Fil: {path}</b> (kunne ikke indlæse)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
 msgid "Use default value..."
-msgstr ""
+msgstr "Brug standardværdi..."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
 msgctxt "option-entry|indicators"
 msgid "<b>Using default value</b>"
-msgstr ""
+msgstr "<b>Bruger standardværdi</b>"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr ""
+msgstr "Sti-/tjenestefelt er ikke udfyldt"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -751,148 +763,152 @@ msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
 msgstr ""
+"Indikatoren \"{name}\" er allerede i listen.\n"
+"Den vil blive overskrevet."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr ""
+msgstr "Eksternt bibliotek/tjeneste"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
 msgid "Spacer"
-msgstr ""
+msgstr "Afstandsstykke"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
 msgctxt "option-entry|indicators|name"
 msgid "Separator"
-msgstr ""
+msgstr "Separator"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
 msgctxt "option-entry|indicators|name"
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
 msgctxt "option-entry|indicators|name"
 msgid "Clock"
-msgstr ""
+msgstr "Ur"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
 msgctxt "option-entry|indicators|name"
 msgid "Host name"
-msgstr ""
+msgstr "Værtsnavn"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
 msgctxt "option-entry|indicators|name"
 msgid "Keyboard layout"
-msgstr ""
+msgstr "Tastaturlayout"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
 msgctxt "option-entry|indicators|name"
 msgid "Sessions menu"
-msgstr ""
+msgstr "Sessionsmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
 msgctxt "option-entry|indicators|name"
 msgid "Languages menu"
-msgstr ""
+msgstr "Sprogmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
 msgctxt "option-entry|indicators|name"
 msgid "Accessibility menu"
-msgstr ""
+msgstr "Tilgængelighedsmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
 msgctxt "option-entry|indicators|name"
 msgid "Power menu"
-msgstr ""
+msgstr "Strømmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
 msgctxt "option-entry|indicators|tooltip"
 msgid "Spacer"
-msgstr ""
+msgstr "Afstandsstykke"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
 msgctxt "option-entry|indicators|tooltip"
 msgid "Separator"
-msgstr ""
+msgstr "Separator"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
 msgctxt "option-entry|indicators|tooltip"
 msgid "Custom text or/and image"
-msgstr ""
+msgstr "Tilpasset tekst og/eller billede"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
 msgctxt "option-entry|indicators|tooltip"
 msgid "Host name"
-msgstr ""
+msgstr "Værtsnavn"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
 msgctxt "option-entry|indicators|tooltip"
 msgid "Clock"
-msgstr ""
+msgstr "Ur"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
 msgctxt "option-entry|indicators|tooltip"
 msgid "Layout indicator"
-msgstr ""
+msgstr "Layoutindikator"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
 msgid "Sessions menu (xfce, unity, gnome etc.)"
-msgstr ""
+msgstr "Sessionsmenu (xfce, unity, gnome osv.)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
 msgid "Languages menu"
-msgstr ""
+msgstr "Sprogmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
 msgctxt "option-entry|indicators|tooltip"
 msgid "Accessibility menu"
-msgstr ""
+msgstr "Tilgængelighedsmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
 msgctxt "option-entry|indicators|tooltip"
 msgid "Power menu"
-msgstr ""
+msgstr "Strømmenu"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
 msgctxt "option-entry|indicators"
 msgid "Reset to _defaults"
-msgstr ""
+msgstr "Nulstil til _standarder"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr ""
+msgstr "Vis _etiket"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
 msgid "Display _image"
-msgstr ""
+msgstr "Vis _billede"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
 msgctxt "option-entry|indicators"
 msgid "_Remove"
-msgstr ""
+msgstr "_Fjern"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
 msgctxt "option-entry|indicators"
 msgid "Show unused items"
-msgstr ""
+msgstr "Vis ubrugte elementer"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
 msgctxt "option-entry|indicators"
 msgid "Predefined templates:"
-msgstr ""
+msgstr "Prædefinerede skabeloner:"
 
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
 msgctxt "option|StringPathEntry"
 msgid "Select path"
-msgstr ""
+msgstr "Vælg sti"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
 msgstr ""
+"Autentifikation kræves for at køre indstillingsredigering for LightDM GTK+ "
+"Greeter"

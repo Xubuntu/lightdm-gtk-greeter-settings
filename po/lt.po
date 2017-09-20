@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2016-03-11 21:47+0000\n"
+"PO-Revision-Date: 2017-06-20 21:17+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-03-12 06:08+0000\n"
-"X-Generator: Launchpad (build 17939)\n"
+"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
+"X-Generator: Launchpad (build 18449)\n"
 "Language: lt\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
@@ -544,11 +544,11 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter do not set monitors geometry.\n"
-"You need to configure it by yourself.</i>"
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
 msgstr ""
-"<i>Pastaba: sveikintojas nenustato ekranų geometrijos.\n"
-"Jūs patys turite ją nustatyti.</i>"
+"<i>Pastaba: sveikintojas nenustato ekrano geometrijos.\n"
+"Jums reikia ją sukonfigūruoti rankiniu būdu.</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
 msgid "You don't have permissions to change greeter configuration"
@@ -638,8 +638,8 @@ msgstr "Katalogas nėra skaitymui: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:208
 #: ../lightdm_gtk_greeter_settings/helpers.py:210
 #, python-brace-format
-msgid "LightDM do not have permissions to read path: {path}"
-msgstr "LightDM neturi leidimų šio kelio skaitymui: {path}"
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr "LightDM neturi leidimų skaityti kelią: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:216
 #, python-brace-format
@@ -650,8 +650,8 @@ msgstr "Kelias nėra įprastas failas: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #, python-brace-format
-msgid "LightDM do not have permissions to execute file: {path}"
-msgstr "LightDM neturi leidimų vykdyti failo: {path}"
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr "LightDM neturi leidimų vykdyti failą: {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"

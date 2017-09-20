@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2015-06-01 13:41+0000\n"
-"Last-Translator: Daniel Kessel <Unknown>\n"
+"PO-Revision-Date: 2016-05-25 12:11+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-02 05:39+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
+"X-Generator: Launchpad (build 18449)\n"
 "Language: de\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
@@ -503,7 +503,7 @@ msgstr "Konfiguration hinzufügen"
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "No configured monitors found"
-msgstr "Keine konfigurierten Monitore gefunden"
+msgstr "Keine konfigurierten Bildschirme gefunden"
 
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
@@ -544,11 +544,9 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter do not set monitors geometry.\n"
-"You need to configure it by yourself.</i>"
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
 msgstr ""
-"<i>Hinweis: der Anmeldebildschirm stellt nicht die Bildschirmauflösung ein.\n"
-"Diese müssen Sie selbst konfigurieren.</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
 msgid "You don't have permissions to change greeter configuration"
@@ -641,8 +639,8 @@ msgstr "Verzeichnis ist nicht lesbar: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:208
 #: ../lightdm_gtk_greeter_settings/helpers.py:210
 #, python-brace-format
-msgid "LightDM do not have permissions to read path: {path}"
-msgstr "LightDM hat keine Berechtigungen, den Pfad zu lesen: {path}"
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:216
 #, python-brace-format
@@ -653,8 +651,8 @@ msgstr "Pfad ist keine reguläre Datei: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #, python-brace-format
-msgid "LightDM do not have permissions to execute file: {path}"
-msgstr "LightDM hat keine Berechtigungen, die Datei auszuführen: {path}"
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
@@ -721,7 +719,7 @@ msgstr "Nicht erkannter Wert: {value}"
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr "Symbolnamen auswählen…"
+msgstr "Symbolnamen auswählen …"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format

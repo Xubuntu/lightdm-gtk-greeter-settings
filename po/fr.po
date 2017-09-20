@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2015-12-02 19:06+0000\n"
-"Last-Translator: Jean-Marc <Unknown>\n"
+"PO-Revision-Date: 2016-04-25 18:00+0000\n"
+"Last-Translator: rogue-spectre <rogue-spectre@laposte.net>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-12-03 06:15+0000\n"
-"X-Generator: Launchpad (build 17856)\n"
+"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
+"X-Generator: Launchpad (build 18449)\n"
 "Language: fr\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
@@ -73,7 +73,7 @@ msgstr "Moyen"
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Full"
-msgstr ""
+msgstr "Important"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
@@ -92,12 +92,12 @@ msgstr "PPP"
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr ""
+msgstr "Ordre de sous-pixellisation"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Hinting"
-msgstr ""
+msgstr "Lissage :"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
@@ -282,7 +282,7 @@ msgstr "Accessibilité"
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr ""
+msgstr "Sélectionner l'emplacement du lecteur d'écran…"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
@@ -292,7 +292,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr ""
+msgstr "Sélectionner l'emplacement du clavier virtuel…"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
@@ -322,7 +322,7 @@ msgstr "Thème de contraste"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large font"
-msgstr ""
+msgstr "Grande police"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -337,7 +337,7 @@ msgstr "Clavier"
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Timeout until the screen blanks "
-msgstr ""
+msgstr "Écran vide après "
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:66
 msgctxt "greeter|option|allow-debugging"
@@ -479,12 +479,12 @@ msgstr "Texte à afficher :"
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
 msgid "Spacer - fills the maximum available space"
-msgstr ""
+msgstr "Espace extensible - occupe tout l'espace disponible"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr ""
+msgstr "Séparateur - affiche une ligne verticale"
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
@@ -499,7 +499,7 @@ msgstr "Ajouter la configuration"
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "No configured monitors found"
-msgstr ""
+msgstr "Aucun écran configuré détecté"
 
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
@@ -513,7 +513,7 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
-msgstr ""
+msgstr "Ajouter une nouvelle configuration d'écran"
 
 #: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
@@ -538,8 +538,8 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter do not set monitors geometry.\n"
-"You need to configure it by yourself.</i>"
+"<i>Note: greeter does not set monitor geometry.\n"
+"You need to configure it manually.</i>"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
@@ -626,27 +626,26 @@ msgstr "Impossible de vérifier les autorisations : {error}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:202
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr ""
+msgstr "Répertoire non accessible : {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:205
 #: ../lightdm_gtk_greeter_settings/helpers.py:208
 #: ../lightdm_gtk_greeter_settings/helpers.py:210
 #, python-brace-format
-msgid "LightDM do not have permissions to read path: {path}"
+msgid "LightDM does not have permissions to read path: {path}"
 msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:216
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr ""
+msgstr "Emplacement vers un fichier non valide : {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:222
 #: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #, python-brace-format
-msgid "LightDM do not have permissions to execute file: {path}"
+msgid "LightDM does not have permissions to execute file: {path}"
 msgstr ""
-"LightDM ne dispose pas des autorisations pour exécuter le fichier : {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
@@ -719,24 +718,24 @@ msgstr ""
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
-msgstr ""
+msgstr "<b>Icône : {icon}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
 msgctxt "option-entry|icon"
 msgid "Select file..."
-msgstr ""
+msgstr "Sélectionner un fichier..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:129
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
-msgstr ""
+msgstr "<b>Fichier : {path}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:131
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b> (failed to load)"
-msgstr ""
+msgstr "<b>Fichier : {path}</b> (Erreur de chargement)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
@@ -751,7 +750,7 @@ msgstr "<b>Utilisation de la valeur par défaut</b>"
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr ""
+msgstr "Aucun emplacement définit"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -766,12 +765,12 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr ""
+msgstr "Bibliothèque/Service externe"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
 msgid "Spacer"
-msgstr ""
+msgstr "Espace extensible - occupe tout l'espace disponible"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
 msgctxt "option-entry|indicators|name"
@@ -866,7 +865,7 @@ msgstr "Menu d'accessibilité"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
 msgctxt "option-entry|indicators|tooltip"
 msgid "Power menu"
-msgstr ""
+msgstr "Mises en veille, Redémarrage, Extinction"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
 msgctxt "option-entry|indicators"
