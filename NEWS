@@ -1,3 +1,18 @@
+20.09.2017, Version 1.2.2
+  - Bugs Fixed:
+    - Support gtk-3.* themes (LP: #1709864)
+    - Fixes grammar errors (do to does) (LP: #1576415)
+    - Use /bin/bash shebang in pkexec (LP: #1613967)
+    - Patch setup.py to create installation config reproducibly 
+      (Debian: #804081)
+    - Fixed typos in source files
+  - New Translations:
+    - Breton, Czech, Danish, Italian, Kazakh, Swedish
+  - Updated Translations:
+    - Arabic, Brazilian Portuguese, Catalan, Chinese (Simplified), 
+      Croatian, Dutch, Finnish, French, German, Greek, Japanese, 
+      Lithuanian, Polish, Portuguese, Russian, Serbian, Spanish
+
 07.04.2016, Version 1.2.1
  - Updated Translations:
    - Arabic, Brazilian Portuguese, Catalan, Chinese (Simplified), 
