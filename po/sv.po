@@ -8,76 +8,76 @@ msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-05-20 21:22-0400\n"
-"PO-Revision-Date: 2016-06-30 21:27+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2019-01-04 22:39+0000\n"
+"Last-Translator: Thomas Stenberg <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-09-20 09:52+0000\n"
-"X-Generator: Launchpad (build 18449)\n"
+"X-Launchpad-Export-Date: 2019-07-22 23:48+0000\n"
+"X-Generator: Launchpad (build 19010)\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
-msgstr ""
+msgstr "LightDM GTK+ Greeter-inställningar"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK+ Greeter"
-msgstr ""
+msgstr "Anpassa LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK+ Greeter: settings"
-msgstr ""
+msgstr "LightDM GTK+ Greeter: inställningar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
 msgctxt "option|greeter|xft-rgba"
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:4
 msgctxt "option|greeter|xft-rgba"
 msgid "BGR"
-msgstr ""
+msgstr "BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical RGB"
-msgstr ""
+msgstr "Vertikal RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical BGR"
-msgstr ""
+msgstr "Vertikal BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr ""
+msgstr "Lite"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Medium"
-msgstr ""
+msgstr "Mellan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Full"
-msgstr ""
+msgstr "Full"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
 msgid "Antialias"
-msgstr ""
+msgstr "Kantutjämning"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
@@ -86,7 +86,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
 msgid "DPI"
-msgstr ""
+msgstr "DPI"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
@@ -105,7 +105,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
 msgid "Background"
-msgstr ""
+msgstr "Bakgrund"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
@@ -117,33 +117,33 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
-msgstr ""
+msgstr "Färg"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
 #: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
 msgctxt "option|greeter|font-name"
 msgid "Font"
-msgstr ""
+msgstr "Typsnitt"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:24
 msgctxt "option|greeter|hide-user-image"
 msgid "User image"
-msgstr ""
+msgstr "Användarbild"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
@@ -159,7 +159,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
 msgid "Appearance"
-msgstr ""
+msgstr "Utseende"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:29
 #, no-c-format
@@ -178,7 +178,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
 msgctxt "option|greeter|indicators"
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:34
 msgctxt "option|greeter|indicators"
@@ -188,27 +188,27 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:35
 msgctxt "option|greeter|indicators"
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
 msgctxt "option|greeter|indicators"
 msgid "Move up"
-msgstr ""
+msgstr "Flytta uppåt"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
 msgctxt "option|greeter|indicators"
 msgid "Up"
-msgstr ""
+msgstr "Upp"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr ""
+msgstr "Flytta nedåt"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
 msgid "Down"
-msgstr ""
+msgstr "Ner"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:40
 msgctxt "option|greeter|indicators"
@@ -228,17 +228,17 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 msgctxt "tabs"
 msgid "Panel"
-msgstr ""
+msgstr "Panel"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:44
 msgctxt "option|greeter|position"
 msgid "Horizontal"
-msgstr ""
+msgstr "Horisontell"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:45
 msgctxt "option|greeter|position"
 msgid "Vertical"
-msgstr ""
+msgstr "Vertikal"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:47
 #, no-c-format
@@ -249,12 +249,12 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:48
 msgctxt "option|greeter|position"
 msgid "from right"
-msgstr ""
+msgstr "från höger"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
 msgid "from bottom"
-msgstr ""
+msgstr "från botten"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
@@ -264,16 +264,16 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
 msgid "Window position"
-msgstr ""
+msgstr "Fönsterposition"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:52
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Never"
-msgstr ""
+msgstr "Aldrig"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:53
 msgid "Accessibility"
-msgstr ""
+msgstr "Tillgänglighet"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
@@ -318,17 +318,17 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large font"
-msgstr ""
+msgstr "Stort teckensnitt"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
 msgid "Reader"
-msgstr ""
+msgstr "Läsare"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:64
 msgctxt "greeter|option|keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tangentbord"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
