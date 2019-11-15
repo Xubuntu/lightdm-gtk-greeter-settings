@@ -103,7 +103,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         'hide-user-image': (OptionEntry.InvertedBooleanEntry, 'false'),
         'default-user-image': (IconEntry.IconEntry, '#avatar-default'),
         # Panel
-        'clock-format': (OptionEntry.ClockFormatEntry, '%a, %H:%M'),
+        # Translators: Default clock format for your locale
+        'clock-format': (OptionEntry.ClockFormatEntry, _('%a, %H:%M')),
         'indicators': (IndicatorsEntry.IndicatorsEntry,
                        '~host;~spacer;~clock;~spacer;~language;~session;~a11y;~power'),
         # Position
