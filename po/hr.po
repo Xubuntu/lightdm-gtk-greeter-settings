@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-20 21:22-0400\n"
+"POT-Creation-Date: 2020-03-27 14:54+0000\n"
 "PO-Revision-Date: 2016-03-09 18:41+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2019-07-22 23:48+0000\n"
-"X-Generator: Launchpad (build 19010)\n"
+"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
+"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: hr\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
@@ -114,14 +114,12 @@ msgid ""
 " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19
-#: ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr ""
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20
-#: ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr ""
@@ -318,8 +316,8 @@ msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
-msgid "Large font"
-msgstr "Veliki font"
+msgid "Large text"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -535,19 +533,25 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
 msgid ""
-"<i>Note: greeter does not set monitor geometry.\n"
-"You need to configure it manually.</i>"
+"<i>Note: greeter does not set monitors geometry.\n"
+"You need to configure it by yourself.</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:179
+#. Panel
+#. Translators: Default clock format for your locale
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
+msgid "%a, %H:%M"
+msgstr ""
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:183
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:185
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
 #, python-brace-format
 msgid ""
 "It seems that you don't have permissions to write to file:\n"
@@ -556,45 +560,45 @@ msgid ""
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:373
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:375
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
 msgid "<i>empty string</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:377
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
 msgid "<i>None</i>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:401
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
 #, python-brace-format
 msgid "Value defined in file: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:438
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:450
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:471
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
 #, python-brace-format
 msgid "Reset to value: <b>{value}</b>"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:493
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:556
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
 #, python-brace-format
 msgctxt "option|greeter|allow-debugging"
 msgid ""
@@ -602,36 +606,36 @@ msgid ""
 "Gtk version: {current} < {minimal}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:175
+#: ../lightdm_gtk_greeter_settings/helpers.py:182
 #, python-brace-format
 msgid "File not found: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:199
+#: ../lightdm_gtk_greeter_settings/helpers.py:206
 #, python-brace-format
 msgid "Failed to check permissions: {error}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:202
+#: ../lightdm_gtk_greeter_settings/helpers.py:209
 #, python-brace-format
 msgid "Directory is not readable: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:205
-#: ../lightdm_gtk_greeter_settings/helpers.py:208
-#: ../lightdm_gtk_greeter_settings/helpers.py:210
+#: ../lightdm_gtk_greeter_settings/helpers.py:212
+#: ../lightdm_gtk_greeter_settings/helpers.py:215
+#: ../lightdm_gtk_greeter_settings/helpers.py:217
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:216
+#: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
 msgstr ""
 
-#: ../lightdm_gtk_greeter_settings/helpers.py:222
-#: ../lightdm_gtk_greeter_settings/helpers.py:226
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
+#: ../lightdm_gtk_greeter_settings/helpers.py:233
+#: ../lightdm_gtk_greeter_settings/helpers.py:236
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
 msgstr ""

@@ -1,164 +1,163 @@
-# Japanese translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# Occitan (post 1500) translation for lightdm-gtk-greeter-settings
+# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
 # This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lightdm-gtk-greeter-settings\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2015-03-18 15:18+0000\n"
-"Last-Translator: Kiyotaka Nishibori <Unknown>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"PO-Revision-Date: 2020-05-24 15:21+0000\n"
+"Last-Translator: Quentin PAGÈS <Unknown>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 "X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
-"Language: ja\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Greeter の設定"
+msgstr "Paramètres de LightDM GTK+ Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter の設定をします"
+msgstr "Configurar LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: 設定"
+msgstr "Paramètres de LightDM GTK+ Greeter : paramètres"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
 msgid "None"
-msgstr "なし"
+msgstr "Pas cap"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
 msgctxt "option|greeter|xft-rgba"
 msgid "RGB"
-msgstr "RGB"
+msgstr "RVB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:4
 msgctxt "option|greeter|xft-rgba"
 msgid "BGR"
-msgstr "BGR"
+msgstr "BVR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical RGB"
-msgstr "垂直 RGB"
+msgstr "RVB vertical"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical BGR"
-msgstr "垂直 BGR"
+msgstr "BVR vertical"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr "なし"
+msgstr "Pas cap"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr "細身"
+msgstr "Leugièr"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Medium"
-msgstr "中間"
+msgstr "Mejan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Full"
-msgstr "すべて"
+msgstr "Complet"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
 msgid "Antialias"
-msgstr "アンチエイリアス"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr "このオプションを有効にすると、システムの既定値を上書きします。"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
 msgid "DPI"
-msgstr "DPI"
+msgstr "PPP"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr "サブピクセルレンダリング"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Hinting"
-msgstr "ヒンティング"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
-msgstr "追加のフォントオプション"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
 msgid "Background"
-msgstr "背景"
+msgstr "Rèireplan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
 msgid ""
 " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
-msgstr " <i>(またはモニターごとの <a href=\"\">マルチヘッド設定</a>)</i>"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
-msgstr "色"
+msgstr "Color"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
-msgstr "画像"
+msgstr "Imatge"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
 msgid "Theme"
-msgstr "テーマ"
+msgstr "Tèma"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
 msgid "Icons"
-msgstr "アイコン"
+msgstr "Icònas"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
 msgctxt "option|greeter|font-name"
 msgid "Font"
-msgstr "フォント"
+msgstr "Poliça"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:24
 msgctxt "option|greeter|hide-user-image"
 msgid "User image"
-msgstr "ユーザーの画像"
+msgstr "Imatge utilizaire"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
 msgid "Default user image"
-msgstr "既定のユーザー画像"
+msgstr "Imatge utilizaire per defaut"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr "ユーザーが壁紙を設定している場合は使用する"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
 msgid "Appearance"
-msgstr "外観"
+msgstr "Aparéncia"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:29
 #, no-c-format
@@ -168,154 +167,151 @@ msgid ""
 "%d - day, %m - month, %y %Y - year\n"
 "%a %A - day of the week, %b %B - month name"
 msgstr ""
-"%H %I - 時, %M - 分, %S - 秒\n"
-"%d - 日, %m - 月, %y %Y - 年\n"
-"%a %A - 曜日, %b %B - 月"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
 msgctxt "option|greeter|indicators"
 msgid "Add indicator to list"
-msgstr "リストにインジケーターを追加する"
+msgstr "Ajustar indicators a la lista"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
 msgctxt "option|greeter|indicators"
 msgid "Add"
-msgstr "追加"
+msgstr "Ajustar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:34
 msgctxt "option|greeter|indicators"
 msgid "Remove indicator from list"
-msgstr "インジケーターをリストから削除する"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:35
 msgctxt "option|greeter|indicators"
 msgid "Remove"
-msgstr "削除"
+msgstr "Suprimir"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
 msgctxt "option|greeter|indicators"
 msgid "Move up"
-msgstr "上へ移動"
+msgstr "Desplaçar cap amont"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
 msgctxt "option|greeter|indicators"
 msgid "Up"
-msgstr "上"
+msgstr "Montar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr "下へ移動"
+msgstr "Desplaçar cap aval"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
 msgid "Down"
-msgstr "下"
+msgstr "Bas"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:40
 msgctxt "option|greeter|indicators"
 msgid "Templates"
-msgstr "テンプレート"
+msgstr "Modèls"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:41
 msgctxt "option|greeter|clock-format"
 msgid "Clock format:"
-msgstr "時刻のフォーマット:"
+msgstr "Format relòtge :"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:42
 msgctxt "option|greeter|indicators"
 msgid "Redefine indicators"
-msgstr "インジケーターの再定義"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 msgctxt "tabs"
 msgid "Panel"
-msgstr "パネル"
+msgstr "Panèl"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:44
 msgctxt "option|greeter|position"
 msgid "Horizontal"
-msgstr "横"
+msgstr "Orizontal"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:45
 msgctxt "option|greeter|position"
 msgid "Vertical"
-msgstr "縦"
+msgstr "Vertical"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:47
 #, no-c-format
 msgctxt "option|greeter|position"
 msgid "in %"
-msgstr "% 内"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:48
 msgctxt "option|greeter|position"
 msgid "from right"
-msgstr "右から"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
 msgid "from bottom"
-msgstr "下から"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
 msgid "Select base point and its position."
-msgstr "基準点と位置を選択してください。"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
 msgid "Window position"
-msgstr "ウィンドウの位置"
+msgstr "Posicion de la fenèstra"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:52
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Never"
-msgstr "なし"
+msgstr "Pas jamai"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:53
 msgid "Accessibility"
-msgstr "ユーザー補助"
+msgstr "Accessibilitat"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr "リーダーの場所を選択..."
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
 msgid "Command to launch screen reader"
-msgstr "スクリーンリーダーを起動するコマンド..."
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr "キーボードの場所を選択..."
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
 msgid "Command to launch on-screen keyboard"
-msgstr "オンスクリーンキーボードを起動するコマンド"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgctxt "option|greeter|a11y-states"
 msgid "Disabled at start"
-msgstr "起動時は無効"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
 msgid "Enabled at start"
-msgstr "起動時は有効"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:60
 msgctxt "option|greeter|a11y-states"
 msgid "Save state between launches"
-msgstr "起動時に状態を保存"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:61
 msgctxt "option|greeter|a11y-theme"
 msgid "Contrast theme"
-msgstr "コントラストテーマ"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
@@ -325,22 +321,22 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
 msgid "Reader"
-msgstr "リーダー"
+msgstr "Lector"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:64
 msgctxt "greeter|option|keyboard"
 msgid "Keyboard"
-msgstr "キーボード"
+msgstr "Clavièr"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Timeout until the screen blanks "
-msgstr "画面が暗くなるまでのタイムアウト時間 "
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:66
 msgctxt "greeter|option|allow-debugging"
 msgid "Debugging mode"
-msgstr "デバッグモード"
+msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:67
 msgctxt "greeter|option|allow-debugging"
@@ -348,153 +344,151 @@ msgid ""
 "Enable keys to launch GtkInspector\n"
 "More informative log"
 msgstr ""
-"より情報量のあるログを取得するために GtkInspector\n"
-"を起動するキーを有効にする"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
 msgid "Misc."
-msgstr "その他"
+msgstr "Divèrs"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:70
 #: ../data/IndicatorPropertiesDialog.ui.h:3
 msgctxt "button"
 msgid "_Close"
-msgstr "閉じる(_C)"
+msgstr "_Tampar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:71
 msgctxt "button"
 msgid "_Save"
-msgstr "保存(_S)"
+msgstr "_Enregistrar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:72
 msgctxt "button"
 msgid "_Reload"
-msgstr "再読み込み(_R)"
+msgstr "_Recargar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:73
 msgid "Read configuration file"
-msgstr "設定ファイルを読み込む"
+msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:1
 msgctxt "icon-dialog"
 msgid "Select icon"
-msgstr "アイコンの選択"
+msgstr "Seleccionar una icòna"
 
 #: ../data/IconChooserDialog.ui.h:2
 msgctxt "button"
 msgid "_Cancel"
-msgstr "キャンセル(_C)"
+msgstr "_Anullar"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
 #: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "button"
 msgid "_OK"
-msgstr "_OK"
+msgstr "_D'acòrdi"
 
 #: ../data/IconChooserDialog.ui.h:4
 msgid "Add selected indicator to the list and close this window"
-msgstr "選択したインジケータをリストに追加し、このウィンドウを閉じます"
+msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr "アイコン名(_N):"
+msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
 msgid "_Contexts:"
-msgstr "ジャンル(_C):"
+msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
-msgstr "アイコン名(_I):"
+msgstr ""
 
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
-msgstr "標準のアイコンだけをリスト(_S)"
+msgstr ""
 
 #: ../data/ImageChooserDialog.ui.h:1
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
 msgid "_Cancel"
-msgstr "キャンセル(_C)"
+msgstr "_Anullar"
 
 #: ../data/ImageChooserDialog.ui.h:2
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
 msgid "_OK"
-msgstr "_OK"
+msgstr "_D'acòrdi"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:1
 msgctxt "option-entry|indicators"
 msgid "Select file..."
-msgstr "ファイルの選択..."
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:2
 msgctxt "option-entry|indicators"
 msgid "Indicator properties"
-msgstr "インジケーターのプロパティ"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:5
 msgctxt "button"
 msgid "_Add"
-msgstr "追加(_A)"
+msgstr "_Ajustar"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:6
 msgctxt "option-entry|indicators"
 msgid "Indicator"
-msgstr "インジケーター"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:7
 msgctxt "option-entry|indicators"
 msgid "Display label"
-msgstr "表示ラベル"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr "規定値を使用するので空にする"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
 msgid "Display image"
-msgstr "画像の表示"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
 msgid "Indicator library/service:"
-msgstr "インジケーターのライブラリ/サービス:"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr "無効な電源オプションを隠す"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
 msgid "Text to display:"
-msgstr "表示するテキスト:"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
 msgid "Spacer - fills the maximum available space"
-msgstr "スペーサー - 最大限のスペースで埋める"
+msgstr ""
 
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr "セパレーター : セパレーターを描画"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
 msgid "Multihead setup"
-msgstr "マルチヘッドの設定"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "option|multihead"
 msgid "Add configuration"
-msgstr "設定の追加"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
@@ -504,7 +498,7 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "Monitor name:"
-msgstr "モニター名:"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:5
 msgid "Don't leave empty"
@@ -513,27 +507,27 @@ msgstr ""
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
-msgstr "新しいモニターの設定を追加"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr "既定の\"背景\"オプションを上書きする"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr "既定の\"ユーザーの背景\"オプションを上書きする"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr "既定の\"ラップトップ\"オプションを上書きする"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr "このモニターはラップトップのディスプレイです (LIDを閉じたのを検出する)"
+msgstr ""
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -546,15 +540,15 @@ msgstr ""
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
-msgstr "グリーターの設定を変更するパーミッションがありません"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
-msgstr "設定を保存するパーミッションがありません"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
 #, python-brace-format
@@ -564,22 +558,18 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
-"次のファイルに書き込むパーミッションがないようです:\n"
-"{path}\n"
-"\n"
-"このプログラムを、 \"sudo\" または \"pkexec\" を使用して実行してみてください。"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
-msgstr "<i>無効</i>"
+msgstr "<i>desactivat</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
 msgid "<i>empty string</i>"
-msgstr "<i>空の文字列</i>"
+msgstr "<i>tèxt void</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
 msgid "<i>None</i>"
-msgstr "<i>なし</i>"
+msgstr "<i>Pas cap</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
 #, python-brace-format
@@ -589,12 +579,12 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
-msgstr "初期値にリセット: <b>{value}</b>"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
-msgstr "既定値にリセット: <b>{value}</b>"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
 #, python-brace-format
@@ -605,7 +595,7 @@ msgstr ""
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
-msgstr "{count} 分"
+msgstr "{count} min"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
 #, python-brace-format
@@ -614,23 +604,21 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
-"GtkInspector がシステムにありません。\n"
-"Gtk バージョン: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
 #, python-brace-format
 msgid "File not found: {path}"
-msgstr "ファイルが見つかりません: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:206
 #, python-brace-format
 msgid "Failed to check permissions: {error}"
-msgstr "パーミッションのチェックに失敗しました: {error}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:209
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr "ディレクトリが読み込めません: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:212
 #: ../lightdm_gtk_greeter_settings/helpers.py:215
@@ -642,7 +630,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr "パスにあるファイルは通常のファイルではありません: {path}"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #: ../lightdm_gtk_greeter_settings/helpers.py:233
@@ -654,58 +642,58 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
 msgid "All contexts"
-msgstr "すべてのジャンル"
+msgstr ""
 
 #. separator
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
 msgctxt "icon-dialog"
 msgid "Actions"
-msgstr "アクション"
+msgstr "Accions"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
 msgctxt "icon-dialog"
 msgid "Applications"
-msgstr "アプリケーション"
+msgstr "Aplicacions"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
 msgctxt "icon-dialog"
 msgid "Categories"
-msgstr "分類"
+msgstr "Categorias"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
 msgctxt "icon-dialog"
 msgid "Devices"
-msgstr "デバイス"
+msgstr "Periferics"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
 msgctxt "icon-dialog"
 msgid "Emblems"
-msgstr "エンブレム"
+msgstr "Emblèmas"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
 msgctxt "icon-dialog"
 msgid "Emoticons"
-msgstr "絵文字"
+msgstr "Emoticònas"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
 msgctxt "icon-dialog"
 msgid "International"
-msgstr "国際"
+msgstr "Internacional"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
 msgctxt "icon-dialog"
 msgid "MIME Types"
-msgstr "MIME 型"
+msgstr "Tipes MIME"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
 msgctxt "icon-dialog"
 msgid "Places"
-msgstr "場所"
+msgstr "Emplaçaments"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
 msgctxt "icon-dialog"
 msgid "Status"
-msgstr "状態"
+msgstr "Estat"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:85
 #, python-brace-format
@@ -744,17 +732,17 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
 msgid "Use default value..."
-msgstr "既定値を使用..."
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
 msgctxt "option-entry|indicators"
 msgid "<b>Using default value</b>"
-msgstr "<b>既定値を使用</b>"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr "パス/サービスフィールドが空欄です"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -763,150 +751,148 @@ msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
 msgstr ""
-"インジケーター \"{name}\" はすでにリストにあります。\n"
-"上書きされるでしょう。"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr "外部ライブラリ/サービス"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
 msgid "Spacer"
-msgstr "スペース"
+msgstr "Separador"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
 msgctxt "option-entry|indicators|name"
 msgid "Separator"
-msgstr "セパレーター"
+msgstr "Separador"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
 msgctxt "option-entry|indicators|name"
 msgid "Text"
-msgstr "テキスト"
+msgstr "Tèxte"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
 msgctxt "option-entry|indicators|name"
 msgid "Clock"
-msgstr "時計"
+msgstr "Relòtge"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
 msgctxt "option-entry|indicators|name"
 msgid "Host name"
-msgstr "ホスト名"
+msgstr "Nom d'òste"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
 msgctxt "option-entry|indicators|name"
 msgid "Keyboard layout"
-msgstr "キーボードレイアウト"
+msgstr "Disposicion del clavièr"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
 msgctxt "option-entry|indicators|name"
 msgid "Sessions menu"
-msgstr "セッションメニュー"
+msgstr "Menú session"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
 msgctxt "option-entry|indicators|name"
 msgid "Languages menu"
-msgstr "言語メニュー"
+msgstr "Menú lenga"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
 msgctxt "option-entry|indicators|name"
 msgid "Accessibility menu"
-msgstr "ユーザー補助メニュー"
+msgstr "Menú accessibilitat"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
 msgctxt "option-entry|indicators|name"
 msgid "Power menu"
-msgstr "電源メニュー"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
 msgctxt "option-entry|indicators|tooltip"
 msgid "Spacer"
-msgstr "スペース"
+msgstr "Separador"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
 msgctxt "option-entry|indicators|tooltip"
 msgid "Separator"
-msgstr "セパレーター"
+msgstr "Separador"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
 msgctxt "option-entry|indicators|tooltip"
 msgid "Custom text or/and image"
-msgstr "テキストまたは/と画像のカスタマイズ"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
 msgctxt "option-entry|indicators|tooltip"
 msgid "Host name"
-msgstr "ホスト名"
+msgstr "Nom d'òste"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
 msgctxt "option-entry|indicators|tooltip"
 msgid "Clock"
-msgstr "時計"
+msgstr "Relòtge"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
 msgctxt "option-entry|indicators|tooltip"
 msgid "Layout indicator"
-msgstr "インジケーターのレイアウト"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
 msgid "Sessions menu (xfce, unity, gnome etc.)"
-msgstr "セッションメニュー (xfce, unity, gnome など)"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
 msgid "Languages menu"
-msgstr "言語メニュー"
+msgstr "Menú lenga"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
 msgctxt "option-entry|indicators|tooltip"
 msgid "Accessibility menu"
-msgstr "ユーザー補助メニュー"
+msgstr "Menú accessibilitat"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
 msgctxt "option-entry|indicators|tooltip"
 msgid "Power menu"
-msgstr "電源メニュー"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
 msgctxt "option-entry|indicators"
 msgid "Reset to _defaults"
-msgstr "既定値にリセット"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr "ラベルの表示(_L)"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
 msgid "Display _image"
-msgstr "画像の表示(_I)"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
 msgctxt "option-entry|indicators"
 msgid "_Remove"
-msgstr "削除(_R)"
+msgstr "_Suprimir"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
 msgctxt "option-entry|indicators"
 msgid "Show unused items"
-msgstr "使用していないアイテムの表示"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
 msgctxt "option-entry|indicators"
 msgid "Predefined templates:"
-msgstr "定義済テンプレート:"
+msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
 msgctxt "option|StringPathEntry"
 msgid "Select path"
-msgstr "パスの選択"
+msgstr "Seleccionar un camin"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter の設定エディターを実行するためには、認証が必要です。"
+msgstr ""
