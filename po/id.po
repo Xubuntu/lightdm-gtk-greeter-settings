@@ -1,38 +1,41 @@
-# Indonesian translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-#
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# Kukuh Syafaat <syafaatkukuh@gmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2020-06-10 05:01+0000\n"
-"Last-Translator: Arief Setiadi Wibowo <q_thrynx@yahoo.com>\n"
-"Language-Team: Indonesian <id@li.org>\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>, 2020\n"
+"Language-Team: Indonesian (https://www.transifex.com/xubuntu/teams/110148/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
+"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
-msgstr ""
+msgstr "Pengaturan LightDM GTK + Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK+ Greeter"
-msgstr ""
+msgstr "Konfigurasikan LightDM GTK + Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK+ Greeter: settings"
-msgstr ""
+msgstr "Pengaturan LightDM GTK + Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
 msgid "None"
-msgstr ""
+msgstr "Nihil"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
 msgctxt "option|greeter|xft-rgba"
@@ -57,17 +60,17 @@ msgstr "BGR vertikal"
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr ""
+msgstr "Nihil"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr "Tipis"
+msgstr "Sedikit"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Medium"
-msgstr "Menengah"
+msgstr "Sedang"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
@@ -81,7 +84,7 @@ msgstr "Antialias"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr "Aktifkan pilihan ini untukmenimpa sistem baku"
+msgstr "Aktifkan opsi ini untuk menimpa sistem bawaan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
@@ -91,16 +94,16 @@ msgstr "DPI"
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr ""
+msgstr "Rendering subpixel"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Hinting"
-msgstr ""
+msgstr "Hinting"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
-msgstr ""
+msgstr "Opsi fonta tambahan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
@@ -109,16 +112,19 @@ msgstr "Latar belakang"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
+" <i> (atau gunakan <a href=\"\">pengaturan multihead</a> untuk masing-masing"
+" monitor)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Warna"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Gambar"
@@ -146,18 +152,18 @@ msgstr "Gambar pengguna"
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
 msgid "Default user image"
-msgstr "Gambar baku pengguna"
+msgstr "Gambar bawaan pengguna"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr ""
+msgstr "Gunakan gambar latar pengguna jika tersedia"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
 msgid "Appearance"
-msgstr "Tampilan"
+msgstr "Penampilan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:29
 #, no-c-format
@@ -167,11 +173,14 @@ msgid ""
 "%d - day, %m - month, %y %Y - year\n"
 "%a %A - day of the week, %b %B - month name"
 msgstr ""
+"%H %I - jam, %M - menit, %S - detik\n"
+"%d - hari, %m - bulan, %y %Y - tahun\n"
+"%a %A - hari dalam seminggu, %b %B - nama bulan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
 msgctxt "option|greeter|indicators"
 msgid "Add indicator to list"
-msgstr "Tambahkan indikator pada daftar"
+msgstr "Tambahkan indikator ke daftar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
 msgctxt "option|greeter|indicators"
@@ -191,22 +200,22 @@ msgstr "Hapus"
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
 msgctxt "option|greeter|indicators"
 msgid "Move up"
-msgstr "Pindahkan ke atas"
+msgstr "Naikkan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
 msgctxt "option|greeter|indicators"
 msgid "Up"
-msgstr "Ke Atas"
+msgstr "Naik"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr "Pindahkan ke bawah"
+msgstr "Turunkan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
 msgid "Down"
-msgstr "Ke Bawah"
+msgstr "Turun"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:40
 msgctxt "option|greeter|indicators"
@@ -221,7 +230,7 @@ msgstr "Format jam:"
 #: ../data/GtkGreeterSettingsWindow.ui.h:42
 msgctxt "option|greeter|indicators"
 msgid "Redefine indicators"
-msgstr ""
+msgstr "Tetapkan ulang indikator"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 msgctxt "tabs"
@@ -252,12 +261,12 @@ msgstr "dari kanan"
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
 msgid "from bottom"
-msgstr "dar bawah"
+msgstr "dari bawah"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
 msgid "Select base point and its position."
-msgstr "pilih titik awal dan posisinya"
+msgstr "Pilih titik dasar dan posisinya."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
@@ -267,7 +276,7 @@ msgstr "Posisi jendela"
 #: ../data/GtkGreeterSettingsWindow.ui.h:52
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Never"
-msgstr "Tidak pernah"
+msgstr "Tak pernah"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:53
 msgid "Accessibility"
@@ -276,7 +285,7 @@ msgstr "Aksesibilitas"
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr ""
+msgstr "Pilih path to pembaca..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
@@ -286,37 +295,37 @@ msgstr "Perintah untuk menjalankan pembaca layar"
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr ""
+msgstr "Pilih path ke papan tik..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
 msgid "Command to launch on-screen keyboard"
-msgstr ""
+msgstr "Perintah untuk meluncurkan papan tik di layar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgctxt "option|greeter|a11y-states"
 msgid "Disabled at start"
-msgstr ""
+msgstr "Dinonaktifkan saat memulai"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
 msgid "Enabled at start"
-msgstr ""
+msgstr "Diaktifkan saat mulai"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:60
 msgctxt "option|greeter|a11y-states"
 msgid "Save state between launches"
-msgstr ""
+msgstr "Simpan status di antara peluncuran"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:61
 msgctxt "option|greeter|a11y-theme"
 msgid "Contrast theme"
-msgstr ""
+msgstr "Tema kontras"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr "Teks besar"
+msgstr "Teks Besar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -326,17 +335,17 @@ msgstr "Pembaca"
 #: ../data/GtkGreeterSettingsWindow.ui.h:64
 msgctxt "greeter|option|keyboard"
 msgid "Keyboard"
-msgstr "Papan Ketik"
+msgstr "Papan Tik"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Timeout until the screen blanks "
-msgstr ""
+msgstr "Waktu tunggu hingga layar kosong "
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:66
 msgctxt "greeter|option|allow-debugging"
 msgid "Debugging mode"
-msgstr ""
+msgstr "Mode mengawakutu"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:67
 msgctxt "greeter|option|allow-debugging"
@@ -344,17 +353,19 @@ msgid ""
 "Enable keys to launch GtkInspector\n"
 "More informative log"
 msgstr ""
+"Aktifkan kunci untuk meluncurkan GtkInspector\n"
+"Log lebih informatif"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
 msgid "Misc."
-msgstr "Lain-lain"
+msgstr "Rupa-rupa"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:70
 #: ../data/IndicatorPropertiesDialog.ui.h:3
 msgctxt "button"
 msgid "_Close"
-msgstr ""
+msgstr "_Tutup"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:71
 msgctxt "button"
@@ -364,7 +375,7 @@ msgstr "_Simpan"
 #: ../data/GtkGreeterSettingsWindow.ui.h:72
 msgctxt "button"
 msgid "_Reload"
-msgstr ""
+msgstr "_Muat Ulang"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:73
 msgid "Read configuration file"
@@ -373,12 +384,12 @@ msgstr "Baca bekas konfigurasi"
 #: ../data/IconChooserDialog.ui.h:1
 msgctxt "icon-dialog"
 msgid "Select icon"
-msgstr "Pilih ikon"
+msgstr "Pilih Ikon"
 
 #: ../data/IconChooserDialog.ui.h:2
 msgctxt "button"
 msgid "_Cancel"
-msgstr ""
+msgstr "Ba_tal"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
 #: ../data/MultiheadSetupDialog.ui.h:14
@@ -388,32 +399,32 @@ msgstr "_OK"
 
 #: ../data/IconChooserDialog.ui.h:4
 msgid "Add selected indicator to the list and close this window"
-msgstr ""
+msgstr "Tambah indikator yang dipilih ke daftar dan tutup jendela ini"
 
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr ""
+msgstr "_Nama ikon:"
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
 msgid "_Contexts:"
-msgstr ""
+msgstr "_Konteks:"
 
 #: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
-msgstr ""
+msgstr "Nama _ikon:"
 
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
-msgstr ""
+msgstr "Tampilkan ikon _standar saja"
 
 #: ../data/ImageChooserDialog.ui.h:1
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
 msgid "_Cancel"
-msgstr ""
+msgstr "Ba_tal"
 
 #: ../data/ImageChooserDialog.ui.h:2
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
@@ -428,12 +439,12 @@ msgstr "Pilih berkas..."
 #: ../data/IndicatorPropertiesDialog.ui.h:2
 msgctxt "option-entry|indicators"
 msgid "Indicator properties"
-msgstr ""
+msgstr "Properti indikator"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:5
 msgctxt "button"
 msgid "_Add"
-msgstr ""
+msgstr "T_ambah"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:6
 msgctxt "option-entry|indicators"
@@ -443,12 +454,12 @@ msgstr "Indikator"
 #: ../data/IndicatorPropertiesDialog.ui.h:7
 msgctxt "option-entry|indicators"
 msgid "Display label"
-msgstr "Tampilanlabel"
+msgstr "Tampilan label"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr "biarkan kosong untuk menggunakan nilai baku"
+msgstr "Biarkan kosong untuk menggunakan nilai bawaan"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
@@ -458,42 +469,42 @@ msgstr "Tampilan gambar"
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
 msgid "Indicator library/service:"
-msgstr ""
+msgstr "Indikator pustaka/layanan::"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr ""
+msgstr "Sembunyikan aksi daya yang dinonaktifkan"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
 msgid "Text to display:"
-msgstr "teks untuk ditampilkan:"
+msgstr "Teks untuk ditampilkan:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
 msgid "Spacer - fills the maximum available space"
-msgstr ""
+msgstr "Pembatas - mengisi ruang maksimum yang tersedia"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr ""
+msgstr "Pemisah - menggambar pemisah"
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
 msgid "Multihead setup"
-msgstr ""
+msgstr "Pengaturan multihead"
 
 #: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "option|multihead"
 msgid "Add configuration"
-msgstr "tambahkan konfigurasi"
+msgstr "Tambah konfigurasi"
 
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "No configured monitors found"
-msgstr ""
+msgstr "Tidak ada monitor terkonfigurasi yang ditemukan"
 
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
@@ -507,27 +518,27 @@ msgstr "Jangan dibiarkan kosong"
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
-msgstr "tambahkan konfigurasi monitor"
+msgstr "Tambah konfigurasi monitor"
 
 #: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr ""
+msgstr "Menimpa bawaan opsi \"latar belakang\""
 
 #: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr ""
+msgstr "Menimpa bawaan opsi \"latar belakang pengguna\""
 
 #: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr ""
+msgstr "Menimpa bawaan opsi \"laptop\""
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr ""
+msgstr "Monitor ini adalah layar laptop (mendeteksi penutup tutup)"
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -535,6 +546,8 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Catatan: greeter tidak mengatur geometri monitor.\n"
+"Anda perlu mengkonfigurasinya sendiri.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
@@ -544,11 +557,11 @@ msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
-msgstr ""
+msgstr "Anda tidak memiliki izin untuk mengubah konfigurasi greeter"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
-msgstr ""
+msgstr "Tidak ada izin untuk menyimpan konfigurasi"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
 #, python-brace-format
@@ -558,44 +571,49 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
+"Tampaknya Anda tidak memiliki izin untuk menulis ke berkas:\n"
+"{path}\n"
+"\n"
+"\n"
+"Cobalah untuk menjalankan program ini menggunakan \"sudo\" atau \"pkexec\""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
-msgstr ""
+msgstr "<i>dinonaktifkan</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
 msgid "<i>empty string</i>"
-msgstr ""
+msgstr "<i>string kosong</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
 msgid "<i>None</i>"
-msgstr "<i>Tidak ada</i>"
+msgstr "<i>Nihil</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
 #, python-brace-format
 msgid "Value defined in file: {path}"
-msgstr ""
+msgstr "Nilai yang didefinisikan dalam berkas: {path}"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
-msgstr ""
+msgstr "Setel ulang ke nilai awal: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
-msgstr ""
+msgstr "Setel ulang ke nilai bawaan: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
 #, python-brace-format
 msgid "Reset to value: <b>{value}</b>"
-msgstr ""
+msgstr "Setel ulang ke nilai: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
-msgstr ""
+msgstr "{count} menit"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
 #, python-brace-format
@@ -604,40 +622,42 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
+"GtkInspector tidak tersedia di sistem Anda\n"
+"Versi GTK: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
 #, python-brace-format
 msgid "File not found: {path}"
-msgstr ""
+msgstr "Berkas tidak ditemukan: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:206
 #, python-brace-format
 msgid "Failed to check permissions: {error}"
-msgstr ""
+msgstr "Gagal untuk memeriksa izin: {error}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:209
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr ""
+msgstr "Direktori tidak dapat dibaca: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:212
 #: ../lightdm_gtk_greeter_settings/helpers.py:215
 #: ../lightdm_gtk_greeter_settings/helpers.py:217
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
-msgstr ""
+msgstr "LightDM tidak memiliki izin untuk membaca path: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr ""
+msgstr "Path bukan berkas biasa: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #: ../lightdm_gtk_greeter_settings/helpers.py:233
 #: ../lightdm_gtk_greeter_settings/helpers.py:236
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
-msgstr ""
+msgstr "LightDM tidak memiliki izin untuk mengeksekusi berkas: {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
@@ -699,7 +719,7 @@ msgstr "Status"
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "Unrecognized value: {value}"
-msgstr ""
+msgstr "Nilai yang tidak dikenali: {value}"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
@@ -710,7 +730,7 @@ msgstr "Pilih nama ikon..."
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
-msgstr ""
+msgstr "<b>Ikon: {icon}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
 msgctxt "option-entry|icon"
@@ -721,28 +741,28 @@ msgstr "Pilih berkas..."
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
-msgstr ""
+msgstr "<b>Berkas: {path}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:131
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b> (failed to load)"
-msgstr ""
+msgstr "<b>Berkas: {path}</b> (gagal untuk memuat)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
 msgid "Use default value..."
-msgstr ""
+msgstr "Gunakan nilai bawaan..."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
 msgctxt "option-entry|indicators"
 msgid "<b>Using default value</b>"
-msgstr ""
+msgstr "<b>Menggunakan nilai bawaan</b>"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr ""
+msgstr "Kolom Path/Layanan tidak diisi"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -751,11 +771,13 @@ msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
 msgstr ""
+"Indikator \"{name}\" sudah ada dalam daftar.\n"
+"Ini akan ditimpa."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr ""
+msgstr "Pustaka/layanan eksternal"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
@@ -785,12 +807,12 @@ msgstr "Nama host"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
 msgctxt "option-entry|indicators|name"
 msgid "Keyboard layout"
-msgstr "Tata letak papan ketik"
+msgstr "Tata letak papan tik"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
 msgctxt "option-entry|indicators|name"
 msgid "Sessions menu"
-msgstr ""
+msgstr "Menu sesi"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
 msgctxt "option-entry|indicators|name"
@@ -820,7 +842,7 @@ msgstr "Pemisah"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
 msgctxt "option-entry|indicators|tooltip"
 msgid "Custom text or/and image"
-msgstr ""
+msgstr "Teks atau/dan gambar ubahan"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
 msgctxt "option-entry|indicators|tooltip"
@@ -835,12 +857,12 @@ msgstr "Jam"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
 msgctxt "option-entry|indicators|tooltip"
 msgid "Layout indicator"
-msgstr "Tata letak indikator"
+msgstr "Indikator tata letak"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
 msgid "Sessions menu (xfce, unity, gnome etc.)"
-msgstr ""
+msgstr "Menu sesi (xfce, unity, gnome dll.)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
@@ -860,39 +882,41 @@ msgstr "Menu daya"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
 msgctxt "option-entry|indicators"
 msgid "Reset to _defaults"
-msgstr ""
+msgstr "Setel ulang ke _bawaan"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr ""
+msgstr "Tampilan _label"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
 msgid "Display _image"
-msgstr ""
+msgstr "Tamp_ilan gambar"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
 msgctxt "option-entry|indicators"
 msgid "_Remove"
-msgstr ""
+msgstr "_Hapus"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
 msgctxt "option-entry|indicators"
 msgid "Show unused items"
-msgstr "Tampilkan item yang tak digunakan"
+msgstr "Tampilkan butir yang tak digunakan"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
 msgctxt "option-entry|indicators"
 msgid "Predefined templates:"
-msgstr ""
+msgstr "Templat yang telah ditentukan:"
 
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
 msgctxt "option|StringPathEntry"
 msgid "Select path"
-msgstr ""
+msgstr "Pilih Path"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
 msgstr ""
+"Otentikasi diperlukan untuk menjalankan penyunting pengaturan untuk LightDM "
+"GTK+ Greeter"
