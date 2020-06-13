@@ -91,8 +91,8 @@ DistUtilsExtra.auto.setup(
     license='GPL-3',
     author='Andrew P.',
     author_email='pan.pav.7c5@gmail.com',
-    description='Settings editor for LightDM GTK+ Greeter',
+    description='LightDM GTK+ Greeter Settings',
     long_description='Settings editor for LightDM GTK+ Greeter',
-    url='https://launchpad.net/lightdm-gtk-greeter-settings',
+    url='https://github.com/Xubuntu/lightdm-gtk-greeter-settings',
     cmdclass={'install': InstallAndUpdateDataDirectory},
 )
