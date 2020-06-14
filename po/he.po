@@ -1,0 +1,916 @@
+# 
+# Translators:
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-27 14:54+0000\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2020\n"
+"Language-Team: Hebrew (https://www.transifex.com/xubuntu/teams/110148/he/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
+"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:1
+msgid "LightDM GTK+ Greeter settings"
+msgstr "הגדרות המאחל של LightDM ב־GTK+‎"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:2
+msgid "Configure LightDM GTK+ Greeter"
+msgstr "הגדרת המאחל של LightDM ב־GTK+‎"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:1
+msgid "LightDM GTK+ Greeter: settings"
+msgstr "המאחל של LightDM ב־GTK+‎: הגדרות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:2
+msgctxt "option|greeter|xft-rgba"
+msgid "None"
+msgstr "ללא"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:3
+msgctxt "option|greeter|xft-rgba"
+msgid "RGB"
+msgstr "RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:4
+msgctxt "option|greeter|xft-rgba"
+msgid "BGR"
+msgstr "BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:5
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical RGB"
+msgstr "RGB אנכי"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:6
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical BGR"
+msgstr "BGR אנכי"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:7
+msgctxt "option|greeter|xft-hintstyle"
+msgid "None"
+msgstr "ללא"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:8
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Slight"
+msgstr "קלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:9
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Medium"
+msgstr "בינונית"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:10
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Full"
+msgstr "מלאה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:11
+msgctxt "option|greeter|xft-antialias"
+msgid "Antialias"
+msgstr "החלקת קצוות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:12
+msgid "Enable this option to override system defaults"
+msgstr "יש להפעיל אפשרות זו כדי לדרוס את בררות המחדל של המערכת"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:13
+msgctxt "option|greeter|xft-dpi"
+msgid "DPI"
+msgstr "נקודות לאינטש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:14
+msgctxt "option|greeter|xft-rgba"
+msgid "Subpixel rendering"
+msgstr "עיבוד תת־פיקסלים"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:15
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Hinting"
+msgstr "רימוז"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:16
+msgid "Additional font options"
+msgstr "אפשרויות גופן נוספות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:17
+msgctxt "option|greeter|background"
+msgid "Background"
+msgstr "רקע"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:18
+msgctxt "option|multihead"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgstr " <i>(או להשתמש ב<a href=\"\">הגדרות ריבוי צגים</a> עם מגוון של צגים)</i>"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
+msgctxt "option|greeter|background"
+msgid "Color"
+msgstr "צבע"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
+msgctxt "option|greeter|background"
+msgid "Image"
+msgstr "תמונה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:21
+msgctxt "option|greeter|theme-name"
+msgid "Theme"
+msgstr "ערכת עיצוב"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:22
+msgctxt "option|greeter|icon-theme-name"
+msgid "Icons"
+msgstr "סמלים"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:23
+msgctxt "option|greeter|font-name"
+msgid "Font"
+msgstr "גופן"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:24
+msgctxt "option|greeter|hide-user-image"
+msgid "User image"
+msgstr "תמונת משתמש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:25
+msgctxt "option|greeter|default-user-image"
+msgid "Default user image"
+msgstr "תמונת בררת מחדל של משתמש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:26
+#: ../data/MultiheadSetupDialog.ui.h:11
+msgctxt "option|greeter|user-background"
+msgid "Use user wallpaper if available"
+msgstr "להשתמש ברקע של המשתמש אם יש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:27
+msgctxt "tabs"
+msgid "Appearance"
+msgstr "מראה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:29
+#, no-c-format
+msgctxt "option|greeter|clock-format"
+msgid ""
+"%H %I - hours, %M - minutes, %S - seconds\n"
+"%d - day, %m - month, %y %Y - year\n"
+"%a %A - day of the week, %b %B - month name"
+msgstr ""
+"‎%H %I - שעות, ‎%M - דקות, ‎%S - שניות\n"
+"‎%d - יום, ‎%m - חודש, ‎%y %Y - שנה\n"
+"%a ‎%A - יום בשבוע, ‎%b %B - שם החודש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:32
+msgctxt "option|greeter|indicators"
+msgid "Add indicator to list"
+msgstr "הוספת מחוון לרשימה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:33
+msgctxt "option|greeter|indicators"
+msgid "Add"
+msgstr "הוספה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:34
+msgctxt "option|greeter|indicators"
+msgid "Remove indicator from list"
+msgstr "הסרת מחוון מהרשימה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:35
+msgctxt "option|greeter|indicators"
+msgid "Remove"
+msgstr "הסרה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:36
+msgctxt "option|greeter|indicators"
+msgid "Move up"
+msgstr "הגבהה למעלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:37
+msgctxt "option|greeter|indicators"
+msgid "Up"
+msgstr "למעלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:38
+msgctxt "option|greeter|indicators"
+msgid "Move down"
+msgstr "הורדה למטה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:39
+msgctxt "option|greeter|indicators"
+msgid "Down"
+msgstr "למטה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:40
+msgctxt "option|greeter|indicators"
+msgid "Templates"
+msgstr "תבניות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:41
+msgctxt "option|greeter|clock-format"
+msgid "Clock format:"
+msgstr "תבנית השעון:"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:42
+msgctxt "option|greeter|indicators"
+msgid "Redefine indicators"
+msgstr "הגדרת מחוונים מחדש"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:43
+msgctxt "tabs"
+msgid "Panel"
+msgstr "סרגל"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:44
+msgctxt "option|greeter|position"
+msgid "Horizontal"
+msgstr "אופקי"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:45
+msgctxt "option|greeter|position"
+msgid "Vertical"
+msgstr "אנכי"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:47
+#, no-c-format
+msgctxt "option|greeter|position"
+msgid "in %"
+msgstr "ב־%"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:48
+msgctxt "option|greeter|position"
+msgid "from right"
+msgstr "מימין"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:49
+msgctxt "option|greeter|position"
+msgid "from bottom"
+msgstr "מלמטה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:50
+msgctxt "option|greeter|position"
+msgid "Select base point and its position."
+msgstr "נא לבחור נקודת בסיס ומיקום."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:51
+msgctxt "tabs"
+msgid "Window position"
+msgstr "מיקום החלון"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:52
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Never"
+msgstr "לעולם לא"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:53
+msgid "Accessibility"
+msgstr "נגישות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:54
+msgctxt "option|greeter|reader"
+msgid "Select path to reader..."
+msgstr "בחירת נתיב למקריא…"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:55
+msgctxt "option|greeter|reader"
+msgid "Command to launch screen reader"
+msgstr "פקודה להפעלת מקריא המסך"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:56
+msgctxt "option|greeter|keyboard"
+msgid "Select path to keyboard..."
+msgstr "בחירת נתיב למקלדת…"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:57
+msgctxt "option|greeter|keyboard"
+msgid "Command to launch on-screen keyboard"
+msgstr "פקודה להפעילת מקלדת על גבי המסך"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:58
+msgctxt "option|greeter|a11y-states"
+msgid "Disabled at start"
+msgstr "מושבת בהתחלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:59
+msgctxt "option|greeter|a11y-states"
+msgid "Enabled at start"
+msgstr "מופעל בהתחלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:60
+msgctxt "option|greeter|a11y-states"
+msgid "Save state between launches"
+msgstr "שמירת המצב בין הפעלה להפעלה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:61
+msgctxt "option|greeter|a11y-theme"
+msgid "Contrast theme"
+msgstr "ערכת עיצוב עם ניגודיות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:62
+msgctxt "option|greeter|a11y-font"
+msgid "Large text"
+msgstr "טקסט גדול"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:63
+msgctxt "greeter|option|reader"
+msgid "Reader"
+msgstr "מקריא"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:64
+msgctxt "greeter|option|keyboard"
+msgid "Keyboard"
+msgstr "מקלדת"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:65
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Timeout until the screen blanks "
+msgstr "זמן עד להחשכת המסך"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:66
+msgctxt "greeter|option|allow-debugging"
+msgid "Debugging mode"
+msgstr "מצב ניפוי שגיאות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:67
+msgctxt "greeter|option|allow-debugging"
+msgid ""
+"Enable keys to launch GtkInspector\n"
+"More informative log"
+msgstr ""
+"הפעלת מקשים להתחלת GtkInspector\n"
+"יומן יותר מפורט"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:69
+msgctxt "tabs"
+msgid "Misc."
+msgstr "שונות"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:70
+#: ../data/IndicatorPropertiesDialog.ui.h:3
+msgctxt "button"
+msgid "_Close"
+msgstr "_סגירה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:71
+msgctxt "button"
+msgid "_Save"
+msgstr "_שמירה"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:72
+msgctxt "button"
+msgid "_Reload"
+msgstr "_רענון"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:73
+msgid "Read configuration file"
+msgstr "קריאת קובץ הגדרות"
+
+#: ../data/IconChooserDialog.ui.h:1
+msgctxt "icon-dialog"
+msgid "Select icon"
+msgstr "בחירת סמל"
+
+#: ../data/IconChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:14
+msgctxt "button"
+msgid "_OK"
+msgstr "_אישור"
+
+#: ../data/IconChooserDialog.ui.h:4
+msgid "Add selected indicator to the list and close this window"
+msgstr "להוסיף מחוון נבחר לרשימה ולסגור את החלון"
+
+#: ../data/IconChooserDialog.ui.h:5
+msgctxt "icon-dialog"
+msgid "Icon _name:"
+msgstr "_שם הסמל:"
+
+#: ../data/IconChooserDialog.ui.h:6
+msgctxt "icon-dialog"
+msgid "_Contexts:"
+msgstr "ה_קשרים:"
+
+#: ../data/IconChooserDialog.ui.h:7
+msgctxt "icon-dialog"
+msgid "_Icon names:"
+msgstr "שמות הסמ_לים:"
+
+#: ../data/IconChooserDialog.ui.h:8
+msgctxt "icon-dialog"
+msgid "List _standard icons only"
+msgstr "ה_צגת סמלים תקניים בלבד"
+
+#: ../data/ImageChooserDialog.ui.h:1
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: ../data/ImageChooserDialog.ui.h:2
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
+msgid "_OK"
+msgstr "_אישור"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:1
+msgctxt "option-entry|indicators"
+msgid "Select file..."
+msgstr "בחירת קובץ…"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:2
+msgctxt "option-entry|indicators"
+msgid "Indicator properties"
+msgstr "מאפייני מחוון"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:5
+msgctxt "button"
+msgid "_Add"
+msgstr "הוס_פה"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:6
+msgctxt "option-entry|indicators"
+msgid "Indicator"
+msgstr "מחוון"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:7
+msgctxt "option-entry|indicators"
+msgid "Display label"
+msgstr "הצגת תווית"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:8
+msgctxt "option-entry|indicators"
+msgid "Leave empty to use default value"
+msgstr "להשאיר ריק כדי להשתמש בערך בררת המחדל"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:9
+msgctxt "option-entry|indicators"
+msgid "Display image"
+msgstr "הצגת תמונה"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:10
+msgctxt "option-entry|indicators"
+msgid "Indicator library/service:"
+msgstr "שירות/ספריית מחוון:"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:11
+msgctxt "option-entry|indicators"
+msgid "Hide disabled power actions"
+msgstr "הסתרת פעולות צריכת חשמל מושבתות"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:12
+msgctxt "option-entry|indicators"
+msgid "Text to display:"
+msgstr "טקסט להצגה:"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:13
+msgctxt "option-entry|indicators"
+msgid "Spacer - fills the maximum available space"
+msgstr "מרווח - ממלא את המקום הזמין המרבי"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:14
+msgctxt "option-entry|indicators"
+msgid "Separator - draw a separator"
+msgstr "מפריד - ציור מפריד"
+
+#: ../data/MultiheadSetupDialog.ui.h:1
+msgctxt "option|multihead"
+msgid "Multihead setup"
+msgstr "הגדרות ריבוי צגים"
+
+#: ../data/MultiheadSetupDialog.ui.h:2
+msgctxt "option|multihead"
+msgid "Add configuration"
+msgstr "הוספת הגדרה"
+
+#: ../data/MultiheadSetupDialog.ui.h:3
+msgctxt "option|multihead"
+msgid "No configured monitors found"
+msgstr "לא נמצאו צגים מוגדרים"
+
+#: ../data/MultiheadSetupDialog.ui.h:4
+msgctxt "option|multihead"
+msgid "Monitor name:"
+msgstr "שם הצג:"
+
+#: ../data/MultiheadSetupDialog.ui.h:5
+msgid "Don't leave empty"
+msgstr "לא להשאיר ריק"
+
+#: ../data/MultiheadSetupDialog.ui.h:6
+msgctxt "option|multihead"
+msgid "Add new monitor configuration"
+msgstr "הוספת הגדרת צג חדש"
+
+#: ../data/MultiheadSetupDialog.ui.h:7
+msgctxt "option|multihead"
+msgid "Overwrite default \"background\" option"
+msgstr "דריסת בררת המחדל של האפשרות „background” (רקע)"
+
+#: ../data/MultiheadSetupDialog.ui.h:10
+msgctxt "option|multihead"
+msgid "Overwrite default \"user-background\" option"
+msgstr "דריסת בררת המחדל של האפשרות „user-background” (רקע המשתמש)"
+
+#: ../data/MultiheadSetupDialog.ui.h:12
+msgctxt "option|multihead"
+msgid "Overwrite default \"laptop\" option"
+msgstr "דריסת בררת המחדל של האפשרות „laptop” (מחשב נייד)"
+
+#: ../data/MultiheadSetupDialog.ui.h:13
+msgctxt "option|greeter|laptop"
+msgid "This monitor is laptop display (detect lid closing)"
+msgstr "צג זה הוא תצוגה במחשב נייד (זיהוי סגירת הצג)"
+
+#: ../data/MultiheadSetupDialog.ui.h:15
+msgctxt "option|multihead"
+msgid ""
+"<i>Note: greeter does not set monitors geometry.\n"
+"You need to configure it by yourself.</i>"
+msgstr ""
+"<i>לתשומת לבך: המאחל לא מגדיר את היחסים הגאומטריים בין הצגים.\n"
+"עליך להגדיר זאת בעצמך.</i>"
+
+#. Panel
+#. Translators: Default clock format for your locale
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
+msgid "%a, %H:%M"
+msgstr "%a, %H:%M"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
+msgid "You don't have permissions to change greeter configuration"
+msgstr "אין לך הרשאות לשנות את הגדרות המאחל"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
+msgid "No permissions to save configuration"
+msgstr "אין הרשאות לשמירת ההגדרות"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
+#, python-brace-format
+msgid ""
+"It seems that you don't have permissions to write to file:\n"
+"{path}\n"
+"\n"
+"Try to run this program using \"sudo\" or \"pkexec\""
+msgstr ""
+"נראה כי אין לך הרשאות לכתוב לקובץ:\n"
+"{path}\n"
+"\n"
+"כדאי לנסות להריץ את התכנית הזאת עם „sudo” או „pkexec”"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
+msgid "<i>disabled</i>"
+msgstr "<i>מושבת</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
+msgid "<i>empty string</i>"
+msgstr "<i>מחרוזת ריקה</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
+msgid "<i>None</i>"
+msgstr "<i>אין</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
+#, python-brace-format
+msgid "Value defined in file: {path}"
+msgstr "ערך מוגדר בקובץ: {path}"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
+#, python-brace-format
+msgid "Reset to initial value: <b>{value}</b>"
+msgstr "איפוס לערך התחלתי: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
+#, python-brace-format
+msgid "Reset to default value: <b>{value}</b>"
+msgstr "איפוס לערך בררת מחדל: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
+#, python-brace-format
+msgid "Reset to value: <b>{value}</b>"
+msgstr "איפוס לערך: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
+#, python-brace-format
+msgctxt "option|greeter|screensaver-timeout"
+msgid "{count} min"
+msgstr "{count} דקות"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
+#, python-brace-format
+msgctxt "option|greeter|allow-debugging"
+msgid ""
+"GtkInspector is not available on your system\n"
+"Gtk version: {current} < {minimal}"
+msgstr ""
+"GtkInspector אינו זמין במערכת שלך\n"
+"גרסת Gtk:‏ ‎{current} < {minimal}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:182
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "קובץ לא נמצא: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:206
+#, python-brace-format
+msgid "Failed to check permissions: {error}"
+msgstr "בדיקת ההרשאות נכשלה: {error}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:209
+#, python-brace-format
+msgid "Directory is not readable: {path}"
+msgstr "התיקייה אינה זמינה לקריאה: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:212
+#: ../lightdm_gtk_greeter_settings/helpers.py:215
+#: ../lightdm_gtk_greeter_settings/helpers.py:217
+#, python-brace-format
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr "ל־LightDM אין הרשאות לקרוא את הנתיב: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:223
+#, python-brace-format
+msgid "Path is not a regular file: {path}"
+msgstr "הנתיב אינו קובץ רגיל: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:229
+#: ../lightdm_gtk_greeter_settings/helpers.py:233
+#: ../lightdm_gtk_greeter_settings/helpers.py:236
+#, python-brace-format
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr "ל־LightDM אין הרשאה להריץ את הקובץ: {path}"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
+msgctxt "icon-dialog"
+msgid "All contexts"
+msgstr "כל ההקשרים"
+
+#. separator
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
+msgctxt "icon-dialog"
+msgid "Actions"
+msgstr "פעולות"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
+msgctxt "icon-dialog"
+msgid "Applications"
+msgstr "יישומים"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
+msgctxt "icon-dialog"
+msgid "Categories"
+msgstr "קטגוריות"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
+msgctxt "icon-dialog"
+msgid "Devices"
+msgstr "התקנים"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
+msgctxt "icon-dialog"
+msgid "Emblems"
+msgstr "סמלים"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
+msgctxt "icon-dialog"
+msgid "Emoticons"
+msgstr "חייכנים"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
+msgctxt "icon-dialog"
+msgid "International"
+msgstr "בינלאומי"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
+msgctxt "icon-dialog"
+msgid "MIME Types"
+msgstr "סוגי MIME"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
+msgctxt "icon-dialog"
+msgid "Places"
+msgstr "מקומות"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
+msgctxt "icon-dialog"
+msgid "Status"
+msgstr "מצב"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:85
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "Unrecognized value: {value}"
+msgstr "ערך בלתי מוכר: {value}"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:104
+msgctxt "option-entry|icon"
+msgid "Select icon name..."
+msgstr "בחירת שם סמל…"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:106
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>Icon: {icon}</b>"
+msgstr "<b>סמל: {icon}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:126
+msgctxt "option-entry|icon"
+msgid "Select file..."
+msgstr "בחירת קובץ…"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:129
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b>"
+msgstr "<b>קובץ: {path}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:131
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b> (failed to load)"
+msgstr "<b>קובץ: {path}</b> (טעינתו נכשלה)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
+msgctxt "option-entry|indicators"
+msgid "Use default value..."
+msgstr "להשתמש בערך בררת המחדל…"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
+msgctxt "option-entry|indicators"
+msgid "<b>Using default value</b>"
+msgstr "<b>שימוש בערך בררת המחדל</b>"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
+msgctxt "option-entry|indicators"
+msgid "Path/Service field is not filled"
+msgstr "השדה נתיב/שירות לא מולא"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
+#, python-brace-format
+msgctxt "option-entry|indicators"
+msgid ""
+"Indicator \"{name}\" is already in the list.\n"
+"It will be overwritten."
+msgstr ""
+"המחוון „{name}” כבר נמצא ברשימה.\n"
+"הוא יידרס."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
+msgctxt "option-entry|indicators|name"
+msgid "External library/service"
+msgstr "ספרייה/שירות חיצוניים"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
+msgctxt "option-entry|indicators|name"
+msgid "Spacer"
+msgstr "מרווח"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
+msgctxt "option-entry|indicators|name"
+msgid "Separator"
+msgstr "מפריד"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
+msgctxt "option-entry|indicators|name"
+msgid "Text"
+msgstr "טקסט"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
+msgctxt "option-entry|indicators|name"
+msgid "Clock"
+msgstr "שעון"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
+msgctxt "option-entry|indicators|name"
+msgid "Host name"
+msgstr "שם המחשב"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
+msgctxt "option-entry|indicators|name"
+msgid "Keyboard layout"
+msgstr "פריסת מקלדת"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
+msgctxt "option-entry|indicators|name"
+msgid "Sessions menu"
+msgstr "תפריט הפעלות"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
+msgctxt "option-entry|indicators|name"
+msgid "Languages menu"
+msgstr "תפריט שפות"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
+msgctxt "option-entry|indicators|name"
+msgid "Accessibility menu"
+msgstr "תפריט נגישות"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
+msgctxt "option-entry|indicators|name"
+msgid "Power menu"
+msgstr "תפריט פעולות חשמל"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
+msgctxt "option-entry|indicators|tooltip"
+msgid "Spacer"
+msgstr "מרווח"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
+msgctxt "option-entry|indicators|tooltip"
+msgid "Separator"
+msgstr "מפריד"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
+msgctxt "option-entry|indicators|tooltip"
+msgid "Custom text or/and image"
+msgstr "טקסט ו/או תמונה בהתאמה אישית"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
+msgctxt "option-entry|indicators|tooltip"
+msgid "Host name"
+msgstr "שם מארח"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
+msgctxt "option-entry|indicators|tooltip"
+msgid "Clock"
+msgstr "שעון"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
+msgctxt "option-entry|indicators|tooltip"
+msgid "Layout indicator"
+msgstr "מחוון פריסה"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
+msgctxt "option-entry|indicators|tooltip"
+msgid "Sessions menu (xfce, unity, gnome etc.)"
+msgstr "תפריט הפעלות (xfce,‏ unity,‏ gnome וכו׳)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
+msgctxt "option-entry|indicators|tooltip"
+msgid "Languages menu"
+msgstr "תפריט שפות"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
+msgctxt "option-entry|indicators|tooltip"
+msgid "Accessibility menu"
+msgstr "תפריט נגישות"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
+msgctxt "option-entry|indicators|tooltip"
+msgid "Power menu"
+msgstr "תפריט פעולות חשמל"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
+msgctxt "option-entry|indicators"
+msgid "Reset to _defaults"
+msgstr "איפוס ל_ברירות מחדל"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
+msgctxt "option-entry|indicators"
+msgid "Display _label"
+msgstr "הצגת _תווית"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
+msgctxt "option-entry|indicators"
+msgid "Display _image"
+msgstr "הצגת ת_מונה"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
+msgctxt "option-entry|indicators"
+msgid "_Remove"
+msgstr "ה_סרה"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
+msgctxt "option-entry|indicators"
+msgid "Show unused items"
+msgstr "הצגת פריטים שאינם בשימוש"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
+msgctxt "option-entry|indicators"
+msgid "Predefined templates:"
+msgstr "תבניות מוגדרות מראש:"
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
+msgctxt "option|StringPathEntry"
+msgid "Select path"
+msgstr "בחירת נתיב"
+
+#: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
+msgid ""
+"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+msgstr "נדרש אימות כיד להפעיל את עורך ההגדרות למאחל של LightDM ב־GTK+‎"
