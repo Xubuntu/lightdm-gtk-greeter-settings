@@ -1,22 +1,24 @@
-# Finnish translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
-#
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# Jonne Komulainen <jonne.j.komulainen@gmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2015-09-11 23:48+0000\n"
-"Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Jonne Komulainen <jonne.j.komulainen@gmail.com>, 2020\n"
+"Language-Team: Finnish (https://www.transifex.com/xubuntu/teams/110148/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
+"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
@@ -110,18 +112,19 @@ msgstr "Tausta"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
 " <i>(tai käytä <a href=\"\">monen ulostulon asetuksia</a> yksittäisille "
 "näytöille)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Väri"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Kuva"
@@ -322,7 +325,7 @@ msgstr "Korkeakontrastinen teema"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Suuri teksti"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -535,8 +538,7 @@ msgstr "Korvaa \"kannettava\"-asetus"
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr ""
-"Näyttö on kannettavan tietokoneen näyttö (tunnista kannen sulkeminen)"
+msgstr "Näyttö on kannettavan tietokoneen näyttö (tunnista kannen sulkeminen)"
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -544,12 +546,14 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"Huomioithan ettei greeter aseta monitorin geometriaa, sinun tulee asettaa se"
+" itse."
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
@@ -640,7 +644,7 @@ msgstr "Hakemistoa ei voida lukea: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:217
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
-msgstr ""
+msgstr "LightDM:llä ei ole oikeuksia kohteen lukemiseen."
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
@@ -652,7 +656,7 @@ msgstr "Sijainti ei ole tiedosto: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:236
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
-msgstr ""
+msgstr "LightDM:llä ei ole oikeutta suorittaa tiedostoa"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
