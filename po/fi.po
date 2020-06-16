@@ -644,7 +644,7 @@ msgstr "Hakemistoa ei voida lukea: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:217
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
-msgstr "LightDMllä ei ole oikeuksia kohteen lukemiseen."
+msgstr "LightDM oikeudet eivät riitä kohteen lukemiseen."
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
