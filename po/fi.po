@@ -546,8 +546,8 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
-"Huomioithan ettei greeter aseta monitorin geometriaa, sinun tulee asettaa se"
-" itse."
+"Huomioithan: Greeter ei aseta monitorin geometriaa, sinun tulee asettaa se "
+"itse."
 
 #. Panel
 #. Translators: Default clock format for your locale
