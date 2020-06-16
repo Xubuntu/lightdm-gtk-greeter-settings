@@ -656,7 +656,7 @@ msgstr "Sijainti ei ole tiedosto: {path}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:236
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
-msgstr "LightDM:llä ei ole oikeutta suorittaa tiedostoa"
+msgstr "LightDM ei ole oikeudutettu suorittamaan tiedostoa"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
