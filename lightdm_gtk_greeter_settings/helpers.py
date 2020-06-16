@@ -278,7 +278,7 @@ class SimpleEnumMeta(type):
         obj._tuple_type = namedtuple(obj.__class__.__name__ + 'Tuple', obj._dict.keys())
         keys = list(obj._dict.keys())
         for i in range(len(keys)):
-            if obj._dict[keys[i]] is ():
+            if obj._dict[keys[i]] == ():
                 v = 0 if i == 0 else obj._dict[keys[i - 1]] + 1
                 setattr(obj, keys[i], v)
                 obj._dict[keys[i]] = v
