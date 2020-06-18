@@ -58,7 +58,10 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
     def run(self):
         DistUtilsExtra.auto.install_auto.run(self)
 
-        target_data = '/' + os.path.relpath(self.install_data, self.root) + '/'
+        if self.root is None:
+            target_data = self.install_data + '/'
+        else:
+            target_data = '/' + os.path.relpath(self.install_data, self.root) + '/'
         target_pkgdata = target_data + 'share/lightdm-gtk-greeter-settings/'
 
         values = {'__data_directory__': "'%s'" % (target_pkgdata),
