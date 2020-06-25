@@ -778,7 +778,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr "Zewnętrzna biblioteka/serwis"
+msgstr "Zewnętrzna biblioteka/usługa"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
