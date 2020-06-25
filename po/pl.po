@@ -763,7 +763,7 @@ msgstr "<b>Użyto domyślnej wartości</b>"
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr "Ścieżka/pole nie jest wypełnione"
+msgstr "Pole ścieżka/usługa nie jest wypełnione"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
