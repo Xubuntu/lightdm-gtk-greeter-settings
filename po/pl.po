@@ -1,22 +1,26 @@
-# Polish translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# No Ne, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2017-06-04 11:17+0000\n"
-"Last-Translator: Bartłomiej Wacławik <Unknown>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: No Ne, 2020\n"
+"Language-Team: Polish (https://www.transifex.com/xubuntu/teams/110148/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
@@ -82,7 +86,7 @@ msgstr "Wygładzanie krawędzi"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr "Włącz tą opcję aby zastąpić domyślne ustawienia systemu"
+msgstr "Włącz tą opcję, aby zastąpić domyślne ustawienia systemu"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
@@ -110,18 +114,19 @@ msgstr "Tło"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
 " <i>(lub użyj <a href=\"\">konfiguracji Multihead</a> dla poszczególnych "
 "monitorów)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Kolor"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Obraz"
@@ -155,7 +160,7 @@ msgstr "Domyślny obraz użytkownika"
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr "Użyj tapety użytkownika jeśli dostępna"
+msgstr "Użyj tapety użytkownika, jeśli dostępna"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
@@ -322,7 +327,7 @@ msgstr "Motyw o zwiększonym kontraście"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Duży tekst"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -456,7 +461,7 @@ msgstr "Wyświetl tekst"
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr "Pozostaw puste aby użyć domyślnej wartości"
+msgstr "Pozostaw puste, aby użyć domyślnej wartości"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
@@ -543,12 +548,14 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Uwaga: greeter nie ustawia geometrii monitorów.\n"
+"Musisz ją skonfigurować samodzielnie.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
@@ -569,7 +576,7 @@ msgstr ""
 "Wygląda na to, że nie masz uprawnień, aby dokonywać zmian w pliku:\n"
 "{path}\n"
 "\n"
-"Spróbuj uruchomić ten program używając \"sudo\" lub \"pkexec\""
+"Spróbuj uruchomić ten program, używając \"sudo\" lub \"pkexec\""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
