@@ -361,7 +361,7 @@ msgstr ""
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
 msgid "Misc."
-msgstr "Różne."
+msgstr "Różne"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:70
 #: ../data/IndicatorPropertiesDialog.ui.h:3
