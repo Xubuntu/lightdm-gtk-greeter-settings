@@ -623,7 +623,7 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
-"GtkInspector nie jest dostępny na twoim systemie\n"
+"GtkInspector nie jest dostępny w systemie\n"
 "Wersja GTK: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
