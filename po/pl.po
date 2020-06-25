@@ -471,7 +471,7 @@ msgstr "Wyświetl obraz"
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
 msgid "Indicator library/service:"
-msgstr "Biblioteka/serwis wskaźnika:"
+msgstr "Biblioteka/usługa wskaźnika:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
