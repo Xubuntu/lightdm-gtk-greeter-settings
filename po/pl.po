@@ -783,7 +783,7 @@ msgstr "Zewnętrzna biblioteka/usługa"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
 msgid "Spacer"
-msgstr "Odstęp"
+msgstr "Odstępnik"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
 msgctxt "option-entry|indicators|name"
@@ -833,7 +833,7 @@ msgstr "Menu zasilania"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
 msgctxt "option-entry|indicators|tooltip"
 msgid "Spacer"
-msgstr "Odstęp"
+msgstr "Odstępnik"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
 msgctxt "option-entry|indicators|tooltip"
