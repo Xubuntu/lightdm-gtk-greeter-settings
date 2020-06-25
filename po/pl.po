@@ -355,8 +355,8 @@ msgid ""
 "Enable keys to launch GtkInspector\n"
 "More informative log"
 msgstr ""
-"Włącz klawisze aby uruchomić GtkInspector\n"
-"Więcej dzienników informacyjnych"
+"Włącz klawisze, aby uruchomić GtkInspector\n"
+"Bardziej informacyjny dziennik"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
