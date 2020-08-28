@@ -1,0 +1,918 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hsiu-Ming Chang <cges30901@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Hsiu-Ming Chang <cges30901@gmail.com>, 2020\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/xubuntu/teams/110148/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:1
+msgid "LightDM GTK+ Greeter settings"
+msgstr "LightDM GTK+ Greeter 設定"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:2
+msgid "Configure LightDM GTK+ Greeter"
+msgstr "配置 LightDM GTK+ Greeter"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:1
+msgid "LightDM GTK+ Greeter: settings"
+msgstr "LightDM GTK+ Greeter：設定"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:2
+msgctxt "option|greeter|xft-rgba"
+msgid "None"
+msgstr "無"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:3
+msgctxt "option|greeter|xft-rgba"
+msgid "RGB"
+msgstr "RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:4
+msgctxt "option|greeter|xft-rgba"
+msgid "BGR"
+msgstr "BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:5
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical RGB"
+msgstr "垂直 RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:6
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical BGR"
+msgstr "垂直 BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:7
+msgctxt "option|greeter|xft-hintstyle"
+msgid "None"
+msgstr "無"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:8
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Slight"
+msgstr "輕微"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:9
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Medium"
+msgstr "中等"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:10
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Full"
+msgstr "完全"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:11
+msgctxt "option|greeter|xft-antialias"
+msgid "Antialias"
+msgstr "反鋸齒"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:12
+msgid "Enable this option to override system defaults"
+msgstr "啟用此選項以覆蓋系統預設設定"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:13
+msgctxt "option|greeter|xft-dpi"
+msgid "DPI"
+msgstr "DPI"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:14
+msgctxt "option|greeter|xft-rgba"
+msgid "Subpixel rendering"
+msgstr "次像素繪製"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:15
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Hinting"
+msgstr "字型微調"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:16
+msgid "Additional font options"
+msgstr "更多字型選項"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:17
+msgctxt "option|greeter|background"
+msgid "Background"
+msgstr "背景"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:18
+msgctxt "option|multihead"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgstr " <i>（或使用 <a href=\"\">多螢幕設定</a> 配置各個顯示器）</i>"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
+msgctxt "option|greeter|background"
+msgid "Color"
+msgstr "顏色"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
+msgctxt "option|greeter|background"
+msgid "Image"
+msgstr "圖片"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:21
+msgctxt "option|greeter|theme-name"
+msgid "Theme"
+msgstr "主題"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:22
+msgctxt "option|greeter|icon-theme-name"
+msgid "Icons"
+msgstr "圖示"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:23
+msgctxt "option|greeter|font-name"
+msgid "Font"
+msgstr "字型"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:24
+msgctxt "option|greeter|hide-user-image"
+msgid "User image"
+msgstr "使用者頭像"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:25
+msgctxt "option|greeter|default-user-image"
+msgid "Default user image"
+msgstr "預設使用者頭像"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:26
+#: ../data/MultiheadSetupDialog.ui.h:11
+msgctxt "option|greeter|user-background"
+msgid "Use user wallpaper if available"
+msgstr "可用時使用使用者桌布"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:27
+msgctxt "tabs"
+msgid "Appearance"
+msgstr "外觀"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:29
+#, no-c-format
+msgctxt "option|greeter|clock-format"
+msgid ""
+"%H %I - hours, %M - minutes, %S - seconds\n"
+"%d - day, %m - month, %y %Y - year\n"
+"%a %A - day of the week, %b %B - month name"
+msgstr ""
+"%H %I - 小時, %M - 分, %S - 秒\n"
+"%d - 日, %m - 月, %y %Y - 年\n"
+"%a %A - 星期, %b %B - 月分名稱"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:32
+msgctxt "option|greeter|indicators"
+msgid "Add indicator to list"
+msgstr "將指示器加到清單"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:33
+msgctxt "option|greeter|indicators"
+msgid "Add"
+msgstr "加入"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:34
+msgctxt "option|greeter|indicators"
+msgid "Remove indicator from list"
+msgstr "從清單中移除指示器"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:35
+msgctxt "option|greeter|indicators"
+msgid "Remove"
+msgstr "移除"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:36
+msgctxt "option|greeter|indicators"
+msgid "Move up"
+msgstr "上移"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:37
+msgctxt "option|greeter|indicators"
+msgid "Up"
+msgstr "向上"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:38
+msgctxt "option|greeter|indicators"
+msgid "Move down"
+msgstr "下移"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:39
+msgctxt "option|greeter|indicators"
+msgid "Down"
+msgstr "向下"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:40
+msgctxt "option|greeter|indicators"
+msgid "Templates"
+msgstr "模板"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:41
+msgctxt "option|greeter|clock-format"
+msgid "Clock format:"
+msgstr "時鐘格式："
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:42
+msgctxt "option|greeter|indicators"
+msgid "Redefine indicators"
+msgstr "重新設定指示器"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:43
+msgctxt "tabs"
+msgid "Panel"
+msgstr "面板"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:44
+msgctxt "option|greeter|position"
+msgid "Horizontal"
+msgstr "橫向"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:45
+msgctxt "option|greeter|position"
+msgid "Vertical"
+msgstr "縱向"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:47
+#, no-c-format
+msgctxt "option|greeter|position"
+msgid "in %"
+msgstr "百分比"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:48
+msgctxt "option|greeter|position"
+msgid "from right"
+msgstr "以右端為基準"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:49
+msgctxt "option|greeter|position"
+msgid "from bottom"
+msgstr "以底部為基準"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:50
+msgctxt "option|greeter|position"
+msgid "Select base point and its position."
+msgstr "選擇基準點及其位置。"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:51
+msgctxt "tabs"
+msgid "Window position"
+msgstr "視窗位置"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:52
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Never"
+msgstr "從不"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:53
+msgid "Accessibility"
+msgstr "輔助功能"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:54
+msgctxt "option|greeter|reader"
+msgid "Select path to reader..."
+msgstr "選擇螢幕閱讀器的路徑..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:55
+msgctxt "option|greeter|reader"
+msgid "Command to launch screen reader"
+msgstr "螢幕閱讀器的啟動指令"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:56
+msgctxt "option|greeter|keyboard"
+msgid "Select path to keyboard..."
+msgstr "選擇鍵盤的路徑..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:57
+msgctxt "option|greeter|keyboard"
+msgid "Command to launch on-screen keyboard"
+msgstr "啟動螢幕鍵盤的指令"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:58
+msgctxt "option|greeter|a11y-states"
+msgid "Disabled at start"
+msgstr "啟動時停用"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:59
+msgctxt "option|greeter|a11y-states"
+msgid "Enabled at start"
+msgstr "啟動時啟用"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:60
+msgctxt "option|greeter|a11y-states"
+msgid "Save state between launches"
+msgstr "儲存上次的狀態"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:61
+msgctxt "option|greeter|a11y-theme"
+msgid "Contrast theme"
+msgstr "高對比度主題"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:62
+msgctxt "option|greeter|a11y-font"
+msgid "Large text"
+msgstr "大型文字"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:63
+msgctxt "greeter|option|reader"
+msgid "Reader"
+msgstr "閱讀器"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:64
+msgctxt "greeter|option|keyboard"
+msgid "Keyboard"
+msgstr "鍵盤"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:65
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Timeout until the screen blanks "
+msgstr "螢幕變暗逾時 "
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:66
+msgctxt "greeter|option|allow-debugging"
+msgid "Debugging mode"
+msgstr "除錯模式"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:67
+msgctxt "greeter|option|allow-debugging"
+msgid ""
+"Enable keys to launch GtkInspector\n"
+"More informative log"
+msgstr ""
+"啟用啟動 GtkInspector 的鍵值\n"
+"更詳盡的記錄"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:69
+msgctxt "tabs"
+msgid "Misc."
+msgstr "雜項"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:70
+#: ../data/IndicatorPropertiesDialog.ui.h:3
+msgctxt "button"
+msgid "_Close"
+msgstr "關閉(_C)"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:71
+msgctxt "button"
+msgid "_Save"
+msgstr "儲存(_S)"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:72
+msgctxt "button"
+msgid "_Reload"
+msgstr "重新載入(_R)"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:73
+msgid "Read configuration file"
+msgstr "讀取配置檔案"
+
+#: ../data/IconChooserDialog.ui.h:1
+msgctxt "icon-dialog"
+msgid "Select icon"
+msgstr "選擇圖示"
+
+#: ../data/IconChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:14
+msgctxt "button"
+msgid "_OK"
+msgstr "確定(_O)"
+
+#: ../data/IconChooserDialog.ui.h:4
+msgid "Add selected indicator to the list and close this window"
+msgstr "將選取的指示器加入清單中並關閉視窗"
+
+#: ../data/IconChooserDialog.ui.h:5
+msgctxt "icon-dialog"
+msgid "Icon _name:"
+msgstr "圖示名稱(_N)："
+
+#: ../data/IconChooserDialog.ui.h:6
+msgctxt "icon-dialog"
+msgid "_Contexts:"
+msgstr "情境(_C)："
+
+#: ../data/IconChooserDialog.ui.h:7
+msgctxt "icon-dialog"
+msgid "_Icon names:"
+msgstr "圖示名稱(_I)："
+
+#: ../data/IconChooserDialog.ui.h:8
+msgctxt "icon-dialog"
+msgid "List _standard icons only"
+msgstr "僅列出標準圖示(_S)"
+
+#: ../data/ImageChooserDialog.ui.h:1
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: ../data/ImageChooserDialog.ui.h:2
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
+msgid "_OK"
+msgstr "確定(_O)"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:1
+msgctxt "option-entry|indicators"
+msgid "Select file..."
+msgstr "選擇檔案..."
+
+#: ../data/IndicatorPropertiesDialog.ui.h:2
+msgctxt "option-entry|indicators"
+msgid "Indicator properties"
+msgstr "指示器屬性"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:5
+msgctxt "button"
+msgid "_Add"
+msgstr "加入(_A)"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:6
+msgctxt "option-entry|indicators"
+msgid "Indicator"
+msgstr "指示器"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:7
+msgctxt "option-entry|indicators"
+msgid "Display label"
+msgstr "顯示標籤"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:8
+msgctxt "option-entry|indicators"
+msgid "Leave empty to use default value"
+msgstr "留空以使用預設值"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:9
+msgctxt "option-entry|indicators"
+msgid "Display image"
+msgstr "顯示圖片"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:10
+msgctxt "option-entry|indicators"
+msgid "Indicator library/service:"
+msgstr "指示器函式庫/服務："
+
+#: ../data/IndicatorPropertiesDialog.ui.h:11
+msgctxt "option-entry|indicators"
+msgid "Hide disabled power actions"
+msgstr "隱藏已停用的電源動作"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:12
+msgctxt "option-entry|indicators"
+msgid "Text to display:"
+msgstr "要顯示的文字："
+
+#: ../data/IndicatorPropertiesDialog.ui.h:13
+msgctxt "option-entry|indicators"
+msgid "Spacer - fills the maximum available space"
+msgstr "間隔 - 填充最大可用空間"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:14
+msgctxt "option-entry|indicators"
+msgid "Separator - draw a separator"
+msgstr "分隔符 - 繪製一個分隔符"
+
+#: ../data/MultiheadSetupDialog.ui.h:1
+msgctxt "option|multihead"
+msgid "Multihead setup"
+msgstr "多螢幕設定"
+
+#: ../data/MultiheadSetupDialog.ui.h:2
+msgctxt "option|multihead"
+msgid "Add configuration"
+msgstr "加入配置"
+
+#: ../data/MultiheadSetupDialog.ui.h:3
+msgctxt "option|multihead"
+msgid "No configured monitors found"
+msgstr "無配置的顯示器"
+
+#: ../data/MultiheadSetupDialog.ui.h:4
+msgctxt "option|multihead"
+msgid "Monitor name:"
+msgstr "顯示器名稱："
+
+#: ../data/MultiheadSetupDialog.ui.h:5
+msgid "Don't leave empty"
+msgstr "不要留空"
+
+#: ../data/MultiheadSetupDialog.ui.h:6
+msgctxt "option|multihead"
+msgid "Add new monitor configuration"
+msgstr "加入新顯示器配置"
+
+#: ../data/MultiheadSetupDialog.ui.h:7
+msgctxt "option|multihead"
+msgid "Overwrite default \"background\" option"
+msgstr "覆蓋預設的「background」選項"
+
+#: ../data/MultiheadSetupDialog.ui.h:10
+msgctxt "option|multihead"
+msgid "Overwrite default \"user-background\" option"
+msgstr "覆蓋預設的「user-background」選項"
+
+#: ../data/MultiheadSetupDialog.ui.h:12
+msgctxt "option|multihead"
+msgid "Overwrite default \"laptop\" option"
+msgstr "覆蓋預設的「laptop」選項"
+
+#: ../data/MultiheadSetupDialog.ui.h:13
+msgctxt "option|greeter|laptop"
+msgid "This monitor is laptop display (detect lid closing)"
+msgstr "該顯示器是筆記型電腦螢幕（偵測上蓋關閉）"
+
+#: ../data/MultiheadSetupDialog.ui.h:15
+msgctxt "option|multihead"
+msgid ""
+"<i>Note: greeter does not set monitors geometry.\n"
+"You need to configure it by yourself.</i>"
+msgstr ""
+"<i>注意：greeter 不會設定顯示器幾何。\n"
+"您需要自行設定。</i>"
+
+#. Panel
+#. Translators: Default clock format for your locale
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
+msgid "%a, %H:%M"
+msgstr "%a, %H:%M"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
+msgid "You don't have permissions to change greeter configuration"
+msgstr "您沒有變更 greeter 配置的權限"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
+msgid "No permissions to save configuration"
+msgstr "無儲存配置的權限"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
+#, python-brace-format
+msgid ""
+"It seems that you don't have permissions to write to file:\n"
+"{path}\n"
+"\n"
+"Try to run this program using \"sudo\" or \"pkexec\""
+msgstr ""
+"您似乎沒有寫入到該檔案的權限：\n"
+"{path}\n"
+"\n"
+"嘗試使用「sudo」或「pkexec」執行此程式。"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
+msgid "<i>disabled</i>"
+msgstr "<i>已停用</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
+msgid "<i>empty string</i>"
+msgstr "<i>空字串</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
+msgid "<i>None</i>"
+msgstr "<i>無</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
+#, python-brace-format
+msgid "Value defined in file: {path}"
+msgstr "值由此檔案定義：{path}"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
+#, python-brace-format
+msgid "Reset to initial value: <b>{value}</b>"
+msgstr "重置為初始值：<b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
+#, python-brace-format
+msgid "Reset to default value: <b>{value}</b>"
+msgstr "重置為預設值：<b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
+#, python-brace-format
+msgid "Reset to value: <b>{value}</b>"
+msgstr "重置為值：<b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
+#, python-brace-format
+msgctxt "option|greeter|screensaver-timeout"
+msgid "{count} min"
+msgstr "{count} 分"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
+#, python-brace-format
+msgctxt "option|greeter|allow-debugging"
+msgid ""
+"GtkInspector is not available on your system\n"
+"Gtk version: {current} < {minimal}"
+msgstr ""
+"GtkInspector 在您的系統中不可用\n"
+"Gtk 版本：{current} < {minimal}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:182
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "未找到檔案：{path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:206
+#, python-brace-format
+msgid "Failed to check permissions: {error}"
+msgstr "無法檢查權限：{error}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:209
+#, python-brace-format
+msgid "Directory is not readable: {path}"
+msgstr "目錄無法讀取：{path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:212
+#: ../lightdm_gtk_greeter_settings/helpers.py:215
+#: ../lightdm_gtk_greeter_settings/helpers.py:217
+#, python-brace-format
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr "LightDM 沒有權限讀取路徑: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:223
+#, python-brace-format
+msgid "Path is not a regular file: {path}"
+msgstr "路徑不是普通檔案：{path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:229
+#: ../lightdm_gtk_greeter_settings/helpers.py:233
+#: ../lightdm_gtk_greeter_settings/helpers.py:236
+#, python-brace-format
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr "LightDM 沒有權限執行檔案: {path}"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
+msgctxt "icon-dialog"
+msgid "All contexts"
+msgstr "所有情境"
+
+#. separator
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
+msgctxt "icon-dialog"
+msgid "Actions"
+msgstr "動作"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
+msgctxt "icon-dialog"
+msgid "Applications"
+msgstr "應用程式"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
+msgctxt "icon-dialog"
+msgid "Categories"
+msgstr "類別"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
+msgctxt "icon-dialog"
+msgid "Devices"
+msgstr "裝置"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
+msgctxt "icon-dialog"
+msgid "Emblems"
+msgstr "標記"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
+msgctxt "icon-dialog"
+msgid "Emoticons"
+msgstr "表情符號"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
+msgctxt "icon-dialog"
+msgid "International"
+msgstr "國際"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
+msgctxt "icon-dialog"
+msgid "MIME Types"
+msgstr "MIME 類型"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
+msgctxt "icon-dialog"
+msgid "Places"
+msgstr "位置"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
+msgctxt "icon-dialog"
+msgid "Status"
+msgstr "狀態"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:85
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "Unrecognized value: {value}"
+msgstr "無法識別的值：{value}"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:104
+msgctxt "option-entry|icon"
+msgid "Select icon name..."
+msgstr "選擇圖示名稱..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:106
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>Icon: {icon}</b>"
+msgstr "<b>圖示：{icon}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:126
+msgctxt "option-entry|icon"
+msgid "Select file..."
+msgstr "選擇檔案..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:129
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b>"
+msgstr "<b>檔案：{path}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:131
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b> (failed to load)"
+msgstr "<b>檔案：{path}</b>（無法讀取）"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
+msgctxt "option-entry|indicators"
+msgid "Use default value..."
+msgstr "使用預設值..."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
+msgctxt "option-entry|indicators"
+msgid "<b>Using default value</b>"
+msgstr "<b>使用預設值</b>"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
+msgctxt "option-entry|indicators"
+msgid "Path/Service field is not filled"
+msgstr "路徑/服務欄位為空"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
+#, python-brace-format
+msgctxt "option-entry|indicators"
+msgid ""
+"Indicator \"{name}\" is already in the list.\n"
+"It will be overwritten."
+msgstr ""
+"指示器「{name}」已在清單中。\n"
+"該指示器將被覆蓋。"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
+msgctxt "option-entry|indicators|name"
+msgid "External library/service"
+msgstr "外部函式庫/服務"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
+msgctxt "option-entry|indicators|name"
+msgid "Spacer"
+msgstr "間隔"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
+msgctxt "option-entry|indicators|name"
+msgid "Separator"
+msgstr "分隔符"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
+msgctxt "option-entry|indicators|name"
+msgid "Text"
+msgstr "文字"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
+msgctxt "option-entry|indicators|name"
+msgid "Clock"
+msgstr "時鐘"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
+msgctxt "option-entry|indicators|name"
+msgid "Host name"
+msgstr "主機名稱"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
+msgctxt "option-entry|indicators|name"
+msgid "Keyboard layout"
+msgstr "鍵盤配置"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
+msgctxt "option-entry|indicators|name"
+msgid "Sessions menu"
+msgstr "作業階段選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
+msgctxt "option-entry|indicators|name"
+msgid "Languages menu"
+msgstr "語言選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
+msgctxt "option-entry|indicators|name"
+msgid "Accessibility menu"
+msgstr "輔助功能選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
+msgctxt "option-entry|indicators|name"
+msgid "Power menu"
+msgstr "電源選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
+msgctxt "option-entry|indicators|tooltip"
+msgid "Spacer"
+msgstr "間隔"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
+msgctxt "option-entry|indicators|tooltip"
+msgid "Separator"
+msgstr "分隔符"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
+msgctxt "option-entry|indicators|tooltip"
+msgid "Custom text or/and image"
+msgstr "自訂文字或/和圖片"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
+msgctxt "option-entry|indicators|tooltip"
+msgid "Host name"
+msgstr "主機名稱"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
+msgctxt "option-entry|indicators|tooltip"
+msgid "Clock"
+msgstr "時鐘"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
+msgctxt "option-entry|indicators|tooltip"
+msgid "Layout indicator"
+msgstr "配置指示器"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
+msgctxt "option-entry|indicators|tooltip"
+msgid "Sessions menu (xfce, unity, gnome etc.)"
+msgstr "作業階段選單（xfce、unity、gnome 等）"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
+msgctxt "option-entry|indicators|tooltip"
+msgid "Languages menu"
+msgstr "語言選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
+msgctxt "option-entry|indicators|tooltip"
+msgid "Accessibility menu"
+msgstr "輔助功能選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
+msgctxt "option-entry|indicators|tooltip"
+msgid "Power menu"
+msgstr "電源選單"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
+msgctxt "option-entry|indicators"
+msgid "Reset to _defaults"
+msgstr "重設為預設值(_D)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
+msgctxt "option-entry|indicators"
+msgid "Display _label"
+msgstr "顯示標籤(_L)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
+msgctxt "option-entry|indicators"
+msgid "Display _image"
+msgstr "顯示圖片(_I)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
+msgctxt "option-entry|indicators"
+msgid "_Remove"
+msgstr "移除(_R)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
+msgctxt "option-entry|indicators"
+msgid "Show unused items"
+msgstr "顯示未使用的項目"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
+msgctxt "option-entry|indicators"
+msgid "Predefined templates:"
+msgstr "預先定義的模板："
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
+msgctxt "option|StringPathEntry"
+msgid "Select path"
+msgstr "選擇路徑"
+
+#: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
+msgid ""
+"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+msgstr "執行 LightDM GTK+ Greeter 設定編輯器需要驗證"
