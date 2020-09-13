@@ -1,0 +1,914 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Fordítók:
+# Huszák Győző <huszakgyozo@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-09-13 12:19+0200\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Huszák Győző\n"
+"Language-Team: \n"
+"Language: hu\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:1
+msgid "LightDM GTK+ Greeter settings"
+msgstr "LightDM GTK+ Greeter beállítások"
+
+#: ../lightdm-gtk-greeter-settings.desktop.in.h:2
+msgid "Configure LightDM GTK+ Greeter"
+msgstr "LightDM GTK+ Greeter beállítás"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:1
+msgid "LightDM GTK+ Greeter: settings"
+msgstr "LightDM GTK+ Greeter: beállítások"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:2
+msgctxt "option|greeter|xft-rgba"
+msgid "None"
+msgstr "Egyik sem"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:3
+msgctxt "option|greeter|xft-rgba"
+msgid "RGB"
+msgstr "RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:4
+msgctxt "option|greeter|xft-rgba"
+msgid "BGR"
+msgstr "BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:5
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical RGB"
+msgstr "Függőleges RGB"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:6
+msgctxt "option|greeter|xft-rgba"
+msgid "Vertical BGR"
+msgstr "Függőleges BGR"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:7
+msgctxt "option|greeter|xft-hintstyle"
+msgid "None"
+msgstr "Egyik sem"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:8
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Slight"
+msgstr "Enyhe"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:9
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Medium"
+msgstr "Közepes"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:10
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Full"
+msgstr "Teljes"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:11
+msgctxt "option|greeter|xft-antialias"
+msgid "Antialias"
+msgstr "Antialias"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:12
+msgid "Enable this option to override system defaults"
+msgstr "Engedélyezze ezt az opciót a rendszer alapértelmezett értékeinek felülbírálásához"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:13
+msgctxt "option|greeter|xft-dpi"
+msgid "DPI"
+msgstr "DPI"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:14
+msgctxt "option|greeter|xft-rgba"
+msgid "Subpixel rendering"
+msgstr "Subpixel megjelenítés"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:15
+msgctxt "option|greeter|xft-hintstyle"
+msgid "Hinting"
+msgstr "Tippek"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:16
+msgid "Additional font options"
+msgstr "További betűtípusopciók"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:17
+msgctxt "option|greeter|background"
+msgid "Background"
+msgstr "Háttér"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:18
+msgctxt "option|multihead"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgstr " <i>(vagy használja <a href=\"\">további beállítás</a> egyedi monitorokhoz)</i>"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+msgctxt "option|greeter|background"
+msgid "Color"
+msgstr "Szín"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+msgctxt "option|greeter|background"
+msgid "Image"
+msgstr "Kép"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:21
+msgctxt "option|greeter|theme-name"
+msgid "Theme"
+msgstr "Téma"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:22
+msgctxt "option|greeter|icon-theme-name"
+msgid "Icons"
+msgstr "Ikon"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:23
+msgctxt "option|greeter|font-name"
+msgid "Font"
+msgstr "Betűtípus"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:24
+msgctxt "option|greeter|hide-user-image"
+msgid "User image"
+msgstr "Felhasználó kép"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:25
+msgctxt "option|greeter|default-user-image"
+msgid "Default user image"
+msgstr "Alapértelmezett felhasználói kép"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:26
+#: ../data/MultiheadSetupDialog.ui.h:11
+msgctxt "option|greeter|user-background"
+msgid "Use user wallpaper if available"
+msgstr "Használja a felhasználó hátterét ha elérhető"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:27
+msgctxt "tabs"
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:29
+#, no-c-format
+msgctxt "option|greeter|clock-format"
+msgid ""
+"%H %I - hours, %M - minutes, %S - seconds\n"
+"%d - day, %m - month, %y %Y - year\n"
+"%a %A - day of the week, %b %B - month name"
+msgstr ""
+"%H %I - óra, %M - perc, %S - másodperc\n"
+"%d - nap, %m - hónap, %y %Y - év\n"
+"%a %A - a hét napja %b %B - hónap neve"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:32
+msgctxt "option|greeter|indicators"
+msgid "Add indicator to list"
+msgstr "Jelző hozzáadása a listához"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:33
+msgctxt "option|greeter|indicators"
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:34
+msgctxt "option|greeter|indicators"
+msgid "Remove indicator from list"
+msgstr "Jelző eltávolítása a listáról"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:35
+msgctxt "option|greeter|indicators"
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:36
+msgctxt "option|greeter|indicators"
+msgid "Move up"
+msgstr "Feljebb"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:37
+msgctxt "option|greeter|indicators"
+msgid "Up"
+msgstr "Fel"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:38
+msgctxt "option|greeter|indicators"
+msgid "Move down"
+msgstr "Lejebb"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:39
+msgctxt "option|greeter|indicators"
+msgid "Down"
+msgstr "Le"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:40
+msgctxt "option|greeter|indicators"
+msgid "Templates"
+msgstr "Sablonok"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:41
+msgctxt "option|greeter|clock-format"
+msgid "Clock format:"
+msgstr "Óra formátum:"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:42
+msgctxt "option|greeter|indicators"
+msgid "Redefine indicators"
+msgstr "A jelzések újradefiniálása"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:43
+msgctxt "tabs"
+msgid "Panel"
+msgstr "Panel"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:44
+msgctxt "option|greeter|position"
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:45
+msgctxt "option|greeter|position"
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:47
+#, no-c-format
+msgctxt "option|greeter|position"
+msgid "in %"
+msgstr "%"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:48
+msgctxt "option|greeter|position"
+msgid "from right"
+msgstr "jobbról"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:49
+msgctxt "option|greeter|position"
+msgid "from bottom"
+msgstr "alulról"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:50
+msgctxt "option|greeter|position"
+msgid "Select base point and its position."
+msgstr "Válassza ki az alappontot és annak helyzetét."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:51
+msgctxt "tabs"
+msgid "Window position"
+msgstr "Ablak helyzete"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:52
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Never"
+msgstr "Soha"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:53
+msgid "Accessibility"
+msgstr "Megközelíthetőség"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:54
+msgctxt "option|greeter|reader"
+msgid "Select path to reader..."
+msgstr "Válassza ki az olvasó elérési útját ..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:55
+msgctxt "option|greeter|reader"
+msgid "Command to launch screen reader"
+msgstr "Parancs a képernyőolvasó elindításához"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:56
+msgctxt "option|greeter|keyboard"
+msgid "Select path to keyboard..."
+msgstr "Válassza ki a billentyűzet elérési útját..."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:57
+msgctxt "option|greeter|keyboard"
+msgid "Command to launch on-screen keyboard"
+msgstr "Parancs a képernyőn megjelenő billentyűzet indításához"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:58
+msgctxt "option|greeter|a11y-states"
+msgid "Disabled at start"
+msgstr "Kikapcsolva indításkor"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:59
+msgctxt "option|greeter|a11y-states"
+msgid "Enabled at start"
+msgstr "Bekapcsolva inditáskor"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:60
+msgctxt "option|greeter|a11y-states"
+msgid "Save state between launches"
+msgstr "Állapot mentése az indítások között"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:61
+msgctxt "option|greeter|a11y-theme"
+msgid "Contrast theme"
+msgstr "Kontraszt téma"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:62
+msgctxt "option|greeter|a11y-font"
+msgid "Large text"
+msgstr "Nagy szöveg"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:63
+msgctxt "greeter|option|reader"
+msgid "Reader"
+msgstr "Olvasó"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:64
+msgctxt "greeter|option|keyboard"
+msgid "Keyboard"
+msgstr "Billentyűzet"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:65
+msgctxt "option|greeter|screensaver-timeout"
+msgid "Timeout until the screen blanks "
+msgstr "Időtúllépés amíg a képernyőkímélő be nem kapcsol "
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:66
+msgctxt "greeter|option|allow-debugging"
+msgid "Debugging mode"
+msgstr "Hibakereső mód"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:67
+msgctxt "greeter|option|allow-debugging"
+msgid ""
+"Enable keys to launch GtkInspector\n"
+"More informative log"
+msgstr ""
+"Engedélyezze a kulcsokat a GtkInspector elindításához\n"
+"Informatívabb napló"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:69
+msgctxt "tabs"
+msgid "Misc."
+msgstr "Egyéb beállítások."
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:70
+#: ../data/IndicatorPropertiesDialog.ui.h:3
+msgctxt "button"
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:71
+msgctxt "button"
+msgid "_Save"
+msgstr "_Mentés"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:72
+msgctxt "button"
+msgid "_Reload"
+msgstr "_Újratöltés"
+
+#: ../data/GtkGreeterSettingsWindow.ui.h:73
+msgid "Read configuration file"
+msgstr "Olvassa el a konfigurációs fájlt"
+
+#: ../data/IconChooserDialog.ui.h:1
+msgctxt "icon-dialog"
+msgid "Select icon"
+msgstr "Válasszon ikont"
+
+#: ../data/IconChooserDialog.ui.h:2
+msgctxt "button"
+msgid "_Cancel"
+msgstr "_Megszakítás"
+
+#: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:14
+msgctxt "button"
+msgid "_OK"
+msgstr "_Kiválaszt"
+
+#: ../data/IconChooserDialog.ui.h:4
+msgid "Add selected indicator to the list and close this window"
+msgstr "Adja hozzá a kijelölt jelzőt a listához, és zárja be ezt az ablakot"
+
+#: ../data/IconChooserDialog.ui.h:5
+msgctxt "icon-dialog"
+msgid "Icon _name:"
+msgstr "Ikon _neve:"
+
+#: ../data/IconChooserDialog.ui.h:6
+msgctxt "icon-dialog"
+msgid "_Contexts:"
+msgstr "_Kontextusok:"
+
+#: ../data/IconChooserDialog.ui.h:7
+msgctxt "icon-dialog"
+msgid "_Icon names:"
+msgstr "_Ikon nevek:"
+
+#: ../data/IconChooserDialog.ui.h:8
+msgctxt "icon-dialog"
+msgid "List _standard icons only"
+msgstr "Csak a _szabványos ikonokat sorolja fel"
+
+#: ../data/ImageChooserDialog.ui.h:1
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
+msgid "_Cancel"
+msgstr "_Megszakítás"
+
+#: ../data/ImageChooserDialog.ui.h:2
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
+msgid "_OK"
+msgstr "_Rendben"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:1
+msgctxt "option-entry|indicators"
+msgid "Select file..."
+msgstr "Válaszd ki a fájlt..."
+
+#: ../data/IndicatorPropertiesDialog.ui.h:2
+msgctxt "option-entry|indicators"
+msgid "Indicator properties"
+msgstr "A jelző tulajdonságai"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:5
+msgctxt "button"
+msgid "_Add"
+msgstr "_Hozzáadás"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:6
+msgctxt "option-entry|indicators"
+msgid "Indicator"
+msgstr "Jelző"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:7
+msgctxt "option-entry|indicators"
+msgid "Display label"
+msgstr "Címke megjelenítés"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:8
+msgctxt "option-entry|indicators"
+msgid "Leave empty to use default value"
+msgstr "Az alapértelmezett érték használatához hagyja üresen"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:9
+msgctxt "option-entry|indicators"
+msgid "Display image"
+msgstr "Kép megjelenítés"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:10
+msgctxt "option-entry|indicators"
+msgid "Indicator library/service:"
+msgstr "Jelző könyvtár/szolgáltatás:"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:11
+msgctxt "option-entry|indicators"
+msgid "Hide disabled power actions"
+msgstr "Kikapcsolt áramellátási műveletek elrejtése"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:12
+msgctxt "option-entry|indicators"
+msgid "Text to display:"
+msgstr "Szöveg megjelenítése:"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:13
+msgctxt "option-entry|indicators"
+msgid "Spacer - fills the maximum available space"
+msgstr "Távtartó - kitölti a rendelkezésre álló maximális helyet"
+
+#: ../data/IndicatorPropertiesDialog.ui.h:14
+msgctxt "option-entry|indicators"
+msgid "Separator - draw a separator"
+msgstr "Elválasztó - rajzoljon elválasztót"
+
+#: ../data/MultiheadSetupDialog.ui.h:1
+msgctxt "option|multihead"
+msgid "Multihead setup"
+msgstr "További beállítás"
+
+#: ../data/MultiheadSetupDialog.ui.h:2
+msgctxt "option|multihead"
+msgid "Add configuration"
+msgstr "Konfiguráció hozzáadása"
+
+#: ../data/MultiheadSetupDialog.ui.h:3
+msgctxt "option|multihead"
+msgid "No configured monitors found"
+msgstr "Nem található beállított monitor"
+
+#: ../data/MultiheadSetupDialog.ui.h:4
+msgctxt "option|multihead"
+msgid "Monitor name:"
+msgstr "Monitor neve:"
+
+#: ../data/MultiheadSetupDialog.ui.h:5
+msgid "Don't leave empty"
+msgstr "Ne hagyha üresen"
+
+#: ../data/MultiheadSetupDialog.ui.h:6
+msgctxt "option|multihead"
+msgid "Add new monitor configuration"
+msgstr "Új monitor beállítása hozzáadása"
+
+#: ../data/MultiheadSetupDialog.ui.h:7
+msgctxt "option|multihead"
+msgid "Overwrite default \"background\" option"
+msgstr "Az alapértelmezett \"háttér\" opció felülírása"
+
+#: ../data/MultiheadSetupDialog.ui.h:10
+msgctxt "option|multihead"
+msgid "Overwrite default \"user-background\" option"
+msgstr "Az alapértelmezett \"felhasználói háttér\" opció felülírása"
+
+#: ../data/MultiheadSetupDialog.ui.h:12
+msgctxt "option|multihead"
+msgid "Overwrite default \"laptop\" option"
+msgstr "Az alapértelmezett \"laptop\" opció felülírása"
+
+#: ../data/MultiheadSetupDialog.ui.h:13
+msgctxt "option|greeter|laptop"
+msgid "This monitor is laptop display (detect lid closing)"
+msgstr "Ez a monitor laptop kijelző (érzékeli a fedél záródását)"
+
+#: ../data/MultiheadSetupDialog.ui.h:15
+msgctxt "option|multihead"
+msgid ""
+"<i>Note: greeter does not set monitors geometry.\n"
+"You need to configure it by yourself.</i>"
+msgstr ""
+"<i>Megjegyzés: greeter nem állítja be a monitorok geometriáját..\n"
+"Magának kell konfigurálnia.</i>"
+
+#. Panel
+#. Translators: Default clock format for your locale
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
+msgid "%a, %H:%M"
+msgstr "%a, %H:%M"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
+msgid "You don't have permissions to change greeter configuration"
+msgstr "Nincs engedélye az üdvözlő konfigurációjának megváltoztatására"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
+msgid "No permissions to save configuration"
+msgstr "Nincs engedélye a konfiguráció mentésére"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
+#, python-brace-format
+msgid ""
+"It seems that you don't have permissions to write to file:\n"
+"{path}\n"
+"\n"
+"Try to run this program using \"sudo\" or \"pkexec\""
+msgstr ""
+"Úgy tűnik, hogy nincs jogosultsága fájlba írni:\n"
+"{path}\n"
+"\n"
+"Próbálja meg futtatni ezt a programot a \"sudo\" vagy a \"pkexec\" használatával"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
+msgid "<i>disabled</i>"
+msgstr "<i>tiltva</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
+msgid "<i>empty string</i>"
+msgstr "<i>üres karakter</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
+msgid "<i>None</i>"
+msgstr "<i>Egyik sem</i>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
+#, python-brace-format
+msgid "Value defined in file: {path}"
+msgstr "A fájlban megadott érték: {path}"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
+#, python-brace-format
+msgid "Reset to initial value: <b>{value}</b>"
+msgstr "Visszaállítás a kezdeti értékre: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
+#, python-brace-format
+msgid "Reset to default value: <b>{value}</b>"
+msgstr "Visszaállítás a alapértelmezett értékre: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
+#, python-brace-format
+msgid "Reset to value: <b>{value}</b>"
+msgstr "Visszaállítás az értékre: <b>{value}</b>"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
+#, python-brace-format
+msgctxt "option|greeter|screensaver-timeout"
+msgid "{count} min"
+msgstr "{count} perc"
+
+#: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
+#, python-brace-format
+msgctxt "option|greeter|allow-debugging"
+msgid ""
+"GtkInspector is not available on your system\n"
+"Gtk version: {current} < {minimal}"
+msgstr ""
+"A GtkInspector nem érhető el a rendszerén\n"
+"Gtk verzió: {current} < {minimal}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:182
+#, python-brace-format
+msgid "File not found: {path}"
+msgstr "A fájl nem található: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:206
+#, python-brace-format
+msgid "Failed to check permissions: {error}"
+msgstr "Nem sikerült ellenőrizni az engedélyeket: {error}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:209
+#, python-brace-format
+msgid "Directory is not readable: {path}"
+msgstr "Könyvtár nem olvasható: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:212
+#: ../lightdm_gtk_greeter_settings/helpers.py:215
+#: ../lightdm_gtk_greeter_settings/helpers.py:217
+#, python-brace-format
+msgid "LightDM does not have permissions to read path: {path}"
+msgstr "A LightDM nem rendelkezik engedéllyel az útvonal olvasásához: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:223
+#, python-brace-format
+msgid "Path is not a regular file: {path}"
+msgstr "Az elérési út nem rendes fájl: {path}"
+
+#: ../lightdm_gtk_greeter_settings/helpers.py:229
+#: ../lightdm_gtk_greeter_settings/helpers.py:233
+#: ../lightdm_gtk_greeter_settings/helpers.py:236
+#, python-brace-format
+msgid "LightDM does not have permissions to execute file: {path}"
+msgstr "A LightDM nem rendelkezik engedéllyel a következő fájl végrehajtására: {path}"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
+msgctxt "icon-dialog"
+msgid "All contexts"
+msgstr "Minden összefüggés"
+
+#. separator
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
+msgctxt "icon-dialog"
+msgid "Actions"
+msgstr "Műveletek"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
+msgctxt "icon-dialog"
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
+msgctxt "icon-dialog"
+msgid "Categories"
+msgstr "Kategóriák"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
+msgctxt "icon-dialog"
+msgid "Devices"
+msgstr "Eszközök"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
+msgctxt "icon-dialog"
+msgid "Emblems"
+msgstr "Emlbémák"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
+msgctxt "icon-dialog"
+msgid "Emoticons"
+msgstr "Hangulatjelek"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
+msgctxt "icon-dialog"
+msgid "International"
+msgstr "Nemzetközi"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
+msgctxt "icon-dialog"
+msgid "MIME Types"
+msgstr "MIME Típus"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
+msgctxt "icon-dialog"
+msgid "Places"
+msgstr "Helyek"
+
+#: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
+msgctxt "icon-dialog"
+msgid "Status"
+msgstr "Állapot"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:85
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "Unrecognized value: {value}"
+msgstr "Felismerhetetlen érték: {value}"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:104
+msgctxt "option-entry|icon"
+msgid "Select icon name..."
+msgstr "Az ikon nevének kiválasztása..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:106
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>Icon: {icon}</b>"
+msgstr "<b>ikon: {icon}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:126
+msgctxt "option-entry|icon"
+msgid "Select file..."
+msgstr "Válaszd ki a fájlt..."
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:129
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b>"
+msgstr "<b>Fájl: {path}</b>"
+
+#: ../lightdm_gtk_greeter_settings/IconEntry.py:131
+#, python-brace-format
+msgctxt "option-entry|icon"
+msgid "<b>File: {path}</b> (failed to load)"
+msgstr "<b>Fájl: {path}</b> (fájl betöltése sikertelen)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
+msgctxt "option-entry|indicators"
+msgid "Use default value..."
+msgstr "Alapértelmezett érték használata..."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
+msgctxt "option-entry|indicators"
+msgid "<b>Using default value</b>"
+msgstr "<b>Az alapértelmezett érték használata</b>"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
+msgctxt "option-entry|indicators"
+msgid "Path/Service field is not filled"
+msgstr "Útvonal/szolgáltatás mező nincs kitöltve"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
+#, python-brace-format
+msgctxt "option-entry|indicators"
+msgid ""
+"Indicator \"{name}\" is already in the list.\n"
+"It will be overwritten."
+msgstr ""
+"A \"{name}\" jelző már szerepel a listán.\n"
+"Felülírásra kerül."
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
+msgctxt "option-entry|indicators|name"
+msgid "External library/service"
+msgstr "Külső könyvtár/szolgáltatás"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
+msgctxt "option-entry|indicators|name"
+msgid "Spacer"
+msgstr "Távtartó"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
+msgctxt "option-entry|indicators|name"
+msgid "Separator"
+msgstr "Szétválasztó"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
+msgctxt "option-entry|indicators|name"
+msgid "Text"
+msgstr "Szöveg"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
+msgctxt "option-entry|indicators|name"
+msgid "Clock"
+msgstr "Óra"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
+msgctxt "option-entry|indicators|name"
+msgid "Host name"
+msgstr "Gépnév"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
+msgctxt "option-entry|indicators|name"
+msgid "Keyboard layout"
+msgstr "Billentyűzetkiosztás"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
+msgctxt "option-entry|indicators|name"
+msgid "Sessions menu"
+msgstr "Munkamenetek menü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
+msgctxt "option-entry|indicators|name"
+msgid "Languages menu"
+msgstr "Nyelvek menü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
+msgctxt "option-entry|indicators|name"
+msgid "Accessibility menu"
+msgstr "Kisegítő lehetőségek menü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
+msgctxt "option-entry|indicators|name"
+msgid "Power menu"
+msgstr "Teljesítmény menű"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
+msgctxt "option-entry|indicators|tooltip"
+msgid "Spacer"
+msgstr "Távtartó"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
+msgctxt "option-entry|indicators|tooltip"
+msgid "Separator"
+msgstr "Szétválasztó"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
+msgctxt "option-entry|indicators|tooltip"
+msgid "Custom text or/and image"
+msgstr "Egyéni szöveg vagy/és kép"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
+msgctxt "option-entry|indicators|tooltip"
+msgid "Host name"
+msgstr "Gépnév"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
+msgctxt "option-entry|indicators|tooltip"
+msgid "Clock"
+msgstr "Óra"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
+msgctxt "option-entry|indicators|tooltip"
+msgid "Layout indicator"
+msgstr "Elrendezés jelző"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
+msgctxt "option-entry|indicators|tooltip"
+msgid "Sessions menu (xfce, unity, gnome etc.)"
+msgstr "Munkamenetek menü (xfce, unity, gnome stb.)"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
+msgctxt "option-entry|indicators|tooltip"
+msgid "Languages menu"
+msgstr "Nyelvek menü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
+msgctxt "option-entry|indicators|tooltip"
+msgid "Accessibility menu"
+msgstr "Kisegítő lehetőségek menü"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
+msgctxt "option-entry|indicators|tooltip"
+msgid "Power menu"
+msgstr "Teljesítmény menű"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
+msgctxt "option-entry|indicators"
+msgid "Reset to _defaults"
+msgstr "Visszaállítás az _alapértelmezett értékekre"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
+msgctxt "option-entry|indicators"
+msgid "Display _label"
+msgstr "_Címke megjelenítés"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
+msgctxt "option-entry|indicators"
+msgid "Display _image"
+msgstr "_Kép megjelenítés"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
+msgctxt "option-entry|indicators"
+msgid "_Remove"
+msgstr "_Eltávolítás"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
+msgctxt "option-entry|indicators"
+msgid "Show unused items"
+msgstr "Nem használt elemek megjelenítése"
+
+#: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
+msgctxt "option-entry|indicators"
+msgid "Predefined templates:"
+msgstr "Előre definiált sablonok:"
+
+#: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
+msgctxt "option|StringPathEntry"
+msgid "Select path"
+msgstr "Válassza ki az elérési utat"
+
+#: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
+msgid "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+msgstr "A Beállításszerkesztő futtatásához hitelesítés szükséges a LightDM GTK+ Greeter-hez"
