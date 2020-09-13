@@ -5,8 +5,8 @@
 #
 # Fordítók:
 # Huszák Győző <huszakgyozo@gmail.com>, 2020.
-msgid ""
-msgstr ""
+#msgid ""
+#msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-18 06:28-0400\n"
