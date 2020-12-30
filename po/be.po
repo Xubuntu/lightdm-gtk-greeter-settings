@@ -1,163 +1,170 @@
-# Belarusian translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2018 Rosetta Contributors and Canonical Ltd 2018
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Źmicier Turok <nashtlumach@gmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2018-04-20 21:00+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Belarusian <be@li.org>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Źmicier Turok <nashtlumach@gmail.com>, 2020\n"
+"Language-Team: Belarusian (https://www.transifex.com/xubuntu/teams/110148/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
+"Language: be\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
-msgstr ""
+msgstr "Налады LightDM GTK+ Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK+ Greeter"
-msgstr ""
+msgstr "Наладка LightDM GTK+ Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK+ Greeter: settings"
-msgstr ""
+msgstr "LightDM GTK+ Greeter: налады"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
 msgid "None"
-msgstr ""
+msgstr "Няма"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:3
 msgctxt "option|greeter|xft-rgba"
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:4
 msgctxt "option|greeter|xft-rgba"
 msgid "BGR"
-msgstr ""
+msgstr "BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical RGB"
-msgstr ""
+msgstr "Вертыкальны RGB"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical BGR"
-msgstr ""
+msgstr "Вертыкальны BGR"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr ""
+msgstr "Няма"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr ""
+msgstr "Лёгкі"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Medium"
-msgstr ""
+msgstr "Сярэдні"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:10
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Full"
-msgstr ""
+msgstr "Поўны"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
 msgid "Antialias"
-msgstr ""
+msgstr "Згладжванне"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr ""
+msgstr "Уключыце гэты параметр, каб замяніць прадвызначаныя налады"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
 msgid "DPI"
-msgstr ""
+msgstr "DPI (кропак на цалю)"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr ""
+msgstr "Субпіксельная адмалёўка"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Hinting"
-msgstr ""
+msgstr "Хінтынг"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
-msgstr ""
+msgstr "Дадатковыя параметры шрыфту"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
 msgid "Background"
-msgstr ""
+msgstr "Фон"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
+" <i>(або выкарыстоўваць <a href=\"\">асобныя налады</a> для кожнага "
+"манітора)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
-msgstr ""
+msgstr "Колер"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
-msgstr ""
+msgstr "Выява"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
 msgid "Theme"
-msgstr ""
+msgstr "Тэма"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
 msgid "Icons"
-msgstr ""
+msgstr "Значкі"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
 msgctxt "option|greeter|font-name"
 msgid "Font"
-msgstr ""
+msgstr "Шрыфт"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:24
 msgctxt "option|greeter|hide-user-image"
 msgid "User image"
-msgstr ""
+msgstr "Аватар"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
 msgid "Default user image"
-msgstr ""
+msgstr "Прадвызначаны аватар"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr ""
+msgstr "Выкарыстоўваць шпалеры карыстальніка, калі яны даступныя"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
 msgid "Appearance"
-msgstr ""
+msgstr "Выгляд"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:29
 #, no-c-format
@@ -167,176 +174,179 @@ msgid ""
 "%d - day, %m - month, %y %Y - year\n"
 "%a %A - day of the week, %b %B - month name"
 msgstr ""
+"%H %I - гадзіны, %M - хвіліны, %S - секунды\n"
+"%d - дзень, %m - месяц, %y %Y - год\n"
+"%a %A - дзень тыдня, %b %B - назва месяца"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
 msgctxt "option|greeter|indicators"
 msgid "Add indicator to list"
-msgstr ""
+msgstr "Дадаць індыкатар у спіс"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:33
 msgctxt "option|greeter|indicators"
 msgid "Add"
-msgstr ""
+msgstr "Дадаць"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:34
 msgctxt "option|greeter|indicators"
 msgid "Remove indicator from list"
-msgstr ""
+msgstr "Выдаліць індыкатар са спіса"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:35
 msgctxt "option|greeter|indicators"
 msgid "Remove"
-msgstr ""
+msgstr "Выдаліць"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:36
 msgctxt "option|greeter|indicators"
 msgid "Move up"
-msgstr ""
+msgstr "Перамясціць вышэй"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:37
 msgctxt "option|greeter|indicators"
 msgid "Up"
-msgstr ""
+msgstr "Уверх"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr ""
+msgstr "Перамясціць ніжэй"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
 msgid "Down"
-msgstr ""
+msgstr "Уніз"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:40
 msgctxt "option|greeter|indicators"
 msgid "Templates"
-msgstr ""
+msgstr "Шаблоны"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:41
 msgctxt "option|greeter|clock-format"
 msgid "Clock format:"
-msgstr ""
+msgstr "Фармат гадзінніка:"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:42
 msgctxt "option|greeter|indicators"
 msgid "Redefine indicators"
-msgstr ""
+msgstr "Перавызначыць індыкатары"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:43
 msgctxt "tabs"
 msgid "Panel"
-msgstr ""
+msgstr "Панэль"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:44
 msgctxt "option|greeter|position"
 msgid "Horizontal"
-msgstr ""
+msgstr "Гарызантальная"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:45
 msgctxt "option|greeter|position"
 msgid "Vertical"
-msgstr ""
+msgstr "Вертыкальная"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:47
 #, no-c-format
 msgctxt "option|greeter|position"
 msgid "in %"
-msgstr ""
+msgstr "у %"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:48
 msgctxt "option|greeter|position"
 msgid "from right"
-msgstr ""
+msgstr "справа"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
 msgid "from bottom"
-msgstr ""
+msgstr "знізу"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
 msgid "Select base point and its position."
-msgstr ""
+msgstr "Абярыце базавую кропку і яе пазіцыю."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
 msgid "Window position"
-msgstr ""
+msgstr "Пазіцыя акна"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:52
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Never"
-msgstr ""
+msgstr "Ніколі"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:53
 msgid "Accessibility"
-msgstr ""
+msgstr "Адмысловыя магчымасці"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr ""
+msgstr "Пазначце шлях для запуску праграмы для чытання з экрана..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
 msgid "Command to launch screen reader"
-msgstr ""
+msgstr "Загад запуску праграмы для чытання з экрана"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr ""
+msgstr "Пазначце шлях для запуску экраннай клавіятуры..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
 msgid "Command to launch on-screen keyboard"
-msgstr ""
+msgstr "Загад запуску экраннай клавіятуры"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgctxt "option|greeter|a11y-states"
 msgid "Disabled at start"
-msgstr ""
+msgstr "Адключана"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
 msgid "Enabled at start"
-msgstr ""
+msgstr "Уключана"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:60
 msgctxt "option|greeter|a11y-states"
 msgid "Save state between launches"
-msgstr ""
+msgstr "Захоўваць стан"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:61
 msgctxt "option|greeter|a11y-theme"
 msgid "Contrast theme"
-msgstr ""
+msgstr "Кантрасная тэма"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Вялікі тэкст"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
 msgid "Reader"
-msgstr ""
+msgstr "Чытанне з экрана"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:64
 msgctxt "greeter|option|keyboard"
 msgid "Keyboard"
-msgstr ""
+msgstr "Экранная клавіятура"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:65
 msgctxt "option|greeter|screensaver-timeout"
 msgid "Timeout until the screen blanks "
-msgstr ""
+msgstr "Час да выключэння экрана "
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:66
 msgctxt "greeter|option|allow-debugging"
 msgid "Debugging mode"
-msgstr ""
+msgstr "Рэжым адладкі"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:67
 msgctxt "greeter|option|allow-debugging"
@@ -344,190 +354,192 @@ msgid ""
 "Enable keys to launch GtkInspector\n"
 "More informative log"
 msgstr ""
+"Уключыць магчымасць выкарыстання інспектара Gtk\n"
+"Больш інфарматыўны журнал"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
 msgid "Misc."
-msgstr ""
+msgstr "Рознае"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:70
 #: ../data/IndicatorPropertiesDialog.ui.h:3
 msgctxt "button"
 msgid "_Close"
-msgstr ""
+msgstr "_Закрыць"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:71
 msgctxt "button"
 msgid "_Save"
-msgstr ""
+msgstr "За_хаваць"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:72
 msgctxt "button"
 msgid "_Reload"
-msgstr ""
+msgstr "Пера_загрузіць"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:73
 msgid "Read configuration file"
-msgstr ""
+msgstr "Перачытаць файл канфігурацыі"
 
 #: ../data/IconChooserDialog.ui.h:1
 msgctxt "icon-dialog"
 msgid "Select icon"
-msgstr ""
+msgstr "Абраць значок"
 
 #: ../data/IconChooserDialog.ui.h:2
 msgctxt "button"
 msgid "_Cancel"
-msgstr ""
+msgstr "_Скасаваць"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
 #: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "button"
 msgid "_OK"
-msgstr ""
+msgstr "_Добра"
 
 #: ../data/IconChooserDialog.ui.h:4
 msgid "Add selected indicator to the list and close this window"
-msgstr ""
+msgstr "Дадаць абраны індыкатар у спіс і закрыць гэтае акно"
 
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr ""
+msgstr "Назва _значка:"
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
 msgid "_Contexts:"
-msgstr ""
+msgstr "_Кантэкст:"
 
 #: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
-msgstr ""
+msgstr "_Назвы значкоў:"
 
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
-msgstr ""
+msgstr "Толькі _стандартныя значкі"
 
 #: ../data/ImageChooserDialog.ui.h:1
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
 msgid "_Cancel"
-msgstr ""
+msgstr "_Скасаваць"
 
 #: ../data/ImageChooserDialog.ui.h:2
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:263
 msgid "_OK"
-msgstr ""
+msgstr "_Добра"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:1
 msgctxt "option-entry|indicators"
 msgid "Select file..."
-msgstr ""
+msgstr "Абраць файл..."
 
 #: ../data/IndicatorPropertiesDialog.ui.h:2
 msgctxt "option-entry|indicators"
 msgid "Indicator properties"
-msgstr ""
+msgstr "Уласцівасці індыкатара"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:5
 msgctxt "button"
 msgid "_Add"
-msgstr ""
+msgstr "_Дадаць"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:6
 msgctxt "option-entry|indicators"
 msgid "Indicator"
-msgstr ""
+msgstr "Індыкатар"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:7
 msgctxt "option-entry|indicators"
 msgid "Display label"
-msgstr ""
+msgstr "Паказваць адмеціну"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr ""
+msgstr "Пакіньце пустым, каб выкарыстоўвалася прадвызначанае значэнне"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
 msgid "Display image"
-msgstr ""
+msgstr "Паказваць выяву"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
 msgid "Indicator library/service:"
-msgstr ""
+msgstr "Бібліятэка ці служба індыкатара:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr ""
+msgstr "Хаваць адключаныя дзеянні"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
 msgid "Text to display:"
-msgstr ""
+msgstr "Тэкст:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
 msgid "Spacer - fills the maximum available space"
-msgstr ""
+msgstr "Прамежак - запаўняе ўсю даступную прастору"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr ""
+msgstr "Падзяляльнік - падзяляе элементы"
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
 msgid "Multihead setup"
-msgstr ""
+msgstr "Наладка некалькіх манітораў"
 
 #: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "option|multihead"
 msgid "Add configuration"
-msgstr ""
+msgstr "Дадаць канфігурацыю"
 
 #: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "No configured monitors found"
-msgstr ""
+msgstr "Не знойдзена наладжаных манітораў"
 
 #: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "Monitor name:"
-msgstr ""
+msgstr "Назва манітора:"
 
 #: ../data/MultiheadSetupDialog.ui.h:5
 msgid "Don't leave empty"
-msgstr ""
+msgstr "Не пакідаць пустым"
 
 #: ../data/MultiheadSetupDialog.ui.h:6
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
-msgstr ""
+msgstr "Дадаць новую канфігурацыю манітора"
 
 #: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr ""
+msgstr "Перазапісаць прадвызначаны параметр \"background\""
 
 #: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr ""
+msgstr "Перазапісаць прадвызначаны параметр \"user-background\""
 
 #: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr ""
+msgstr "Перазапісаць прадвызначаны параметр \"laptop\""
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr ""
+msgstr "Гэта дысплей ноўтбука (адсочваць закрыццё ноўтбука)"
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -535,20 +547,22 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Звярніце ўвагу на тое, што праграма не вызначае памеры манітораў. Вам "
+"патрэбна наладзіць іх уласнаручна.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
-msgstr ""
+msgstr "У вас няма правоў на змену канфігурацыі"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
-msgstr ""
+msgstr "У вас няма правоў на захаванне канфігурацыі"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
 #, python-brace-format
@@ -558,44 +572,48 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
+"Здаецца, у вас няма правоў на запіс у файл:\n"
+"{path}\n"
+"\n"
+"Паспрабуйце запусціць праграму з дапамогай \"sudo\" або \"pkexec\""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
-msgstr ""
+msgstr "<i>адключана</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:376
 msgid "<i>empty string</i>"
-msgstr ""
+msgstr "<i>пусты радок</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
 msgid "<i>None</i>"
-msgstr ""
+msgstr "<i>Няма</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
 #, python-brace-format
 msgid "Value defined in file: {path}"
-msgstr ""
+msgstr "Значэнне вызначана ў файле: {path}"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
-msgstr ""
+msgstr "Скінуць да пачатковага значэння: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
 #, python-brace-format
 msgid "Reset to default value: <b>{value}</b>"
-msgstr ""
+msgstr "Скінуць да прадвызначанага значэння: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:472
 #, python-brace-format
 msgid "Reset to value: <b>{value}</b>"
-msgstr ""
+msgstr "Скінуць да значэння: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:494
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
-msgstr ""
+msgstr "{count} хв"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
 #, python-brace-format
@@ -604,145 +622,147 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
+"Інспектар Gtk не падтрымліваецца ў вашай сістэме\n"
+"Версія Gtk: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
 #, python-brace-format
 msgid "File not found: {path}"
-msgstr ""
+msgstr "Файл не знойдзены: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:206
 #, python-brace-format
 msgid "Failed to check permissions: {error}"
-msgstr ""
+msgstr "Не атрымалася праверыць правы доступу: {error}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:209
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr ""
+msgstr "Не атрымалася прачытаць змесціва каталога: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:212
 #: ../lightdm_gtk_greeter_settings/helpers.py:215
 #: ../lightdm_gtk_greeter_settings/helpers.py:217
 #, python-brace-format
 msgid "LightDM does not have permissions to read path: {path}"
-msgstr ""
+msgstr "У LightDM няма правоў на чытанне па гэтаму шляху: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr ""
+msgstr "Шлях не заканчваецца файлам: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #: ../lightdm_gtk_greeter_settings/helpers.py:233
 #: ../lightdm_gtk_greeter_settings/helpers.py:236
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
-msgstr ""
+msgstr "У LightDM няма правоў на запуск файлаў: {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
 msgid "All contexts"
-msgstr ""
+msgstr "Усе кантэксты"
 
 #. separator
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:202
 msgctxt "icon-dialog"
 msgid "Actions"
-msgstr ""
+msgstr "Дзеянні"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
 msgctxt "icon-dialog"
 msgid "Applications"
-msgstr ""
+msgstr "Праграмы"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
 msgctxt "icon-dialog"
 msgid "Categories"
-msgstr ""
+msgstr "Катэгорыі"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:205
 msgctxt "icon-dialog"
 msgid "Devices"
-msgstr ""
+msgstr "Прылады"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:206
 msgctxt "icon-dialog"
 msgid "Emblems"
-msgstr ""
+msgstr "Эмблемы"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:207
 msgctxt "icon-dialog"
 msgid "Emoticons"
-msgstr ""
+msgstr "Эматыконы"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:208
 msgctxt "icon-dialog"
 msgid "International"
-msgstr ""
+msgstr "Міжнародныя"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:209
 msgctxt "icon-dialog"
 msgid "MIME Types"
-msgstr ""
+msgstr "Тыпы MIME"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:210
 msgctxt "icon-dialog"
 msgid "Places"
-msgstr ""
+msgstr "Месцы"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:211
 msgctxt "icon-dialog"
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:85
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "Unrecognized value: {value}"
-msgstr ""
+msgstr "Нераспазнанае значэнне: {value}"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr ""
+msgstr "Абраць назву значка..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
-msgstr ""
+msgstr "<b>Значок: {icon}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
 msgctxt "option-entry|icon"
 msgid "Select file..."
-msgstr ""
+msgstr "Абраць файл..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:129
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b>"
-msgstr ""
+msgstr "<b>Файл: {path}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:131
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>File: {path}</b> (failed to load)"
-msgstr ""
+msgstr "<b>Файл: {path}</b> (не атрымалася загрузіць)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
 msgid "Use default value..."
-msgstr ""
+msgstr "Выкарыстоўваць прадвызначанае значэнне..."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
 msgctxt "option-entry|indicators"
 msgid "<b>Using default value</b>"
-msgstr ""
+msgstr "<b>Прадвызначанае значэнне</b>"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr ""
+msgstr "Поле шляху ці службы пустое"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -750,149 +770,149 @@ msgctxt "option-entry|indicators"
 msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
-msgstr ""
+msgstr "Індыкатар \"{name}\" ужо ёсць у спісе. Ён будзе заменены."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
 msgid "External library/service"
-msgstr ""
+msgstr "Вонкавая бібліятэка ці служба"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:132
 msgctxt "option-entry|indicators|name"
 msgid "Spacer"
-msgstr ""
+msgstr "Прамежак"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:133
 msgctxt "option-entry|indicators|name"
 msgid "Separator"
-msgstr ""
+msgstr "Падзяляльнік"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:134
 msgctxt "option-entry|indicators|name"
 msgid "Text"
-msgstr ""
+msgstr "Тэкст"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:135
 msgctxt "option-entry|indicators|name"
 msgid "Clock"
-msgstr ""
+msgstr "Гадзіннік"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
 msgctxt "option-entry|indicators|name"
 msgid "Host name"
-msgstr ""
+msgstr "Назва хоста"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
 msgctxt "option-entry|indicators|name"
 msgid "Keyboard layout"
-msgstr ""
+msgstr "Раскладка клавіятуры"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:138
 msgctxt "option-entry|indicators|name"
 msgid "Sessions menu"
-msgstr ""
+msgstr "Меню сеанса"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
 msgctxt "option-entry|indicators|name"
 msgid "Languages menu"
-msgstr ""
+msgstr "Меню моў"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
 msgctxt "option-entry|indicators|name"
 msgid "Accessibility menu"
-msgstr ""
+msgstr "Меню адмысловых магчымасцяў"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:141
 msgctxt "option-entry|indicators|name"
 msgid "Power menu"
-msgstr ""
+msgstr "Меню завяршэння працы"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:148
 msgctxt "option-entry|indicators|tooltip"
 msgid "Spacer"
-msgstr ""
+msgstr "Прамежак"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:149
 msgctxt "option-entry|indicators|tooltip"
 msgid "Separator"
-msgstr ""
+msgstr "Падзяляльнік"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:150
 msgctxt "option-entry|indicators|tooltip"
 msgid "Custom text or/and image"
-msgstr ""
+msgstr "Адвольны тэкст ці выява"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
 msgctxt "option-entry|indicators|tooltip"
 msgid "Host name"
-msgstr ""
+msgstr "Назва хоста"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
 msgctxt "option-entry|indicators|tooltip"
 msgid "Clock"
-msgstr ""
+msgstr "Гадзіннік"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
 msgctxt "option-entry|indicators|tooltip"
 msgid "Layout indicator"
-msgstr ""
+msgstr "Індыкатар раскладкі клавіятуры"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
 msgid "Sessions menu (xfce, unity, gnome etc.)"
-msgstr ""
+msgstr "Меню сеансаў (xfce, unity, gnome і інш.)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
 msgid "Languages menu"
-msgstr ""
+msgstr "Меню моў"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
 msgctxt "option-entry|indicators|tooltip"
 msgid "Accessibility menu"
-msgstr ""
+msgstr "Меню адмысловых магчымасцяў"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:158
 msgctxt "option-entry|indicators|tooltip"
 msgid "Power menu"
-msgstr ""
+msgstr "Меню завяршэння працы"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:583
 msgctxt "option-entry|indicators"
 msgid "Reset to _defaults"
-msgstr ""
+msgstr "Скінуць да _прадвызначанага"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr ""
+msgstr "Паказваць _адмеціну"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
 msgid "Display _image"
-msgstr ""
+msgstr "Паказваць _выяву"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
 msgctxt "option-entry|indicators"
 msgid "_Remove"
-msgstr ""
+msgstr "_Выдаліць"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
 msgctxt "option-entry|indicators"
 msgid "Show unused items"
-msgstr ""
+msgstr "Паказваць элементы, якія не выкарыстоўваюцца"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
 msgctxt "option-entry|indicators"
 msgid "Predefined templates:"
-msgstr ""
+msgstr "Шаблоны:"
 
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
 msgctxt "option|StringPathEntry"
 msgid "Select path"
-msgstr ""
+msgstr "Абраць шлях"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr ""
+msgstr "Для запуску налад LightDM GTK+ Greeter патрабуецца аўтэнтыфікацыя"
