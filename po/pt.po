@@ -496,7 +496,7 @@ msgstr "Separador - desenhar um separador"
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
 msgid "Multihead setup"
-msgstr "Configuração Multihead"
+msgstr "Configuração multihead"
 
 #: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "option|multihead"
