@@ -1,22 +1,27 @@
-# French translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# Nate Bright <nate.bright@protonmail.com>, 2020
+# roxfr <roxfr@outlook.fr>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2018-04-14 16:42+0000\n"
-"Last-Translator: Gérard Burger <Unknown>\n"
-"Language-Team: French <fr@li.org>\n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: roxfr <roxfr@outlook.fr>, 2021\n"
+"Language-Team: French (https://www.transifex.com/xubuntu/teams/110148/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
@@ -110,18 +115,19 @@ msgstr "Arrière-plan"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
 " <i>(ou utiliser la <a href=\"\">configuration multi-écrans</a> pour "
 "configurer les écrans séparément)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Couleur"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Image"
@@ -322,7 +328,7 @@ msgstr "Thème de contraste"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Grand texte"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -471,7 +477,7 @@ msgstr "Bibliothèque/Service de l'indicateur"
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr ""
+msgstr "Masquer les actions d'alimentation désactivées"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
@@ -544,12 +550,14 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Note: Le greeter ne définit pas l'ensemble des écrans.\n"
+"Vous devrez le configurer vous-même.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
@@ -656,7 +664,8 @@ msgstr "Emplacement vers un fichier non valide : {path}"
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
 msgstr ""
-"LightDM n'a pas les permissions suffisantes pour exécuter ce fichier : {path}"
+"LightDM n'a pas les permissions suffisantes pour exécuter ce fichier : "
+"{path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
