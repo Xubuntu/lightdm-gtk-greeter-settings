@@ -1,21 +1,26 @@
-# Dutch translation for lightdm-gtk-greeter-settings
-# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
-# This file is distributed under the same license as the lightdm-gtk-greeter-settings package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# Willem Hobers <whobers@gmail.com>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2017-11-23 18:03+0000\n"
-"Last-Translator: Pjotr12345 <Unknown>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Willem Hobers <whobers@gmail.com>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/xubuntu/teams/110148/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK+ Greeter settings"
@@ -109,18 +114,19 @@ msgstr "Achtergrond"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
 " <i>(of gebruik <a href=\"\">multibeeldscherm-opstelling</a> voor "
 "individuele beelschermen)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Kleur"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Afbeelding"
@@ -321,7 +327,7 @@ msgstr "Contrastthema"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Grote tekst"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -543,12 +549,14 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Let op: greeter stelt de monitorafmetingen niet in.\n"
+"Dit moet u zelf installen.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %U:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
@@ -567,8 +575,7 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
-"Het ziet ernaar uit dat u geen rechten heeft om te schrijven naar het "
-"bestand:\n"
+"Het ziet ernaar uit dat u geen rechten heeft om te schrijven naar het bestand:\n"
 "{path}\n"
 "\n"
 "Probeer om dit programma te draaien met \"sudo\" of \"pkexec\""
