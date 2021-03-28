@@ -664,7 +664,7 @@ msgstr "La ubicación no corresponde a un archivo válido:  {path}"
 #, python-brace-format
 msgid "LightDM does not have permissions to execute file: {path}"
 msgstr ""
-"LightDM no tiene los permisos requeridos para ejecutar el archivo:  {path}"
+"LightDM no tiene los permisos requeridos para ejecutar el archivo: {path}"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:200
 msgctxt "icon-dialog"
