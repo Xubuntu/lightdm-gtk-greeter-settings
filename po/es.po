@@ -567,7 +567,7 @@ msgstr ""
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
-msgstr "No tiene permisos requeridos para guardar la configuración"
+msgstr "No tiene los permisos requeridos para guardar la configuración"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:186
 #, python-brace-format
