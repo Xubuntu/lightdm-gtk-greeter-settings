@@ -656,7 +656,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/helpers.py:223
 #, python-brace-format
 msgid "Path is not a regular file: {path}"
-msgstr "La ubicación no corresponde a un archivo válido:  {path}"
+msgstr "La ubicación no corresponde a un archivo válido: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:229
 #: ../lightdm_gtk_greeter_settings/helpers.py:233
