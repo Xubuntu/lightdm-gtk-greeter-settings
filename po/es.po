@@ -117,7 +117,7 @@ msgstr "Fondo de la pantalla"
 msgctxt "option|multihead"
 msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
-" <i>(o use <a href=\"\">configuración multipantalla</a> para monitores "
+" <i>(o usar <a href=\"\">configuración multipantalla</a> para monitores "
 "individuales)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
