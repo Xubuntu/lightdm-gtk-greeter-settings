@@ -64,7 +64,7 @@ msgstr "BGR عمودي"
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
 msgid "None"
-msgstr "لا شيء"
+msgstr "دون"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
