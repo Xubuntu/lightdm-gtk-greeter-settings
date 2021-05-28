@@ -69,7 +69,7 @@ msgstr "دون"
 #: ../data/GtkGreeterSettingsWindow.ui.h:8
 msgctxt "option|greeter|xft-hintstyle"
 msgid "Slight"
-msgstr "خفيف"
+msgstr "طفيف"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:9
 msgctxt "option|greeter|xft-hintstyle"
