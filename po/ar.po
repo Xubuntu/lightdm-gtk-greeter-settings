@@ -84,7 +84,7 @@ msgstr "كامل"
 #: ../data/GtkGreeterSettingsWindow.ui.h:11
 msgctxt "option|greeter|xft-antialias"
 msgid "Antialias"
-msgstr "تنعيم"
+msgstr "إزالة التسنن"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
