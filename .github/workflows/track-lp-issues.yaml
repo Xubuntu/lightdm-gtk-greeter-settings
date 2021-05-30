@@ -1,10 +1,14 @@
 name: Report LP issue on GitHub
 on:
   push:
+    branches:
+      - master
     paths:
       - '.github/workflows/track-lp-issues.yaml'
       - '.github/lpbugtracker.py'
   schedule:
+    branches:
+      - master
     - cron: '0 20 * * *'
 
 jobs:

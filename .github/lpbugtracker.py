@@ -33,8 +33,7 @@ def main():
     for id in lp_bugs:
         tag = "LP#%s" % id
         if tag not in gh_tracked_lp_bugs:
-            print(tag)
-        #    create_issue(id, lp_bugs[id]["title"], lp_bugs[id]["link"])
+            create_issue(id, lp_bugs[id]["title"], lp_bugs[id]["link"])
 
 
 def get_lp_bugs():
