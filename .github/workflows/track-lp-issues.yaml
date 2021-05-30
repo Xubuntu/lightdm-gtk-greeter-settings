@@ -1,4 +1,4 @@
-name: Report LP issue on GitHub
+name: Sync Launchpad issues to GitHub
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   add-lp-issues:
-    name: Port LP issues into GitHub bug tracker
+    name: Sync Launchpad issues to GitHub bug tracker
     runs-on: ubuntu-latest
 
     steps:

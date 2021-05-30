@@ -33,9 +33,6 @@ def main():
 
     gh_bugs = get_gh_bugs()
 
-    print(lp_bugs)
-    print(gh_bugs)
-
     for id in lp_bugs:
         if id in gh_bugs.keys():
             if lp_bugs[id]["closed"] and gh_bugs[id]["status"] != "closed":
@@ -102,8 +99,7 @@ def get_gh_bugs():
 def create_issue(id, title, weblink):
     """ Create a new Bug using HUB """
     print("creating:", id, title, weblink)
-    #subprocess.run(
-    print(
+    subprocess.run(
         [
             HUB,
             "issue",
@@ -121,8 +117,7 @@ def create_issue(id, title, weblink):
 def close_issue(id, status):
     """ Close the Bug using HUB and leave a comment """
     print("closing:", id, status)
-    #subprocess.run(
-    print(
+    subprocess.run(
         [
             HUB,
             "api",
@@ -132,8 +127,7 @@ def close_issue(id, status):
         ]
     )
 
-    #subprocess.run(
-    print(
+    subprocess.run(
         [
             HUB,
             "issue",
