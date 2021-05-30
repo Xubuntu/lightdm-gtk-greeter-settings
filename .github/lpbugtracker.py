@@ -123,7 +123,7 @@ def close_issue(id, status):
             "api",
             "repos/{}/{}/issues/{}/comments".format(GH_OWNER, GH_REPO, id),
             "--field",
-            "body='Issue closed on Launchpad with status: {}'".format(status)
+            "body=Issue closed on Launchpad with status: {}".format(status)
         ]
     )
 
