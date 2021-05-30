@@ -28,14 +28,12 @@ def main():
     if len(lp_bugs) == 0:
         return
 
-    print(lp_bugs)
-
     gh_tracked_lp_bugs = get_gh_bugs()
 
     for id in lp_bugs:
         tag = "LP#%s" % id
-        print(tag)
-        #if tag not in gh_tracked_lp_bugs:
+        if tag not in gh_tracked_lp_bugs:
+            print(tag)
         #    create_issue(id, lp_bugs[id]["title"], lp_bugs[id]["link"])
 
 
