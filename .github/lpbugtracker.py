@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 # vi: set ft=python :
 """
-Launchpad Bug Tracker uses launchpadlib to get the ubuntu lightdm-gtk-greeter-settings bugs.
-The first time, the full list is saved in a json file.
-The next times, the newly get list of Launchpad bugs are compared with the ones
-stored in the json file to show if any new issue was created since last check.
+Launchpad Bug Tracker uses launchpadlib to get the bugs.
 
 Based on https://github.com/ubuntu/yaru/blob/master/.github/lpbugtracker.py
 """
@@ -19,6 +16,12 @@ log = logging.getLogger("lpbugtracker")
 log.setLevel(logging.DEBUG)
 
 HUB = ".github/hub"
+GH_OWNER = "Xubuntu"
+GH_REPO = "lightdm-gtk-greeter-settings"
+
+LP_SOURCE_NAME = "lightdm-gtk-greeter-settings"
+LP_SOURCE_URL_NAME = "lightdm-gtk-greeter-settings"
+
 HOME = os.path.expanduser("~")
 CACHEDIR = os.path.join(HOME, ".launchpadlib", "cache")
 
@@ -28,11 +31,16 @@ def main():
     if len(lp_bugs) == 0:
         return
 
-    gh_tracked_lp_bugs = get_gh_bugs()
+    gh_bugs = get_gh_bugs()
+
+    print(lp_bugs)
+    print(gh_bugs)
 
     for id in lp_bugs:
-        tag = "LP#%s" % id
-        if tag not in gh_tracked_lp_bugs:
+        if id in gh_bugs.keys():
+            if lp_bugs[id]["closed"] and gh_bugs[id]["status"] != "closed":
+                close_issue(gh_bugs[id], lp_bugs[id]["status"])
+        elif not lp_bugs[id]["closed"]:
             create_issue(id, lp_bugs[id]["title"], lp_bugs[id]["link"])
 
 
@@ -40,23 +48,30 @@ def get_lp_bugs():
     """Get a list of bugs from Launchpad"""
 
     lp = Launchpad.login_anonymously(
-        "LightDM GTK Greeter Settings LP bug checker", "production", CACHEDIR, version="devel"
+        "%s LP bug checker" % LP_SOURCE_NAME, "production", CACHEDIR, version="devel"
     )
 
     ubuntu = lp.distributions["ubuntu"]
     archive = ubuntu.main_archive
 
-    packages = archive.getPublishedSources(source_name="lightdm-gtk-greeter-settings")
+    packages = archive.getPublishedSources(source_name=LP_SOURCE_NAME)
     package = ubuntu.getSourcePackage(name=packages[0].source_package_name)
 
-    bug_tasks = package.searchTasks()
+    bug_tasks = package.searchTasks(status=["New", "Opinion",
+                                            "Invalid", "Won't Fix",
+                                            "Expired", "Confirmed",
+                                            "Triaged", "In Progress",
+                                            "Fix Committed", "Fix Released",
+                                            "Incomplete"])
     bugs = {}
 
     for task in bug_tasks:
         id = str(task.bug.id)
         title = task.title.split(": ")[1]
-        link = "https://bugs.launchpad.net/ubuntu/+source/lightdm-gtk-greeter-settings/+bug/" + str(id)
-        bugs[id] = {"title": title, "link": link}
+        status = task.status
+        closed = status in ["Invalid", "Won't Fix", "Expired", "Fix Released"]
+        link = "https://bugs.launchpad.net/ubuntu/+source/{}/+bug/{}".format(LP_SOURCE_URL_NAME, id)
+        bugs[id] = {"title": title, "link": link, "status": status, "closed": closed}
 
     return bugs
 
@@ -73,17 +88,22 @@ def get_gh_bugs():
     """
 
     output = subprocess.check_output(
-        [HUB, "issue", "--labels", "Launchpad", "--state", "all"]
+        [HUB, "issue", "--labels", "Launchpad", "--state", "all", "--format", "%I %S %t%n"]
     )
-    return [
-        line.strip().split()[1] for line in output.decode().split("\n") if "LP#" in line
-    ]
+    bugs = {}
+    for line in output.decode().split("\n"):
+        if "LP#" in line:
+            id, status, lpid, title = line.strip().split(" ", 3)
+            lpid = lpid[3:]
+            bugs[lpid] = {"id": id, "status": status, "title": title}
+    return bugs
 
 
 def create_issue(id, title, weblink):
     """ Create a new Bug using HUB """
     print("creating:", id, title, weblink)
-    subprocess.run(
+    #subprocess.run(
+    print(
         [
             HUB,
             "issue",
@@ -94,6 +114,33 @@ def create_issue(id, title, weblink):
             "Reported first on Launchpad at {}".format(weblink),
             "-l",
             "Launchpad",
+        ]
+    )
+
+
+def close_issue(id, status):
+    """ Close the Bug using HUB and leave a comment """
+    print("closing:", id, status)
+    #subprocess.run(
+    print(
+        [
+            HUB,
+            "api",
+            "repos/{}/{}/issues/{}/comments".format(GH_OWNER, GH_REPO, id),
+            "--field",
+            "body='Issue closed on Launchpad with status: {}'".format(status)
+        ]
+    )
+
+    #subprocess.run(
+    print(
+        [
+            HUB,
+            "issue",
+            "update",
+            id,
+            "--state",
+            "closed"
         ]
     )
 
