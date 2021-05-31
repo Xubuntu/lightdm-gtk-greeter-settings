@@ -31,7 +31,6 @@ def main():
         return
 
     gh_bugs = get_gh_bugs()
-    print(gh_bugs) # verification of installed hub binary
 
     for id in lp_bugs:
         if id in gh_bugs.keys():
