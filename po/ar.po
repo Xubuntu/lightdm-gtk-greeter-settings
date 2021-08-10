@@ -93,7 +93,7 @@ msgstr "تمكين هذا الخيار لتجاوز الإعدادات الاف�
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
 msgid "DPI"
-msgstr "نقطة\\بوصة"
+msgstr "نقطة لكل بوصة "
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
