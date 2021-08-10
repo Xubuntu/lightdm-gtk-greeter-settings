@@ -88,7 +88,7 @@ msgstr "إزالة التسنن"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:12
 msgid "Enable this option to override system defaults"
-msgstr "مكّن هذا الخيار لإلغاء مبدئيات النظام"
+msgstr "تمكين هذا الخيار لتجاوز الإعدادات الافتراضية للنظام"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:13
 msgctxt "option|greeter|xft-dpi"
