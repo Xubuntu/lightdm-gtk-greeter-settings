@@ -118,7 +118,7 @@ msgstr "الخلفية"
 msgctxt "option|multihead"
 msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
-"<i>(أو استعمل <a href=\"\">إعداد الشاشات المتعددة </a>للشاشات الفردية)</i>"
+"<i>(أو استعمال <a href=\"\">إعداد الشاشات المتعددة </a>للشاشات الفردية)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
 #: ../data/MultiheadSetupDialog.ui.h:9
