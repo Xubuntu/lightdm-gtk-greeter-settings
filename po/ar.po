@@ -98,7 +98,7 @@ msgstr "نقطة لكل بوصة "
 #: ../data/GtkGreeterSettingsWindow.ui.h:14
 msgctxt "option|greeter|xft-rgba"
 msgid "Subpixel rendering"
-msgstr "استدعاء بكسل الفرعي"
+msgstr "عرض البكسل الفرعي"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:15
 msgctxt "option|greeter|xft-hintstyle"
