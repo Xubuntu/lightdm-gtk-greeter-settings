@@ -161,7 +161,7 @@ msgstr "صورة المستخدم الافتراضية"
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
-msgstr "استعمل صورة الخلفية إن وُجدت"
+msgstr "استخدام خلفية المستخدم إن وُجدت"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:27
 msgctxt "tabs"
