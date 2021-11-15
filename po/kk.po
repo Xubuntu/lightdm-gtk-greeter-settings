@@ -19,16 +19,16 @@ msgstr ""
 "Language: kk\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Greeter баптаулары"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK Greeter баптаулары"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter баптау"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter баптау"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: баптаулар"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: баптаулар"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -910,6 +910,6 @@ msgstr "Жолды таңдаңыз"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"LightDM GTK+ Greeter баптаулар түзеткішін жөнелту үшін аутентификация керек"
+"LightDM GTK Greeter баптаулар түзеткішін жөнелту үшін аутентификация керек"

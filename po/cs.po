@@ -20,16 +20,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
+msgid "LightDM GTK Greeter settings"
 msgstr "Nastavení přihlašovací obrazovky"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Nastavení LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Nastavení LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: nastavení"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: nastavení"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -914,5 +914,5 @@ msgstr "Vybrat cestu"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr "Pro spuštění Nastavení přihlašovací obrazovky je vyžadováno ověření"

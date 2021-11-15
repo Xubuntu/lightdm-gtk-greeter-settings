@@ -20,15 +20,15 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
+msgid "LightDM GTK Greeter settings"
 msgstr "Поставке здравице лаког управника приказа ГКТ+"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
 msgstr "Подесите Поздрав лаког управника приказа ГТК+"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
+msgid "LightDM GTK Greeter: settings"
 msgstr "Поздрав лаког управника приказа ГТК+: поставке"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
@@ -914,5 +914,5 @@ msgstr "Изабери путању"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr "Неопходно је овлашћење ради покретања уредника поставки програма"

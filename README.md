@@ -1,10 +1,10 @@
-# LightDM GTK+ Greeter Settings
-**LightDM GTK+ Greeter Settings** is a configuration tool for the [LightDM GTK+ Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter).
+# LightDM GTK Greeter Settings
+**LightDM GTK Greeter Settings** is a configuration tool for the [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter).
 
 ## Features
 
 ### Appearance Settings
-- GTK+ theme
+- GTK theme
 - Icon theme
 - Font options
 - Background images or colors

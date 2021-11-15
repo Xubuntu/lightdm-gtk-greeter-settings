@@ -20,16 +20,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Indstillinger for LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Indstillinger for LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Konfigurer LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Konfigurer LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: indstillinger"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: indstillinger"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -914,7 +914,7 @@ msgstr "Vælg sti"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Autentifikation kræves for at køre indstillingsredigering for LightDM GTK+ "
+"Autentifikation kræves for at køre indstillingsredigering for LightDM GTK "
 "Greeter"

@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Paramètres de LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Paramètres de LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Configurar LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Configurar LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "Paramètres de LightDM GTK+ Greeter : paramètres"
+msgid "LightDM GTK Greeter: settings"
+msgstr "Paramètres de LightDM GTK Greeter : paramètres"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -894,5 +894,5 @@ msgstr "Seleccionar un camin"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""

@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ tervitussätted"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK tervitussätted"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
 msgstr ""
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ tervitusdialoog: sätted"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK tervitusdialoog: sätted"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -898,6 +898,6 @@ msgstr ""
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"LightDM GTK+ tervitusdialoogi sätteredaktori käivitamine nõuab autentimist."
+"LightDM GTK tervitusdialoogi sätteredaktori käivitamine nõuab autentimist."

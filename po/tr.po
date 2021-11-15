@@ -20,16 +20,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Karşılayıcı ayarları"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK Karşılayıcı ayarları"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Karşılayıcıyı Yapılandır"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK Karşılayıcıyı Yapılandır"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Karşılayıcı: ayarlar"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Karşılayıcı: ayarlar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -915,7 +915,7 @@ msgstr "Yolu seç"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"LightDM GTK+ Karşılayıcı için Ayarlar düzenleyicisini çalıştırmak için "
+"LightDM GTK Karşılayıcı için Ayarlar düzenleyicisini çalıştırmak için "
 "kimlik doğrulaması gerekiyor"

@@ -21,16 +21,16 @@
 "X-Generator: Poedit 2.2.1\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Greeter beállítások"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK Greeter beállítások"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter beállítás"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter beállítás"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: beállítások"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: beállítások"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -910,5 +910,5 @@ msgid "Select path"
 msgstr "Válassza ki az elérési utat"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
-msgid "Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "A Beállításszerkesztő futtatásához hitelesítés szükséges a LightDM GTK+ Greeter-hez"
+msgid "Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "A Beállításszerkesztő futtatásához hitelesítés szükséges a LightDM GTK Greeter-hez"

@@ -19,16 +19,16 @@ msgstr ""
 "Language: pt_BR\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Configurações do LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Configurações do LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Configure o LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Configure o LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: configurações"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: configurações"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -898,5 +898,5 @@ msgstr ""
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""

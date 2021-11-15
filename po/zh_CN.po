@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM 桌面管理器（GTK+ 界面）设置"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM 桌面管理器（GTK 界面）设置"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "配置 LightDM 桌面管理器（GTK+ 界面）"
+msgid "Configure LightDM GTK Greeter"
+msgstr "配置 LightDM 桌面管理器（GTK 界面）"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM 桌面管理器（GTK+ 界面）：设置"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM 桌面管理器（GTK 界面）：设置"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -915,5 +915,5 @@ msgstr "选择路径"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "运行 LightDM 桌面管理器（GTK+ 界面）设置编辑器需要认证"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "运行 LightDM 桌面管理器（GTK 界面）设置编辑器需要认证"

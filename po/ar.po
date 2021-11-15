@@ -25,16 +25,16 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "إعدادات ترحيب LightDM GTK+"
+msgid "LightDM GTK Greeter settings"
+msgstr "إعدادات ترحيب LightDM GTK"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "ضبط ترحيب Lightdm GTK+"
+msgid "Configure LightDM GTK Greeter"
+msgstr "ضبط ترحيب Lightdm GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "ترحيب Lightdm GTK+: الإعدادات"
+msgid "LightDM GTK Greeter: settings"
+msgstr "ترحيب Lightdm GTK: الإعدادات"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -918,5 +918,5 @@ msgstr "تحديد مسار"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "تجب المصادقة لتشغيل محرّر إعدادات مرحّب LightDM GTK+"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "تجب المصادقة لتشغيل محرّر إعدادات مرحّب LightDM GTK"

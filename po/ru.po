@@ -19,16 +19,16 @@ msgstr ""
 "Language: ru\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Настройки LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Настройки LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Настройка LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Настройка LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "Настройки LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter: settings"
+msgstr "Настройки LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -127,7 +127,7 @@ msgstr "Изображение"
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
 msgid "Theme"
-msgstr "Тема GTK+"
+msgstr "Тема GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
@@ -908,6 +908,6 @@ msgstr "Выбрать путь к файлу"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Для запуска редактора настроек LightDM GTK+ Greeter требуется аутентификация."
+"Для запуска редактора настроек LightDM GTK Greeter требуется аутентификация."

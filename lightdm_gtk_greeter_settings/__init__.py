@@ -28,7 +28,7 @@ def main():
 
     locale.textdomain('lightdm-gtk-greeter-settings')
 
-    parser = argparse.ArgumentParser(description='LightDM Gtk+ Greeter settings editor')
+    parser = argparse.ArgumentParser(description='LightDM GTK Greeter settings editor')
     parser.add_argument('-s', '--socket-id', action='store', help='Settings manager socket')
     parser.add_argument('--use-gtk-header', action='store_const', const=True,
                         help='Use GtkHeaderBar')

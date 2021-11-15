@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Greeter 설정"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK Greeter 설정"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter 환경설정"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter 환경설정"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: 설정"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: 설정"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -915,5 +915,5 @@ msgstr "경로 선택"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter에 대한 설정 편집기를 실행하려면 인증이 필요합니다"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter에 대한 설정 편집기를 실행하려면 인증이 필요합니다"

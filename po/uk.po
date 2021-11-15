@@ -20,16 +20,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Параметри вікна вітання LightDM GTK+"
+msgid "LightDM GTK Greeter settings"
+msgstr "Параметри вікна вітання LightDM GTK"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Налаштувати вітання LightDM GTK+"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Налаштувати вітання LightDM GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "Вікно вітання LightDM GTK+: параметри"
+msgid "LightDM GTK Greeter: settings"
+msgstr "Вікно вітання LightDM GTK: параметри"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -914,7 +914,7 @@ msgstr "Позначення контуром"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Для запуску редактора параметрів засобу вітання LightDM GTK+ слід пройти "
+"Для запуску редактора параметрів засобу вітання LightDM GTK слід пройти "
 "розпізнавання"

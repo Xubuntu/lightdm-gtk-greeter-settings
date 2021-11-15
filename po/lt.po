@@ -21,16 +21,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ sveikintojo nustatymai"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK sveikintojo nustatymai"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Konfigūruoti LightDM GTK+ sveikintoją"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Konfigūruoti LightDM GTK sveikintoją"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ sveikintojas: nustatymai"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK sveikintojas: nustatymai"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -917,7 +917,7 @@ msgstr "Pasirinkite kelią"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Norint vykdyti LightDM GTK+ sveikintojo nustatymų redaktorių, reikalingas "
+"Norint vykdyti LightDM GTK sveikintojo nustatymų redaktorių, reikalingas "
 "tapatybės nustatymas"

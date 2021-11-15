@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Definições do saudador LightDM GTK+"
+msgid "LightDM GTK Greeter settings"
+msgstr "Definições do saudador LightDM GTK"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Configurar o saudador LightDM GTK+"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Configurar o saudador LightDM GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "Saudador LightDM GTK+: definições"
+msgid "LightDM GTK Greeter: settings"
+msgstr "Saudador LightDM GTK: definições"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -917,7 +917,7 @@ msgstr "Selecionar caminho"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
 "É necessária a autenticação para executar o editor de Definições para o "
-"saudador LightDM GTK+"
+"saudador LightDM GTK"

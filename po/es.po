@@ -25,15 +25,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
+msgid "LightDM GTK Greeter settings"
 msgstr "Configuración de la pantalla de inicio de sesión"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
 msgstr "Configure la pantalla de inicio de sesión GTK de LightDM"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
+msgid "LightDM GTK Greeter: settings"
 msgstr "Configuración de la pantalla de inicio de sesión GTK de LightDM"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
@@ -925,7 +925,7 @@ msgstr "Seleccionar la ubicación"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
 "Se requiere autenticación para ejecutar el editor de configuración de la "
 "pantalla de inicio de sesión GTK de LightDM"

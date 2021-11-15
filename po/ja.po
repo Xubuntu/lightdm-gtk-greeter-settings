@@ -19,16 +19,16 @@ msgstr ""
 "Language: ja\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM GTK+ Greeter の設定"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM GTK Greeter の設定"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter の設定をします"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter の設定をします"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: 設定"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: 設定"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -908,5 +908,5 @@ msgstr "パスの選択"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ Greeter の設定エディターを実行するためには、認証が必要です。"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter の設定エディターを実行するためには、認証が必要です。"

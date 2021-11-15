@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Ρυθμίσεις του GTK+ Greeter του LightDM"
+msgid "LightDM GTK Greeter settings"
+msgstr "Ρυθμίσεις του GTK Greeter του LightDM"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Ρυθμίστε τον GTK+ Greeter του LightDM"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Ρυθμίστε τον GTK Greeter του LightDM"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "GTK+ Greeter του LightDM: ρυθμίσεις"
+msgid "LightDM GTK Greeter: settings"
+msgstr "GTK Greeter του LightDM: ρυθμίσεις"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -907,7 +907,7 @@ msgstr "Επιλογή διαδρομής"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Απαιτείται πιστοποίηση για να εκτελέσετε τον επεξεργαστή Ρυθμίσεων του GTK+ "
+"Απαιτείται πιστοποίηση για να εκτελέσετε τον επεξεργαστή Ρυθμίσεων του GTK "
 "Greeter του LightDM"

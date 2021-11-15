@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "LightDM-GTK+Anmeldebildschirm - Einstellungen"
+msgid "LightDM GTK Greeter settings"
+msgstr "LightDM-GTK-Anmeldebildschirm - Einstellungen"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM-GTK+Anmeldebildschirm konfigurieren"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM-GTK-Anmeldebildschirm konfigurieren"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM-GTK+Anmeldebildschirm: Einstellungen"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM-GTK-Anmeldebildschirm: Einstellungen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -921,7 +921,7 @@ msgstr "Pfad auswählen"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
 "Eine Legitimation ist erforderlich, um die Einstellungsbearbeitung für den "
-"LightDM-GTK+Anmeldebildschirm zu starten"
+"LightDM-GTK-Anmeldebildschirm zu starten"

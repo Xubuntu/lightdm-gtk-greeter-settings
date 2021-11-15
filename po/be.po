@@ -22,16 +22,16 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Налады LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Налады LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Наладка LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Наладка LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: налады"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: налады"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -914,5 +914,5 @@ msgstr "Абраць шлях"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
-msgstr "Для запуску налад LightDM GTK+ Greeter патрабуецца аўтэнтыфікацыя"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
+msgstr "Для запуску налад LightDM GTK Greeter патрабуецца аўтэнтыфікацыя"

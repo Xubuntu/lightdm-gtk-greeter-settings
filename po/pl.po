@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Ustawienia LightDM GTK+ Greeter"
+msgid "LightDM GTK Greeter settings"
+msgstr "Ustawienia LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "Skonfiguruj LightDM GTK+ Greeter"
+msgid "Configure LightDM GTK Greeter"
+msgstr "Skonfiguruj LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ Greeter: ustawienia"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK Greeter: ustawienia"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -917,7 +917,7 @@ msgstr "Wybierz ścieżkę"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Uwierzytelnianie jest wymagane, aby uruchomić Edytor ustawień LightDM GTK+ "
+"Uwierzytelnianie jest wymagane, aby uruchomić Edytor ustawień LightDM GTK "
 "Greeter"

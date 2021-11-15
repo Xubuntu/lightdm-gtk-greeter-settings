@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
-msgid "LightDM GTK+ Greeter settings"
-msgstr "Instellingen voor LightDM GTK+ aanmeldscherm"
+msgid "LightDM GTK Greeter settings"
+msgstr "Instellingen voor LightDM GTK aanmeldscherm"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
-msgid "Configure LightDM GTK+ Greeter"
-msgstr "LightDM GTK+ aanmeldscherm instellen"
+msgid "Configure LightDM GTK Greeter"
+msgstr "LightDM GTK aanmeldscherm instellen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
-msgid "LightDM GTK+ Greeter: settings"
-msgstr "LightDM GTK+ aanmeldscherm: instellingen"
+msgid "LightDM GTK Greeter: settings"
+msgstr "LightDM GTK aanmeldscherm: instellingen"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -919,7 +919,7 @@ msgstr "Pad selecteren"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
-"Authentication is required to run Settings editor for LightDM GTK+ Greeter"
+"Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
 "Authenticatie is vereist voor het draaien van Instellingenbewerker voor "
-"LightDM GTK+ Aanmeldscherm"
+"LightDM GTK Aanmeldscherm"
