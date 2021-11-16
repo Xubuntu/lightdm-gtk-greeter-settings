@@ -5,9 +5,8 @@
 # 
 # Translators:
 # Sean Davis <bluesabre@ubuntu.com>, 2020
-# Toni Estévez <toni.estevez@gmail.com>, 2021
 # Adolfo Jayme-Barrientos, 2021
-# Ignacio Poggi <ignaciop.3@gmail.com>, 2021
+# Toni Estévez <toni.estevez@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-18 06:28-0400\n"
 "PO-Revision-Date: 2020-06-12 22:33+0000\n"
-"Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>, 2021\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/xubuntu/teams/110148/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,15 +25,15 @@ msgstr ""
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
-msgstr "Configuración de la pantalla de inicio de sesión"
+msgstr "Configuración de la pantalla de inicio de sesión LightDM GTK"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "Configure la pantalla de inicio de sesión GTK de LightDM"
+msgstr "Configurar la pantalla de inicio de sesión LightDM GTK"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "Configuración de la pantalla de inicio de sesión GTK de LightDM"
+msgstr "Pantalla de inicio de sesión LightDM GTK: configuración"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -927,5 +926,5 @@ msgstr "Seleccionar la ubicación"
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Se requiere autenticación para ejecutar el editor de configuración de la "
-"pantalla de inicio de sesión GTK de LightDM"
+"Es necesario autenticarse para ejecutar el editor de configuración de la "
+"pantalla de inicio de sesión LightDM GTK"
