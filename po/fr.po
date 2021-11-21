@@ -7,6 +7,7 @@
 # Sean Davis <bluesabre@ubuntu.com>, 2020
 # Nate Bright <nate.bright@protonmail.com>, 2020
 # roxfr <roxfr@outlook.fr>, 2021
+# Wallon Wallon, 2021
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-18 06:28-0400\n"
 "PO-Revision-Date: 2020-06-12 22:33+0000\n"
-"Last-Translator: roxfr <roxfr@outlook.fr>, 2021\n"
+"Last-Translator: Wallon Wallon, 2021\n"
 "Language-Team: French (https://www.transifex.com/xubuntu/teams/110148/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,15 +26,15 @@ msgstr ""
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
-msgstr "LightDM GTK Paramètres d'Apparence"
+msgstr "Paramètres de l'écran de connexion LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "Configurer LightDM GTK Greeter"
+msgstr "Configuration de l'écran de connexion LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "LightDM GTK Greeter : paramètres"
+msgstr "Écran de connexion LightDM GTK Greeter : paramètres"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -926,5 +927,5 @@ msgstr "Sélectionner un emplacement"
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Authentification nécessaire à l'exécution de l'outil de configuration "
-"LightDM GTK Greeter"
+"Une authentification est nécessaire pour exécuter l'éditeur de paramètres de"
+" LightDM GTK Greeter."
