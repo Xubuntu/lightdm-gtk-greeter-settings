@@ -5,20 +5,19 @@
 #
 # Fordítók:
 # Huszák Győző <huszakgyozo@gmail.com>, 2020.
-#msgid ""
-#msgstr ""
-"Project-Id-Version: \n"
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-18 06:28-0400\n"
 "PO-Revision-Date: 2020-09-13 12:19+0200\n"
-"Language: hu\n"
+"Last-Translator: Huszák Győző\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Huszák Győző\n"
-"Language-Team: \n"
-"Language: hu\n"
 "X-Generator: Poedit 2.2.1\n"
+"Language: hu\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
