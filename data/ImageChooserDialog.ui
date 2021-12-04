@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.8"/>
+  <requires lib="gtk+" version="3.24"/>
   <object class="GtkImage" id="cancel_image">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">dialog-cancel</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">dialog-cancel</property>
   </object>
   <object class="GtkFileFilter" id="filefilter1">
     <mime-types>
@@ -14,38 +14,38 @@
   </object>
   <object class="GtkImage" id="ok_image">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">dialog-ok</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">dialog-ok</property>
   </object>
   <object class="GtkImage" id="preview_image">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="valign">start</property>
-    <property name="margin_right">8</property>
-    <property name="icon_name">unknown</property>
+    <property name="margin-end">8</property>
+    <property name="icon-name">unknown</property>
   </object>
   <object class="GtkFileChooserDialog" id="dialog">
-    <property name="can_focus">False</property>
-    <property name="type_hint">dialog</property>
+    <property name="can-focus">False</property>
+    <property name="type-hint">dialog</property>
     <property name="filter">filefilter1</property>
-    <property name="preview_widget">preview_image</property>
+    <property name="preview-widget">preview_image</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="filechooserdialog-vbox1">
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="filechooserdialog-action_area1">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
             <child>
               <object class="GtkButton" id="cancel_button">
                 <property name="label" translatable="yes">_Cancel</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
                 <property name="image">cancel_image</property>
-                <property name="use_underline">True</property>
+                <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -57,11 +57,11 @@
               <object class="GtkButton" id="ok_button">
                 <property name="label" translatable="yes">_OK</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">True</property>
+                <property name="can-focus">True</property>
+                <property name="can-default">True</property>
+                <property name="receives-default">True</property>
                 <property name="image">ok_image</property>
-                <property name="use_underline">True</property>
+                <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
