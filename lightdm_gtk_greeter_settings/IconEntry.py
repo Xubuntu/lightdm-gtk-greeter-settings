@@ -47,6 +47,7 @@ class IconEntry(BaseEntry):
         self._value = None
         self._image = widgets['image']
         self._button = widgets['button']
+        self._label = widgets['button-label']
         self._button.props.popup = Gtk.Menu()
         self._icon_dialog = None
         self._path_dialog = None
@@ -106,6 +107,7 @@ class IconEntry(BaseEntry):
         label = C_('option-entry|icon', '<b>Icon: {icon}</b>').format(icon=name)
         tooltip = label
         self._image.set_from_icon_name(name, Gtk.IconSize.DIALOG)
+        self._label.set_text(name)
         return label, tooltip
 
     def _ask_icon(self, oldvalue):
@@ -125,10 +127,10 @@ class IconEntry(BaseEntry):
         if just_label or value is None:
             return C_('option-entry|icon', 'Select file...'), None
 
-        if set_image_from_path(self._image, value):
-            label = C_('option-entry|icon', '<b>File: {path}</b>')
-        else:
-            label = C_('option-entry|icon', '<b>File: {path}</b> (failed to load)')
+        self._image.set_from_icon_name('image-x-generic', Gtk.IconSize.DIALOG)
+        label = C_('option-entry|icon', '<b>File: {path}</b>')
+
+        self._label.set_text(os.path.basename(value))
 
         return (label.format(path=os.path.basename(value)),
                 label.format(path=value))
@@ -142,7 +144,7 @@ class IconEntry(BaseEntry):
             self._path_dialog.props.transient_for = self._image.get_toplevel()
             self._path_dialog.connect('update-preview', self._on_update_path_preview)
 
-            preview_size = self._image.props.pixel_size
+            preview_size = 100
             preview = self._path_dialog.props.preview_widget
             preview.props.pixel_size = preview_size
             preview.set_size_request(preview_size, preview_size)

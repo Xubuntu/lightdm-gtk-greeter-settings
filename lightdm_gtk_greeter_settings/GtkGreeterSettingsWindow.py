@@ -74,7 +74,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
         content = 'content_box'
         infobar = 'infobar'
         infobar_label = 'infobar_label'
-        multihead_label = 'multihead_label'
+        multihead_button = 'multihead_button'
 
     def __new__(cls, mode=WindowMode.Default):
         builder = Gtk.Builder()
@@ -138,7 +138,7 @@ class GtkGreeterSettingsWindow(Gtk.Window):
             self._widgets.content.reorder_child(self._widgets.infobar, 0)
             self._widgets.content.connect('destroy', self.on_destroy, True)
             # Socket/Plug focus issues workaround
-            self._widgets.multihead_label.connect('button-press-event', self.on_multihead_click)
+            self._widgets.multihead_button.connect('activate', self.on_multihead_click)
         elif self.mode == WindowMode.GtkHeader:
             for button in (self._widgets.apply, self._widgets.reload):
                 self._widgets.buttons.remove(button)
@@ -605,10 +605,8 @@ class GtkGreeterSettingsWindow(Gtk.Window):
     on_entry_changed_greeter_reader = on_entry_changed_greeter_keyboard
 
     def on_multihead_click(self, label, event):
-        if event.button == 1:
-            label.emit('activate-link', '')
-            return True
-        return False
+        button.emit('activate', '')
+        return True
 
     def on_destroy(self, widget, write=False):
         if write and self._write_timeout_id:

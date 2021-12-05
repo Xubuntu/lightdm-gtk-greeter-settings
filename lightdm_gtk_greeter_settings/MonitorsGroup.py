@@ -49,7 +49,7 @@ class MonitorsGroup(OptionGroup.BaseGroup):
             add=self._add_group,
             itergetter=lambda: iter(self._groups))
 
-        self._widgets['multihead_label'].connect('activate-link', self._on_label_link_activate)
+        self._widgets['multihead_button'].connect('clicked', self._on_multihead_activate)
 
     def read(self, config):
         for group in self._groups:
@@ -127,10 +127,10 @@ class MonitorsGroup(OptionGroup.BaseGroup):
         group.clear()
         self._groups.remove(group)
 
-    def _on_label_link_activate(self, label, uri):
+    def _on_multihead_activate(self, button):
         if not self._dialog:
             self._dialog = MultiheadSetupDialog(self)
-            self._dialog.props.transient_for = self._widgets['multihead_label'].get_toplevel()
+            self._dialog.props.transient_for = self._widgets['multihead_button'].get_toplevel()
 
             for key, klass in self.EntriesSetup:
                 self._adapters[key].base_entry = klass(WidgetsWrapper(self._dialog.builder, key))
