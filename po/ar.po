@@ -7,16 +7,17 @@
 # Sean Davis <bluesabre@ubuntu.com>, 2020
 # Abdul Rahman Vassouf <aubad22@gmail.com>, 2021
 # Zakaria Farhati <zakariafarhati18@gmail.com>, 2021
-# Muadh Abdulaziz, 2021
+# 7f91df02564a1feba5fdc4d7b990b7f2_5fb95ff, 2021
+# Sod Emin, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"POT-Creation-Date: 2021-12-04 06:18-0500\n"
 "PO-Revision-Date: 2020-06-12 22:33+0000\n"
-"Last-Translator: Muadh Abdulaziz, 2021\n"
+"Last-Translator: Sod Emin, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/xubuntu/teams/110148/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,15 +27,15 @@ msgstr ""
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
-msgstr "إعدادات ترحيب LightDM GTK"
+msgstr "إعدادات LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "ضبط ترحيب Lightdm GTK"
+msgstr "إعداد LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "ترحيب Lightdm GTK: الإعدادات"
+msgstr "LightDM GTK Greeter: الإعدادات"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -121,13 +122,13 @@ msgstr ""
 "<i>(أو استعمال <a href=\"\">إعداد الشاشات المتعددة </a>للشاشات الفردية)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
-#: ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "اللون"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
-#: ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "الصورة"
@@ -158,7 +159,7 @@ msgid "Default user image"
 msgstr "صورة المستخدم الافتراضية"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
-#: ../data/MultiheadSetupDialog.ui.h:11
+#: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
 msgstr "استخدام خلفية المستخدم إن وُجدت"
@@ -395,7 +396,7 @@ msgid "_Cancel"
 msgstr "_إلغاء"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
-#: ../data/MultiheadSetupDialog.ui.h:14
+#: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "button"
 msgid "_OK"
 msgstr "_موافق"
@@ -499,46 +500,46 @@ msgctxt "option|multihead"
 msgid "Multihead setup"
 msgstr "إعداد الشاشات المتعددة"
 
-#: ../data/MultiheadSetupDialog.ui.h:2
+#: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "Add configuration"
 msgstr "إضافة إعداد"
 
-#: ../data/MultiheadSetupDialog.ui.h:3
+#: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "No configured monitors found"
 msgstr "لم يتم العثور على شاشات معدّة"
 
-#: ../data/MultiheadSetupDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:5
 msgctxt "option|multihead"
 msgid "Monitor name:"
 msgstr "اسم الشاشة:"
 
-#: ../data/MultiheadSetupDialog.ui.h:5
+#: ../data/MultiheadSetupDialog.ui.h:6
 msgid "Don't leave empty"
 msgstr "لا تتركه فارغاً"
 
-#: ../data/MultiheadSetupDialog.ui.h:6
+#: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
 msgstr "إضافة إعداد شاشة."
 
-#: ../data/MultiheadSetupDialog.ui.h:7
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
 msgstr "استبدال خيار \"الخلفية\" الافتراضي"
 
-#: ../data/MultiheadSetupDialog.ui.h:10
+#: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
 msgstr "استبدال خيار \"خلفية المستخدم\" الافتراضي"
 
-#: ../data/MultiheadSetupDialog.ui.h:12
+#: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
 msgstr "استبدال خيار \"حاسوب محمول\" الافتراضي"
 
-#: ../data/MultiheadSetupDialog.ui.h:13
+#: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
 msgstr "هذه الشاشة هي شاشة جهاز محمول(استعشار إغلاق الغطاء)"
@@ -919,4 +920,4 @@ msgstr "تحديد مسار"
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
-msgstr "تجب المصادقة لتشغيل محرّر إعدادات مرحّب LightDM GTK"
+msgstr "المصادقة مطلوبة لتشغيل محرر إعدادات LightDM GTK Greeter"
