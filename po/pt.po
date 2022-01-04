@@ -573,7 +573,7 @@ msgid ""
 "\n"
 "Try to run this program using \"sudo\" or \"pkexec\""
 msgstr ""
-"Parece que não possui permissão para escrever no ficheiro:\n"
+"Parece que não possui permissão para gravar no ficheiro:\n"
 "{path}\n"
 "\n"
 "Tente executar este programa usando \"sudo\" ou \"pkexec\""
@@ -623,7 +623,7 @@ msgid ""
 "GtkInspector is not available on your system\n"
 "Gtk version: {current} < {minimal}"
 msgstr ""
-"GtkInspector não está disponível no seu sistema\n"
+"GtkInspector não está disponível no sistema\n"
 "Versão Gtk: {current} < {minimal}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
@@ -725,7 +725,7 @@ msgstr "Valor não reconhecido: {value}"
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr "Selecione um nome do ícon..."
+msgstr "Selecione um nome do ícone..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format
