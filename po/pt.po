@@ -763,7 +763,7 @@ msgstr "<b>A usar o valor predefinido</b>"
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:233
 msgctxt "option-entry|indicators"
 msgid "Path/Service field is not filled"
-msgstr "O campo caminho/serviço não está preenchido"
+msgstr "O campo localização/serviço não está preenchido"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:237
 #, python-brace-format
@@ -773,7 +773,7 @@ msgid ""
 "It will be overwritten."
 msgstr ""
 "Indicador \"{name}\" já existe na lista.\n"
-"Ele será reescrito."
+"Ele será substituído."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
 msgctxt "option-entry|indicators|name"
