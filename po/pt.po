@@ -52,12 +52,12 @@ msgstr "BGR"
 #: ../data/GtkGreeterSettingsWindow.ui.h:5
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical RGB"
-msgstr "RGB Vertical"
+msgstr "RGB vertical"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:6
 msgctxt "option|greeter|xft-rgba"
 msgid "Vertical BGR"
-msgstr "BGR Vertical"
+msgstr "BGR vertical"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:7
 msgctxt "option|greeter|xft-hintstyle"
