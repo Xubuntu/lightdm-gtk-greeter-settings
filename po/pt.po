@@ -154,7 +154,7 @@ msgstr "Imagem do utilizador"
 #: ../data/GtkGreeterSettingsWindow.ui.h:25
 msgctxt "option|greeter|default-user-image"
 msgid "Default user image"
-msgstr "Imagem de utilizador predefinida"
+msgstr "Imagem predefinida de utilizador"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
 #: ../data/MultiheadSetupDialog.ui.h:12
