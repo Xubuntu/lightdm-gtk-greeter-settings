@@ -421,7 +421,7 @@ msgstr "_Ícone nomes:"
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
 msgid "List _standard icons only"
-msgstr "Listar apenas ícones _padrão"
+msgstr "Mostrar apenas ícones _predefinidos"
 
 #: ../data/ImageChooserDialog.ui.h:1
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:264
