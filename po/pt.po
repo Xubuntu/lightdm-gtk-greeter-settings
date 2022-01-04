@@ -297,7 +297,7 @@ msgstr "Comando para iniciar o leitor de ecrã"
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
 msgid "Select path to keyboard..."
-msgstr "Selecionar caminho para o teclado..."
+msgstr "Selecionar a localização para o teclado..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:57
 msgctxt "option|greeter|keyboard"
