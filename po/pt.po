@@ -356,7 +356,7 @@ msgid ""
 "More informative log"
 msgstr ""
 "Ativar teclas para lançar GtkInspector\n"
-"Log mais informativo"
+"Registo mais informativo"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
