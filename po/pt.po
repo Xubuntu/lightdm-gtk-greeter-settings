@@ -292,7 +292,7 @@ msgstr "Selecionar localização para o leitor..."
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
 msgid "Command to launch screen reader"
-msgstr "Comando para iniciar o leitor de ecrã"
+msgstr "Comando para lançar o leitor de ecrã"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:56
 msgctxt "option|greeter|keyboard"
