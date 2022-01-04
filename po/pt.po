@@ -540,7 +540,7 @@ msgstr "Substituir opção \"portátil\" predefinida"
 #: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
-msgstr "Este monitor é monitor dum portátil (detectado fecho de tampa)"
+msgstr "Este monitor é de um portátil (detetado fecho de tampa)"
 
 #: ../data/MultiheadSetupDialog.ui.h:15
 msgctxt "option|multihead"
@@ -548,7 +548,7 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
-"<i>Nota: o saudador não define a geometria dos monitores.\n"
+"<i>Nota: o \"greeter\" não define a geometria dos monitores.\n"
 "Precisa de configurá-lo por si mesmo.</i>"
 
 #. Panel
