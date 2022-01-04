@@ -803,7 +803,7 @@ msgstr "Relógio"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:136
 msgctxt "option-entry|indicators|name"
 msgid "Host name"
-msgstr "Nome do anfitrião"
+msgstr "Nome da máquina"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:137
 msgctxt "option-entry|indicators|name"
@@ -818,7 +818,7 @@ msgstr "Menu de sessões"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:139
 msgctxt "option-entry|indicators|name"
 msgid "Languages menu"
-msgstr "Menu de linguagens"
+msgstr "Menu de idiomas"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:140
 msgctxt "option-entry|indicators|name"
@@ -848,7 +848,7 @@ msgstr "Texto e/ou imagem personalizado"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:151
 msgctxt "option-entry|indicators|tooltip"
 msgid "Host name"
-msgstr "Nome do anfitrião"
+msgstr "Nome da máquina"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:152
 msgctxt "option-entry|indicators|tooltip"
