@@ -720,12 +720,12 @@ msgstr "Estado"
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "Unrecognized value: {value}"
-msgstr "Valor não reconhecido: {value}"
+msgstr "Valor irreconhecível: {valor}"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:104
 msgctxt "option-entry|icon"
 msgid "Select icon name..."
-msgstr "Selecione um nome do ícone..."
+msgstr "Selecionar o nome do ícone..."
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:106
 #, python-brace-format
