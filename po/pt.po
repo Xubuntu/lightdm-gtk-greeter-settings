@@ -287,7 +287,7 @@ msgstr "Acessibilidade"
 #: ../data/GtkGreeterSettingsWindow.ui.h:54
 msgctxt "option|greeter|reader"
 msgid "Select path to reader..."
-msgstr "Selecionar caminho para o leitor..."
+msgstr "Selecionar localização para o leitor..."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:55
 msgctxt "option|greeter|reader"
