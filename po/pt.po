@@ -258,7 +258,7 @@ msgstr "em %"
 #: ../data/GtkGreeterSettingsWindow.ui.h:48
 msgctxt "option|greeter|position"
 msgid "from right"
-msgstr "a partir da direita"
+msgstr "da direita"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:49
 msgctxt "option|greeter|position"
