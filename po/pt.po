@@ -476,7 +476,7 @@ msgstr "Indicador biblioteca/serviço:"
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr "Esconder ações de energia desabilitadas"
+msgstr "Ocultar ações de energia desativadas"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
