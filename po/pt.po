@@ -105,7 +105,7 @@ msgstr "Alisamento"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:16
 msgid "Additional font options"
-msgstr "Opções de fontes adicionais"
+msgstr "Opções de tipos de letra adicionais"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:17
 msgctxt "option|greeter|background"
