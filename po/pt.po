@@ -868,7 +868,7 @@ msgstr "Menu de sessões (xfce, unity, gnome etc.)"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
 msgid "Languages menu"
-msgstr "Menu de linguagens"
+msgstr "Menu de idiomas"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:157
 msgctxt "option-entry|indicators|tooltip"
@@ -888,12 +888,12 @@ msgstr "Repor _predefinições"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr "Exibir _etiqueta"
+msgstr "Mostrar _etiqueta"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
 msgid "Display _image"
-msgstr "Exibir _imagem"
+msgstr "Mostrar _imagem"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:589
 msgctxt "option-entry|indicators"
@@ -913,7 +913,7 @@ msgstr "Modelos predefinidos:"
 #: ../lightdm_gtk_greeter_settings/OptionEntry.py:265
 msgctxt "option|StringPathEntry"
 msgid "Select path"
-msgstr "Selecionar caminho"
+msgstr "Selecionar localização"
 
 #: ../com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in.h:1
 msgid ""
