@@ -268,7 +268,7 @@ msgstr "da parte inferior"
 #: ../data/GtkGreeterSettingsWindow.ui.h:50
 msgctxt "option|greeter|position"
 msgid "Select base point and its position."
-msgstr "Selecionar ponto de base e a sua posição."
+msgstr "Selecionar o ponto de base e a sua posição."
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:51
 msgctxt "tabs"
