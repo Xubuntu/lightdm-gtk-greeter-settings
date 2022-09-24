@@ -587,7 +587,7 @@ msgstr "<i>пустая строка</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:378
 msgid "<i>None</i>"
-msgstr "<i>Отсутствует</i>"
+msgstr "<i>Нет</i>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:402
 #, python-brace-format
