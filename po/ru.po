@@ -2,21 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Sean Davis <bluesabre@ubuntu.com>, 2020
+# Sergey Boroditsky <serge.boroditsky@gmail.com>, 2020
+# Виктор, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lightdm-gtk-greeter-settings 0.3\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
-"PO-Revision-Date: 2017-07-05 22:13+0000\n"
-"Last-Translator: Grigorii Chirkov <ridgentsailor@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2021-12-04 06:18-0500\n"
+"PO-Revision-Date: 2020-06-12 22:33+0000\n"
+"Last-Translator: Виктор, 2022\n"
+"Language-Team: Russian (https://www.transifex.com/xubuntu/teams/110148/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
@@ -28,7 +33,7 @@ msgstr "Настройка LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "Настройки LightDM GTK Greeter"
+msgstr "LightDM GTK Greeter: настройки"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -110,16 +115,17 @@ msgstr "Фон"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:18
 msgctxt "option|multihead"
-msgid ""
-" <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
+msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr " <i>(<a href=\"\">настройки для нескольких мониторов</a>)</i>"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:19 ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/GtkGreeterSettingsWindow.ui.h:19
+#: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Цвет"
 
-#: ../data/GtkGreeterSettingsWindow.ui.h:20 ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/GtkGreeterSettingsWindow.ui.h:20
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Изображение"
@@ -127,7 +133,7 @@ msgstr "Изображение"
 #: ../data/GtkGreeterSettingsWindow.ui.h:21
 msgctxt "option|greeter|theme-name"
 msgid "Theme"
-msgstr "Тема GTK"
+msgstr "Тема GTK+"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
@@ -150,7 +156,7 @@ msgid "Default user image"
 msgstr "Аватар пользователя по умолчанию"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
-#: ../data/MultiheadSetupDialog.ui.h:11
+#: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
 msgstr "По возможности использовать пользовательский фон"
@@ -320,7 +326,7 @@ msgstr "Контрастная тема"
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
 msgid "Large text"
-msgstr ""
+msgstr "Крупный текст"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:63
 msgctxt "greeter|option|reader"
@@ -387,7 +393,7 @@ msgid "_Cancel"
 msgstr "О_тмена"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
-#: ../data/MultiheadSetupDialog.ui.h:14
+#: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "button"
 msgid "_OK"
 msgstr "_ОК"
@@ -491,46 +497,46 @@ msgctxt "option|multihead"
 msgid "Multihead setup"
 msgstr "Настройка нескольких мониторов"
 
-#: ../data/MultiheadSetupDialog.ui.h:2
+#: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "Add configuration"
 msgstr "Добавить конфигурацию"
 
-#: ../data/MultiheadSetupDialog.ui.h:3
+#: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "No configured monitors found"
 msgstr "Настроенные мониторы не найдены"
 
-#: ../data/MultiheadSetupDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:5
 msgctxt "option|multihead"
 msgid "Monitor name:"
 msgstr "Имя монитора:"
 
-#: ../data/MultiheadSetupDialog.ui.h:5
+#: ../data/MultiheadSetupDialog.ui.h:6
 msgid "Don't leave empty"
 msgstr "Не оставлять пустым"
 
-#: ../data/MultiheadSetupDialog.ui.h:6
+#: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
 msgstr "Добавить новую конфигурацию"
 
-#: ../data/MultiheadSetupDialog.ui.h:7
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
 msgstr "Переопределить значение опции \"background\""
 
-#: ../data/MultiheadSetupDialog.ui.h:10
+#: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
 msgstr "Переопределить значение опции \"user-background\""
 
-#: ../data/MultiheadSetupDialog.ui.h:12
+#: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
 msgstr "Переопределить значение опции \"laptop\""
 
-#: ../data/MultiheadSetupDialog.ui.h:13
+#: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
 msgstr "Дисплей ноутбука (отслеживать закрытие крышки ноутбука)"
@@ -541,12 +547,14 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
+"<i>Обратите внимание: программа-приветствие не настраивает размеры мониторов.\n"
+"Вам необходимо выставить их самостоятельно.</i>"
 
 #. Panel
 #. Translators: Default clock format for your locale
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:107
 msgid "%a, %H:%M"
-msgstr ""
+msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
@@ -910,4 +918,4 @@ msgstr "Выбрать путь к файлу"
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Для запуска редактора настроек LightDM GTK Greeter требуется аутентификация."
+"Для запуска редактора настроек LightDM GTK Greeter требуется аутентификация"
