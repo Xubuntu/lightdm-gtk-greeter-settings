@@ -461,7 +461,7 @@ msgstr "Mostrar legenda"
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
 msgid "Leave empty to use default value"
-msgstr "Deixe o campo vazio para usar o valor predefinido"
+msgstr "Deixar vazio para usar o valor predefinido"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
