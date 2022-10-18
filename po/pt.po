@@ -466,7 +466,7 @@ msgstr "Deixar vazio para usar o valor predefinido"
 #: ../data/IndicatorPropertiesDialog.ui.h:9
 msgctxt "option-entry|indicators"
 msgid "Display image"
-msgstr "Imagem de exibição"
+msgstr "Mostrar imagem"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:10
 msgctxt "option-entry|indicators"
