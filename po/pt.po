@@ -456,7 +456,7 @@ msgstr "Indicador"
 #: ../data/IndicatorPropertiesDialog.ui.h:7
 msgctxt "option-entry|indicators"
 msgid "Display label"
-msgstr "Etiqueta de exibição"
+msgstr "Mostrar legenda"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:8
 msgctxt "option-entry|indicators"
