@@ -416,7 +416,7 @@ msgstr "_Contextos:"
 #: ../data/IconChooserDialog.ui.h:7
 msgctxt "icon-dialog"
 msgid "_Icon names:"
-msgstr "_Ícone nomes:"
+msgstr "Nomes dos ícones:"
 
 #: ../data/IconChooserDialog.ui.h:8
 msgctxt "icon-dialog"
