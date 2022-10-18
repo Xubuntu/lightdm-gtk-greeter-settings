@@ -481,7 +481,7 @@ msgstr "Ocultar ações de energia desativadas"
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
 msgid "Text to display:"
-msgstr "Texto a exibir:"
+msgstr "Texto a mostrar:"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:13
 msgctxt "option-entry|indicators"
@@ -530,7 +530,7 @@ msgstr "Substituir opção \"fundo\" predefinida"
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr "Substituir opção \"fundo-utilizador\" predefinida"
+msgstr "Substituir opção \"fundo do utilizador\" predefinida"
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
