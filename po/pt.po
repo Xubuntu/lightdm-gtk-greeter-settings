@@ -548,7 +548,7 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
-"<i>Nota: o \"greeter\" não define a geometria dos monitores.\n"
+"<i>Nota: o saudador não define a geometria dos monitores.\n"
 "Precisa de configurá-lo por si mesmo.</i>"
 
 #. Panel
