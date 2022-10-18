@@ -312,7 +312,7 @@ msgstr "Desativado no início"
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
 msgid "Enabled at start"
-msgstr "Ativado no início"
+msgstr "Ativado ao iniciar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:60
 msgctxt "option|greeter|a11y-states"
