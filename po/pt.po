@@ -858,7 +858,7 @@ msgstr "Relógio"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:153
 msgctxt "option-entry|indicators|tooltip"
 msgid "Layout indicator"
-msgstr "Indicador de exibição"
+msgstr "Indicador de esquema"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
