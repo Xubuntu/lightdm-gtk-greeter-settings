@@ -406,7 +406,7 @@ msgstr "Adicionar o indicador selecionado à lista e fechar esta janela"
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr "Ícone _nome:"
+msgstr "_Nome do ícone:"
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
