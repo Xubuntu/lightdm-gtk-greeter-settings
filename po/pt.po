@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
@@ -116,7 +116,7 @@ msgstr "Fundo"
 msgctxt "option|multihead"
 msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
-" <i>(ou utilize a <a href=\"\">configuração multihead</a> para monitores "
+" <i>(ou usar  a <a href=\"\">configuração multihead</a> para monitores "
 "individuais)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
