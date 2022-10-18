@@ -307,7 +307,7 @@ msgstr "Comando para lançar o teclado no ecrã"
 #: ../data/GtkGreeterSettingsWindow.ui.h:58
 msgctxt "option|greeter|a11y-states"
 msgid "Disabled at start"
-msgstr "Desativado no início"
+msgstr "Desativado ao iniciar"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:59
 msgctxt "option|greeter|a11y-states"
