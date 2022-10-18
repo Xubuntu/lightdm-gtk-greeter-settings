@@ -888,7 +888,7 @@ msgstr "Repor _predefinições"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:585
 msgctxt "option-entry|indicators"
 msgid "Display _label"
-msgstr "Mostrar _etiqueta"
+msgstr "Mostrar _legenda"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:587
 msgctxt "option-entry|indicators"
