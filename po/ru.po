@@ -730,7 +730,7 @@ msgstr "Выберите название иконки..."
 #, python-brace-format
 msgctxt "option-entry|icon"
 msgid "<b>Icon: {icon}</b>"
-msgstr "<b>Иконка: {icon}</b>"
+msgstr "<b>Значок: {icon}</b>"
 
 #: ../lightdm_gtk_greeter_settings/IconEntry.py:126
 msgctxt "option-entry|icon"
