@@ -405,7 +405,7 @@ msgstr "Добавить выбранный индикатор в список �
 #: ../data/IconChooserDialog.ui.h:5
 msgctxt "icon-dialog"
 msgid "Icon _name:"
-msgstr "Значок:"
+msgstr "Название з_начка:"
 
 #: ../data/IconChooserDialog.ui.h:6
 msgctxt "icon-dialog"
