@@ -752,7 +752,7 @@ msgstr "<b>Файл: {path}</b> (не удалось загрузить)"
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:79
 msgctxt "option-entry|indicators"
 msgid "Use default value..."
-msgstr "Использовать значение по умолчанию"
+msgstr "Использовать значение по умолчанию..."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorPropertiesDialog.py:81
 msgctxt "option-entry|indicators"
