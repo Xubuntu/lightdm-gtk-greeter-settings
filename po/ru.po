@@ -558,7 +558,7 @@ msgstr "%a, %H:%M"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:180
 msgid "You don't have permissions to change greeter configuration"
-msgstr "У Вас нет прав для изменения конфигурации"
+msgstr "У вас нет прав для изменения конфигурации"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:184
 msgid "No permissions to save configuration"
