@@ -613,7 +613,7 @@ msgstr "Сбросить на значение: <b>{value}</b>"
 #, python-brace-format
 msgctxt "option|greeter|screensaver-timeout"
 msgid "{count} min"
-msgstr "{count} минут"
+msgstr "{count} мин"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:566
 #, python-brace-format
