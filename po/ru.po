@@ -862,7 +862,7 @@ msgstr "Индикатор раскладки клавиатуры"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:155
 msgctxt "option-entry|indicators|tooltip"
 msgid "Sessions menu (xfce, unity, gnome etc.)"
-msgstr "Меню сессий (xfce, unity, gnome и т.д.)"
+msgstr "Меню сессий (xfce, unity, gnome и т. д.)"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:156
 msgctxt "option-entry|indicators|tooltip"
