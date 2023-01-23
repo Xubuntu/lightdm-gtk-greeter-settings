@@ -355,7 +355,7 @@ msgid ""
 "More informative log"
 msgstr ""
 "Возможность использования GtkInspector\n"
-"Более полный лог"
+"Более полный журнал"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:69
 msgctxt "tabs"
