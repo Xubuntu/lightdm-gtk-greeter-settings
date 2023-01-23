@@ -138,7 +138,7 @@ msgstr "Тема"
 #: ../data/GtkGreeterSettingsWindow.ui.h:22
 msgctxt "option|greeter|icon-theme-name"
 msgid "Icons"
-msgstr "Тема значков"
+msgstr "Значки"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:23
 msgctxt "option|greeter|font-name"
