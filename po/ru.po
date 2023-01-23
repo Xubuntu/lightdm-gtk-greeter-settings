@@ -628,7 +628,7 @@ msgstr ""
 #: ../lightdm_gtk_greeter_settings/helpers.py:182
 #, python-brace-format
 msgid "File not found: {path}"
-msgstr "Файл не найлен: {path}"
+msgstr "Файл не найден: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:206
 #, python-brace-format
