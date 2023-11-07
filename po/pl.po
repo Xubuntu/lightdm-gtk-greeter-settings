@@ -525,7 +525,7 @@ msgstr "Dodaj nową konfigurację monitora"
 #: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr "Zastąp domyślną opcję „tło”"
+msgstr "Zastąp domyślną opcję „background”"
 
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
@@ -576,7 +576,7 @@ msgstr ""
 "Wygląda na to, że nie masz uprawnień, aby dokonywać zmian w pliku:\n"
 "{path}\n"
 "\n"
-"Spróbuj uruchomić ten program, używając \"sudo\" lub \"pkexec\""
+"Spróbuj uruchomić ten program, używając „sudo” lub „pkexec”"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
@@ -772,7 +772,7 @@ msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
 msgstr ""
-"Wskaźnik \"{name}\" jest już na liście.\n"
+"Wskaźnik „{name}” jest już na liście.\n"
 "Zostanie on nadpisany."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
