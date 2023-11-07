@@ -116,8 +116,8 @@ msgstr "Tło"
 msgctxt "option|multihead"
 msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>"
 msgstr ""
-" <i>(lub użyj <a href=\"\">konfiguracji Multihead</a> dla poszczególnych "
-"monitorów)</i>"
+" <i>(lub użyj <a href=\"\">konfiguracji wielu ekranów</a> dla poszczególnych"
+" monitorów)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
 #: ../data/MultiheadSetupDialog.ui.h:10
