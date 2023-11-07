@@ -535,7 +535,7 @@ msgstr "Zastąp domyślną opcję tła użytkownika"
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr "Zastąp domyślną opcję \"laptop\""
+msgstr "Zastąp domyślną opcję „laptop”"
 
 #: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
