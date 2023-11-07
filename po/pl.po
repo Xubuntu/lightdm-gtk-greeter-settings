@@ -530,7 +530,7 @@ msgstr "Zastąp domyślną opcję „tło”"
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
-msgstr "Zastąp domyślną opcję tła użytkownika"
+msgstr "Zastąp domyślną opcję „user-background”"
 
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
