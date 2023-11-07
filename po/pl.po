@@ -525,7 +525,7 @@ msgstr "Dodaj nową konfigurację monitora"
 #: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr "Zastąp domyślną opcję tła"
+msgstr "Zastąp domyślną opcję „tło”"
 
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
