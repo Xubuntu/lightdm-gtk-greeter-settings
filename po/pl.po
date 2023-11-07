@@ -212,7 +212,7 @@ msgstr "W górę"
 #: ../data/GtkGreeterSettingsWindow.ui.h:38
 msgctxt "option|greeter|indicators"
 msgid "Move down"
-msgstr "Przesuń w dół"
+msgstr "Przenieś w dół"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:39
 msgctxt "option|greeter|indicators"
