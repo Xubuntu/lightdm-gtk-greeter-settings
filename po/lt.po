@@ -526,7 +526,7 @@ msgstr "Pridėti naują ekrano konfigūraciją"
 #: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
-msgstr "Pakeisti numatytąją \"fono\" parinktį"
+msgstr "Pakeisti numatytąją „fono“ parinktį"
 
 #: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
