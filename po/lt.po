@@ -323,7 +323,7 @@ msgstr "Įrašyti būseną tarp paleidimų"
 #: ../data/GtkGreeterSettingsWindow.ui.h:61
 msgctxt "option|greeter|a11y-theme"
 msgid "Contrast theme"
-msgstr "Kontrastinė tema"
+msgstr "Kontrastinis apipavidalinimas"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:62
 msgctxt "option|greeter|a11y-font"
