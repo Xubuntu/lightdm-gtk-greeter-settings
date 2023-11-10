@@ -774,7 +774,7 @@ msgid ""
 "Indicator \"{name}\" is already in the list.\n"
 "It will be overwritten."
 msgstr ""
-"Indikatorius \"{name}\" sąraše jau yra.\n"
+"Indikatorius „{name}“ sąraše jau yra.\n"
 "Jis bus pakeistas."
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:131
