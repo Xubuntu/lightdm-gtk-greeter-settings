@@ -536,7 +536,7 @@ msgstr "Pakeisti numatytąją „naudotojo-fono“ parinktį"
 #: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
-msgstr "Pakeisti numatytąją \"nešiojamojo kompiuterio\" parinktį"
+msgstr "Pakeisti numatytąją „nešiojamojo kompiuterio“ parinktį"
 
 #: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
