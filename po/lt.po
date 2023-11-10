@@ -578,7 +578,7 @@ msgstr ""
 "Atrodo, kad jūs neturite leidimų rašyti į failą:\n"
 "{path}\n"
 "\n"
-"Pabandykite vykdyti šią programą, naudodami \"sudo\" ar \"pkexec\""
+"Pabandykite vykdyti šią programą, naudodami „sudo“ ar „pkexec“"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:374
 msgid "<i>disabled</i>"
