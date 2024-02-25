@@ -1,4 +1,4 @@
-include lightdm-gtk-greeter-settings.desktop.in README COPYING
+include lightdm-gtk-greeter-settings.desktop.in README.md COPYING
 include com.ubuntu.pkexec.lightdm-gtk-greeter-settings.policy.in
 include bin/*
 recursive-include data *.ui *.xml
