@@ -5,16 +5,17 @@
 # 
 # Translators:
 # Hsiu-Ming Chang <cges30901@gmail.com>, 2020
+# Bill Chang, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-18 06:28-0400\n"
+"POT-Creation-Date: 2021-12-04 06:18-0500\n"
 "PO-Revision-Date: 2020-06-12 22:33+0000\n"
-"Last-Translator: Hsiu-Ming Chang <cges30901@gmail.com>, 2020\n"
-"Language-Team: Chinese (Taiwan) (https://www.transifex.com/xubuntu/teams/110148/zh_TW/)\n"
+"Last-Translator: Bill Chang, 2024\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/xubuntu/teams/110148/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,7 +28,7 @@ msgstr "LightDM GTK Greeter 設定"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "配置 LightDM GTK Greeter"
+msgstr "設定 LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
@@ -117,13 +118,13 @@ msgid " <i>(or use <a href=\"\">multihead setup</a> for individual monitors)</i>
 msgstr " <i>（或使用 <a href=\"\">多螢幕設定</a> 配置各個顯示器）</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
-#: ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "顏色"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
-#: ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "圖片"
@@ -154,7 +155,7 @@ msgid "Default user image"
 msgstr "預設使用者頭像"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
-#: ../data/MultiheadSetupDialog.ui.h:11
+#: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
 msgstr "可用時使用使用者桌布"
@@ -391,7 +392,7 @@ msgid "_Cancel"
 msgstr "取消(_C)"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
-#: ../data/MultiheadSetupDialog.ui.h:14
+#: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "button"
 msgid "_OK"
 msgstr "確定(_O)"
@@ -495,46 +496,46 @@ msgctxt "option|multihead"
 msgid "Multihead setup"
 msgstr "多螢幕設定"
 
-#: ../data/MultiheadSetupDialog.ui.h:2
+#: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "Add configuration"
 msgstr "加入配置"
 
-#: ../data/MultiheadSetupDialog.ui.h:3
+#: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "No configured monitors found"
 msgstr "無配置的顯示器"
 
-#: ../data/MultiheadSetupDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:5
 msgctxt "option|multihead"
 msgid "Monitor name:"
 msgstr "顯示器名稱："
 
-#: ../data/MultiheadSetupDialog.ui.h:5
+#: ../data/MultiheadSetupDialog.ui.h:6
 msgid "Don't leave empty"
 msgstr "不要留空"
 
-#: ../data/MultiheadSetupDialog.ui.h:6
+#: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
 msgstr "加入新顯示器配置"
 
-#: ../data/MultiheadSetupDialog.ui.h:7
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
 msgstr "覆蓋預設的「background」選項"
 
-#: ../data/MultiheadSetupDialog.ui.h:10
+#: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
 msgstr "覆蓋預設的「user-background」選項"
 
-#: ../data/MultiheadSetupDialog.ui.h:12
+#: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
 msgstr "覆蓋預設的「laptop」選項"
 
-#: ../data/MultiheadSetupDialog.ui.h:13
+#: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
 msgstr "該顯示器是筆記型電腦螢幕（偵測上蓋關閉）"
