@@ -1,23 +1,26 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Sean Davis <bluesabre@ubuntu.com>, 2020
+# xe1st, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-27 14:54+0000\n"
+"POT-Creation-Date: 2021-12-04 06:18-0500\n"
 "PO-Revision-Date: 2020-06-12 22:33+0000\n"
-"Last-Translator: Sean Davis <bluesabre@ubuntu.com>, 2020\n"
-"Language-Team: Turkish (https://www.transifex.com/xubuntu/teams/110148/tr/)\n"
+"Last-Translator: xe1st, 2024\n"
+"Language-Team: Turkish (https://app.transifex.com/xubuntu/teams/110148/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
-"X-Launchpad-Export-Date: 2020-06-11 22:44+0000\n"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
@@ -25,7 +28,7 @@ msgstr "LightDM GTK Karşılayıcı ayarları"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "LightDM GTK Karşılayıcıyı Yapılandır"
+msgstr "LightDM GTK'yi yapılandır"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
@@ -118,13 +121,13 @@ msgstr ""
 "kullanın)</i>"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:19
-#: ../data/MultiheadSetupDialog.ui.h:9
+#: ../data/MultiheadSetupDialog.ui.h:10
 msgctxt "option|greeter|background"
 msgid "Color"
 msgstr "Renk"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:20
-#: ../data/MultiheadSetupDialog.ui.h:8
+#: ../data/MultiheadSetupDialog.ui.h:9
 msgctxt "option|greeter|background"
 msgid "Image"
 msgstr "Resim"
@@ -155,7 +158,7 @@ msgid "Default user image"
 msgstr "Varsayılan kullanıcı resmi"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:26
-#: ../data/MultiheadSetupDialog.ui.h:11
+#: ../data/MultiheadSetupDialog.ui.h:12
 msgctxt "option|greeter|user-background"
 msgid "Use user wallpaper if available"
 msgstr "Varsa kullanıcı duvar kağıdını kullan"
@@ -392,7 +395,7 @@ msgid "_Cancel"
 msgstr "İptal _Et"
 
 #: ../data/IconChooserDialog.ui.h:3 ../data/IndicatorPropertiesDialog.ui.h:4
-#: ../data/MultiheadSetupDialog.ui.h:14
+#: ../data/MultiheadSetupDialog.ui.h:2
 msgctxt "button"
 msgid "_OK"
 msgstr "_Tamam"
@@ -496,46 +499,46 @@ msgctxt "option|multihead"
 msgid "Multihead setup"
 msgstr "Çok başlı kurulum"
 
-#: ../data/MultiheadSetupDialog.ui.h:2
+#: ../data/MultiheadSetupDialog.ui.h:3
 msgctxt "option|multihead"
 msgid "Add configuration"
 msgstr "Yapılandırma ekle"
 
-#: ../data/MultiheadSetupDialog.ui.h:3
+#: ../data/MultiheadSetupDialog.ui.h:4
 msgctxt "option|multihead"
 msgid "No configured monitors found"
 msgstr "Yapılandırılmış monitör bulunamadı"
 
-#: ../data/MultiheadSetupDialog.ui.h:4
+#: ../data/MultiheadSetupDialog.ui.h:5
 msgctxt "option|multihead"
 msgid "Monitor name:"
 msgstr "Monitör adı:"
 
-#: ../data/MultiheadSetupDialog.ui.h:5
+#: ../data/MultiheadSetupDialog.ui.h:6
 msgid "Don't leave empty"
 msgstr "Boş bırakmayın"
 
-#: ../data/MultiheadSetupDialog.ui.h:6
+#: ../data/MultiheadSetupDialog.ui.h:7
 msgctxt "option|multihead"
 msgid "Add new monitor configuration"
 msgstr "Yeni monitör yapılandırması ekle"
 
-#: ../data/MultiheadSetupDialog.ui.h:7
+#: ../data/MultiheadSetupDialog.ui.h:8
 msgctxt "option|multihead"
 msgid "Overwrite default \"background\" option"
 msgstr "Varsayılan \"arka plan\" seçeneğinin üzerine yaz"
 
-#: ../data/MultiheadSetupDialog.ui.h:10
+#: ../data/MultiheadSetupDialog.ui.h:11
 msgctxt "option|multihead"
 msgid "Overwrite default \"user-background\" option"
 msgstr "Varsayılan \"kullanıcı-arka planı\" seçeneğinin üzerine yaz"
 
-#: ../data/MultiheadSetupDialog.ui.h:12
+#: ../data/MultiheadSetupDialog.ui.h:13
 msgctxt "option|multihead"
 msgid "Overwrite default \"laptop\" option"
 msgstr "Varsayılan \"dizüstü bilgisayar\" seçeneğinin üzerine yaz"
 
-#: ../data/MultiheadSetupDialog.ui.h:13
+#: ../data/MultiheadSetupDialog.ui.h:14
 msgctxt "option|greeter|laptop"
 msgid "This monitor is laptop display (detect lid closing)"
 msgstr "Bu monitör dizüstü bilgisayar ekranıdır (kapak kapanışını algılar)"
@@ -917,5 +920,5 @@ msgstr "Yolu seç"
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"LightDM GTK Karşılayıcı için Ayarlar düzenleyicisini çalıştırmak için "
-"kimlik doğrulaması gerekiyor"
+"LightDM GTK Karşılayıcı Ayarlar düzenleyicisini çalıştırmak için kimlik "
+"doğrulama gereklidir"
