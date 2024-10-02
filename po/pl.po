@@ -175,9 +175,9 @@ msgid ""
 "%d - day, %m - month, %y %Y - year\n"
 "%a %A - day of the week, %b %B - month name"
 msgstr ""
-"%H %I - godziny, %M - minuty, %S - sekundy\n"
-"%d - dzień, %m - miesiąc, %y %Y - rok\n"
-"%a %A - dzień tygodnia, %b %B - nazwa miesiąca"
+"%H %I – godziny, %M – minuty, %S – sekundy\n"
+"%d – dzień, %m – miesiąc, %y %Y – rok\n"
+"%a %A – dzień tygodnia, %b %B – nazwa miesiąca"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:32
 msgctxt "option|greeter|indicators"
