@@ -491,7 +491,7 @@ msgstr "Odstępnik – wypełnia całkowicie dostępne miejsce"
 #: ../data/IndicatorPropertiesDialog.ui.h:14
 msgctxt "option-entry|indicators"
 msgid "Separator - draw a separator"
-msgstr "Separator - wyświetla separator"
+msgstr "Separator – wyświetla separator"
 
 #: ../data/MultiheadSetupDialog.ui.h:1
 msgctxt "option|multihead"
