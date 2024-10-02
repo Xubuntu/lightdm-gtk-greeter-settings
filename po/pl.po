@@ -674,7 +674,7 @@ msgstr "Działania"
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:203
 msgctxt "icon-dialog"
 msgid "Applications"
-msgstr "Aplikacje"
+msgstr "Programy"
 
 #: ../lightdm_gtk_greeter_settings/IconChooserDialog.py:204
 msgctxt "icon-dialog"
