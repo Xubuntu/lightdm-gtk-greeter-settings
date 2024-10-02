@@ -476,7 +476,7 @@ msgstr "Biblioteka/usługa wskaźnika:"
 #: ../data/IndicatorPropertiesDialog.ui.h:11
 msgctxt "option-entry|indicators"
 msgid "Hide disabled power actions"
-msgstr "Ukryj wyłączone akcje zasilania"
+msgstr "Ukryj wyłączone działania zasilania"
 
 #: ../data/IndicatorPropertiesDialog.ui.h:12
 msgctxt "option-entry|indicators"
