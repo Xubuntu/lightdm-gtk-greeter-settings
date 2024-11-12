@@ -903,7 +903,7 @@ msgstr "_Usuń"
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:689
 msgctxt "option-entry|indicators"
 msgid "Show unused items"
-msgstr "Pokaż nieużywane"
+msgstr "Pokaż nieużywane elementy"
 
 #: ../lightdm_gtk_greeter_settings/IndicatorsEntry.py:693
 msgctxt "option-entry|indicators"
