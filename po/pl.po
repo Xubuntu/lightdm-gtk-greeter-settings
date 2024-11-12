@@ -598,7 +598,7 @@ msgstr "Wartość zdefiniowana w pliku: {path}"
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:439
 #, python-brace-format
 msgid "Reset to initial value: <b>{value}</b>"
-msgstr "Przywróć do domyślnej wartości: <b>{value}</b>"
+msgstr "Przywróć do początkowej wartości: <b>{value}</b>"
 
 #: ../lightdm_gtk_greeter_settings/GtkGreeterSettingsWindow.py:451
 #, python-brace-format
