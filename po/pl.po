@@ -24,15 +24,15 @@ msgstr ""
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:1
 msgid "LightDM GTK Greeter settings"
-msgstr "Ustawienia LightDM GTK Greeter"
+msgstr "Ustawienia ekranu logowania LightDM"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "Skonfiguruj LightDM GTK Greeter"
+msgstr "Skonfiguruj ekran logowania LightDM"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "LightDM GTK Greeter: ustawienia"
+msgstr "Ekran logowania LightDM: ustawienia"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
@@ -548,7 +548,7 @@ msgid ""
 "<i>Note: greeter does not set monitors geometry.\n"
 "You need to configure it by yourself.</i>"
 msgstr ""
-"<i>Uwaga: greeter nie ustawia geometrii monitorów.\n"
+"<i>Uwaga: ekran logowania nie ustawia geometrii monitorów.\n"
 "Musisz ją skonfigurować samodzielnie.</i>"
 
 #. Panel
@@ -919,5 +919,5 @@ msgstr "Wybierz ścieżkę"
 msgid ""
 "Authentication is required to run Settings editor for LightDM GTK Greeter"
 msgstr ""
-"Uwierzytelnianie jest wymagane, aby uruchomić edytor ustawień LightDM GTK "
-"Greeter"
+"Wymagane jest uwierzytelnienie, aby uruchomić edytor ustawień ekranu "
+"logowania LightDM"
