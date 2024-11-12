@@ -32,7 +32,7 @@ msgstr "Skonfiguruj LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
-msgstr "Ekran logowania LightDM: ustawienia"
+msgstr "LightDM GTK Greeter: ustawienia"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:2
 msgctxt "option|greeter|xft-rgba"
