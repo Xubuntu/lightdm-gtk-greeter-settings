@@ -28,7 +28,7 @@ msgstr "Ustawienia LightDM GTK Greeter"
 
 #: ../lightdm-gtk-greeter-settings.desktop.in.h:2
 msgid "Configure LightDM GTK Greeter"
-msgstr "Skonfiguruj ekran logowania LightDM"
+msgstr "Skonfiguruj LightDM GTK Greeter"
 
 #: ../data/GtkGreeterSettingsWindow.ui.h:1
 msgid "LightDM GTK Greeter: settings"
