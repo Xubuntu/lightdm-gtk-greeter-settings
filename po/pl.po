@@ -639,7 +639,7 @@ msgstr "Nie udało się sprawdzić uprawnień: {error}"
 #: ../lightdm_gtk_greeter_settings/helpers.py:209
 #, python-brace-format
 msgid "Directory is not readable: {path}"
-msgstr "Katalog nie jest odczytywalny: {path}"
+msgstr "Katalogu nie można odczytać: {path}"
 
 #: ../lightdm_gtk_greeter_settings/helpers.py:212
 #: ../lightdm_gtk_greeter_settings/helpers.py:215
